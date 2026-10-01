@@ -1,0 +1,83 @@
+{
+ "8058": {
+  "[fields][image]": "",
+  "[fields][image][]": "9395",
+  "[title]": "Mandatory markets, fully managed",
+  "[fields][textContent]": "South Africa, Kenya and Israel handled end to end, today.",
+  "[fields][buttonUrl][type]": "url",
+  "[fields][buttonUrl][url][value]": "",
+  "[fields][buttonUrl][entry][value]": "",
+  "[fields][buttonUrl][label]": "",
+  "[fields][buttonUrl][target]": "",
+  "[slug]": "mandatory-markets-fully-managed",
+  "[enabled]": "1"
+ },
+ "8059": {
+  "[fields][image]": "",
+  "[title]": "Emerging markets, already on our radar",
+  "[fields][textContent]": "we're watching the Gulf so you don't have to.",
+  "[fields][buttonUrl][type]": "url",
+  "[fields][buttonUrl][url][value]": "",
+  "[fields][buttonUrl][entry][value]": "",
+  "[fields][buttonUrl][label]": "",
+  "[fields][buttonUrl][target]": "",
+  "[slug]": "emerging-markets-already-on-our-radar",
+  "[enabled]": "1"
+ },
+ "8060": {
+  "[fields][image]": "",
+  "[title]": "No surprises, ever:",
+  "[fields][textContent]": "if a market you trade in changes, you hear it from us first.",
+  "[fields][buttonUrl][type]": "url",
+  "[fields][buttonUrl][url][value]": "",
+  "[fields][buttonUrl][entry][value]": "",
+  "[fields][buttonUrl][label]": "",
+  "[fields][buttonUrl][target]": "",
+  "[slug]": "no-surprises-ever",
+  "[enabled]": "1"
+ },
+ "8071": {
+  "[title]": "How we support you, end to end",
+  "[fields][mediaAsset]": "",
+  "[fields][generalContent]": "<p>Registration, Producer Responsibility Organisation membership and ongoing reporting, managed for you across every market in the region.&nbsp;</p><p><a href=\"https://www.ecoveritas.com/services/obligation-assessment#entry:4781@1:url\">Obligation Assessment</a></p><p><a href=\"https://www.ecoveritas.com/services/registration-and-reporting#entry:5469@1:url\">Registration and Reporting</a></p>",
+  "[fields][alignment]": "base64:YXV0bw==",
+  "[slug]": "how-we-support-you-end-to-end",
+  "[enabled]": "1"
+ },
+ "8103": {
+  "[fields][image]": "",
+  "[title]": "Europe",
+  "[fields][textContent]": "",
+  "[fields][buttonUrl][type]": "url",
+  "[fields][buttonUrl][url][value]": "",
+  "[fields][buttonUrl][entry][value]": "",
+  "[fields][buttonUrl][label]": "",
+  "[fields][buttonUrl][target]": "",
+  "[slug]": "europe",
+  "[enabled]": "1"
+ },
+ "8104": {
+  "[fields][image]": "",
+  "[title]": "Americas",
+  "[fields][textContent]": "",
+  "[fields][buttonUrl][type]": "url",
+  "[fields][buttonUrl][url][value]": "",
+  "[fields][buttonUrl][entry][value]": "",
+  "[fields][buttonUrl][label]": "",
+  "[fields][buttonUrl][target]": "",
+  "[slug]": "americas",
+  "[enabled]": "1"
+ },
+ "8105": {
+  "[fields][image]": "",
+  "[title]": "Asia & Australia",
+  "[fields][textContent]": "",
+  "[fields][buttonUrl][type]": "url",
+  "[fields][buttonUrl][url][value]": "",
+  "[fields][buttonUrl][entry][value]": "",
+  "[fields][buttonUrl][label]": "",
+  "[fields][buttonUrl][target]": "",
+  "[slug]": "asia-australia",
+  "[enabled]": "1"
+ }
+}

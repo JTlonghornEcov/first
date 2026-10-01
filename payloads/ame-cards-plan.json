@@ -1,0 +1,69 @@
+[
+ {
+  "after": "2bb83f9e-d921-4c1b-be88-953ad97833cd",
+  "key": "new1",
+  "type": "cards",
+  "list": "cardList",
+  "items": [
+   {
+    "type": "card",
+    "title": "Mandatory markets, fully managed",
+    "image": 9395,
+    "textContent": "South Africa, Kenya and Israel handled end to end, today."
+   },
+   {
+    "type": "card",
+    "title": "Emerging markets, already on our radar",
+    "image": 9399,
+    "textContent": "we're watching the Gulf so you don't have to."
+   },
+   {
+    "type": "card",
+    "title": "No surprises, ever:",
+    "image": 9394,
+    "textContent": "if a market you trade in changes, you hear it from us first."
+   }
+  ]
+ },
+ {
+  "after": "57073d45-7327-477c-a1cf-0e017ef6171b",
+  "key": "new2",
+  "type": "mediaCards",
+  "list": "mediaCardList",
+  "items": [
+   {
+    "type": "mediaCardItem",
+    "title": "How we support you, end to end",
+    "mediaAsset": 8862,
+    "generalContent": "<p>Registration, Producer Responsibility Organisation membership and ongoing reporting, managed for you across every market in the region.&nbsp;</p><p><a href=\"https://www.ecoveritas.com/services/obligation-assessment#entry:4781@1:url\">Obligation Assessment</a></p><p><a href=\"https://www.ecoveritas.com/services/registration-and-reporting#entry:5469@1:url\">Registration and Reporting</a></p>",
+    "alignment": "base64:YXV0bw=="
+   }
+  ]
+ },
+ {
+  "after": "518be4f8-b3d4-4300-947e-8aaaeec1d9ff",
+  "key": "new3",
+  "type": "cards",
+  "list": "cardList",
+  "items": [
+   {
+    "type": "card",
+    "title": "Europe",
+    "image": 9389,
+    "textContent": ""
+   },
+   {
+    "type": "card",
+    "title": "Americas",
+    "image": 9420,
+    "textContent": ""
+   },
+   {
+    "type": "card",
+    "title": "Asia & Australia",
+    "image": 9428,
+    "textContent": ""
+   }
+  ]
+ }
+]

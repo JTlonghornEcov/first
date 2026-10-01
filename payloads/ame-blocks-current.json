@@ -1,0 +1,90 @@
+{
+ "sortOrder": [
+  "0b9e6145-40ec-410a-9c56-f8384fcd5c5e",
+  "81675306-5a87-4092-9d1e-79da84d617ae",
+  "2bb83f9e-d921-4c1b-be88-953ad97833cd",
+  "57640862-d048-4d42-b1f8-85119ff8d298",
+  "49870d99-fc7f-40a5-826a-458ef8a7c879",
+  "57073d45-7327-477c-a1cf-0e017ef6171b",
+  "5c1c4993-d9eb-4182-b77f-1ba01755cb7a",
+  "415a0a8c-112e-4bf6-bd7a-546fd8824ec4",
+  "c949f57b-ac63-4494-af39-8692174ebd28",
+  "518be4f8-b3d4-4300-947e-8aaaeec1d9ff"
+ ],
+ "blocks": {
+  "0b9e6145-40ec-410a-9c56-f8384fcd5c5e": {
+   "[type]": "general_content",
+   "[enabled]": "1",
+   "[fields][generalContent]": "<p>Our clients place packaging on markets worth a combined turnover of over £50 billion, and we've spent over 25 years watching regulation move from voluntary to mandatory across the world, South Africa being a recent, sharp example. <strong>Wherever a market in this region shifts next, we're already watching for it.</strong></p>",
+   "[fields][spacing]": "base64:bWVkaXVt",
+   "[fields][theme]": "base64:ZGVmYXVsdA=="
+  },
+  "81675306-5a87-4092-9d1e-79da84d617ae": {
+   "[type]": "alert",
+   "[enabled]": "1",
+   "[fields][alertType]": "base64:Ymx1ZQ==",
+   "[fields][alertText]": "South Africa's EPR now spans paper, packaging, electricals, lighting, batteries, lubricant oils and pesticides. If your registration only covers part of that list, talk to us.",
+   "[fields][alertClose]": "1",
+   "[fields][spacing]": "base64:c21hbGw=",
+   "[fields][theme]": "base64:YWx0ZXJuYXRl"
+  },
+  "2bb83f9e-d921-4c1b-be88-953ad97833cd": {
+   "[type]": "cards",
+   "[enabled]": "1",
+   "[title]": "Why businesses trust us across Africa & Middle East.",
+   "[fields][introduction]": "",
+   "[fields][spacing]": "base64:c21hbGw=",
+   "[fields][theme]": "base64:YWx0ZXJuYXRl"
+  },
+  "57640862-d048-4d42-b1f8-85119ff8d298": {
+   "[type]": "accordion",
+   "[enabled]": "1",
+   "[title]": "Select your market.",
+   "[fields][introduction]": "",
+   "[fields][spacing]": "base64:bWVkaXVt",
+   "[fields][theme]": "base64:ZGVmYXVsdA=="
+  },
+  "49870d99-fc7f-40a5-826a-458ef8a7c879": {
+   "[type]": "accordion",
+   "[enabled]": "1",
+   "[title]": "Questions we're often asked about Africa & Middle East",
+   "[fields][introduction]": "",
+   "[fields][spacing]": "base64:bWVkaXVt",
+   "[fields][theme]": "base64:YWx0ZXJuYXRl"
+  },
+  "57073d45-7327-477c-a1cf-0e017ef6171b": {
+   "[type]": "mediaCards",
+   "[enabled]": "1",
+   "[fields][theme]": "base64:ZGVmYXVsdA==",
+   "[fields][spacing]": "base64:bWVkaXVt"
+  },
+  "5c1c4993-d9eb-4182-b77f-1ba01755cb7a": {
+   "[type]": "general_content",
+   "[enabled]": "1",
+   "[fields][generalContent]": "<p>Trading somewhere in the region that isn't listed here?</p><p>Tell us where, and we'll confirm exactly what applies.</p>",
+   "[fields][spacing]": "base64:c21hbGw=",
+   "[fields][theme]": "base64:YWx0ZXJuYXRl"
+  },
+  "415a0a8c-112e-4bf6-bd7a-546fd8824ec4": {
+   "[type]": "divider",
+   "[enabled]": "1",
+   "[fields][line]": "",
+   "[fields][spacing]": "base64:c21hbGw=",
+   "[fields][theme]": "base64:ZGVmYXVsdA=="
+  },
+  "c949f57b-ac63-4494-af39-8692174ebd28": {
+   "[type]": "callToAction",
+   "[enabled]": "1",
+   "[fields][richTitle]": "<h3>Expanding across Africa or the Middle East?</h3><p>Get ahead of it. Our team already manages compliance in the region's established markets, and we're watching the rest for you.</p>",
+   "[fields][theme]": "base64:ZGVmYXVsdA=="
+  },
+  "518be4f8-b3d4-4300-947e-8aaaeec1d9ff": {
+   "[type]": "cards",
+   "[enabled]": "1",
+   "[title]": "Explore our other regions:",
+   "[fields][introduction]": "",
+   "[fields][spacing]": "base64:bWVkaXVt",
+   "[fields][theme]": "base64:ZGVmYXVsdA=="
+  }
+ }
+}
