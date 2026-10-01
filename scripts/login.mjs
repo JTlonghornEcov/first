@@ -1,0 +1,10 @@
+import { launch } from './lib.mjs';
+const { browser, ctx, page } = await launch({ write: /\/admin\/login|actions\/users\/login/, state: false });
+await page.goto('https://www.ecoveritas.com/admin/login', { waitUntil: 'domcontentloaded' });
+await page.locator('input[name=username]:visible').first().fill(process.env.ECOVERITAS_CMS_USER);
+await page.locator('input[name=password]:visible').first().fill(process.env.ECOVERITAS_CMS_PASSWORD);
+await page.locator('button[type=submit]:visible').first().click();
+await page.waitForURL(/\/admin\/(dashboard|entries)/, { timeout: 20000 }).catch(() => {});
+console.log('URL after login:', page.url());
+await ctx.storageState({ path: 'state.json' });
+await browser.close();
