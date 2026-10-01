@@ -2,7 +2,8 @@
 import { launch } from './lib.mjs';
 import fs from 'node:fs';
 export const DRAFT_ID = process.env.DRAFT_ID || '3820';
-export const DRAFT_URL = `https://www.ecoveritas.com/admin/entries/x/8054?draftId=${DRAFT_ID}`;
+export const ENTRY_ID = process.env.ENTRY_ID || '8054';
+export const DRAFT_URL = `https://www.ecoveritas.com/admin/entries/x/${ENTRY_ID}?draftId=${DRAFT_ID}`;
 const WRITE = /actions\/(elements\/(save-draft|save|save-nested-element-for-derivative|render-elements|get-editor-html|edit|update-field-layout|create)|app\/render-elements|assets\/(preview-thumb|thumb)|element-selector-modals|ckeditor)/;
 
 export async function open() {
