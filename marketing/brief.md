@@ -15,7 +15,7 @@ Primary metric: clicks and booked calls attributable to email, not opens (Apple 
 
 ## Account facts (audit 2026-10-01)
 One audience, 1,394 subscribed. Sends so far reach at most 232 (mostly the ~183 "current clients" tag).
-Big untapped groups: Information Request 523, Survey 176, webinar registrants. ~45% of located contacts are outside the UK.
+Big untapped groups: Information Request 523, Survey 176, webinar registrants. Of the 757 contacts with a known location, 311 (41%) are in the UK.
 
 ## Audiences (proposed, to confirm against the audit)
 - Clients, by service (pEPR, PRN, data audit).
