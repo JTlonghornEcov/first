@@ -11,6 +11,6 @@ Read this folder at the start of every session: it is how context carries over.
 - `scripts/mailchimp-lib.mjs`: the only way scripts talk to Mailchimp. `MAILCHIMP_MODE=audit` (default) is GET only;
   `build` allows drafts and test sends to `MAILCHIMP_TEST_EMAILS`. Sending, scheduling, deleting, unsubscribing/archiving
   members, batches and starting/pausing automations stay blocked unless James confirms that exact action in chat.
-- `scripts/mailchimp-audit.mjs [months]`: read-only audit; writes `marketing/audit/raw-<date>.json` and `summary-<date>.json`.
+- `npm run mc:audit -- [months]` (scripts/mailchimp-audit.mjs): read-only audit; writes `marketing/audit/raw-<date>.json` and `summary-<date>.json`.
 
 The API key lives in `MAILCHIMP_API_KEY` only. Never print, log or commit it.

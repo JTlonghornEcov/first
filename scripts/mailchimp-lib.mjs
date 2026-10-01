@@ -7,6 +7,10 @@
 // In every mode, NEVER actions are blocked unless the call passes confirm: '<METHOD> <path>' exactly,
 // which scripts only do after James has confirmed that specific action in chat.
 
+// Node's fetch only honours HTTPS_PROXY when NODE_USE_ENV_PROXY=1; without it, cloud sessions are refused.
+if ((process.env.HTTPS_PROXY || process.env.https_proxy) && process.env.NODE_USE_ENV_PROXY !== '1')
+  throw new Error('Run with NODE_USE_ENV_PROXY=1 (e.g. npm run mc:audit) so fetch goes through the proxy');
+
 const KEY = process.env.MAILCHIMP_API_KEY;
 if (!KEY || !KEY.includes('-')) throw new Error('MAILCHIMP_API_KEY missing or malformed (expected <key>-<dc>)');
 const DC = KEY.split('-').pop();
@@ -60,7 +64,8 @@ export async function mc(path, { method = 'GET', query, body, confirm } = {}) {
     });
     if (res.status === 429 && attempt < 4) { await new Promise(r => setTimeout(r, 2000 * 2 ** attempt)); continue; }
     const text = await res.text();
-    const data = text ? JSON.parse(text) : null;
+    let data = null;
+    try { data = text ? JSON.parse(text) : null; } catch { data = { title: 'Non-JSON response', detail: text.slice(0, 200) }; }
     if (!res.ok) {
       const err = new Error(`${method} ${path} -> ${res.status} ${data?.title || ''}: ${data?.detail || ''}`.replaceAll(KEY, '[key]'));
       err.status = res.status; err.data = data;

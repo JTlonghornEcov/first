@@ -5,4 +5,7 @@
   member unsubscribes/archives, batches and automation start/pause need James's explicit confirmation of the specific action.
 - Test sends will only go to addresses in `MAILCHIMP_TEST_EMAILS` (to be set to James's address).
 - Raw audit data is gitignored; only aggregate stats are committed.
-- Audit blocked: the cloud environment's network policy denies `us12.api.mailchimp.com`. Waiting for the host to be allowed.
+- Network policy updated to allow `us12.api.mailchimp.com`. Node fetch needs `NODE_USE_ENV_PROXY=1` in cloud sessions;
+  the wrapper enforces it and `npm run mc:audit` sets it.
+- First audit run: see `audit-2026-10-01.md`. Nothing changed in the account.
+- Measure email by clicks and booked calls, not opens (MPP and link scanners inflate opens).

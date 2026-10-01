@@ -154,7 +154,7 @@ const summary = {
   })),
   templates: raw.templates.map(t => ({ name: t.name, created: t.date_created, edited: t.date_edited, active: t.active, drag_and_drop: t.drag_and_drop, folder: t.folder_id, responsive: t.responsive })),
   verified_domains: raw.verified_domains?.domains?.map(d => ({ domain: d.domain, verified: d.verified, authenticated: d.authenticated })) ?? raw.verified_domains,
-  from_identities: [...new Set(raw.campaigns.map(c => `${c.settings?.from_name} <${c.settings?.reply_to}>`))],
+  from_identities: [...new Set(raw.campaigns.map(c => `${c.settings?.from_name} <…@${(c.settings?.reply_to || '').split('@')[1]}>`))],
   landing_pages: Array.isArray(raw.landing_pages) ? raw.landing_pages.length : raw.landing_pages,
   connected_sites: Array.isArray(raw.connected_sites) ? raw.connected_sites.length : raw.connected_sites,
 };

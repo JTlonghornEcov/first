@@ -1,0 +1,2138 @@
+{
+ "generated": "2026-10-01T13:22:28.784Z",
+ "window_months": 24,
+ "account": {
+  "name": "Ecoveritas",
+  "plan": "monthly",
+  "total_subscribers": 1401,
+  "industry": "",
+  "timezone": "America/New_York",
+  "member_since": "2024-03-13T10:54:50+00:00",
+  "last_login": "2026-10-01T12:18:16+00:00"
+ },
+ "lists": [
+  {
+   "id": "ba8259bdf8",
+   "name": "Ecoveritas",
+   "created": "2024-03-13T11:00:34+00:00",
+   "double_optin": false,
+   "has_welcome": false,
+   "gdpr": false,
+   "visibility": "prv",
+   "email_type_option": false,
+   "use_archive_bar": true,
+   "stats": {
+    "member_count": 1394,
+    "unsubscribe_count": 7,
+    "cleaned_count": 46,
+    "member_count_since_send": 0,
+    "unsubscribe_count_since_send": 0,
+    "cleaned_count_since_send": 0,
+    "campaign_count": 65,
+    "campaign_last_sent": "2026-08-27T14:38:01+00:00",
+    "merge_field_count": 13,
+    "avg_sub_rate": 59,
+    "avg_unsub_rate": 0,
+    "target_sub_rate": 2,
+    "open_rate": 33.61221501777871,
+    "click_rate": 8.722024681029074,
+    "last_sub_date": "2026-09-29T11:29:16+00:00",
+    "last_unsub_date": "2026-08-12T09:38:48+00:00"
+   },
+   "merge_fields": [
+    {
+     "tag": "ADDRESS",
+     "name": "Address",
+     "type": "address",
+     "required": false,
+     "public": false
+    },
+    {
+     "tag": "BIRTHDAY",
+     "name": "Birthday",
+     "type": "birthday",
+     "required": false,
+     "public": true
+    },
+    {
+     "tag": "FNAME",
+     "name": "First Name",
+     "type": "text",
+     "required": false,
+     "public": true
+    },
+    {
+     "tag": "LNAME",
+     "name": "Last Name",
+     "type": "text",
+     "required": false,
+     "public": true
+    },
+    {
+     "tag": "MMERGE10",
+     "name": "Enquiry",
+     "type": "text",
+     "required": false,
+     "public": false
+    },
+    {
+     "tag": "MMERGE11",
+     "name": "Site Location",
+     "type": "text",
+     "required": false,
+     "public": false
+    },
+    {
+     "tag": "MMERGE12",
+     "name": "Full Name",
+     "type": "text",
+     "required": false,
+     "public": true
+    },
+    {
+     "tag": "MMERGE13",
+     "name": "How did you first hear about us?",
+     "type": "dropdown",
+     "required": false,
+     "public": false
+    },
+    {
+     "tag": "MMERGE6",
+     "name": "Company",
+     "type": "text",
+     "required": false,
+     "public": true
+    },
+    {
+     "tag": "MMERGE7",
+     "name": "Status",
+     "type": "text",
+     "required": false,
+     "public": true
+    },
+    {
+     "tag": "MMERGE8",
+     "name": "Type",
+     "type": "text",
+     "required": false,
+     "public": true
+    },
+    {
+     "tag": "MMERGE9",
+     "name": "Title",
+     "type": "text",
+     "required": false,
+     "public": true
+    },
+    {
+     "tag": "PHONE",
+     "name": "Phone Number",
+     "type": "phone",
+     "required": false,
+     "public": false
+    }
+   ],
+   "interest_groups": [],
+   "segments": [
+    {
+     "name": "Prospect",
+     "type": "static",
+     "members": 79,
+     "updated": "2024-04-12T15:27:56+00:00"
+    },
+    {
+     "name": "Horticulture",
+     "type": "static",
+     "members": 78,
+     "updated": "2024-04-12T15:27:56+00:00"
+    },
+    {
+     "name": "NPWD large filtered out",
+     "type": "static",
+     "members": 156,
+     "updated": "2024-05-03T14:25:37+00:00"
+    },
+    {
+     "name": "current clients",
+     "type": "static",
+     "members": 209,
+     "updated": "2024-05-03T13:41:00+00:00"
+    },
+    {
+     "name": "my.ecoveritas.com",
+     "type": "static",
+     "members": 72,
+     "updated": "2024-07-08T16:17:50+00:00"
+    },
+    {
+     "name": "Saas Renewal",
+     "type": "static",
+     "members": 6,
+     "updated": "2024-07-17T15:00:51+00:00"
+    },
+    {
+     "name": "Builders Merchants 2.0",
+     "type": "static",
+     "members": 0,
+     "updated": "2024-10-22T15:08:14+00:00"
+    },
+    {
+     "name": "Campaign Pasted Segment - 07 Feb 2025 05:17:43 am",
+     "type": "campaign_static",
+     "members": 1,
+     "updated": "2025-02-07T10:17:43+00:00"
+    },
+    {
+     "name": "Information Request",
+     "type": "static",
+     "members": 523,
+     "updated": "2025-02-12T13:51:56+00:00"
+    },
+    {
+     "name": "Direct Registrants",
+     "type": "static",
+     "members": 16,
+     "updated": "2025-03-20T09:21:08+00:00"
+    },
+    {
+     "name": "Survey",
+     "type": "static",
+     "members": 176,
+     "updated": "2025-08-29T08:38:26+00:00"
+    },
+    {
+     "name": "EU PPWR Webinar Attendees",
+     "type": "static",
+     "members": 41,
+     "updated": "2025-12-10T10:47:31+00:00"
+    },
+    {
+     "name": "HTA Webinar Attendees",
+     "type": "static",
+     "members": 78,
+     "updated": "2026-01-28T11:25:21+00:00"
+    },
+    {
+     "name": "CIA Webinar",
+     "type": "static",
+     "members": 18,
+     "updated": "2026-03-24T14:52:08+00:00"
+    },
+    {
+     "name": "EU PPWR Lead Magnet",
+     "type": "static",
+     "members": 0,
+     "updated": "2026-05-18T10:39:18+00:00"
+    },
+    {
+     "name": "EU PPWR Webinar 2026-08-19",
+     "type": "static",
+     "members": 232,
+     "updated": "2026-08-20T12:13:52+00:00"
+    },
+    {
+     "name": "Attended",
+     "type": "static",
+     "members": 152,
+     "updated": "2026-08-20T12:13:52+00:00"
+    },
+    {
+     "name": "Did Not Attend",
+     "type": "static",
+     "members": 80,
+     "updated": "2026-08-20T12:14:10+00:00"
+    }
+   ],
+   "signup_forms": 1,
+   "growth_history": [
+    {
+     "month": "2026-09",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 1392,
+     "unsubscribed": 7,
+     "cleaned": 46
+    },
+    {
+     "month": "2026-08",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 1359,
+     "unsubscribed": 7,
+     "cleaned": 46
+    },
+    {
+     "month": "2026-07",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 1105,
+     "unsubscribed": 6,
+     "cleaned": 33
+    },
+    {
+     "month": "2026-06",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 1073,
+     "unsubscribed": 6,
+     "cleaned": 33
+    },
+    {
+     "month": "2026-05",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 1049,
+     "unsubscribed": 6,
+     "cleaned": 33
+    },
+    {
+     "month": "2026-04",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 1021,
+     "unsubscribed": 6,
+     "cleaned": 33
+    },
+    {
+     "month": "2026-03",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 1005,
+     "unsubscribed": 6,
+     "cleaned": 33
+    },
+    {
+     "month": "2026-02",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 972,
+     "unsubscribed": 6,
+     "cleaned": 33
+    },
+    {
+     "month": "2026-01",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 963,
+     "unsubscribed": 6,
+     "cleaned": 33
+    },
+    {
+     "month": "2025-12",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 896,
+     "unsubscribed": 6,
+     "cleaned": 33
+    },
+    {
+     "month": "2025-11",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 863,
+     "unsubscribed": 6,
+     "cleaned": 32
+    },
+    {
+     "month": "2025-10",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 851,
+     "unsubscribed": 5,
+     "cleaned": 32
+    },
+    {
+     "month": "2025-09",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 833,
+     "unsubscribed": 5,
+     "cleaned": 32
+    },
+    {
+     "month": "2025-08",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 801,
+     "unsubscribed": 5,
+     "cleaned": 32
+    },
+    {
+     "month": "2025-07",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 664,
+     "unsubscribed": 4,
+     "cleaned": 32
+    },
+    {
+     "month": "2025-06",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 606,
+     "unsubscribed": 4,
+     "cleaned": 32
+    },
+    {
+     "month": "2025-05",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 558,
+     "unsubscribed": 4,
+     "cleaned": 32
+    },
+    {
+     "month": "2025-04",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 503,
+     "unsubscribed": 4,
+     "cleaned": 32
+    },
+    {
+     "month": "2025-03",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 489,
+     "unsubscribed": 4,
+     "cleaned": 32
+    },
+    {
+     "month": "2025-02",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 483,
+     "unsubscribed": 3,
+     "cleaned": 30
+    },
+    {
+     "month": "2025-01",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 478,
+     "unsubscribed": 2,
+     "cleaned": 19
+    },
+    {
+     "month": "2024-12",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 480,
+     "unsubscribed": 2,
+     "cleaned": 16
+    },
+    {
+     "month": "2024-11",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 480,
+     "unsubscribed": 1,
+     "cleaned": 14
+    },
+    {
+     "month": "2024-10",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 480,
+     "unsubscribed": 1,
+     "cleaned": 14
+    },
+    {
+     "month": "2024-09",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 477,
+     "unsubscribed": 1,
+     "cleaned": 14
+    },
+    {
+     "month": "2024-08",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 477,
+     "unsubscribed": 1,
+     "cleaned": 14
+    },
+    {
+     "month": "2024-07",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 478,
+     "unsubscribed": 1,
+     "cleaned": 7
+    },
+    {
+     "month": "2024-06",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 418,
+     "unsubscribed": 0,
+     "cleaned": 6
+    },
+    {
+     "month": "2024-05",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 418,
+     "unsubscribed": 0,
+     "cleaned": 6
+    },
+    {
+     "month": "2024-04",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 79,
+     "unsubscribed": 0,
+     "cleaned": 0
+    },
+    {
+     "month": "2024-03",
+     "existing": 0,
+     "imports": 0,
+     "optins": 0,
+     "subscribed": 1,
+     "unsubscribed": 0,
+     "cleaned": 0
+    }
+   ],
+   "webhooks": 0,
+   "member_summary": {
+    "total_records": 1447,
+    "by_status": {
+     "subscribed": 1394,
+     "cleaned": 46,
+     "unsubscribed": 7
+    },
+    "subscribed_by_rating": {
+     "1": 8,
+     "2": 1386
+    },
+    "subscribed_by_source": {
+     "Admin Add": 24,
+     "Import": 849,
+     "Embed Form": 517,
+     "API - Generic": 4
+    },
+    "subscribed_by_country": {
+     "unknown": 637,
+     "GB": 311,
+     "US": 103,
+     "BR": 33,
+     "IN": 27,
+     "DE": 26,
+     "NL": 23,
+     "KH": 20,
+     "ZA": 17,
+     "ID": 16
+    },
+    "subscribed_zero_open_rate": 929,
+    "subscribed_zero_click_rate": 1160,
+    "subscribed_rating_1_or_2": 1394,
+    "subscribed_opted_in_by_year": {
+     "2024": 446,
+     "2025": 436,
+     "2026": 512
+    }
+   }
+  }
+ ],
+ "list_overlap": [],
+ "unique_subscribed_across_lists": 1394,
+ "campaigns_total": {
+  "campaigns": 26,
+  "sent": 3832,
+  "open_rate": 36.32,
+  "click_rate": 11.27,
+  "ctor": 31.02,
+  "unsub_rate": 0.13,
+  "hard_bounce_rate": 0.84
+ },
+ "campaigns_by_quarter": {
+  "2026Q3": {
+   "campaigns": 3,
+   "sent": 647,
+   "open_rate": 41.14,
+   "click_rate": 23.1,
+   "ctor": 56.15,
+   "unsub_rate": 0.15,
+   "hard_bounce_rate": 2.01
+  },
+  "2026Q1": {
+   "campaigns": 3,
+   "sent": 279,
+   "open_rate": 37.55,
+   "click_rate": 16.73,
+   "ctor": 44.55,
+   "unsub_rate": 0,
+   "hard_bounce_rate": 0
+  },
+  "2025Q4": {
+   "campaigns": 3,
+   "sent": 408,
+   "open_rate": 37.02,
+   "click_rate": 13.11,
+   "ctor": 35.42,
+   "unsub_rate": 0.25,
+   "hard_bounce_rate": 0.25
+  },
+  "2025Q3": {
+   "campaigns": 3,
+   "sent": 526,
+   "open_rate": 31.52,
+   "click_rate": 10.12,
+   "ctor": 32.1,
+   "unsub_rate": 0.19,
+   "hard_bounce_rate": 0
+  },
+  "2025Q1": {
+   "campaigns": 10,
+   "sent": 1460,
+   "open_rate": 35.26,
+   "click_rate": 7,
+   "ctor": 19.84,
+   "unsub_rate": 0.07,
+   "hard_bounce_rate": 1.1
+  },
+  "2024Q4": {
+   "campaigns": 4,
+   "sent": 512,
+   "open_rate": 36.96,
+   "click_rate": 4.93,
+   "ctor": 13.33,
+   "unsub_rate": 0.2,
+   "hard_bounce_rate": 0.39
+  }
+ },
+ "campaigns_by_month": {
+  "2026-08": {
+   "campaigns": 3,
+   "sent": 647,
+   "open_rate": 41.14,
+   "click_rate": 23.1,
+   "ctor": 56.15,
+   "unsub_rate": 0.15,
+   "hard_bounce_rate": 2.01
+  },
+  "2026-03": {
+   "campaigns": 1,
+   "sent": 18,
+   "open_rate": 38.89,
+   "click_rate": 27.78,
+   "ctor": 71.43,
+   "unsub_rate": 0,
+   "hard_bounce_rate": 0
+  },
+  "2026-01": {
+   "campaigns": 2,
+   "sent": 261,
+   "open_rate": 37.45,
+   "click_rate": 15.94,
+   "ctor": 42.55,
+   "unsub_rate": 0,
+   "hard_bounce_rate": 0
+  },
+  "2025-12": {
+   "campaigns": 1,
+   "sent": 41,
+   "open_rate": 55,
+   "click_rate": 25,
+   "ctor": 45.45,
+   "unsub_rate": 0,
+   "hard_bounce_rate": 2.44
+  },
+  "2025-11": {
+   "campaigns": 2,
+   "sent": 367,
+   "open_rate": 34.96,
+   "click_rate": 11.75,
+   "ctor": 33.61,
+   "unsub_rate": 0.27,
+   "hard_bounce_rate": 0
+  },
+  "2025-09": {
+   "campaigns": 2,
+   "sent": 350,
+   "open_rate": 31.87,
+   "click_rate": 9.65,
+   "ctor": 30.28,
+   "unsub_rate": 0,
+   "hard_bounce_rate": 0
+  },
+  "2025-08": {
+   "campaigns": 1,
+   "sent": 176,
+   "open_rate": 30.81,
+   "click_rate": 11.05,
+   "ctor": 35.85,
+   "unsub_rate": 0.57,
+   "hard_bounce_rate": 0
+  },
+  "2025-03": {
+   "campaigns": 3,
+   "sent": 385,
+   "open_rate": 29.33,
+   "click_rate": 8,
+   "ctor": 27.27,
+   "unsub_rate": 0.26,
+   "hard_bounce_rate": 0.52
+  },
+  "2025-02": {
+   "campaigns": 3,
+   "sent": 566,
+   "open_rate": 35.78,
+   "click_rate": 6.79,
+   "ctor": 18.97,
+   "unsub_rate": 0,
+   "hard_bounce_rate": 1.94
+  },
+  "2025-01": {
+   "campaigns": 4,
+   "sent": 509,
+   "open_rate": 39.29,
+   "click_rate": 6.44,
+   "ctor": 16.4,
+   "unsub_rate": 0,
+   "hard_bounce_rate": 0.59
+  },
+  "2024-12": {
+   "campaigns": 2,
+   "sent": 382,
+   "open_rate": 40.34,
+   "click_rate": 6.16,
+   "ctor": 15.28,
+   "unsub_rate": 0.26,
+   "hard_bounce_rate": 0.52
+  },
+  "2024-11": {
+   "campaigns": 2,
+   "sent": 130,
+   "open_rate": 27.69,
+   "click_rate": 1.54,
+   "ctor": 5.56,
+   "unsub_rate": 0,
+   "hard_bounce_rate": 0
+  }
+ },
+ "campaigns_by_weekday": {
+  "Thu": {
+   "campaigns": 10,
+   "sent": 1491,
+   "open_rate": 34.57,
+   "click_rate": 14.31,
+   "ctor": 41.39,
+   "unsub_rate": 0,
+   "hard_bounce_rate": 0.47
+  },
+  "Wed": {
+   "campaigns": 7,
+   "sent": 1077,
+   "open_rate": 37.05,
+   "click_rate": 10.77,
+   "ctor": 29.06,
+   "unsub_rate": 0.19,
+   "hard_bounce_rate": 1.21
+  },
+  "Tue": {
+   "campaigns": 4,
+   "sent": 465,
+   "open_rate": 44.04,
+   "click_rate": 7.34,
+   "ctor": 16.67,
+   "unsub_rate": 0.22,
+   "hard_bounce_rate": 2.37
+  },
+  "Fri": {
+   "campaigns": 4,
+   "sent": 608,
+   "open_rate": 31.57,
+   "click_rate": 8.53,
+   "ctor": 27.03,
+   "unsub_rate": 0.33,
+   "hard_bounce_rate": 0
+  },
+  "Mon": {
+   "campaigns": 1,
+   "sent": 191,
+   "open_rate": 43.26,
+   "click_rate": 7.87,
+   "ctor": 18.18,
+   "unsub_rate": 0,
+   "hard_bounce_rate": 0.52
+  }
+ },
+ "campaigns_by_hour_uk": {
+  "10": {
+   "campaigns": 6,
+   "sent": 830,
+   "open_rate": 35.55,
+   "click_rate": 9.59,
+   "ctor": 26.98,
+   "unsub_rate": 0.24,
+   "hard_bounce_rate": 2.29
+  },
+  "11": {
+   "campaigns": 1,
+   "sent": 175,
+   "open_rate": 35.67,
+   "click_rate": 12.87,
+   "ctor": 36.07,
+   "unsub_rate": 0,
+   "hard_bounce_rate": 0
+  },
+  "12": {
+   "campaigns": 1,
+   "sent": 191,
+   "open_rate": 51.12,
+   "click_rate": 8.43,
+   "ctor": 16.48,
+   "unsub_rate": 0,
+   "hard_bounce_rate": 3.66
+  },
+  "13": {
+   "campaigns": 4,
+   "sent": 510,
+   "open_rate": 38.29,
+   "click_rate": 13.85,
+   "ctor": 36.17,
+   "unsub_rate": 0.2,
+   "hard_bounce_rate": 0
+  },
+  "14": {
+   "campaigns": 1,
+   "sent": 183,
+   "open_rate": 28.16,
+   "click_rate": 8.05,
+   "ctor": 28.57,
+   "unsub_rate": 0,
+   "hard_bounce_rate": 0
+  },
+  "15": {
+   "campaigns": 7,
+   "sent": 1069,
+   "open_rate": 35.33,
+   "click_rate": 10.26,
+   "ctor": 29.04,
+   "unsub_rate": 0.09,
+   "hard_bounce_rate": 0.47
+  },
+  "16": {
+   "campaigns": 4,
+   "sent": 657,
+   "open_rate": 35.94,
+   "click_rate": 13.36,
+   "ctor": 37.18,
+   "unsub_rate": 0,
+   "hard_bounce_rate": 0
+  },
+  "09": {
+   "campaigns": 2,
+   "sent": 217,
+   "open_rate": 35.38,
+   "click_rate": 13.68,
+   "ctor": 38.67,
+   "unsub_rate": 0.46,
+   "hard_bounce_rate": 0.46
+  }
+ },
+ "campaigns_by_list": {
+  "Ecoveritas": {
+   "campaigns": 26,
+   "sent": 3832,
+   "open_rate": 36.32,
+   "click_rate": 11.27,
+   "ctor": 31.02,
+   "unsub_rate": 0.13,
+   "hard_bounce_rate": 0.84
+  }
+ },
+ "campaigns": [
+  {
+   "id": "2e1c93910d",
+   "title": "EU PPWR Resources: Q+A",
+   "subject": "Veolia x Ecoveritas EU PPWR Webinar: Q+A",
+   "list": "Ecoveritas",
+   "send_time": "2026-08-27T14:37:48+00:00",
+   "weekday": "Thu",
+   "hour_uk": 15,
+   "sent": 232,
+   "delivered": 232,
+   "open_rate": 34.48,
+   "unique_opens": 80,
+   "click_rate": 18.53,
+   "unique_clicks": 43,
+   "ctor": 53.75,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 0,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://www.ecoveritas.com/eu-ppwr-webinar-august-26-q-a",
+     "clicks": 89,
+     "unique": 42
+    },
+    {
+     "url": "https://www.ecoveritas.com/eu-ppwr-webinar-august-26-q-a",
+     "clicks": 16,
+     "unique": 8
+    }
+   ]
+  },
+  {
+   "id": "1cfb180483",
+   "title": "EU PPWR Resources",
+   "subject": "Veolia x Ecoveritas EU PPWR Webinar Recap",
+   "list": "Ecoveritas",
+   "send_time": "2026-08-20T15:03:55+00:00",
+   "weekday": "Thu",
+   "hour_uk": 16,
+   "sent": 232,
+   "delivered": 232,
+   "open_rate": 50.43,
+   "unique_opens": 117,
+   "click_rate": 28.88,
+   "unique_clicks": 67,
+   "ctor": 57.26,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 0,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://mcusercontent.com/e2a7db798940aba7759cea13d/files/7e366ab9-dda2-ab64-179a-5481a7fdd9ee/Ecoveritas_EU_PPWR_Webinar_2026_Partnered_with_Veolia_Final.pptx",
+     "clicks": 146,
+     "unique": 62
+    },
+    {
+     "url": "https://drive.google.com/file/d/1-jvjzoWlDTeCfU3fEk-uel4QTPNwEs7T/view?usp=drive_link",
+     "clicks": 83,
+     "unique": 30
+    }
+   ]
+  },
+  {
+   "id": "5ac5e2d911",
+   "title": "Newsletter April 2026 (copy 01)",
+   "subject": "PPWR starts today. Join us 19 August: your PPWR refresh webinar",
+   "list": "Ecoveritas",
+   "send_time": "2026-08-12T09:33:58+00:00",
+   "weekday": "Wed",
+   "hour_uk": 10,
+   "sent": 183,
+   "delivered": 168,
+   "open_rate": 37.5,
+   "unique_opens": 63,
+   "click_rate": 21.43,
+   "unique_clicks": 36,
+   "ctor": 57.14,
+   "unsub_rate": 0.55,
+   "unsubs": 1,
+   "bounce_rate": 8.2,
+   "hard_bounces": 13,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://events.teams.microsoft.com/event/14dca53e-b939-4ddb-8a5f-4f8c44e85c20@bb1b7ab2-e6ee-4b81-b038-2e03ebc62faa",
+     "clicks": 91,
+     "unique": 36
+    }
+   ]
+  },
+  {
+   "id": "846b1e6a5c",
+   "title": "Ecoveritas x CIA Webinar",
+   "subject": "Ecoveritas x Chemical Industries Association webinar, slides and recording",
+   "list": "Ecoveritas",
+   "send_time": "2026-03-24T15:16:58+00:00",
+   "weekday": "Tue",
+   "hour_uk": 15,
+   "sent": 18,
+   "delivered": 18,
+   "open_rate": 38.89,
+   "unique_opens": 7,
+   "click_rate": 27.78,
+   "unique_clicks": 5,
+   "ctor": 71.43,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 0,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://www.ecoveritas.com/assets/general/EPR-WEBINAR-FOR-CIA-HD.pdf",
+     "clicks": 12,
+     "unique": 5
+    },
+    {
+     "url": "https://drive.google.com/file/d/1J17ilYtNlD8SLadG3E54nKZCh-jxknCZ/view?usp=sharing",
+     "clicks": 3,
+     "unique": 1
+    },
+    {
+     "url": "https://ecoveritas.com",
+     "clicks": 0,
+     "unique": 0
+    },
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 0,
+     "unique": 0
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 0,
+     "unique": 0
+    }
+   ]
+  },
+  {
+   "id": "8ff3526805",
+   "title": "EU PPWR- Update",
+   "subject": "EU PPWR Update",
+   "list": "Ecoveritas",
+   "send_time": "2026-01-30T14:40:48+00:00",
+   "weekday": "Fri",
+   "hour_uk": 14,
+   "sent": 183,
+   "delivered": 174,
+   "open_rate": 28.16,
+   "unique_opens": 49,
+   "click_rate": 8.05,
+   "unique_clicks": 14,
+   "ctor": 28.57,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 4.92,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 26,
+     "unique": 14
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 26,
+     "unique": 14
+    },
+    {
+     "url": "https://us12.list-manage.com/survey?u=e2a7db798940aba7759cea13d&id=085969e9fc",
+     "clicks": 24,
+     "unique": 12
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 21,
+     "unique": 14
+    }
+   ]
+  },
+  {
+   "id": "dd9636f954",
+   "title": "EU PPWR- The Webinar: Recap (copy 01)",
+   "subject": "Webinar Recap & Resources: Packaging EPR",
+   "list": "Ecoveritas",
+   "send_time": "2026-01-28T13:00:59+00:00",
+   "weekday": "Wed",
+   "hour_uk": 13,
+   "sent": 78,
+   "delivered": 77,
+   "open_rate": 58.44,
+   "unique_opens": 45,
+   "click_rate": 33.77,
+   "unique_clicks": 26,
+   "ctor": 57.78,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 1.28,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://mcusercontent.com/e2a7db798940aba7759cea13d/files/82e63394-9952-1d28-ec5d-c82b3bb50e4e/WEBINAR_EPR_Update_for_HTA_Members_Strictly_Confidential_21.01.2026_1_.pdf",
+     "clicks": 56,
+     "unique": 21
+    },
+    {
+     "url": "https://drive.google.com/file/d/1B6C1apYiE9vWfQQ_IZTzOZiwn1MaWCex/view?usp=sharing",
+     "clicks": 54,
+     "unique": 18
+    },
+    {
+     "url": "https://mcusercontent.com/e2a7db798940aba7759cea13d/files/5c6c7642-ba9a-59fe-c047-ab8b592b382b/EPR_Regulator_Agreed_Positions_and_Technical_Interpretations_Version_7_1_.pdf",
+     "clicks": 42,
+     "unique": 20
+    },
+    {
+     "url": "https://mcusercontent.com/e2a7db798940aba7759cea13d/files/ec9ffa75-47dc-9249-3049-24e7591c3e79/Ecoveritas_Packaging_EPR_Update_Webinar_21_January_2026_Q_amp_A_Strictly_Confidential_1_.pdf",
+     "clicks": 33,
+     "unique": 12
+    },
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 26,
+     "unique": 9
+    }
+   ]
+  },
+  {
+   "id": "b117285f6e",
+   "title": "EU PPWR- The Webinar: Recap",
+   "subject": "Webinar Recap: EU PPWR Recording Available",
+   "list": "Ecoveritas",
+   "send_time": "2025-12-11T09:57:23+00:00",
+   "weekday": "Thu",
+   "hour_uk": 9,
+   "sent": 41,
+   "delivered": 40,
+   "open_rate": 55,
+   "unique_opens": 22,
+   "click_rate": 25,
+   "unique_clicks": 10,
+   "ctor": 45.45,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 2.44,
+   "hard_bounces": 1,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://drive.google.com/file/d/1OakbOfjc3H4tU9899lrXORhhBjshdwBg/view?usp=sharing",
+     "clicks": 37,
+     "unique": 10
+    },
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 4,
+     "unique": 4
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 4,
+     "unique": 4
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 4,
+     "unique": 4
+    }
+   ]
+  },
+  {
+   "id": "acdccb58a2",
+   "title": "EU PPWR- The Webinar: Last Chance",
+   "subject": "Webinar Reminder: EU Packaging &  Packaging Waste Regulation in One Week",
+   "list": "Ecoveritas",
+   "send_time": "2025-11-27T13:41:11+00:00",
+   "weekday": "Thu",
+   "hour_uk": 13,
+   "sent": 183,
+   "delivered": 174,
+   "open_rate": 34.48,
+   "unique_opens": 60,
+   "click_rate": 14.37,
+   "unique_clicks": 25,
+   "ctor": 41.67,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 4.92,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://events.teams.microsoft.com/event/e3194521-b417-4e7e-9aa3-fe5d1fa25b16@bb1b7ab2-e6ee-4b81-b038-2e03ebc62faa",
+     "clicks": 45,
+     "unique": 25
+    },
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 13,
+     "unique": 11
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 13,
+     "unique": 11
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 13,
+     "unique": 11
+    }
+   ]
+  },
+  {
+   "id": "e6f8f32a35",
+   "title": "EU PPWR- The Webinar",
+   "subject": "EU Packaging & Packaging Waste Regulation- The Webinar",
+   "list": "Ecoveritas",
+   "send_time": "2025-11-07T13:08:06+00:00",
+   "weekday": "Fri",
+   "hour_uk": 13,
+   "sent": 184,
+   "delivered": 175,
+   "open_rate": 35.43,
+   "unique_opens": 62,
+   "click_rate": 9.14,
+   "unique_clicks": 16,
+   "ctor": 25.81,
+   "unsub_rate": 0.54,
+   "unsubs": 1,
+   "bounce_rate": 4.89,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://events.teams.microsoft.com/event/e3194521-b417-4e7e-9aa3-fe5d1fa25b16@bb1b7ab2-e6ee-4b81-b038-2e03ebc62faa",
+     "clicks": 19,
+     "unique": 16
+    },
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 12,
+     "unique": 11
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 12,
+     "unique": 11
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 12,
+     "unique": 11
+    }
+   ]
+  },
+  {
+   "id": "af364d77b4",
+   "title": "September Survey Reminder",
+   "subject": "Your opinion drives us: help us improve",
+   "list": "Ecoveritas",
+   "send_time": "2025-09-18T10:39:00+00:00",
+   "weekday": "Thu",
+   "hour_uk": 11,
+   "sent": 175,
+   "delivered": 171,
+   "open_rate": 35.67,
+   "unique_opens": 61,
+   "click_rate": 12.87,
+   "unique_clicks": 22,
+   "ctor": 36.07,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 2.29,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://forms.office.com/Pages/ResponsePage.aspx?id=snobu-7mgUuwOC4D68Yvqp7pxTbT-Z5Gtczfb0TdU7lUMkhPNTI2VTMxMVBQTk5NVzVZU0pVM0pCNS4u",
+     "clicks": 26,
+     "unique": 22
+    }
+   ]
+  },
+  {
+   "id": "4473d501b2",
+   "title": "August Survey Reminder",
+   "subject": "Your opinion drives us: help us improve",
+   "list": "Ecoveritas",
+   "send_time": "2025-09-04T15:06:47+00:00",
+   "weekday": "Thu",
+   "hour_uk": 16,
+   "sent": 175,
+   "delivered": 171,
+   "open_rate": 28.07,
+   "unique_opens": 48,
+   "click_rate": 6.43,
+   "unique_clicks": 11,
+   "ctor": 22.92,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 2.29,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://forms.office.com/Pages/ResponsePage.aspx?id=snobu-7mgUuwOC4D68Yvqp7pxTbT-Z5Gtczfb0TdU7lUMkhPNTI2VTMxMVBQTk5NVzVZU0pVM0pCNS4u",
+     "clicks": 23,
+     "unique": 11
+    }
+   ]
+  },
+  {
+   "id": "400e7571f2",
+   "title": "August Survey",
+   "subject": "Your opinion drives us: help us improve",
+   "list": "Ecoveritas",
+   "send_time": "2025-08-29T08:53:11+00:00",
+   "weekday": "Fri",
+   "hour_uk": 9,
+   "sent": 176,
+   "delivered": 172,
+   "open_rate": 30.81,
+   "unique_opens": 53,
+   "click_rate": 11.05,
+   "unique_clicks": 19,
+   "ctor": 35.85,
+   "unsub_rate": 0.57,
+   "unsubs": 1,
+   "bounce_rate": 2.27,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://forms.office.com/Pages/ResponsePage.aspx?id=snobu-7mgUuwOC4D68Yvqp7pxTbT-Z5Gtczfb0TdU7lUMkhPNTI2VTMxMVBQTk5NVzVZU0pVM0pCNS4u",
+     "clicks": 39,
+     "unique": 19
+    }
+   ]
+  },
+  {
+   "id": "0144df53d3",
+   "title": "RAM service",
+   "subject": "How do you plan to address RAM?",
+   "list": "Ecoveritas",
+   "send_time": "2025-03-27T10:57:28+00:00",
+   "weekday": "Thu",
+   "hour_uk": 10,
+   "sent": 184,
+   "delivered": 178,
+   "open_rate": 29.78,
+   "unique_opens": 53,
+   "click_rate": 8.43,
+   "unique_clicks": 15,
+   "ctor": 28.3,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 3.26,
+   "hard_bounces": 2,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://us12.list-manage.com/survey?u=e2a7db798940aba7759cea13d&id=431a8bbdaf",
+     "clicks": 19,
+     "unique": 12
+    },
+    {
+     "url": "https://us12.list-manage.com/survey?u=e2a7db798940aba7759cea13d&id=431a8bbdaf",
+     "clicks": 17,
+     "unique": 13
+    }
+   ]
+  },
+  {
+   "id": "c77076487d",
+   "title": "Direct Registrants Reminder",
+   "subject": "Important Reminder for Direct Registrants",
+   "list": "Ecoveritas",
+   "send_time": "2025-03-20T10:30:02+00:00",
+   "weekday": "Thu",
+   "hour_uk": 10,
+   "sent": 16,
+   "delivered": 16,
+   "open_rate": 37.5,
+   "unique_opens": 6,
+   "click_rate": 12.5,
+   "unique_clicks": 2,
+   "ctor": 33.33,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 0,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 4,
+     "unique": 2
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 2,
+     "unique": 1
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 0,
+     "unique": 0
+    }
+   ]
+  },
+  {
+   "id": "4fc959d76f",
+   "title": "RAM Technical Update",
+   "subject": "Drinks containers update: Recyclability Assessment Methodology",
+   "list": "Ecoveritas",
+   "send_time": "2025-03-05T15:28:38+00:00",
+   "weekday": "Wed",
+   "hour_uk": 15,
+   "sent": 185,
+   "delivered": 181,
+   "open_rate": 28.18,
+   "unique_opens": 51,
+   "click_rate": 7.18,
+   "unique_clicks": 13,
+   "ctor": 25.49,
+   "unsub_rate": 0.54,
+   "unsubs": 1,
+   "bounce_rate": 2.16,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://www.gov.uk/guidance/recycling-assessment-methodology-how-to-assess-your-packaging-waste",
+     "clicks": 13,
+     "unique": 13
+    },
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 9,
+     "unique": 9
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 9,
+     "unique": 9
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 5,
+     "unique": 5
+    }
+   ]
+  },
+  {
+   "id": "74f4311c5c",
+   "title": "Recycling Assessment Methodology- The Webinar (copy 01)",
+   "subject": "RAM update from DEFRA & data provision reminder",
+   "list": "Ecoveritas",
+   "send_time": "2025-02-19T16:11:43+00:00",
+   "weekday": "Wed",
+   "hour_uk": 16,
+   "sent": 185,
+   "delivered": 183,
+   "open_rate": 29.51,
+   "unique_opens": 54,
+   "click_rate": 4.37,
+   "unique_clicks": 8,
+   "ctor": 14.81,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 1.08,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 8,
+     "unique": 8
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 8,
+     "unique": 8
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 8,
+     "unique": 8
+    }
+   ]
+  },
+  {
+   "id": "39fc7dcda6",
+   "title": "Recycling Assessment Methodology- The Webinar",
+   "subject": "Recycling Assessment Methodology- The Webinar",
+   "list": "Ecoveritas",
+   "send_time": "2025-02-13T15:13:16+00:00",
+   "weekday": "Thu",
+   "hour_uk": 15,
+   "sent": 190,
+   "delivered": 184,
+   "open_rate": 27.17,
+   "unique_opens": 50,
+   "click_rate": 7.61,
+   "unique_clicks": 14,
+   "ctor": 28,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 3.16,
+   "hard_bounces": 4,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://drive.google.com/file/d/1iJMf1YVxYF6KnK-BXf86IaEBc2lmxHDU/view?usp=sharing",
+     "clicks": 21,
+     "unique": 13
+    },
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 11,
+     "unique": 7
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 6,
+     "unique": 5
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 2,
+     "unique": 1
+    }
+   ]
+  },
+  {
+   "id": "0ca7343ad3",
+   "title": "Global EPR- February 2025 Newsletter",
+   "subject": "Global EPR- February 2025 Newsletter",
+   "list": "Ecoveritas",
+   "send_time": "2025-02-11T12:46:22+00:00",
+   "weekday": "Tue",
+   "hour_uk": 12,
+   "sent": 191,
+   "delivered": 178,
+   "open_rate": 51.12,
+   "unique_opens": 91,
+   "click_rate": 8.43,
+   "unique_clicks": 15,
+   "ctor": 16.48,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 6.81,
+   "hard_bounces": 7,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://mcusercontent.com/e2a7db798940aba7759cea13d/files/4a9ce529-8dd0-e342-83d0-fc7c86ef2c48/ecoveritas_News_Feb_2025.pdf",
+     "clicks": 35,
+     "unique": 15
+    },
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 22,
+     "unique": 10
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 21,
+     "unique": 9
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 8,
+     "unique": 4
+    }
+   ]
+  },
+  {
+   "id": "5c1c7adaf8",
+   "title": "Recycling Assessment Methodology- Overview",
+   "subject": "Recycling Assessment Methodology- Overview",
+   "list": "Ecoveritas",
+   "send_time": "2025-01-29T15:05:51+00:00",
+   "weekday": "Wed",
+   "hour_uk": 15,
+   "sent": 190,
+   "delivered": 177,
+   "open_rate": 51.98,
+   "unique_opens": 92,
+   "click_rate": 9.6,
+   "unique_clicks": 17,
+   "ctor": 18.48,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 6.84,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://mcusercontent.com/e2a7db798940aba7759cea13d/files/bdb6a922-e1d3-9d61-ab0f-e2af9d72c0d2/Recycling_Assessment_Methodolgy_Overview.pdf",
+     "clicks": 46,
+     "unique": 17
+    },
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 30,
+     "unique": 8
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 27,
+     "unique": 8
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 5,
+     "unique": 3
+    }
+   ]
+  },
+  {
+   "id": "68b9e7a82e",
+   "title": "January Update",
+   "subject": "New Features Alert!",
+   "list": "Ecoveritas",
+   "send_time": "2025-01-23T15:48:22+00:00",
+   "weekday": "Thu",
+   "hour_uk": 15,
+   "sent": 63,
+   "delivered": 63,
+   "open_rate": 12.7,
+   "unique_opens": 8,
+   "click_rate": 0,
+   "unique_clicks": 0,
+   "ctor": 0,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 0,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "http://my.ecoveritas.com",
+     "clicks": 0,
+     "unique": 0
+    },
+    {
+     "url": "http://my.ecoveritas.com",
+     "clicks": 0,
+     "unique": 0
+    },
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 0,
+     "unique": 0
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 0,
+     "unique": 0
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 0,
+     "unique": 0
+    }
+   ]
+  },
+  {
+   "id": "03de4dc37a",
+   "title": "Downtime Notification 21/01",
+   "subject": "Exciting Updates Ahead: Brief Downtime Alert!",
+   "list": "Ecoveritas",
+   "send_time": "2025-01-21T10:56:17+00:00",
+   "weekday": "Tue",
+   "hour_uk": 10,
+   "sent": 65,
+   "delivered": 63,
+   "open_rate": 19.05,
+   "unique_opens": 12,
+   "click_rate": 0,
+   "unique_clicks": 0,
+   "ctor": 0,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 3.08,
+   "hard_bounces": 2,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 0,
+     "unique": 0
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 0,
+     "unique": 0
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 0,
+     "unique": 0
+    }
+   ]
+  },
+  {
+   "id": "54a535ba3a",
+   "title": "RAM & Illustrative Base Fees Updates",
+   "subject": "Important Updates: RAM & Illustrative Base Fees",
+   "list": "Ecoveritas",
+   "send_time": "2025-01-13T15:29:31+00:00",
+   "weekday": "Mon",
+   "hour_uk": 15,
+   "sent": 191,
+   "delivered": 178,
+   "open_rate": 43.26,
+   "unique_opens": 77,
+   "click_rate": 7.87,
+   "unique_clicks": 14,
+   "ctor": 18.18,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 6.81,
+   "hard_bounces": 1,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://www.gov.uk/government/publications/epr-for-packaging-updated-illustrative-base-fees-december-2024/extended-producer-responsibility-for-packaging-illustrative-base-fees-december-2024",
+     "clicks": 22,
+     "unique": 14
+    },
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 9,
+     "unique": 9
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 9,
+     "unique": 9
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 3,
+     "unique": 3
+    }
+   ]
+  },
+  {
+   "id": "f5a5429c28",
+   "title": "Christmas Hours",
+   "subject": "Ecoveritas December Hours",
+   "list": "Ecoveritas",
+   "send_time": "2024-12-18T10:50:26+00:00",
+   "weekday": "Wed",
+   "hour_uk": 10,
+   "sent": 191,
+   "delivered": 180,
+   "open_rate": 34.44,
+   "unique_opens": 62,
+   "click_rate": 5.56,
+   "unique_clicks": 10,
+   "ctor": 16.13,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 5.76,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 11,
+     "unique": 10
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 11,
+     "unique": 10
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 11,
+     "unique": 10
+    }
+   ]
+  },
+  {
+   "id": "15fb9ec84e",
+   "title": "Global EPR- winter update",
+   "subject": "Global EPR- Winter Newsletter",
+   "list": "Ecoveritas",
+   "send_time": "2024-12-03T10:24:36+00:00",
+   "weekday": "Tue",
+   "hour_uk": 10,
+   "sent": 191,
+   "delivered": 177,
+   "open_rate": 46.33,
+   "unique_opens": 82,
+   "click_rate": 6.78,
+   "unique_clicks": 12,
+   "ctor": 14.63,
+   "unsub_rate": 0.52,
+   "unsubs": 1,
+   "bounce_rate": 7.33,
+   "hard_bounces": 2,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://mcusercontent.com/e2a7db798940aba7759cea13d/files/1c2200cb-81c1-83ff-334e-18cf2eaf87cd/ecoveritas_News_Winter_2024.pdf",
+     "clicks": 23,
+     "unique": 12
+    }
+   ]
+  },
+  {
+   "id": "427986f9fd",
+   "title": "November Updates",
+   "subject": "Update Complete: Important changes & new features!",
+   "list": "Ecoveritas",
+   "send_time": "2024-11-08T13:33:36+00:00",
+   "weekday": "Fri",
+   "hour_uk": 13,
+   "sent": 65,
+   "delivered": 65,
+   "open_rate": 32.31,
+   "unique_opens": 21,
+   "click_rate": 1.54,
+   "unique_clicks": 1,
+   "ctor": 4.76,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 0,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "http://my.ecoveritas.com",
+     "clicks": 1,
+     "unique": 1
+    },
+    {
+     "url": "https://myecoveritas-help.freshdesk.com/support/tickets/new",
+     "clicks": 0,
+     "unique": 0
+    },
+    {
+     "url": "http://my.ecoveritas.com",
+     "clicks": 0,
+     "unique": 0
+    },
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 0,
+     "unique": 0
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 0,
+     "unique": 0
+    }
+   ]
+  },
+  {
+   "id": "cc1cc41316",
+   "title": "Downtime Warning October",
+   "subject": "Exciting Updates Ahead: Brief Downtime Alert!",
+   "list": "Ecoveritas",
+   "send_time": "2024-11-06T16:54:11+00:00",
+   "weekday": "Wed",
+   "hour_uk": 16,
+   "sent": 65,
+   "delivered": 65,
+   "open_rate": 23.08,
+   "unique_opens": 15,
+   "click_rate": 1.54,
+   "unique_clicks": 1,
+   "ctor": 6.67,
+   "unsub_rate": 0,
+   "unsubs": 0,
+   "bounce_rate": 0,
+   "hard_bounces": 0,
+   "abuse": 0,
+   "top_links": [
+    {
+     "url": "https://x.com/ecoveritasLTD",
+     "clicks": 1,
+     "unique": 1
+    },
+    {
+     "url": "https://linkedin.com/company/ecoveritas/",
+     "clicks": 1,
+     "unique": 1
+    },
+    {
+     "url": "https://www.ecoveritas.com",
+     "clicks": 1,
+     "unique": 1
+    }
+   ]
+  }
+ ],
+ "drafts_or_unsent": [
+  {
+   "title": "Newsletter April 2026",
+   "status": "save",
+   "created": "2026-04-24T10:20:29+00:00",
+   "type": "regular"
+  },
+  {
+   "title": "Email Campaign - Mar 23, 2026, 6:05 PM",
+   "status": "save",
+   "created": "2026-03-23T18:05:41+00:00",
+   "type": "regular"
+  },
+  {
+   "title": "",
+   "status": "save",
+   "created": "2025-08-29T08:37:51+00:00",
+   "type": "regular"
+  },
+  {
+   "title": "Global EPR- winter update (copy 01)",
+   "status": "save",
+   "created": "2025-02-11T12:36:42+00:00",
+   "type": "regular"
+  },
+  {
+   "title": "January Update (copy 01)",
+   "status": "save",
+   "created": "2025-02-07T10:02:43+00:00",
+   "type": "regular"
+  },
+  {
+   "title": "Canva design ",
+   "status": "save",
+   "created": "2025-01-22T15:38:19+00:00",
+   "type": "regular"
+  },
+  {
+   "title": "Canva design ",
+   "status": "save",
+   "created": "2025-01-22T15:37:04+00:00",
+   "type": "regular"
+  },
+  {
+   "title": "Downtime Warning January",
+   "status": "save",
+   "created": "2025-01-21T10:52:23+00:00",
+   "type": "regular"
+  },
+  {
+   "title": "[Re-sent] RAM & Illustrative Base Fees Updates",
+   "status": "save",
+   "created": "2025-01-14T16:35:10+00:00",
+   "type": "regular"
+  },
+  {
+   "title": "",
+   "status": "save",
+   "created": "2025-01-13T14:18:09+00:00",
+   "type": "regular"
+  },
+  {
+   "title": "Saas Renewal Email Dec '24",
+   "status": "save",
+   "created": "2024-12-17T17:08:27+00:00",
+   "type": "regular"
+  },
+  {
+   "title": "Concept",
+   "status": "save",
+   "created": "2024-11-21T15:06:43+00:00",
+   "type": "regular"
+  },
+  {
+   "title": "my.ecoveritas marketing concept",
+   "status": "save",
+   "created": "2024-11-07T11:53:23+00:00",
+   "type": "regular"
+  },
+  {
+   "title": "BM Webinar Draft",
+   "status": "save",
+   "created": "2024-10-22T14:43:37+00:00",
+   "type": "regular"
+  },
+  {
+   "title": "Welcome email",
+   "status": "paused",
+   "created": "2024-10-02T07:51:59+00:00",
+   "type": "automation-email"
+  }
+ ],
+ "top_links": [
+  {
+   "url": "https://x.com/ecoveritasLTD",
+   "unique": 113
+  },
+  {
+   "url": "https://linkedin.com/company/ecoveritas/",
+   "unique": 99
+  },
+  {
+   "url": "https://www.ecoveritas.com",
+   "unique": 76
+  },
+  {
+   "url": "https://mcusercontent.com/e2a7db798940aba7759cea13d/files/7e366ab9-dda2-ab64-179a-5481a7fdd9ee/Ecoveritas_EU_PPWR_Webinar_2026_Partnered_with_Veolia_Final.pptx",
+   "unique": 62
+  },
+  {
+   "url": "https://forms.office.com/Pages/ResponsePage.aspx",
+   "unique": 52
+  },
+  {
+   "url": "https://www.ecoveritas.com/eu-ppwr-webinar-august-26-q-a",
+   "unique": 50
+  },
+  {
+   "url": "https://events.teams.microsoft.com/event/e3194521-b417-4e7e-9aa3-fe5d1fa25b16@bb1b7ab2-e6ee-4b81-b038-2e03ebc62faa",
+   "unique": 41
+  },
+  {
+   "url": "https://us12.list-manage.com/survey",
+   "unique": 37
+  },
+  {
+   "url": "https://events.teams.microsoft.com/event/14dca53e-b939-4ddb-8a5f-4f8c44e85c20@bb1b7ab2-e6ee-4b81-b038-2e03ebc62faa",
+   "unique": 36
+  },
+  {
+   "url": "https://drive.google.com/file/d/1-jvjzoWlDTeCfU3fEk-uel4QTPNwEs7T/view",
+   "unique": 30
+  },
+  {
+   "url": "https://mcusercontent.com/e2a7db798940aba7759cea13d/files/82e63394-9952-1d28-ec5d-c82b3bb50e4e/WEBINAR_EPR_Update_for_HTA_Members_Strictly_Confidential_21.01.2026_1_.pdf",
+   "unique": 21
+  },
+  {
+   "url": "https://mcusercontent.com/e2a7db798940aba7759cea13d/files/5c6c7642-ba9a-59fe-c047-ab8b592b382b/EPR_Regulator_Agreed_Positions_and_Technical_Interpretations_Version_7_1_.pdf",
+   "unique": 20
+  },
+  {
+   "url": "https://drive.google.com/file/d/1B6C1apYiE9vWfQQ_IZTzOZiwn1MaWCex/view",
+   "unique": 18
+  },
+  {
+   "url": "https://mcusercontent.com/e2a7db798940aba7759cea13d/files/bdb6a922-e1d3-9d61-ab0f-e2af9d72c0d2/Recycling_Assessment_Methodolgy_Overview.pdf",
+   "unique": 17
+  },
+  {
+   "url": "https://mcusercontent.com/e2a7db798940aba7759cea13d/files/4a9ce529-8dd0-e342-83d0-fc7c86ef2c48/ecoveritas_News_Feb_2025.pdf",
+   "unique": 15
+  },
+  {
+   "url": "https://www.gov.uk/government/publications/epr-for-packaging-updated-illustrative-base-fees-december-2024/extended-producer-responsibility-for-packaging-illustrative-base-fees-december-2024",
+   "unique": 14
+  },
+  {
+   "url": "https://www.gov.uk/guidance/recycling-assessment-methodology-how-to-assess-your-packaging-waste",
+   "unique": 13
+  },
+  {
+   "url": "https://drive.google.com/file/d/1iJMf1YVxYF6KnK-BXf86IaEBc2lmxHDU/view",
+   "unique": 13
+  },
+  {
+   "url": "https://mcusercontent.com/e2a7db798940aba7759cea13d/files/ec9ffa75-47dc-9249-3049-24e7591c3e79/Ecoveritas_Packaging_EPR_Update_Webinar_21_January_2026_Q_amp_A_Strictly_Confidential_1_.pdf",
+   "unique": 12
+  },
+  {
+   "url": "https://mcusercontent.com/e2a7db798940aba7759cea13d/files/1c2200cb-81c1-83ff-334e-18cf2eaf87cd/ecoveritas_News_Winter_2024.pdf",
+   "unique": 12
+  },
+  {
+   "url": "https://drive.google.com/file/d/1OakbOfjc3H4tU9899lrXORhhBjshdwBg/view",
+   "unique": 10
+  },
+  {
+   "url": "https://www.ecoveritas.com/assets/general/EPR-WEBINAR-FOR-CIA-HD.pdf",
+   "unique": 5
+  },
+  {
+   "url": "https://drive.google.com/file/d/1J17ilYtNlD8SLadG3E54nKZCh-jxknCZ/view",
+   "unique": 1
+  },
+  {
+   "url": "http://my.ecoveritas.com",
+   "unique": 1
+  },
+  {
+   "url": "https://ecoveritas.com",
+   "unique": 0
+  }
+ ],
+ "automations": [],
+ "templates": [
+  {
+   "name": "Update Template",
+   "created": "2024-07-04T10:06:50+00:00",
+   "edited": "2024-07-09T09:28:24+00:00",
+   "active": true,
+   "drag_and_drop": false,
+   "responsive": false
+  },
+  {
+   "name": "Downtimte Template",
+   "created": "2024-07-08T14:59:34+00:00",
+   "edited": "2024-07-09T09:16:03+00:00",
+   "active": true,
+   "drag_and_drop": false,
+   "responsive": false
+  },
+  {
+   "name": "Untitled Template",
+   "created": "2024-07-17T08:50:32+00:00",
+   "edited": "2024-07-17T08:50:32+00:00",
+   "active": true,
+   "drag_and_drop": false,
+   "responsive": false
+  },
+  {
+   "name": "Survey",
+   "created": "2024-07-17T08:50:32+00:00",
+   "edited": "2024-07-17T08:51:04+00:00",
+   "active": true,
+   "drag_and_drop": false,
+   "responsive": false
+  },
+  {
+   "name": "Concept",
+   "created": "2024-11-21T15:08:02+00:00",
+   "edited": "2024-11-21T15:08:39+00:00",
+   "active": true,
+   "drag_and_drop": false,
+   "responsive": false
+  }
+ ],
+ "verified_domains": [
+  {
+   "domain": "ecoveritas.com",
+   "verified": true,
+   "authenticated": false
+  }
+ ],
+ "from_identities": [
+  "Ecoveritas <\u2026@ecoveritas.com>",
+  "James <\u2026@ecoveritas.com>"
+ ],
+ "landing_pages": 1,
+ "connected_sites": 0
+}
