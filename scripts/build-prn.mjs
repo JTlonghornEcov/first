@@ -20,7 +20,7 @@ const res = await page.evaluate(async ({ P, ENTRY, DRAFT, CTA_UID }) => {
     cards.entries['uid:' + u] = { type: 'card', enabled: '1', title: c.title, fields: { image: [String(c.image)], textContent: c.text, buttonUrl: link('', '') } }; }
   blocks.push([id(), { type: 'cards', enabled: '1', title: P.howTitle, fields: { introduction: '', cardList: cards, spacing: 'large', theme: 'alternate' } }]);
   blocks.push([CTA_UID, { type: 'callToAction', enabled: '1', fields: { richTitle: P.ctaHtml } }]);
-  blocks.push([id(), { type: 'general_content', enabled: '1', fields: { generalContent: P.footnote, spacing: 'small', theme: 'default' } }]);
+  if (P.footnote) blocks.push([id(), { type: 'general_content', enabled: '1', fields: { generalContent: P.footnote, spacing: 'small', theme: 'default' } }]);
   const hb = id();
   const data = { elementId: ENTRY, draftId: DRAFT, siteId: '1', draftName: 'Redesign from one-pager',
     modifiedDeltaNames: ['fields[heroTitle]', 'fields[heroIntroduction]', 'fields[heroImage]', 'fields[heroButtons]', 'fields[pageBuilder]'],

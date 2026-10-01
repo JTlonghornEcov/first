@@ -1,17 +1,31 @@
 {
- "heroTitle": "Check your PRN data. Free.*",
+ "heroTitle": "Check your PRN data. Free.",
  "heroIntroduction": "<p>Get a full, independent review of your packaging data, so you only buy the PRNs you actually owe and only pay the EPR fees you should.</p><p>Ecoveritas is fully independent of compliance schemes, so our only interest is getting your numbers right.</p>",
  "heroImage": 8933,
- "heroButton": { "label": "Apply for a free audit", "anchor": "#apply" },
+ "heroButton": {
+  "label": "Apply for a free audit",
+  "anchor": "#apply"
+ },
  "alert": "Why now: PRN prices have risen 3–4x. Accurate packaging data matters more than ever.",
  "columnsLeft": "<h2>Your PRN obligation and EPR fee are only as accurate as the data behind them.</h2><p>Packaging data is complex and changes over time. Miscategorised packaging, incorrect weights or wrong material classifications can mean buying tonnage you don't owe and paying fees you shouldn't. A fresh review helps confirm every tonne is reported correctly.</p>",
  "columnsRight": "<h4>What we review</h4><ul><li>Packaging categorisation</li><li>Packaging weights</li><li>Material classifications</li></ul>",
  "howTitle": "How it works",
  "howCards": [
-  { "title": "01 · Apply", "text": "Submit a short application using the form below.", "image": 9394 },
-  { "title": "02 · We review your data", "text": "We confirm how many PRNs you need, and that your EPR fee is accurate.", "image": 8901 },
-  { "title": "03 · No upfront cost*", "text": "If we find savings, our fee is a percentage of the savings achieved.", "image": 7978 }
+  {
+   "title": "01 · Apply",
+   "text": "Submit a short application using the form below.",
+   "image": 9394
+  },
+  {
+   "title": "02 · We review your data",
+   "text": "We confirm how many PRNs you need, and that your EPR fee is accurate.",
+   "image": 8901
+  },
+  {
+   "title": "03 · No upfront cost",
+   "text": "Selected producers get their audit at no cost, with nothing to pay upfront.",
+   "image": 7978
+  }
  ],
- "ctaHtml": "<p id=\"apply\"></p><h3>Apply for a free PRN audit</h3><p>Use the form to apply. So we can assess your application, please include:</p><ul><li>\"PRN audit\"</li><li>Your annual turnover (a rough bracket is fine)</li><li>The number of SKUs you handle</li></ul>",
- "footnote": "<p>*Free audit available to selected producers, at Ecoveritas' discretion. Where savings are identified, our fee is a percentage of the savings achieved. Otherwise we'll provide a quote.</p>"
+ "ctaHtml": "<p id=\"apply\"></p><h3>Apply for a free PRN audit</h3><p>Use the form to apply. So we can assess your application, please include:</p><ul><li>\"PRN audit\"</li><li>Your annual turnover (a rough bracket is fine)</li><li>The number of SKUs you handle</li></ul>"
 }
