@@ -2,3 +2,4 @@ node_modules/
 state.json
 .env
 screenshots/
+marketing/audit/raw-*.json
