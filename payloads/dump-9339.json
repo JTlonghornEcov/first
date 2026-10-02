@@ -1,0 +1,98 @@
+{
+ "canonicalId": 9339,
+ "draftId": null,
+ "fields": {
+  "title": "Questions to ask any EPR provider",
+  "fields[heroTitle]": "Questions to ask any EPR provider",
+  "fields[heroIntroduction]": "<p>Most EPR buying conversations run on a feature comparison. Features aren't what goes wrong. What goes wrong is incentive, data ownership, and who carries the risk when a submission is challenged. These are the questions worth asking... of us and of anyone else.</p>",
+  "fields[heroImage]": "",
+  "fields[pageBuilder]": "",
+  "fields[pageBuilder][sortOrder][]": "d1091122-2489-4332-bdf3-af2a1f83c534 || eb5bf7a4-a769-47d6-b058-24590b5e5695",
+  "fields[pageBuilder][entries][uid:d1091122-2489-4332-bdf3-af2a1f83c534][type]": "accordion",
+  "fields[pageBuilder][entries][uid:d1091122-2489-4332-bdf3-af2a1f83c534][enabled]": "1",
+  "fields[pageBuilder][entries][uid:d1091122-2489-4332-bdf3-af2a1f83c534][title]": "Ten questions, answered honestly",
+  "fields[pageBuilder][entries][uid:d1091122-2489-4332-bdf3-af2a1f83c534][fields][introduction]": "",
+  "fields[pageBuilder][entries][uid:d1091122-2489-4332-bdf3-af2a1f83c534][fields][spacing]": "base64:bWVkaXVt",
+  "fields[pageBuilder][entries][uid:d1091122-2489-4332-bdf3-af2a1f83c534][fields][theme]": "base64:ZGVmYXVsdA==",
+  "fields[pageBuilder][entries][uid:eb5bf7a4-a769-47d6-b058-24590b5e5695][type]": "callToAction",
+  "fields[pageBuilder][entries][uid:eb5bf7a4-a769-47d6-b058-24590b5e5695][enabled]": "1",
+  "fields[pageBuilder][entries][uid:eb5bf7a4-a769-47d6-b058-24590b5e5695][fields][richTitle]": "<h3>Ask us any of these directly. We'll answer in writing.</h3>",
+  "fields[pageBuilder][entries][uid:eb5bf7a4-a769-47d6-b058-24590b5e5695][fields][theme]": "base64:ZGVmYXVsdA==",
+  "fields[ctaPicker]": "",
+  "fields[seo][titleRaw][1]": "Questions to ask any EPR provider",
+  "typeId": "1",
+  "slug": "questions-to-ask-any-epr-provider"
+ },
+ "nested": [
+  {
+   "id": "9341",
+   "owner": "9339",
+   "field": "pageBuilder"
+  },
+  {
+   "id": "9342",
+   "owner": "9341",
+   "field": "accordionItems",
+   "label": "Do you operate a compliance scheme or hold a PRN book?"
+  },
+  {
+   "id": "9343",
+   "owner": "9341",
+   "field": "accordionItems",
+   "label": "Do you take any margin on the tonnage I place?"
+  },
+  {
+   "id": "9344",
+   "owner": "9341",
+   "field": "accordionItems",
+   "label": "Who owns my data if I leave?"
+  },
+  {
+   "id": "9345",
+   "owner": "9341",
+   "field": "accordionItems",
+   "label": "Can I run this myself?"
+  },
+  {
+   "id": "9346",
+   "owner": "9341",
+   "field": "accordionItems",
+   "label": "What happens if my submission is challenged?"
+  },
+  {
+   "id": "9347",
+   "owner": "9341",
+   "field": "accordionItems",
+   "label": "How do you price?"
+  },
+  {
+   "id": "9348",
+   "owner": "9341",
+   "field": "accordionItems",
+   "label": "Who actually does the work?"
+  },
+  {
+   "id": "9349",
+   "owner": "9341",
+   "field": "accordionItems",
+   "label": "How do you handle recyclability assessment under RAM?"
+  },
+  {
+   "id": "9350",
+   "owner": "9341",
+   "field": "accordionItems",
+   "label": "What do you do about EU obligations?"
+  },
+  {
+   "id": "9351",
+   "owner": "9341",
+   "field": "accordionItems",
+   "label": "When are you not the right answer?"
+  },
+  {
+   "id": "9352",
+   "owner": "9339",
+   "field": "pageBuilder"
+  }
+ ]
+}

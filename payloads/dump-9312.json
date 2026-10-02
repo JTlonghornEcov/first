@@ -1,0 +1,89 @@
+{
+ "canonicalId": 9312,
+ "draftId": null,
+ "fields": {
+  "title": "Managed Services vs Software vs Compliance Scheme",
+  "fields[heroTitle]": "Managed service, software, or compliance scheme: which do you actually need?",
+  "fields[heroIntroduction]": "<p>Most packaging producers are sold one of three things and told it's the same thing. It isn't. A compliance scheme places your waste obligation. Software gives you a tool and leaves you to run it. A managed service does the work and stands behind the numbers. This page explains the difference honestly, including where each one beats the others.</p>",
+  "fields[heroImage]": "",
+  "fields[pageBuilder]": "",
+  "fields[pageBuilder][sortOrder][]": "965ffc63-6593-4117-aeac-2afd8b360fc6 || 4cb0e064-3a1b-4a8b-a048-3413b25e4a2c || 475ec227-8d17-4381-b4a3-e5d42c93889a || 6a9b37a5-d4ae-4e89-819a-069a563c8ff3 || 52cbc95a-4b37-49c2-9602-48841b9d1260",
+  "fields[pageBuilder][entries][uid:965ffc63-6593-4117-aeac-2afd8b360fc6][type]": "alert",
+  "fields[pageBuilder][entries][uid:965ffc63-6593-4117-aeac-2afd8b360fc6][enabled]": "1",
+  "fields[pageBuilder][entries][uid:965ffc63-6593-4117-aeac-2afd8b360fc6][fields][alertType]": "base64:eWVsbG93",
+  "fields[pageBuilder][entries][uid:965ffc63-6593-4117-aeac-2afd8b360fc6][fields][alertText]": "Ecoveritas operates no compliance scheme, holds no PRN book, and has no waste contract. We have no financial interest in which scheme you use.",
+  "fields[pageBuilder][entries][uid:965ffc63-6593-4117-aeac-2afd8b360fc6][fields][alertClose]": "1",
+  "fields[pageBuilder][entries][uid:965ffc63-6593-4117-aeac-2afd8b360fc6][fields][spacing]": "base64:c21hbGw=",
+  "fields[pageBuilder][entries][uid:965ffc63-6593-4117-aeac-2afd8b360fc6][fields][theme]": "base64:ZGVmYXVsdA==",
+  "fields[pageBuilder][entries][uid:4cb0e064-3a1b-4a8b-a048-3413b25e4a2c][type]": "columns",
+  "fields[pageBuilder][entries][uid:4cb0e064-3a1b-4a8b-a048-3413b25e4a2c][enabled]": "1",
+  "fields[pageBuilder][entries][uid:4cb0e064-3a1b-4a8b-a048-3413b25e4a2c][fields][generalContent]": "<h3>Why this distinction matters</h3><p><br>The three models have different incentives. A compliance scheme earns more when you place more tonnage through it. Software earns the same whether your data is right or wrong. A managed service earns on the accuracy of the submission itself.<br>&nbsp;</p><p>None of that makes any of them dishonest. It does mean you should know which one you're buying.</p>",
+  "fields[pageBuilder][entries][uid:4cb0e064-3a1b-4a8b-a048-3413b25e4a2c][fields][generalContent2]": "<h3><strong>Where each one wins</strong></h3><p><br>If you want your obligation placed and discharged with minimal involvement, a scheme is the simplest route. If you have a large in-house compliance team and want tooling rather than people, software is cheaper. If your data is messy, sits across multiple systems, or you suspect you're overpaying, a managed service is the only one of the three that will go and find out.</p>",
+  "fields[pageBuilder][entries][uid:4cb0e064-3a1b-4a8b-a048-3413b25e4a2c][fields][spacing]": "base64:c21hbGw=",
+  "fields[pageBuilder][entries][uid:4cb0e064-3a1b-4a8b-a048-3413b25e4a2c][fields][theme]": "base64:ZGVmYXVsdA==",
+  "fields[pageBuilder][entries][uid:475ec227-8d17-4381-b4a3-e5d42c93889a][type]": "cards",
+  "fields[pageBuilder][entries][uid:475ec227-8d17-4381-b4a3-e5d42c93889a][enabled]": "1",
+  "fields[pageBuilder][entries][uid:475ec227-8d17-4381-b4a3-e5d42c93889a][title]": "Compliance Scheme ; Software ; Managed Services",
+  "fields[pageBuilder][entries][uid:475ec227-8d17-4381-b4a3-e5d42c93889a][fields][introduction]": "",
+  "fields[pageBuilder][entries][uid:475ec227-8d17-4381-b4a3-e5d42c93889a][fields][spacing]": "base64:bWVkaXVt",
+  "fields[pageBuilder][entries][uid:475ec227-8d17-4381-b4a3-e5d42c93889a][fields][theme]": "base64:YWx0ZXJuYXRl",
+  "fields[pageBuilder][entries][uid:6a9b37a5-d4ae-4e89-819a-069a563c8ff3][type]": "general_content",
+  "fields[pageBuilder][entries][uid:6a9b37a5-d4ae-4e89-819a-069a563c8ff3][enabled]": "1",
+  "fields[pageBuilder][entries][uid:6a9b37a5-d4ae-4e89-819a-069a563c8ff3][fields][generalContent]": "<h2><strong>Which is Ecoveritas?</strong></h2><p>Well, we can be all three... Depending on your needs.</p><p><br>At heart we're a managed service. Our platform is how we deliver it, not what we sell. We take no margin on tonnage, hold no PRN book, and don't operate a scheme, so when we tell you a classification is wrong, there's no version of that where we benefit from the answer.</p>",
+  "fields[pageBuilder][entries][uid:6a9b37a5-d4ae-4e89-819a-069a563c8ff3][fields][spacing]": "base64:bWVkaXVt",
+  "fields[pageBuilder][entries][uid:6a9b37a5-d4ae-4e89-819a-069a563c8ff3][fields][theme]": "base64:ZGVmYXVsdA==",
+  "fields[pageBuilder][entries][uid:52cbc95a-4b37-49c2-9602-48841b9d1260][type]": "callToAction",
+  "fields[pageBuilder][entries][uid:52cbc95a-4b37-49c2-9602-48841b9d1260][enabled]": "1",
+  "fields[pageBuilder][entries][uid:52cbc95a-4b37-49c2-9602-48841b9d1260][fields][richTitle]": "<h2>Not sure which model fits?</h2><p>Tell us how your packaging data currently sits and we'll tell you honestly which of the three you need, including when it isn't us.</p>",
+  "fields[pageBuilder][entries][uid:52cbc95a-4b37-49c2-9602-48841b9d1260][fields][theme]": "base64:ZGVmYXVsdA==",
+  "fields[ctaPicker]": "",
+  "fields[seo][titleRaw][1]": "Managed Services vs Software vs Compliance Scheme",
+  "typeId": "1",
+  "slug": "managed-services-vs-software-vs-compliance-scheme"
+ },
+ "nested": [
+  {
+   "id": "9313",
+   "owner": "9312",
+   "field": "pageBuilder"
+  },
+  {
+   "id": "9314",
+   "owner": "9312",
+   "field": "pageBuilder"
+  },
+  {
+   "id": "9315",
+   "owner": "9312",
+   "field": "pageBuilder"
+  },
+  {
+   "id": "9316",
+   "owner": "9315",
+   "field": "cardList",
+   "label": "Compliance scheme"
+  },
+  {
+   "id": "9317",
+   "owner": "9315",
+   "field": "cardList",
+   "label": "Software"
+  },
+  {
+   "id": "9318",
+   "owner": "9315",
+   "field": "cardList",
+   "label": "Managed service"
+  },
+  {
+   "id": "9319",
+   "owner": "9312",
+   "field": "pageBuilder"
+  },
+  {
+   "id": "9320",
+   "owner": "9312",
+   "field": "pageBuilder"
+  }
+ ]
+}

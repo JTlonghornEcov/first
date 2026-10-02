@@ -1,0 +1,100 @@
+{
+ "page1": {
+  "heroIntroduction": "<p>There are three main ways to meet your EPR obligations. You can use a compliance scheme, run the work yourself on EPR software, or hand the data work to a managed service. They aren't mutually exclusive, and many producers use more than one. In every case, the legal responsibility for accurate data stays with you, the producer.</p>",
+  "heroButton": {
+   "label": "Talk to us about your obligations",
+   "url": "https://www.ecoveritas.com/contact-us"
+  },
+  "tabsTitle": "How the three options compare",
+  "tabs": [
+   {
+    "title": "Compliance scheme",
+    "content": "<p><strong>What you get</strong><br>Scheme membership that meets your recycling obligations and handles registration-related admin</p><p><strong>Who does the data work</strong><br>Mostly you. The scheme generally works from the data you supply</p><p><strong>Expertise included</strong><br>Regulatory guidance, varying by scheme</p><p><strong>Data checking</strong><br>Limited, as the scheme relies on what you submit</p><p><strong>Supplier data collection</strong><br>Not usually included</p><p><strong>Multi-country coverage</strong><br>Usually one country per scheme</p><p><strong>Typical cost model</strong><br>Membership fee plus recycling obligation costs</p><p><strong>Best for</strong><br>Every obligated UK producer that needs to meet recycling obligations</p>"
+   },
+   {
+    "title": "EPR software",
+    "content": "<p><strong>What you get</strong><br>A platform for collecting, calculating and submitting your own packaging data</p><p><strong>Who does the data work</strong><br>You and your team, using the tool</p><p><strong>Expertise included</strong><br>Built into the tool's logic. Interpretation is up to you</p><p><strong>Data checking</strong><br>Validation rules within the software</p><p><strong>Supplier data collection</strong><br>Tools to request it. You chase it</p><p><strong>Multi-country coverage</strong><br>Depends on the platform</p><p><strong>Typical cost model</strong><br>Licence or subscription</p><p><strong>Best for</strong><br>Teams with in-house EPR expertise and time</p>"
+   },
+   {
+    "title": "Managed service",
+    "content": "<p><strong>What you get</strong><br>Specialists who collect, calculate, check and submit your data for you</p><p><strong>Who does the data work</strong><br>The provider, with your team supplying source data and signing off</p><p><strong>Expertise included</strong><br>Specialists who interpret the rules for your specific packaging</p><p><strong>Data checking</strong><br>Validation plus expert review of outliers, missing weights and supplier data</p><p><strong>Supplier data collection</strong><br>Requested, chased and validated for you</p><p><strong>Multi-country coverage</strong><br>Can cover several countries under one team</p><p><strong>Typical cost model</strong><br>Service fee based on scope</p><p><strong>Best for</strong><br>Businesses with complex ranges, many suppliers or several markets</p>"
+   }
+  ],
+  "whichIs": "<h2>Which is Ecoveritas?</h2><p>Ecoveritas is a managed service, delivered on our own technology. It is not a compliance scheme, and not just software.</p><p>Our specialists do the data work: collecting supplier data, calculating material weights, applying the rules and preparing submission-ready returns. That work runs on our own platforms. EcoHub structures and validates your packaging data. EcoView turns it into analysis of costs, materials and suppliers.</p><p>In the UK, we work alongside compliance schemes rather than replacing them. Our UK compliance offer is delivered with Veolia. Schemes handle membership and recycling obligations, while we make sure the data underneath is accurate.</p><p>We have more than 25 years in compliance and sustainability data. We process over 32,000 supplier data requests a year, hold packaging metrics for more than 4 million SKUs, and manage EPR reporting in over 80 countries.</p>",
+  "cta": "<p><strong>Not sure which option fits?</strong> Tell us about your packaging, your markets and how your data is managed today. We'll tell you honestly what you need.</p>"
+ },
+ "page2": {
+  "items": [
+   {
+    "title": "Do you operate a compliance scheme or hold a PRN book?",
+    "content": "<p>We don't. Many providers do, and it isn't disqualifying, but it means their recommendation on tonnage placement isn't neutral. Ask directly and get it in writing.</p>"
+   },
+   {
+    "title": "Do you take any margin on the tonnage I place?",
+    "content": "<p>We don't. Ask every provider this one. It's the single question that tells you whose interests the advice serves.</p>"
+   },
+   {
+    "title": "Who owns my data if I leave?",
+    "content": "<p>Yours, exported in full, in a usable format. Some providers will give you a PDF. Ask what format, and ask before you sign.</p>"
+   },
+   {
+    "title": "Can I run this myself?",
+    "content": "<p>With enough in-house resource, yes — and if you have that resource, software will be cheaper than us. We're the right answer when the data work is the problem.</p>"
+   },
+   {
+    "title": "What happens if my submission is challenged?",
+    "content": "<p>Ask whether they defend the classification or hand you the file. There's a real difference and it surfaces at the worst possible moment.</p>"
+   },
+   {
+    "title": "How is your pricing structured, and what isn't included?",
+    "content": "<p>Ask for the full picture, not just the headline fee. Some providers charge per submission, per SKU, per country or by subscription. Extras often appear for chasing supplier data, resubmissions, regulator queries or mid-year changes. Ask what happens to the price if your range grows.</p><p><strong>How we answer:</strong> We scope the work before quoting, so you know what's included up front. Some services, such as our PRN audit, are free to start, with a fee only if we find savings.</p>"
+   },
+   {
+    "title": "Who actually does the work?",
+    "content": "<p>Find out whether a named specialist works on your data, or whether you're mainly given a login. Ask who chases suppliers, who checks the numbers and who answers when the regulator gets in touch. Software-only providers leave most of this with your team.</p><p><strong>How we answer:</strong> Our specialists do the data work, from supplier requests to calculations and submission-ready returns. You stay in control and sign off, but your team isn't the one chasing suppliers or filling gaps.</p>"
+   },
+   {
+    "title": "How do you handle the Recyclability Assessment Methodology (RAM)?",
+    "content": "<p>Large UK producers must assess the recyclability of the household packaging they supply using RAM, and report a red, amber or green rating. Those ratings will affect the fees you pay. Ask how the provider assesses each component, what evidence they keep, and how they handle the move from RAM version 1.1 to RAM 2027.</p><p><strong>How we answer:</strong> We assess packaging at component level against the current RAM guidance, and keep the evidence behind every rating. We also flag where a change of material or label could move a rating, and its fee, from red to amber or green.</p>"
+   },
+   {
+    "title": "Can you cover our obligations outside the UK, including the EU?",
+    "content": "<p>If you sell into the EU, you may have separate obligations in each country you sell into. Many countries also require a local authorised representative. The EU Packaging and Packaging Waste Regulation (PPWR) adds new requirements on top. Ask whether the provider covers these under one team, or whether you'll need separate providers in each country.</p><p><strong>How we answer:</strong> We manage EPR reporting in over 80 countries, including national schemes across Europe. For PPWR, we help prepare and verify the technical documentation that sits behind a Declaration of Conformity. The manufacturer signs the Declaration itself, not us.</p>"
+   },
+   {
+    "title": "When are you not the right answer?",
+    "content": "<p>A good provider will tell you honestly when you don't need them. If they can't answer this, be cautious.</p><p><strong>How we answer:</strong> You may not need us if you're a small producer with a simple range, or if you have the in-house expertise and time to manage your own data. You also don't need us if all you need is scheme membership to cover your recycling obligations. In those cases, a compliance scheme or a self-serve tool may be enough. We're most useful when ranges are large, supplier data is patchy, or you're reporting in more than one country.</p>"
+   }
+  ]
+ },
+ "page3": {
+  "items": [
+   {
+    "title": "Who carries out the assessment?",
+    "content": "<p>The producer is. Under UK EPR for packaging, large producers are legally required to use the Recyclability Assessment Methodology to assess the household packaging they supply. They must then report a red, amber or green rating for it. You can get help with the assessment, but the legal responsibility stays with you.</p>",
+    "note": "kept title; matched to \"Who is legally responsible for the RAM assessment?\""
+   },
+   {
+    "title": "What evidence is used?",
+    "content": "<p>You need evidence that your packaging meets the definition of the material category you report it under. You also need evidence supporting the rating at each stage of recyclability. That typically means specifications, supplier declarations and test or guidance references for each component. Ratings based on assumptions, or on outdated guidance, are a common failure point. Inaccurate ratings can mean higher fees and regulatory scrutiny.</p>",
+    "note": "kept title; matched to \"What evidence do I need to keep?\""
+   },
+   {
+    "title": "Can my packaging supplier do it for me?",
+    "content": "<p>Your suppliers hold much of the information you need, such as material composition, inks, adhesives and labels. They can't sign off your rating for you, though. Use their data as evidence, check it is specific to the packaging you actually buy, and keep the record. Generic recyclability claims from a supplier aren't enough on their own.</p>",
+    "note": "replaced \"Can an assessment be challenged?\""
+   },
+   {
+    "title": "Can a consultant or compliance specialist carry it out?",
+    "content": "<p>Yes. Many producers use a specialist to run the assessment, gather the evidence and prepare the ratings for reporting. This is often the practical choice for large or complex ranges. You remain responsible for what is submitted, so choose a provider who explains how each rating was reached. Ecoveritas assesses packaging at component level and keeps the evidence behind every rating.</p>",
+    "note": "replaced \"How does the outcome affect your fee?\""
+   },
+   {
+    "title": "Who sets the rules, and who checks them?",
+    "content": "<p>PackUK, the scheme administrator for EPR for packaging, publishes the methodology. The environmental regulators in each UK nation enforce reporting. Use the right version for each year: RAM version 1.1 for the 2026 reporting year, and RAM 2027 for the 2027 reporting year.</p>",
+    "note": "replaced \"What can you change before the next cycle?\""
+   }
+  ],
+  "sources": "<h3>Sources</h3><ul><li><a href=\"https://www.gov.uk/government/publications/assess-packaging-recyclability-recyclability-assessment-methodology-ram-2027/ram-2027-overview\">RAM 2027: overview (GOV.UK)</a></li><li><a href=\"https://www.gov.uk/government/publications/assess-packaging-recyclability-recyclability-assessment-methodology-ram-2027/ram-2027-materials-assessment-guidance\">RAM 2027 materials assessment guidance (GOV.UK)</a></li><li><a href=\"https://www.gov.uk/government/publications/recycling-assessment-methodology-background-and-definitions/recycling-assessment-methodology-stages-of-recyclability-and-definitions\">RAM: stages of recyclability and definitions (GOV.UK)</a></li></ul>"
+ }
+}

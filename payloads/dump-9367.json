@@ -1,0 +1,59 @@
+{
+ "canonicalId": 9367,
+ "draftId": null,
+ "fields": {
+  "title": "Who assesses recyclability under RAM?",
+  "fields[heroTitle]": "Who assesses recyclability under RAM?",
+  "fields[heroIntroduction]": "<p>Recyclability Assessment Methodology determines your fee modulation. It is also the part of EPR most producers have no visibility over — the assessment happens, the fee changes, and the reasoning isn't obvious.</p>",
+  "fields[heroImage]": "",
+  "fields[pageBuilder]": "",
+  "fields[pageBuilder][sortOrder][]": "8d54d333-48ad-4ea9-b20b-37c6441ea6b8",
+  "fields[pageBuilder][entries][uid:8d54d333-48ad-4ea9-b20b-37c6441ea6b8][type]": "accordion",
+  "fields[pageBuilder][entries][uid:8d54d333-48ad-4ea9-b20b-37c6441ea6b8][enabled]": "1",
+  "fields[pageBuilder][entries][uid:8d54d333-48ad-4ea9-b20b-37c6441ea6b8][title]": "RAM assessment: how it works",
+  "fields[pageBuilder][entries][uid:8d54d333-48ad-4ea9-b20b-37c6441ea6b8][fields][introduction]": "",
+  "fields[pageBuilder][entries][uid:8d54d333-48ad-4ea9-b20b-37c6441ea6b8][fields][spacing]": "base64:bWVkaXVt",
+  "fields[pageBuilder][entries][uid:8d54d333-48ad-4ea9-b20b-37c6441ea6b8][fields][theme]": "base64:ZGVmYXVsdA==",
+  "fields[ctaPicker]": "",
+  "fields[seo][titleRaw][1]": "Who assesses recyclability under RAM?",
+  "typeId": "1",
+  "slug": "who-assesses-recyclability-under-ram"
+ },
+ "nested": [
+  {
+   "id": "9368",
+   "owner": "9367",
+   "field": "pageBuilder"
+  },
+  {
+   "id": "9369",
+   "owner": "9368",
+   "field": "accordionItems",
+   "label": "Who carries out the assessment?"
+  },
+  {
+   "id": "9370",
+   "owner": "9368",
+   "field": "accordionItems",
+   "label": "What evidence is used?"
+  },
+  {
+   "id": "9371",
+   "owner": "9368",
+   "field": "accordionItems",
+   "label": "Can an assessment be challenged?"
+  },
+  {
+   "id": "9372",
+   "owner": "9368",
+   "field": "accordionItems",
+   "label": "How does the outcome affect your fee?"
+  },
+  {
+   "id": "9373",
+   "owner": "9368",
+   "field": "accordionItems",
+   "label": "What can you change before the next cycle?"
+  }
+ ]
+}
