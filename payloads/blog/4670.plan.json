@@ -1,0 +1,50 @@
+{
+ "id": 4670,
+ "replaceUid": "a42f87b3-d882-49fc-8c97-b5b330f51f3a",
+ "blocks": [
+  {
+   "type": "general_content",
+   "content": "<h2>New beginnings and revamped legislation</h2><p>Germany enforced their preliminary legislation in 1991 already a feat in itself, as the original legislation was a crucial first step to pave the way for a revamp which came in 2019 with the ‘Packaging Act (VerpackG)’.&nbsp;</p><p>This revised Act expanded the obligations for companies and presented the creation of the Central Agency for Packaging leading to a more efficient system for packaging and ensuring that producers adhere to the specific obligations of the Packaging Act.</p>"
+  },
+  {
+   "type": "mediaCards",
+   "heading": "What is in-scope",
+   "content": "<p>According to the German Packaging Act, <u>Packaging</u> is defined as ‘a product made of any material for the containment, protection, handling, delivery or presentation of goods, which may range from raw materials to processed products, are passed on from the manufacturer to the distributor or final consumer…’.&nbsp;Within Germany, packaging and packaged products can be broken down into packaging that is subject to <u>system participation</u> and packaging that is not subject to participation.&nbsp;</p><p>Packaging that typically ends up with ‘private final consumers’ such as retail packaging, service packaging or shipment packaging is subject to what is known as system participation. Packaging that is not subject to system participation includes but is not limited to retail packaging that houses hazardous contents, single-use beverage packaging that is part of a deposit return system (DRS), transport packaging, and reusable packaging.</p><p>Packaging that ends up with private final consumers and comparable sources of waste generation such as hotels, garden centres and similar environments are subject to system participation.</p>",
+   "alignment": "left",
+   "image": "PLACEHOLDER"
+  },
+  {
+   "type": "general_content",
+   "content": "<h2>Transport packaging unpacked</h2><p>Where transport packaging is concerned, while this packaging is not normally destined for the end consumer, companies are still obligated to register with the Packaging Register and to adhere to specific return and recovery obligations and provide the necessary evidence as proof of compliance.</p>"
+  },
+  {
+   "type": "mediaCards",
+   "heading": "Who is subject to German Packaging Act?",
+   "content": "<p>Where EPR is concerned, it is typically the first party to place packaging on a commercial basis onto the German market that is considered to be the primarily obligated party. If a company is deemed to be obligated, they must ensure that they adhere to the requirements associated with EPR.&nbsp;</p>",
+   "alignment": "right",
+   "image": "PLACEHOLDER"
+  },
+  {
+   "type": "general_content",
+   "content": "<h2>Finding yourself obligated? Here’s what you need to do</h2><p>In short, once a company has determined their obligated packaging types, there are a few key obligations that they must adhere to. This includes the need to register with the Central Agency for Packaging, conclude a system participation agreement with a system operator, report on their packaging, and if needed, complete a declaration of completeness.</p><p>Companies are required to register with the Central Agency Packaging Register.&nbsp;Companies must provide their name, address and contact details, the indication of a natural person authorised to represent the company, the national identification number and email address of the manufacturer and other such details.</p><p>When it comes to reporting, companies must always remember that once they have submitted a report to the system operator, a duplicate report must be submitted to the central agency.&nbsp;</p>"
+  },
+  {
+   "type": "mediaCards",
+   "heading": "Declaration of completeness",
+   "content": "<p>Companies that find themselves with a higher packaging volume of packaging must file a statement of their packaging that is placed on the market; this is called a ‘Declaration of Completeness’. Companies that go beyond these thresholds for the relevant packaging types must submit this declaration by the 15th of May.</p><ul><li>Glass: 80.000kg</li><li>Paper, paperboard, and cardboard: 50.000kg</li><li>Ferrous metals including aluminium, plastics, beverage cartons and other composite materials: 30.000kg.</li></ul><p>Companies that surpass these thresholds must detail the relevant material types of all relevant packaging.&nbsp;</p>",
+   "alignment": "left",
+   "image": "PLACEHOLDER"
+  },
+  {
+   "type": "general_content",
+   "content": "<h2>A comprehensive system</h2><p>Germany is a clear example of a well-balanced system for extended producer responsibility and lays out the expected obligations of companies in a well-thought-out route, providing comprehensive guidance at every turn.</p><p class=\"md\"><span style=\"color:black;\">The rapid rate at which EPR regulations are evolving can be frustrating for businesses that seek to make sense of how they might be affected by a potential law. Ecoveritas has and will continue to keep track of and interpret EPR regulations, along with other environmental law impacting packaging, textiles, electricals, batteries, and wider sectors. Our exclusive Global EPR Matrix offers a unique insight into EPR laws that should educate you about your business’s obligations.</span></p>"
+  },
+  {
+   "type": "callToAction",
+   "content": "<h2>Get in touch with us today to learn more about our services.</h2><p>Please speak to one of our advisors today on +44(0)1865502176 or email us at&nbsp;<a href=\"mailto:info@ecoveritas.com\"><span style=\"color:windowtext;\">info@ecoveritas.com</span></a></p>"
+  }
+ ],
+ "media": 3,
+ "sections": 7,
+ "wordCheck": "ok"
+}

@@ -1,0 +1,122 @@
+{
+ "posts": {
+  "4351": {
+   "f1e67ef9-7f5d-4dff-8c29-d769bdbd5146:richTitle": "<h2>Get in touch with us today to learn more about our services.&nbsp;</h2><p>Please speak to one of our advisors today on +44(0)1865502176 or fill out the contact form:</p>"
+  },
+  "6888": {
+   "5a2e9b7c-41ca-4e86-b629-a573d05ae5bd:introduction": "",
+   "50a00246-e6ba-406c-8092-ca526ca8e111:richTitle": "<h2>Want to keep up with the latest surrounding EPR?</h2><p>&nbsp;</p><p>Use our enquiry form and let us know what it is that you would like help with!</p>"
+  },
+  "7110": {
+   "7105109f-7f3a-44fb-82da-57c8a16fd238:introduction": "<p>If you want to explore how <strong>packaging Extended Producer Responsibility</strong> may apply to your organisation, you may find these resources useful:</p>",
+   "9c40c1eb-4ef8-4440-aac3-b36a271108c9:richTitle": "<p>Contact our team to discuss how your organisation can build a clearer view of its packaging obligations.</p>"
+  },
+  "7739": {
+   "ddb4393b-6f5d-4763-a255-4627ba374134:richTitle": "<h4>If you're a toy manufacturer, importer, or retailer and any of this affects your business, we'd love to hear from you.</h4><h4>Get in touch with our team and we'll help you understand your obligations.</h4>"
+  }
+ },
+ "cards": {
+  "6932": {
+   "fields[image]": "",
+   "fields[image][]": "5130",
+   "title": "Data Collection",
+   "fields[textContent]": "Find out more on how Ecoveritas supports with EPR data collection...",
+   "fields[buttonUrl][type]": "entry",
+   "fields[buttonUrl][url][value]": "",
+   "fields[buttonUrl][entry][value]": "{entry:5389@1:url}",
+   "fields[buttonUrl][label]": "Find out more",
+   "fields[buttonUrl][target]": "",
+   "imageIds": [
+    "5130"
+   ],
+   "entryLink": [
+    "5389"
+   ]
+  },
+  "6933": {
+   "fields[image]": "",
+   "fields[image][]": "3489",
+   "title": "All Services",
+   "fields[textContent]": "Understand the full journey of how Ecoveritas supports organisations with EPR",
+   "fields[buttonUrl][type]": "entry",
+   "fields[buttonUrl][url][value]": "",
+   "fields[buttonUrl][entry][value]": "{entry:231@1:url}",
+   "fields[buttonUrl][label]": "Find out more",
+   "fields[buttonUrl][target]": "",
+   "imageIds": [
+    "3489"
+   ],
+   "entryLink": [
+    "231"
+   ]
+  },
+  "6934": {
+   "fields[image]": "",
+   "fields[image][]": "843",
+   "title": "All News & Blogs",
+   "fields[textContent]": "Discover more news, blogs and updates",
+   "fields[buttonUrl][type]": "entry",
+   "fields[buttonUrl][url][value]": "",
+   "fields[buttonUrl][entry][value]": "{entry:700@1:url}",
+   "fields[buttonUrl][label]": "Discover",
+   "fields[buttonUrl][target]": "",
+   "imageIds": [
+    "843"
+   ],
+   "entryLink": [
+    "700"
+   ]
+  },
+  "7140": {
+   "fields[image]": "",
+   "fields[image][]": "1847",
+   "title": "Extended Producer Responsibility",
+   "fields[textContent]": "",
+   "fields[buttonUrl][type]": "entry",
+   "fields[buttonUrl][url][value]": "",
+   "fields[buttonUrl][entry][value]": "{entry:387@1:url}",
+   "fields[buttonUrl][label]": "",
+   "fields[buttonUrl][target]": "",
+   "imageIds": [
+    "1847"
+   ],
+   "entryLink": [
+    "387"
+   ]
+  },
+  "7141": {
+   "fields[image]": "",
+   "fields[image][]": "3269",
+   "title": "Global EPR",
+   "fields[textContent]": "",
+   "fields[buttonUrl][type]": "entry",
+   "fields[buttonUrl][url][value]": "",
+   "fields[buttonUrl][entry][value]": "{entry:401@1:url}",
+   "fields[buttonUrl][label]": "",
+   "fields[buttonUrl][target]": "",
+   "imageIds": [
+    "3269"
+   ],
+   "entryLink": [
+    "401"
+   ]
+  },
+  "7142": {
+   "fields[image]": "",
+   "fields[image][]": "1773",
+   "title": "Recyclability Assessment Methodology",
+   "fields[textContent]": "",
+   "fields[buttonUrl][type]": "entry",
+   "fields[buttonUrl][url][value]": "",
+   "fields[buttonUrl][entry][value]": "{entry:1563@1:url}",
+   "fields[buttonUrl][label]": "",
+   "fields[buttonUrl][target]": "",
+   "imageIds": [
+    "1773"
+   ],
+   "entryLink": [
+    "1563"
+   ]
+  }
+ }
+}

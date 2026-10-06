@@ -1,0 +1,24 @@
+{
+ "id": 6953,
+ "replaceUid": "88736a6b-fc8d-4910-8712-ca40872e78e7",
+ "blocks": [
+  {
+   "type": "general_content",
+   "content": "<h2>A System Sensitive to Data</h2><p>Under Extended Producer Responsibility, total reported packaging tonnage determines how disposal costs are distributed. When submitted volumes are lower than forecast, the funding model is disrupted.</p><p>While government has stepped in for Year 1, future years are unlikely to be managed in the same way, particularly as fee modulation increases financial consequences from 2026 onwards.</p><p>For producers, this creates two parallel risks:</p><ul><li><strong>Under-reporting</strong>, which attracts regulatory scrutiny</li><li><strong>Over-reporting or conservative defaulting</strong>, which quietly inflates costs</li></ul><figure class=\"image\"><img style=\"aspect-ratio:4267/1250;\" src=\"https://www.ecoveritas.com/assets/general/Blog-02.png#asset:6995:url\" width=\"4267\" height=\"1250\"></figure><p>In our work with producers across multiple sectors, we frequently see both issues. ERP systems rarely align neatly with regulatory reporting categories. Component-level weights are often estimated. Tertiary and transit packaging can be inconsistently captured. Small classification errors scale quickly when applied across national volumes.</p><p>As fees become more sensitive to recyclability and material categorisation, these weaknesses become expensive.</p>"
+  },
+  {
+   "type": "mediaCards",
+   "heading": "From Stabilised Fees to Increased Exposure",
+   "content": "<p>The Year 1 decision effectively stabilises invoices, but it also sends a clear message: future cost exposure will depend heavily on the integrity of producer datasets.</p><p>From 2026:</p><ul style=\"list-style-type:disc;\"><li>Recyclability assessments will influence fee levels</li><li>Material misclassification will carry greater financial impact</li><li>Data auditability will become increasingly important</li></ul><p>This is where proactive data governance becomes critical.</p><p>At Ecoveritas, we support producers by embedding compliance controls directly into their packaging data processes, not simply preparing submissions at the end of the reporting cycle. That means validating component-level data, challenging assumptions, modelling modulation scenarios, and building defensible methodologies that reduce both cost leakage and regulatory risk.</p><p>Rather than treating EPR as a reporting exercise, it becomes a managed financial variable.</p><figure class=\"image\"><img style=\"aspect-ratio:4267/3042;\" src=\"https://www.ecoveritas.com/assets/general/Blog-01.png#asset:6990:url\" width=\"4267\" height=\"3042\"></figure>",
+   "alignment": "left",
+   "image": "PLACEHOLDER"
+  },
+  {
+   "type": "general_content",
+   "content": "<h2>The Strategic Takeaway</h2><p>Year 1 fees may not increase, but the funding gap has demonstrated how sensitive the system is to producer data.</p><p>For forward-looking organisations, the focus now shifts from “What are this year’s fees?” to:</p><ul style=\"list-style-type:disc;\"><li>Is our packaging data complete and defensible?</li><li>Are we overpaying due to conservative assumptions?</li><li>How exposed are we to modulation in 2026 and beyond?</li></ul><p>The producers who answer these questions early will be in a far stronger position as the scheme matures.</p><p>If you would like to review how resilient your current packaging dataset is under the evolving UK EPR framework, our team would be happy to have that conversation.</p>"
+  }
+ ],
+ "media": 1,
+ "sections": 3,
+ "wordCheck": "ok"
+}

@@ -1,0 +1,46 @@
+{
+ "id": 7110,
+ "replaceUid": "d81ac925-1884-43af-bb47-228794490c21",
+ "blocks": [
+  {
+   "type": "general_content",
+   "content": "<p>Understanding the difference matters, because treating EPR as a tax often leads businesses to misunderstand what the regulation actually requires and where the real financial exposure sits.</p><p>In this article, we explain:</p><ul><li>Why people refer to <strong>EPR as a tax</strong></li><li>Why <strong>Extended Producer Responsibility is not technically a tax</strong></li><li>How EPR actually works</li><li>Where the <strong>real costs and risks</strong> arise for businesses</li></ul>"
+  },
+  {
+   "type": "mediaCards",
+   "heading": "Why People Call EPR a “Tax”",
+   "content": "<p>Under the UK’s packaging reforms, producers are now responsible for funding the <strong>full net cost of managing household packaging waste</strong>. This includes the costs of:</p><ul><li>Collection</li><li>Sorting</li><li>Recycling</li><li>Disposal</li></ul><p>Because companies must pay these costs through compliance schemes or fee mechanisms, it can <strong>feel similar to a government tax or levy.</strong></p><p>This is why terms like:</p><ul><li><strong>“EPR tax”</strong></li><li><strong>“packaging tax”</strong></li><li><strong>“extended producer responsibility tax”</strong></li></ul><p>are often used in industry conversations.</p><p>However, the underlying mechanism is different.</p>",
+   "alignment": "left",
+   "image": "PLACEHOLDER"
+  },
+  {
+   "type": "general_content",
+   "content": "<h2>EPR Is Not a Tax</h2><p>A <strong>tax</strong> is generally defined as a compulsory payment made directly to government to fund public spending.</p><h3>Extended Producer Responsibility works differently.</h3><p>EPR is a <strong>regulatory framework</strong>, not a tax instrument. Its purpose is to <strong>shift the cost of managing packaging waste from taxpayers to the producers who place packaging on the market.</strong></p><p>Instead of raising revenue for government, EPR is designed to:</p><ul><li>Allocate waste management costs to producers</li><li>Incentivise more recyclable packaging design</li><li>Improve recycling system funding</li><li>Increase transparency in packaging data</li></ul><p>The payments made under EPR are therefore <strong>compliance costs within a regulatory system</strong>, not a tax collected for general government spending.</p>"
+  },
+  {
+   "type": "mediaCards",
+   "heading": "How Extended Producer Responsibility Actually Works",
+   "content": "<p>Under EPR, companies that <strong>place packaging onto the market</strong> may become legally defined as <strong>producers</strong>.</p><p>These producers must then:</p><ol><li><strong>Collect packaging data</strong><br>Businesses must track the materials and weights of packaging they supply.</li><li><strong>Submit regulatory reports</strong><br>Data is reported to environmental regulators and compliance schemes.</li><li><strong>Fund waste management costs</strong><br>Producers pay fees linked to the packaging they place on the market.</li><li><strong>Maintain evidence and audit trails</strong><br>Regulators increasingly expect data to be accurate and defensible.</li></ol><p>This means that <strong>data accuracy and packaging classification become financially significant.</strong></p>",
+   "alignment": "right",
+   "image": "PLACEHOLDER"
+  },
+  {
+   "type": "general_content",
+   "content": "<h2>Why Treating EPR as a “Tax” Can Be Risky</h2><p>When businesses think of EPR as simply a tax, they often approach it like a <strong>fixed cost of doing business.</strong></p><p>In reality, EPR costs are highly sensitive to:</p><ul><li>Packaging <strong>material composition</strong></li><li>Household vs <strong>non-household classification</strong></li><li><strong>Data accuracy and reporting controls</strong></li><li>Packaging <strong>design choices</strong></li></ul><p>Small changes in classification or packaging design can significantly change cost exposure.</p><p>This means EPR behaves less like a tax and more like a <strong>data-driven regulatory obligation.</strong></p><p>Organisations that treat it purely as a tax often miss opportunities to:</p><ul><li>Reduce unnecessary cost exposure</li><li>Improve reporting accuracy</li><li>Prepare for evolving regulatory requirements</li></ul>"
+  },
+  {
+   "type": "mediaCards",
+   "heading": "Why EPR Is Becoming a Strategic Business Issue",
+   "content": "<p>Across the UK and EU, <strong>Extended Producer Responsibility is expanding beyond a reporting exercise.</strong></p><p>Regulatory frameworks are increasingly shaping <strong>how packaging is designed, used, and managed across supply chains.</strong></p><p>Two developments illustrate this shift:</p><ul><li>The EU’s <strong>Packaging and Packaging Waste Regulation (PPWR)</strong>, which introduces new requirements around packaging design, recyclability, and market access.</li><li>The <strong>Recyclability Assessment Methodology (RAM)</strong>, which establishes a structured way of assessing whether packaging is recyclable at scale within existing waste systems.</li></ul><p>Together, these developments signal a broader change. Packaging compliance is moving from <strong>reporting what materials are used</strong> toward <strong>demonstrating that packaging performs within the recycling system it enters.</strong></p><p>For many organisations, this means packaging regulation is no longer just a compliance activity. It is increasingly influencing <strong>packaging design, product development, and supply chain decisions.</strong></p>",
+   "alignment": "left",
+   "image": "PLACEHOLDER"
+  },
+  {
+   "type": "general_content",
+   "content": "<h2>Understanding Your EPR Exposure</h2><p>Because EPR obligations depend heavily on <strong>how your business interacts with packaging</strong>, the first step is usually understanding whether your organisation is considered a producer and what obligations may apply.</p><p>This involves reviewing:</p><ul><li>Packaging you <strong>import, manufacture, or brand</strong></li><li>Where those products are <strong>sold or supplied</strong></li><li>Whether packaging ends up in <strong>household waste streams</strong></li><li>The <strong>data systems</strong> used to track packaging materials</li></ul><p>Businesses that establish clear packaging data structures early are generally better positioned to manage future regulatory changes.</p>"
+  }
+ ],
+ "media": 3,
+ "sections": 7,
+ "wordCheck": "ok"
+}

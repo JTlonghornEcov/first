@@ -1,0 +1,145 @@
+{
+ "id": 7785,
+ "title": "The EPR Packaging Fee Is Hitting Hard, and the Bills Are Only Getting Bigger",
+ "slug": "the-epr-packaging-fee-is-hitting-hard-and-the-bills-are-only-getting-bigger",
+ "postDate": "4/24/2026",
+ "heroTitle": "",
+ "heroIntroduction": "<p>Two high-profile cases from the drinks industry reveal the scale of the risk. Here's what every business leader needs to do now.</p>",
+ "heroImage": [],
+ "featuredImage": [
+  "7846"
+ ],
+ "excerpt": "",
+ "ctaPicker": [],
+ "category": [],
+ "heroButtons": 0,
+ "blocks": [
+  {
+   "uid": "1d5eda02-f172-452f-b013-73d0eeef977f",
+   "fields": {
+    "theme": "base64:ZGVmYXVsdA==",
+    "spacing": "base64:bWVkaXVt"
+   },
+   "type": "mediaCards",
+   "enabled": "1",
+   "id": "7814",
+   "nested": []
+  },
+  {
+   "uid": "c7a63e0f-72a8-47ee-b051-72d7ba369013",
+   "fields": {
+    "introduction": "",
+    "spacing": "base64:c21hbGw=",
+    "theme": "base64:ZGVmYXVsdA=="
+   },
+   "type": "cards",
+   "enabled": "1",
+   "title": "The Headlines",
+   "id": "7815",
+   "nested": [
+    {
+     "id": "7816",
+     "label": "Vinarchy UK's EPR Bill",
+     "hasImage": true
+    },
+    {
+     "id": "7817",
+     "label": "Fever-Tree's Provision",
+     "hasImage": true
+    },
+    {
+     "id": "7818",
+     "label": "Estimated Scheme Total",
+     "hasImage": true
+    }
+   ]
+  },
+  {
+   "uid": "3534abba-1a4b-40b9-8221-04571806697b",
+   "fields": {
+    "generalContent": "<p>The UK's Extended Producer Responsibility (EPR) packaging scheme came into force on 1 January 2025, and for many businesses, the first invoices, issued in October 2025, were a genuine shock. Two cases from the drinks sector have now laid bare just how material this cost can be. For business owners and finance directors who haven't yet modelled the full impact, the window for proactive action is closing fast.</p><h2>Vinarchy UK: when a fee turns a profit into a loss</h2><p>Vinarchy UK, the British arm of the wine group formed when Accolade merged with Pernod Ricard Winemakers, has disclosed an EPR charge of at least £8 million for its 2025 financial year. The figure is striking not just for its size, but for what it means in practice: the company's accounts suggest the levy alone was responsible for turning what would have been a profitable year into a loss.</p>",
+    "spacing": "base64:c21hbGw=",
+    "theme": "base64:ZGVmYXVsdA=="
+   },
+   "type": "general_content",
+   "enabled": "1",
+   "id": "7819",
+   "nested": []
+  },
+  {
+   "uid": "15bf91e5-84d2-4990-b9bc-eb0bf754a29b",
+   "fields": {
+    "generalContent": "<h3>Vinarchy UK</h3><p>£8m EPR charge converts profit to a net loss</p><p>Financial year runs to 30 June, so further EPR costs may still be booked. CEO confirmed the combined business is now performing in line with profit expectations.</p>",
+    "generalContent2": "<h3>Fever-Tree</h3><p>£2.8m provision lodged; legal challenge launched against Environment Agency</p><p>Company argues on-trade 200ml glass bottles qualify as non-household packaging and should be exempt. Environment Agency has disputed this classification.</p>",
+    "spacing": "base64:c21hbGw=",
+    "theme": "base64:ZGVmYXVsdA=="
+   },
+   "type": "columns",
+   "enabled": "1",
+   "id": "7820",
+   "nested": []
+  },
+  {
+   "uid": "0fa0e59b-7319-42fe-88dc-46c4f2cf0cc5",
+   "fields": {
+    "generalContent": "<p>Vinarchy is not alone in its frustration. Chilean wine firm Concha y Toro has stated that EPR is having as much economic impact as US tariffs, while others in the industry have criticised the scheme for billing errors, duplicate charges, and a fee structure they argue is disproportionate, particularly for glass-heavy categories where the base rate sits at £192 per tonne.</p><h2><strong>Fever-Tree draws a legal line in the sand</strong></h2><p>Fever-Tree's response has been more combative. The premium mixer brand has launched a formal legal challenge against the Environment Agency, arguing that certain glass formats it sells into pubs and bars, most notably its 200ml on-trade bottles, should be classified as non-household packaging and therefore fall outside the scope of the levy entirely.</p><p>\"This is in line with the position taken by the UK government in relation to other packaging regulations.\" — Fever-Tree board statement, March 2026</p><p>The distinction matters because EPR charges are designed to fund the collection and recycling of household packaging waste. Fever-Tree's argument is that bottles consumed in licensed premises never enter the household waste stream, and so should not be subject to the same levy. The Environment Agency has challenged this position, and the matter is now before the courts. In the meantime, Fever-Tree's board has prudently recognised a £2.8 million provision to cover the potential liability a decision that contributed to a 16% fall in pre-tax profits for 2025.</p><p>The case is worth watching closely. If Fever-Tree succeeds, it could open a route for other on-trade-heavy businesses hospitality suppliers, catering companies, and specialist drinks brands to revisit their own EPR classifications and potentially seek reimbursement.</p><h2><strong>What the scheme means for your business</strong></h2><p>The EPR levy applies to any UK business with annual turnover above £1 million that handles more than 25 tonnes of packaging per year. Fees are calculated by material type and weight: glass at £192 per tonne, plastic at £423 per tonne. From 2026/27 the scheme will shift to a recyclability-based model using a red-amber-green rating system, meaning packaging that is harder to recycle will attract higher fees going forward.</p><p>For large producers, the numbers can be very significant. The scheme is designed to raise approximately £1.4 billion in its first year, with that funding flowing to local authorities for recycling infrastructure. Your share of that bill is directly proportional to the volume and type of packaging you place on the UK market.</p>",
+    "spacing": "base64:c21hbGw=",
+    "theme": "base64:ZGVmYXVsdA=="
+   },
+   "type": "general_content",
+   "enabled": "1",
+   "id": "7821",
+   "nested": []
+  },
+  {
+   "uid": "03f64f9c-00ce-44dd-9f1f-9d13c3b4cbd6",
+   "fields": {
+    "introduction": "",
+    "spacing": "base64:c21hbGw=",
+    "theme": "base64:ZGVmYXVsdA=="
+   },
+   "type": "accordion",
+   "enabled": "1",
+   "title": "Five actions for business leaders",
+   "id": "7822",
+   "nested": [
+    {
+     "id": "7823",
+     "label": "Action #1",
+     "hasImage": false
+    },
+    {
+     "id": "7824",
+     "label": "Action #2",
+     "hasImage": false
+    },
+    {
+     "id": "7825",
+     "label": "Action #3",
+     "hasImage": false
+    },
+    {
+     "id": "7826",
+     "label": "Action #4",
+     "hasImage": false
+    },
+    {
+     "id": "7827",
+     "label": "Action #5",
+     "hasImage": false
+    }
+   ]
+  },
+  {
+   "uid": "5cb11559-8250-400f-a6d9-f5b7cbc1233b",
+   "fields": {
+    "richTitle": "<h2>The Bottom Line</h2><p>EPR is not a compliance footnote. For any business with significant packaging volumes, it is a material P&amp;L item. The Vinarchy and Fever-Tree cases are a signal, not an outlier. Finance leaders who treat this as a known, modelled cost will be better placed than those who are still absorbing surprises when invoices arrive. And for businesses with a credible case around packaging classification, the Fever-Tree legal challenge is a reminder that the rules are not yet fully settled, and that it is worth taking advice before assuming liability.</p><p>At Ecoveritas, we help businesses understand exactly where they stand on EPR. Whether you need to audit your packaging data, verify your classifications, model the financial impact, or simply make sense of a levy that is still evolving, our team can walk you through it. We work with businesses of all sizes across sectors, translating complex regulation into clear, actionable steps.</p><p>Get in touch with us today and let's talk through your EPR requirements. The sooner you have a clear picture, the better placed you will be to manage the cost, protect your margins, and stay ahead of the changes still to come.</p>",
+    "theme": "base64:ZGVmYXVsdA=="
+   },
+   "type": "callToAction",
+   "enabled": "1",
+   "id": "7828",
+   "nested": []
+  }
+ ]
+}

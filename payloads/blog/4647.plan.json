@@ -1,0 +1,32 @@
+{
+ "id": 4647,
+ "replaceUid": "8766c7a5-d087-47a7-a62a-b0e09af3344d",
+ "blocks": [
+  {
+   "type": "general_content",
+   "content": "<h2>What is Nation of Sale Data?</h2><p><br>Aligned with the United Kingdom (UK) pEPR, discussed in the first part of our blog miniseries found <a href=\"https://www.ecoveritas.com/articles/how-to-understand-the-complex-framework-of-united-kingdom-extended-producer-responsibility-part-1#entry:4351@1:url\">here</a>, the Nation of Sales data refers to the requirement that beyond pEPR, businesses are now required to report additional data based on where packaging is supplied within the UK.</p><p>Nation of sale data holds the purpose of aiding the determination of the UK’s individual nations recycling targets. Nation data is the information about which nation in the UK packaging is supplied and in which nation it will be discarded, including packaging that had been imported and then discarded.</p>"
+  },
+  {
+   "type": "mediaCards",
+   "heading": "Do I need to report nation of sale data?",
+   "content": "<p>Businesses that are currently obligated under the UK pEPR must submit nation sales data if they:</p><ul><li>Supply filled or empty packaging in the UK where they are the end user of the packaging&nbsp;<br>&nbsp;</li><li>Supply empty packaging to UK organisations that are either not legally obligated, or are classed as a small organisation&nbsp;<br>&nbsp;</li><li>Hire or loan out reusable packaging&nbsp;<br>&nbsp;</li><li>Own an online marketplace where organisations that are based outside the UK sell their empty packaging and packaged goods to UK users&nbsp;<br>&nbsp;</li><li>Import packaged goods into the UK for your own use and discard the packaging</li></ul>",
+   "alignment": "left",
+   "image": "PLACEHOLDER"
+  },
+  {
+   "type": "general_content",
+   "content": "<h2>Recent updates</h2><p><br>Relating to nation data, DEFRA released a regulatory position statement (RPS) in February 2025 delaying the introduction of nation data reporting until the RPS is withdrawn at the end of 2026. However, producers are still obligated to report nation data for 2024 and 2025, but enforcement of this reporting will not commence until the RPS is withdrawn. The reason for the delay is that the data holds limited value without first being combined with other reporting data, which at current is a higher priority than nation data. Delaying nation data allows organisations to be relieved of that extra reporting obligation to begin with.</p>"
+  },
+  {
+   "type": "general_content",
+   "content": "<h2>What next?</h2><p><br>It is recommended to continue to collect any nation of sale data for 2024 and 2025 for the period of the 1st of January to the 31st of December to ensure that records of data are up to date and prepared in advance.&nbsp;</p><p>The rapid rate at which EPR regulations are evolving can be frustrating for businesses that seek to make sense of how they might be affected by a potential law. Ecoveritas has and will continue to keep track of and interpret EPR regulations, along with other environmental law impacting packaging, textiles, electricals, batteries, and wider sectors. Our exclusive Global EPR Matrix offers a unique insight into EPR laws that should educate you about your business’s obligations.</p>"
+  },
+  {
+   "type": "callToAction",
+   "content": "<h2>Get in touch with us today to learn more about our services.</h2><p>Please speak to one of our advisors today on <strong>+44(0)1865502176</strong> or email us at <strong>info@ecoveritas.com</strong>.k</p>"
+  }
+ ],
+ "media": 1,
+ "sections": 4,
+ "wordCheck": "ok"
+}

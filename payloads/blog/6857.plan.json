@@ -1,0 +1,34 @@
+{
+ "id": 6857,
+ "replaceUid": "0ab66173-c1fb-4232-be69-d8c689970f29",
+ "blocks": [
+  {
+   "type": "general_content",
+   "content": "<p>In addition, the company has named Matias Perez as Chief Commercial Officer and Helen Hodgson as Chief Product Officer, bringing deep sector expertise to the firm’s top team.</p><p>The new appointments form part of Ecoveritas’ long term strategy to scale up operations and solidify its position as a leading authority on UK environmental regulations and compliance, with a uniquely data-driven approach.</p><p>It comes in the same year that Extended Producer Responsibility (EPR) created a complex and demanding new regulatory regime for UK manufacturers, with many receiving their first invoices in the last month.</p><p>Ecoveritas is now a major employer in the growing sector of packaging compliance, now with 43 employees. The company recorded year-on-year revenue growth of 40% in 2024, and works with household brands including Suzuki and Selfridges.</p>"
+  },
+  {
+   "type": "mediaCards",
+   "heading": "James Walkerdine, Managing Director",
+   "content": "<p>With a background in innovation, James Walkerdine brings expertise in next-generation AI and data-driven technology. A former COO in multiple businesses, James holds a PhD in Computer Science from Lancaster University, and founded the analytics firm Relative Insight in 2011.</p><blockquote><p>James said: “Ecoveritas is growing at a rapid pace, and I’m delighted to be here to lead the team through the next phase of our development.</p><p>“As companies begin receiving their first EPR invoices this year, many are seeing costs increase by up to seven times compared to previous years, particularly in relation to PRN expenditure.</p><p>With deep expertise in packaging data and regulatory analysis, Ecoveritas helps organisations understand what is driving these costs and how to reduce them through better data clarity and smarter decisionmaking.”</p></blockquote>",
+   "alignment": "left",
+   "image": "PLACEHOLDER"
+  },
+  {
+   "type": "mediaCards",
+   "heading": "Matias Perez, Chief Commercial Officer",
+   "content": "<p>Joining the Executive Team as Chief Commercial Officer, Matias Perez brings more than 15 years of business development and commercial strategy experience across Latin America and Europe. He joined Ecoveritas this year, and will now lead the company’s commercial direction, revenue growth and client engagement.</p><blockquote><p>Matias said: “The growing complexity of EPR costs is creating real challenges for businesses. I’m excited to help organisations navigate this new environment through clear insights, strong guidance and a focus on sustained value.”</p></blockquote>",
+   "alignment": "right",
+   "image": "PLACEHOLDER"
+  },
+  {
+   "type": "mediaCards",
+   "heading": "Helen Hodgson, Chief Product Officer",
+   "content": "<p>Helen Hodgson has been promoted to Chief Product Officer after five years with Ecoveritas, previously serving as Digital Product Manager. As CPO, she will oversee the firm’s product vision and roadmap, working closely with technology teams and customers to enhance the company’s suite of compliance and reporting tools.</p><blockquote><p>Helen said: “Technology now plays a defining role in how companies collect, manage and validate the data required for EPR compliance. Our focus is on products that deliver clarity, efficiency and long-term sustainability for every customer we support.”</p></blockquote>",
+   "alignment": "left",
+   "image": "PLACEHOLDER"
+  }
+ ],
+ "media": 3,
+ "sections": 4,
+ "wordCheck": "ok (+3 headings added)"
+}
