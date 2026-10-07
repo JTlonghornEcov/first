@@ -9,3 +9,10 @@
   the wrapper enforces it and `npm run mc:audit` sets it.
 - First audit run: see `audit-2026-10-01.md`. Nothing changed in the account.
 - Measure email by clicks and booked calls, not opens (MPP and link scanners inflate opens).
+
+## 2026-10-07
+- Monthly bulletin agreed as the regular send. Built October 2026 bulletin from James's PDF as a Mailchimp draft
+  (campaign 5610becb24, no audience). Content in `payloads/mailchimp/bulletin-2026-10.json`, rendered by
+  `scripts/mailchimp-bulletin.mjs`; James adds the audience and sends manually.
+- Nation of sale / self-managed waste line toned down: grace period extended, data still to be reported and kept on record.
+- Custom footer reason line replaces the audience permission reminder ("opted in via our website"), which isn't true for imports.

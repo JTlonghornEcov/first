@@ -1,0 +1,155 @@
+{
+  "campaign": {
+    "title": "Bulletin October 2026",
+    "subject_line": "October briefing: DRS registration opens, PPWR, and a US court ruling",
+    "preview_text": "What changed this month in UK, EU and US packaging rules, and what to do next.",
+    "from_name": "Ecoveritas",
+    "reply_to": "info@ecoveritas.com"
+  },
+  "masthead": "October 2026 bulletin",
+  "headline": "Your October compliance briefing",
+  "intro": "It's been a busy few weeks. UK DRS registration has opened, the 1 October EPR deadline has passed, and two US decisions will shape packaging rules for years. Here's what you need to know, and what to do next.",
+  "contents": [
+    {
+      "label": "United Kingdom",
+      "items": [
+        "DRS registration opens",
+        "DRS producer fees at 0p",
+        "1 October EPR deadline"
+      ]
+    },
+    {
+      "label": "Europe",
+      "items": [
+        "Our PPWR service is live",
+        "Kosovo moves closer to EPR"
+      ]
+    },
+    {
+      "label": "United States",
+      "items": [
+        "Oregon EPR law upheld",
+        "New Jersey delays PCR rules"
+      ]
+    },
+    {
+      "label": "For you",
+      "items": [
+        "Free PRN audit: see if you qualify"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "label": "United Kingdom",
+      "articles": [
+        {
+          "title": "DRS registration is now open",
+          "body": [
+            "Exchange for Change, the body running the UK Deposit Return Scheme, has opened Phase 1 registration for drinks producers and retailer return points. Phase 1 only asks for basic details: company information, a primary contact, trading name and addresses. You'll get a registration reference number once you submit.",
+            "Phase 2 opens in January 2027 and will ask for more detail. The scheme goes live in October 2027. Small retailers who may qualify for a return point exemption still need to register."
+          ],
+          "todo": "If you place drinks containers on the UK market, register now. Your volume and product data will be needed for Phase 2, so start pulling it together."
+        },
+        {
+          "title": "DRS producer fees set at 0p for the first 15 months",
+          "body": [
+            "Exchange for Change has confirmed stepped producer fees. Fees for all drinks containers will be 0p for the first 15 months of the scheme, and will be reviewed and reconfirmed in May 2027. That's welcome news for budgets, but registration, labelling and data obligations still apply from day one."
+          ]
+        },
+        {
+          "title": "1 October: EPR deadline for large producers",
+          "body": [
+            "1 October was the deadline for large producers to submit January–June 2026 packaging data and complete their 2027 registration. If you've missed it, contact your environmental regulator as soon as possible.",
+            "For the next submission (July–December data, due 1 April 2027), keep building up your nation of sale and self-managed waste data. The grace period on enforcing these has been extended, so you won't be penalised for gaps yet, but the data still needs to be reported and kept on record. Using the extra time to get it right now will make future submissions much easier."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Europe",
+      "articles": [
+        {
+          "title": "PPWR: our full service is now live",
+          "body": [
+            "The EU Packaging and Packaging Waste Regulation has applied since 12 August 2026. Every pack you place on the EU market now needs evidence that it meets the rules, and a Declaration of Conformity (DoC) signed by the manufacturer. We've launched a full PPWR service to take that work off your desk, in four phases:"
+          ],
+          "phases": [
+            {
+              "title": "Obligation assessment and scoping",
+              "text": "What applies to you, and to which packs."
+            },
+            {
+              "title": "Supplier data collection",
+              "text": "Gathering the evidence from your supply chain."
+            },
+            {
+              "title": "DoC analysis and preparation",
+              "text": "We build the technical file and prepare the DoC, ready for you to sign."
+            },
+            {
+              "title": "Gap report",
+              "text": "Where evidence is missing: lab testing, withdrawing the product, or accepting the risk."
+            }
+          ],
+          "after": "Choose the level of support that suits you. Already working with us on EPR? It's a natural next step.",
+          "tiers": [
+            "Consultation only",
+            "Full service",
+            "We own the problem"
+          ],
+          "cta": {
+            "text": "Talk to us about PPWR",
+            "href": "mailto:info@ecoveritas.com?subject=PPWR%20service"
+          }
+        },
+        {
+          "title": "Kosovo moves a step closer to EPR for packaging and tyres",
+          "review_note": "Draft for policy team review",
+          "body": [
+            "Kosovo has completed a year-long project, backed by the German government through GIZ, to design EPR models for packaging waste and tyres. The work brought together the Ministry of Environment, Spatial Planning and Infrastructure, business associations and civil society. It mapped stakeholders, estimated how much packaging and how many tyres are placed on the market each year, and produced a roadmap for putting the schemes into practice.",
+            "It builds on earlier EPR design work for electricals, batteries, used oils and end-of-life vehicles, and supports Kosovo's Integrated Waste Management Strategy 2024–2035. Obligations aren't in force yet, as a dedicated EPR law is still going through approval. But the direction is clear. If you sell into Kosovo or the wider Western Balkans, now is the time to understand what you place on the market there."
+          ]
+        }
+      ]
+    },
+    {
+      "label": "United States",
+      "articles": [
+        {
+          "title": "Oregon's EPR law upheld in court",
+          "body": [
+            "On 27 August, a federal court upheld Oregon's packaging EPR law in full, after a challenge from the National Association of Wholesaler-Distributors. It's the first ruling on the merits of a state packaging EPR law. The injunction that had shielded the challengers' members has been lifted, so the law now applies to all covered producers.",
+            "The ruling matters beyond Oregon. Similar challenges are under way in California and Colorado, and most state schemes use the same model. An appeal is still possible, but the message is clear: don't wait for the courts. If you sell packaged goods into US EPR states, your reporting and fee obligations stand."
+          ]
+        },
+        {
+          "title": "New Jersey delays recycled content rules for food packaging to 2029",
+          "body": [
+            "New Jersey has extended the exemption for food-contact packaging under its Recycled Content Law. Requirements that were due on 18 January 2027 now start on 31 December 2029, citing limited supply of food-safe recycled material. Beverage containers aren't covered by the extension, and other rigid plastic containers still face higher recycled content targets from 2027."
+          ],
+          "todo": "Use the extra time to check your supply chain's access to food-grade recycled content, rather than pausing the work."
+        }
+      ]
+    }
+  ],
+  "offer": {
+    "title": "Free PRN audit: see if you qualify",
+    "body": [
+      "Are you paying more than you need to for PRNs? We're offering a free PRN audit to a limited number of producers. We'll review how you buy PRNs and show you where you could save.",
+      "Places are limited and allocated by application, not first come, first served. To apply, tell us a little about your business, including either your annual packaging tonnage or your number of SKUs."
+    ],
+    "cta": {
+      "text": "Apply for a free PRN audit",
+      "href": "TBC"
+    }
+  },
+  "contact": {
+    "title": "Need help with any of this?",
+    "text": "Whether it's UK EPR, DRS, PPWR or obligations further afield, our team can help.",
+    "email": "info@ecoveritas.com",
+    "phone": "TBC",
+    "web": "https://www.ecoveritas.com"
+  },
+  "footer_reason": "You're receiving this because you're an Ecoveritas client or have been in touch with us about packaging compliance."
+}
