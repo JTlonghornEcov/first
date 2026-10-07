@@ -6,6 +6,13 @@
     "from_name": "Ecoveritas",
     "reply_to": "info@ecoveritas.com"
   },
+  "logo": {
+    "src": "https://mcusercontent.com/e2a7db798940aba7759cea13d/images/4bd71e79-222a-fdbb-5272-e7268743decd.png",
+    "local": "payloads/mailchimp/assets/ecoveritas-logo-white@2x.png",
+    "width": 150,
+    "height": 76,
+    "alt": "Ecoveritas"
+  },
   "masthead": "October 2026 bulletin",
   "headline": "Your October compliance briefing",
   "intro": "It's been a busy few weeks. UK DRS registration has opened, the 1 October EPR deadline has passed, and two US decisions will shape packaging rules for years. Here's what you need to know, and what to do next.",
@@ -105,7 +112,6 @@
         },
         {
           "title": "Kosovo moves a step closer to EPR for packaging and tyres",
-          "review_note": "Draft for policy team review",
           "body": [
             "Kosovo has completed a year-long project, backed by the German government through GIZ, to design EPR models for packaging waste and tyres. The work brought together the Ministry of Environment, Spatial Planning and Infrastructure, business associations and civil society. It mapped stakeholders, estimated how much packaging and how many tyres are placed on the market each year, and produced a roadmap for putting the schemes into practice.",
             "It builds on earlier EPR design work for electricals, batteries, used oils and end-of-life vehicles, and supports Kosovo's Integrated Waste Management Strategy 2024–2035. Obligations aren't in force yet, as a dedicated EPR law is still going through approval. But the direction is clear. If you sell into Kosovo or the wider Western Balkans, now is the time to understand what you place on the market there."
@@ -141,14 +147,14 @@
     ],
     "cta": {
       "text": "Apply for a free PRN audit",
-      "href": "TBC"
+      "href": "https://www.ecoveritas.com/request-free-prn-audit"
     }
   },
   "contact": {
     "title": "Need help with any of this?",
     "text": "Whether it's UK EPR, DRS, PPWR or obligations further afield, our team can help.",
     "email": "info@ecoveritas.com",
-    "phone": "TBC",
+    "phone": "01865 502176",
     "web": "https://www.ecoveritas.com"
   },
   "footer_reason": "You're receiving this because you're an Ecoveritas client or have been in touch with us about packaging compliance."

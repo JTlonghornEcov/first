@@ -108,10 +108,10 @@ const html = `<!DOCTYPE html>
 <table role="presentation" class="wrap" width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="width:640px;max-width:640px;background:#ffffff;">
   <tr><td bgcolor="${C.teal}" class="px" style="padding:30px 40px 38px;background:${C.teal};">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-      <td style="font-family:${FONT};font-size:22px;font-weight:800;color:#ffffff;letter-spacing:-0.3px;"><a href="${esc(k.web)}" style="color:#ffffff;text-decoration:none;">ecoveritas</a></td>
-      <td align="right" style="font-family:${FONT};font-size:12px;color:${C.tealText};">${esc(p.masthead)}</td>
+      <td valign="middle"><a href="${esc(k.web)}" style="text-decoration:none;"><img src="${esc(p.logo.src)}" width="${p.logo.width}" height="${p.logo.height}" alt="${esc(p.logo.alt)}" style="display:block;border:0;width:${p.logo.width}px;height:auto;color:#ffffff;font-family:${FONT};font-size:22px;font-weight:800;"></a></td>
+      <td align="right" valign="bottom" style="font-family:${FONT};font-size:12px;color:${C.tealText};">${esc(p.masthead)}</td>
     </tr></table>
-    <h1 class="h1" style="margin:44px 0 16px;font-family:${FONT};font-size:38px;line-height:44px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">${esc(p.headline)}</h1>
+    <h1 class="h1" style="margin:36px 0 16px;font-family:${FONT};font-size:38px;line-height:44px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">${esc(p.headline)}</h1>
     <p style="margin:0;font-family:${FONT};font-size:16px;line-height:26px;color:${C.tealText};">${esc(p.intro)}</p>
   </td></tr>
   <tr><td height="6" bgcolor="${C.yellow}" style="height:6px;font-size:0;line-height:0;">&nbsp;</td></tr>
