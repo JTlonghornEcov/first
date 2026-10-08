@@ -74,6 +74,10 @@ KEYWORDS = {
     "prn": (r"\bPRNs?\b|\b[Pp]ackaging\s+[Rr]ecovery\s+[Nn]otes?\b", True),
 }
 
+# Counted and reported, but don't flag a company on their own: in the test sample
+# "packaging waste" mostly appeared in general recycling statements, not EPR.
+WEAK_KEYWORDS = {"packaging_waste"}
+
 # A money amount within this many characters after "EPR" / "extended producer responsibility"
 # is reported as epr_amount, e.g. "Extended Producer Responsibility provision 465,399".
 # It's a pointer for a human to check, not a reliable figure.

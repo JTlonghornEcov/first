@@ -132,7 +132,32 @@ Mollica's 2025 accounts show a £465,399 "Extended Producer Responsibility provi
 first-year disposal fees, calculated from the tonnage data it submitted. That's a company that
 knows its EPR bill and would care whether the data behind it is right.
 
-## 5. Named contacts (sales outreach, not ads)
+## 5. What the test sample showed (150 random parents + 15)
+
+- **About 4% of producers' accounts mention EPR** (6 of 162). Scaled up, a full run should
+  find very roughly 150–350 groups (several hundred companies including subsidiaries). That's
+  enough for tier A to clear LinkedIn's 300-row minimum on its own.
+- **Every hit was a disposal-fee payer.** None of the 39 non-payers mentioned EPR. That backs
+  using tier B (fee payers) as the main audience, and it means a full accounts run can skip
+  the non-payers.
+- **Bigger groups mention it more often:** 2 of the 4 groups with 20+ subsidiaries (Halma,
+  Specsavers), against about 4% of single companies.
+- **How producers describe EPR, in their own words** (useful for ad copy):
+  - Paperwork (Paper Convertors): PRN, plastic packaging tax and EPR "have placed a
+    significant and increasing burden on the business, both financially and
+    administratively", with the 2026 move to fees modulated by recyclability as a further
+    pressure.
+  - Rajapack: gross margin fell, partly from "the newly introduced Extended Producer
+    Responsibility (EPR) legislation".
+  - Crosta & Mollica: a £465,399 provision for first-year disposal fees, "calculated from …
+    tonnage data submitted by the entity". The fee rests directly on the submitted data.
+  - LOTAN: "EPR reforms are also imminent which could affect trading."
+
+  Common themes: **cost and margin pressure, admin burden, and fees resting on submitted
+  tonnage data.** These map directly to "only pay the fees you owe" and "independent check of
+  your data".
+
+## 6. Named contacts (sales outreach, not ads)
 
 `python step3_linkedin.py --officers` lists the current directors of every company step 2 has
 screened, with their stated occupation, in `data/linkedin/directors.csv`. Companies House

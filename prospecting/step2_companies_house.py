@@ -296,7 +296,7 @@ def process_parent(client, parent):
         hits, snippets = scan_text(text)
         for name, count in hits.items():
             result[f"hits_{name}"] = count
-        result["flagged"] = "yes" if any(hits.values()) else "no"
+        result["flagged"] = "yes" if any(n for k, n in hits.items() if k not in config.WEAK_KEYWORDS) else "no"
         result["snippets"] = "\n".join(snippets)
         result["epr_amount"] = find_epr_amount(text)
     except Exception as exc:  # keep going; one bad company shouldn't stop the run

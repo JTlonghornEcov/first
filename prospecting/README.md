@@ -24,7 +24,8 @@ For who to target inside these companies and how to set up the campaign, see
 | --- | --- |
 | Step 1 | **Run on the real 2026 register (8 Oct 2026):** 12,065 rows; 13 cancelled dropped; 11,225 large rows grouped into **7,167 parent companies**, 79 of them without a Companies House number |
 | Step 2 code + tests | Built and tested against a simulated Companies House |
-| Step 2 real run | **First 10 parents (8 Oct 2026):** all 10 matched and their latest accounts downloaded. 5 iXBRL filings scanned, none flagged. 5 are image-only scanned PDFs (no text layer), marked for manual checking |
+| Step 2 real run | **Test sample of 150 + first 15 (8 Oct 2026):** 162 screened, 2 foreign branches with no UK accounts. 91 of the 162 filings were scanned PDFs, read with OCR. **7 flagged**: 6 real EPR mentions (Crosta & Mollica, Halma, LOTAN, Paperwork, Rajapack, Specsavers) and Veolia (a waste company, excluded as a competitor). All 7 pay the disposal fee; none of the 39 non-payers was flagged |
+| Step 3 | Built. 12 tier A groups (accounts + job adverts), 4,767 tier B, 2,386 tier C |
 
 ## Setup
 
@@ -145,8 +146,10 @@ Output columns in `accounts_flags.csv`: `flagged` (yes/no), `hits_<keyword>` cou
 `filing_history_url` (opens the company's filings in a browser) and `error`. A non-empty
 `error` means the company needs checking by hand.
 
-Timing: about 15 seconds a company on average (OCR'd filings take longer), so the full list
-of ~7,200 parents takes about 30 hours and roughly 6 GB of cached documents.
+Timing: the test sample averaged about 16 seconds a company (OCR'd filings take longer) and
+1.7 MB of cached documents each. The full list of ~7,200 parents would take about 30 hours and
+12 GB. Running only the ~4,800 disposal-fee payers (`pays_disposal_fee = yes`, where every flag in
+the sample came from) would take about 20 hours.
 
 Requests are spaced 0.6s apart to stay under Companies House's limit of 600 requests per
 5 minutes. Each company takes about 4 requests, so roughly 400 companies take 15 minutes.

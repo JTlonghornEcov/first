@@ -29,8 +29,8 @@ class FakeResponse:
 class FakeSession:
     """Answers like Companies House for company 01234567 and a name search."""
 
-    def __init__(self):
-        self.auth, self.calls = None, []
+    def __init__(self, accounts=ACCOUNTS_XHTML):
+        self.auth, self.calls, self.accounts = None, [], accounts
 
     def get(self, url, params=None, headers=None, timeout=None):
         self.calls.append((url, headers.get("Accept")))
@@ -53,7 +53,7 @@ class FakeSession:
         if url.endswith("/document/NEW"):
             return FakeResponse(json_data={"resources": {"application/pdf": {}, "application/xhtml+xml": {}}})
         if url.endswith("/document/NEW/content"):
-            return FakeResponse(content=ACCOUNTS_XHTML)
+            return FakeResponse(content=self.accounts)
         return FakeResponse(status=404)
 
 
@@ -126,6 +126,14 @@ class PipelineTests(unittest.TestCase):
         self.session.calls.clear()
         s2.process_parent(self.client, parent)
         self.assertFalse(any("/document/" in url for url, _ in self.session.calls))
+
+    def test_weak_keyword_alone_does_not_flag(self):
+        doc = b"<html><body><p>We recycle our packaging waste.</p>" + b"<p>Filler text.</p>" * 60 + b"</body></html>"
+        client = s2.CompaniesHouseClient("test-key", session=FakeSession(doc), min_interval=0)
+        result = s2.process_parent(client, {"parent_name": "Acme", "companies_house_number": "01234567",
+                                            "group_key": "ORG:1"})
+        self.assertEqual(result["hits_packaging_waste"], 1)
+        self.assertEqual(result["flagged"], "no")
 
     def test_name_search_requires_exact_match(self):
         result = s2.process_parent(self.client, {"parent_name": "Acme Foods Holdings Ltd",
