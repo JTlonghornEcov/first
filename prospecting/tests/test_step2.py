@@ -46,6 +46,8 @@ class FakeSession:
             return FakeResponse(json_data={"items": [
                 {"date": "2024-11-01", "description": "accounts-with-accounts-type-full",
                  "links": {"document_metadata": "https://frontend-doc-api.company-information.service.gov.uk/document/OLD"}},
+                {"date": "2025-12-01", "description": "change-account-reference-date-company-current-shortened",
+                 "links": {"document_metadata": "https://frontend-doc-api.company-information.service.gov.uk/document/AA01"}},
                 {"date": "2025-10-01", "description": "accounts-with-accounts-type-group",
                  "description_values": {"made_up_date": "2025-03-31"},
                  "links": {"document_metadata": "https://frontend-doc-api.company-information.service.gov.uk/document/NEW"}},
@@ -93,6 +95,44 @@ class ScanTests(unittest.TestCase):
                          s2.normalise_company_name("ACME AND CO LTD"))
 
 
+IXBRL = """<html><body>
+<xbrli:context id="cy"><xbrli:period><xbrli:startDate>2025-01-01</xbrli:startDate><xbrli:endDate>2025-12-31</xbrli:endDate></xbrli:period></xbrli:context>
+<xbrli:context id="py"><xbrli:period><xbrli:endDate>2024-12-31</xbrli:endDate></xbrli:period></xbrli:context>
+<xbrli:context id="cy_uk"><xbrli:segment>UK</xbrli:segment><xbrli:period><xbrli:endDate>2025-12-31</xbrli:endDate></xbrli:period></xbrli:context>
+<ix:nonFraction name="core:TurnoverRevenue" contextRef="cy_uk" scale="0">9,000,000</ix:nonFraction>
+<ix:nonFraction name="core:TurnoverRevenue" contextRef="py" scale="3">7,100</ix:nonFraction>
+<ix:nonFraction name="core:TurnoverRevenue" contextRef="cy" scale="3">12,500</ix:nonFraction>
+</body></html>"""
+
+
+class TurnoverTests(unittest.TestCase):
+    def test_ixbrl_takes_latest_whole_entity_figure(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "a.xhtml"
+            path.write_text(IXBRL)
+            self.assertEqual(s2.ixbrl_turnover(path), 12_500_000)
+
+    def test_text_turnover(self):
+        self.assertEqual(s2.text_turnover("Notes £ £ Turnover 4 87,374,878 80,676,926 Cost of sales"), 87_374_878)
+        self.assertEqual(s2.text_turnover("2025 £'000 2024 £'000 Revenue 3 52,410 48,002"), 52_410_000)
+        # A policy note with no figure is skipped in favour of the P&L line.
+        self.assertEqual(s2.text_turnover("Turnover Turnover is recognised net of VAT. Turnover 6,250,000"),
+                         6_250_000)
+        self.assertIsNone(s2.text_turnover("Turnover is recognised when goods are dispatched."))
+        self.assertEqual(s2.text_turnover("2026 £m 2025 £m Revenue 2 5,177 4,390"), 5_177_000_000)
+        # Unit lost in OCR: too small to be a large producer's turnover, so not trusted.
+        self.assertIsNone(s2.text_turnover("Group income statement Turnover 3 30,662 28,336"))
+
+    def test_size_and_threshold(self):
+        self.assertEqual(s2.accounts_size("accounts-with-accounts-type-group"), "group")
+        self.assertEqual(s2.accounts_size("accounts-with-accounts-type-total-exemption-full"), "small")
+        self.assertEqual(s2.accounts_size("accounts-with-accounts-type-full"), "full")
+        self.assertEqual(s2.over_threshold(7_000_000, "small"), "yes")
+        self.assertEqual(s2.over_threshold(3_000_000, "full"), "no")
+        self.assertEqual(s2.over_threshold(None, "full"), "likely")
+        self.assertEqual(s2.over_threshold(None, "small"), "unknown")
+
+
 class PipelineTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -119,6 +159,15 @@ class PipelineTests(unittest.TestCase):
         self.assertIn(("https://document-api.company-information.service.gov.uk/document/NEW/content",
                        "application/xhtml+xml"), self.session.calls)
         self.assertEqual(self.session.auth, ("test-key", ""))
+        self.assertEqual(result["accounts_size"], "group")
+        self.assertEqual(result["over_5m"], "likely")
+
+    def test_qualify_pass_reads_xhtml_only(self):
+        result = s2.process_parent(self.client, {"parent_name": "Acme", "companies_house_number": "01234567",
+                                                 "group_key": "ORG:1"}, scan=False)
+        self.assertEqual(result["document_format"], "xhtml")
+        self.assertEqual(result["over_5m"], "likely")
+        self.assertNotIn("flagged", result)
 
     def test_second_run_uses_cache(self):
         parent = {"parent_name": "Acme", "companies_house_number": "01234567", "group_key": "ORG:1"}

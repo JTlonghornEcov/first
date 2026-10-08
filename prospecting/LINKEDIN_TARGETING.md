@@ -9,14 +9,30 @@ audience, then narrow to the roles below inside those companies.
 
 ## 1. The companies (upload these)
 
+Every list contains only **qualified** producers. Each one is:
+- a large producer on the Defra register, which by definition means over £2m turnover and
+  over 50 tonnes of packaging;
+- **over £5m turnover**: read from its latest accounts, or "likely" because it files full,
+  group or medium accounts, which only companies above the small-company thresholds do;
+- **active** at Companies House, and not a compliance scheme or consultancy.
+
+**Every large producer pays for PRNs**, not just the disposal-fee payers. Scheme members pay
+through their scheme's charges, and direct registrants buy their own. So for the PRN audit,
+all qualified producers are prospects. The segments decide the message, not who's in or out.
+
 | File | What's in it | Use |
 | --- | --- | --- |
-| `company_list_tier_A.csv` | Groups with evidence of active EPR work: their latest accounts mention EPR or packaging costs, or they're advertising an EPR job (`data/job_signals.csv`) | Hottest. Small until step 2 runs on everyone |
-| `company_list_tier_B.csv` | Groups paying the EPR **disposal fee** (from the Defra register) | Main audience: they pay fees now, so an audit that checks the fee is relevant |
-| `company_list_tier_C.csv` | Other large producers | Cheaper awareness / content |
-| `company_list_all.csv` | A + B + C | If you'd rather run one audience |
-| `exclude_compliance_schemes.csv` | Compliance schemes and EPR consultancies (Valpak, Ecosurety, Kite, Clarity, Comply Direct…) | **Exclude**: they employ lots of "EPR Data Analysts" and "Packaging Compliance" staff who match the same job titles but are competitors. They're also removed from the target lists |
-| `targeting_master.csv` | Every company with tier, reasons, register details, keyword hits | Your reference; not for upload |
+| `prn_1_direct_registrants.csv` | Registered **without a compliance scheme**. The register marks them "subject to recycling and certification obligations": they buy their own PRNs and certify compliance themselves | Best fit for a free PRN audit: no scheme checking their numbers, and every tonne over-reported is PRNs they buy directly |
+| `prn_2_hot.csv` | Evidence of active EPR work: accounts mention EPR, or they're advertising an EPR job (`data/job_signals.csv`) | Know their EPR bill and feel the cost |
+| `prn_3_core.csv` | Every other qualified producer | The main volume |
+| `prn_all_qualified.csv` | 1 + 2 + 3 together | One audience for brand awareness |
+| `unverified_turnover.csv` | Small-company accounts that don't show turnover (somewhere between £2m and £15m) | **Not proven over £5m**, so kept out of the lists above. Use only if you loosen the rule |
+| `exclude_compliance_schemes.csv` | Compliance schemes and EPR consultancies (Valpak, Ecosurety, Kite, Clarity, Comply Direct…) | **Exclude** on every campaign: their staff hold the same job titles but are competitors |
+| `targeting_master.csv` | Every company with segment, turnover, tier, reasons and register details | Your reference, and for scoring leads (section 3); not for upload |
+
+Each company appears in only one of files 1–3, so the campaigns don't compete for the same
+people. A list needs at least 300 rows. If a segment is smaller, merge it into the next one
+and keep the separate message for its ads.
 
 Each group contributes its parent, its subsidiaries (up to 25) and any trading names as
 separate rows. The packaging team normally sits in an operating company (for example
@@ -33,8 +49,7 @@ is required. If the template differs, delete the columns it doesn't have.
 
 **Match rate:** expect roughly half to two-thirds of companies to match on name and postcode
 alone. Adding each company's website (`companywebsite`) is the biggest single improvement,
-and is worth doing for tiers A and B. Lists need at least 300 rows, so fold tier A into
-tier B until the full step 2 run makes it bigger.
+and is worth doing for segments 1 and 2.
 
 ## 2. The people (job-title targeting)
 
@@ -87,8 +102,9 @@ BI teams.
 
 ### Persona 2: the people who pay for it (budget holders)
 
-The disposal fee and PRN costs are a P&L line. Their message is cost: PRN prices up 3–4x,
-and they may be paying for tonnage they don't owe.
+PRN costs are a P&L line, and PRN prices are up 3–4x. A gain-share audit is an easy yes for
+finance: no upfront cost, and you're only paid from savings you find. That makes them a
+stronger audience for this offer than for general EPR content.
 
 - Finance Director, CFO, Financial Controller, Head of Finance
 - Procurement Director, Head of Procurement, Purchasing Manager
@@ -97,8 +113,8 @@ and they may be paying for tonnage they don't owe.
 ### Persona 3: single-company producers (no subsidiaries)
 
 Single-company producers rarely employ a packaging specialist, so the work falls to senior
-generalists. For tier B groups with no subsidiaries, add Managing Director, Operations
-Manager and Office Manager.
+generalists. For the direct registrants, and qualified producers with no subsidiaries, add
+Managing Director, Operations Manager and Office Manager.
 
 ### Who to leave out
 
@@ -106,23 +122,42 @@ Manager and Office Manager.
 - Job function **Sales**: packaging manufacturers employ many "packaging" salespeople
 - Turn **Audience Expansion off**, or it drifts outside the producer list
 
-## 3. Suggested campaign layout
+## 3. Campaign layout for the free PRN audit
+
+The aim is enough applications from qualified producers that you can choose the ones where
+you're confident of savings. Run several campaigns, each with its own segment, so you can
+see which converts and set bids separately:
 
 | Campaign | Companies | People | Message |
 | --- | --- | --- | --- |
-| 1. Data owners, hot | Tier A + B | Persona 1 | Free independent audit of your packaging data. Lead Gen Form |
-| 2. Budget holders | Tier A + B | Persona 2 | You may be overpaying PRNs and EPR fees. Lead Gen Form |
-| 3. Awareness | Tier C | Persona 1 | Content: blog posts and guides. Retarget engagers into campaign 1 |
+| 1. Direct registrants | `prn_1` | Personas 1 + 2 + 3 | "You buy your own PRNs, and prices are up 3–4x. Are you buying more than you owe? Free, independent audit." |
+| 2. Hot accounts | `prn_2` | Personas 1 + 2 | "Your EPR bill rests on your packaging data. Get it checked free." |
+| 3a. Core: data owners | `prn_3` | Persona 1 | "Miscategorised packaging and wrong weights mean buying PRNs you don't owe. Free audit." |
+| 3b. Core: budget holders | `prn_3` | Persona 2 | "No upfront cost: a free audit of your PRN obligation, paid only from savings." |
+| 4. Brand awareness | `prn_all_qualified` | All personas | Blog posts, guides and the PRN price story. Retarget people who engage into campaigns 1–3 |
 
-Keep each audience above LinkedIn's minimum of 300 matched members. If campaign 2 comes in
-under that, merge personas 1 and 2 into one campaign.
+**Lead Gen Form questions for choosing who to audit:**
+1. Roughly how many tonnes of packaging do you place on the market a year? (bands: 50–250, 250–1,000, 1,000–5,000, 5,000+)
+2. Do you buy PRNs through a compliance scheme or directly?
+3. How many products (SKUs) do you sell? (bands)
+4. When was your packaging data last independently checked?
+5. Are you mainly selling own-brand products, importing, or packing for others?
+
+Bigger tonnage, many SKUs, imports and no recent check are where errors and savings
+concentrate. When the leads come in, look each company up in `targeting_master.csv` for its
+turnover, group size and segment before you reply.
+
+**Offline conversions:** later, upload signed audits (and the savings) through LinkedIn's
+offline-conversions template. That's the email / firstName / lastName / employeecompany /
+title / timestamp / eventtype / amount file. LinkedIn can then optimise for companies that
+actually sign, not just for form fills.
 
 ## 4. Keeping the hot list fresh
 
 **Job adverts.** When you see a producer advertising an EPR, packaging-compliance or
 packaging-data role, add a row to `data/job_signals.csv` (company, Companies House number,
 title, `strong` if EPR is named, the link) and rerun `python step3_linkedin.py`. The whole
-group moves to tier A. Useful searches: "EPR" or "extended producer responsibility" or
+group moves to `prn_2_hot` (if it qualifies on turnover). Useful searches: "EPR" or "extended producer responsibility" or
 "packaging compliance" or "packaging data" on LinkedIn Jobs, Indeed, Reed and
 findajob.dwp.gov.uk. Ignore adverts from compliance schemes and consultancies. A free
 Adzuna or Reed API key would let this run automatically every week.
@@ -136,10 +171,12 @@ knows its EPR bill and would care whether the data behind it is right.
 
 - **About 4% of producers' accounts mention EPR** (6 of 162). Scaled up, a full run should
   find very roughly 150–350 groups (several hundred companies including subsidiaries). That's
-  enough for tier A to clear LinkedIn's 300-row minimum on its own.
-- **Every hit was a disposal-fee payer.** None of the 39 non-payers mentioned EPR. That backs
-  using tier B (fee payers) as the main audience, and it means a full accounts run can skip
-  the non-payers.
+  enough for the hot segment to clear LinkedIn's 300-row minimum on its own.
+- **Every hit was a disposal-fee payer.** None of the 39 non-payers mentioned EPR, so a full
+  accounts run can skip the non-payers.
+- **Turnover:** 77% of the sample are over £5m (46% shown in their accounts, 31% likely from
+  full or group accounts), 2% are under, and 20% file small-company accounts that don't show
+  turnover.
 - **Bigger groups mention it more often:** 2 of the 4 groups with 20+ subsidiaries (Halma,
   Specsavers), against about 4% of single companies.
 - **How producers describe EPR, in their own words** (useful for ad copy):

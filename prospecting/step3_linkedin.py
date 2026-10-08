@@ -1,20 +1,27 @@
-"""Step 3: LinkedIn targeting files from the register (step 1) and accounts screen (step 2).
+"""Step 3: LinkedIn targeting files from the register (step 1) and Companies House (step 2).
 
     python step3_linkedin.py                  # company lists for every large producer group
     python step3_linkedin.py --officers       # also list current directors of screened companies
 
-Writes to data/linkedin/:
-    company_list_tier_A.csv   accounts mention EPR or packaging costs (screened companies only)
-    company_list_tier_B.csv   pays the EPR disposal fee
-    company_list_tier_C.csv   other large producers
-    company_list_all.csv      A + B + C in one upload
-    exclude_compliance_schemes.csv   scheme operators, to exclude (competitors, not buyers)
-    targeting_master.csv      every company with its tier, reasons and register details
-    directors.csv             (--officers) current directors of each screened parent
+Every group is first qualified: turnover over £5m (from its accounts, or "likely" because it
+files full, group or medium accounts) and still active. Large producers are all over 50 tonnes
+of packaging by definition. Qualified groups are then split into segments, each in only one
+file, so each campaign gets its own audience:
+
+    prn_1_direct_registrants.csv   registered without a compliance scheme: they carry their own
+                                   recycling obligation and buy PRNs themselves
+    prn_2_hot.csv                  evidence of active EPR work (accounts mention it, or EPR job adverts)
+    prn_3_core.csv                 every other qualified large producer
+    prn_all_qualified.csv          1 + 2 + 3 in one upload
+    unverified_turnover.csv        small-company accounts that don't show turnover (£2m–£15m):
+                                   not proven over £5m, so kept out of the lists above
+    exclude_compliance_schemes.csv compliance schemes and consultancies, to exclude
+    targeting_master.csv           every company with its segment, tier, turnover and reasons
+    directors.csv                  (--officers) current directors of each screened parent
 
 Each upload file has LinkedIn's company-list headers. Every company in a group gets its own
-row (parent, subsidiaries and trading names, up to 25 subsidiaries a group), because the packaging team usually sits in an
-operating company, not the holding company that heads the group.
+row (parent, subsidiaries and trading names, up to 25 subsidiaries a group), because the
+packaging team usually sits in an operating company, not the holding company that heads the group.
 """
 
 import argparse
@@ -32,6 +39,11 @@ COUNTRY = "GB"
 LEGAL_SUFFIX = re.compile(r"[\s,.]+(limited|ltd\.?|plc|p\.l\.c\.|llp|lp|uk ltd|\(uk\) ltd)$", re.IGNORECASE)
 SCHEME_REGION = re.compile(r"\s*\((EA|SEPA|NRW|NIEA|NI|Wales|Scotland|England)\)\s*$", re.IGNORECASE)
 MAX_SUBSIDIARIES_PER_GROUP = 25  # Specsavers alone registers ~1,270 stores; its page is "Specsavers"
+SEGMENTS = {
+    "1_direct_registrants": "registered directly: buys its own PRNs",
+    "2_hot": "evidence of active EPR work",
+    "3_core": "other qualified large producer",
+}
 TIERS = {"A": "evidence of active EPR work (accounts or job adverts)", "B": "pays the EPR disposal fee",
          "C": "other large producer"}
 # Compliance schemes and EPR consultancies: their staff hold the same job titles as buyers but
@@ -102,12 +114,44 @@ def is_excluded(name):
     return any(re.sub(r"[^A-Z0-9]", "", x.upper()) in key for x in EXCLUDE_COMPANIES)
 
 
-def build_master(parents, members, flags, jobs=None):
+QUALIFY_FIELDS = ["over_5m", "turnover", "accounts_size", "company_status"]
+
+
+def qualification(flags, quals):
+    """Turnover check per group: the quick pass (step 2 --qualify) first, the full screen otherwise."""
+    frames = [f[["group_key", *QUALIFY_FIELDS]] for f in (quals, flags)
+              if not f.empty and "over_5m" in f.columns]
+    if not frames:
+        return pd.DataFrame(columns=["group_key", *QUALIFY_FIELDS])
+    both = pd.concat(frames)
+    return both[both["over_5m"] != ""].drop_duplicates("group_key")
+
+
+def segment(row):
+    if row["over_5m"] == "" or pd.isna(row["over_5m"]):
+        return "unchecked"
+    if row["company_status"] not in ("active", ""):
+        return "inactive"
+    if row["over_5m"] == "no":
+        return "under_5m"
+    if row["over_5m"] == "unknown":
+        return "unverified_turnover"
+    if row.get("recycling_obligation") == "yes":
+        return "1_direct_registrants"
+    return "2_hot" if row["tier"] == "A" else "3_core"
+
+
+def build_master(parents, members, flags, jobs=None, quals=None):
     jobs = pd.DataFrame() if jobs is None else jobs
+    quals = pd.DataFrame() if quals is None else quals
     members = member_group_keys(members, parents)
     parents = assign_tiers(parents, members, flags, jobs)
-    keep = ["group_key", "parent_name", "tier", "tier_reason", "job_signals", "pays_disposal_fee",
-            "recycling_obligation", "accounts_screened", "subsidiary_count", "compliance_scheme"]
+    parents = parents.merge(qualification(flags, quals), on="group_key", how="left")
+    parents[QUALIFY_FIELDS] = parents[QUALIFY_FIELDS].fillna("")
+    parents["segment"] = parents.apply(segment, axis=1)
+    keep = ["group_key", "parent_name", "segment", "over_5m", "turnover", "accounts_size", "tier",
+            "tier_reason", "job_signals", "pays_disposal_fee", "recycling_obligation", "accounts_screened",
+            "subsidiary_count", "compliance_scheme"]
     if not flags.empty:
         hit_cols = [c for c in flags.columns if c.startswith("hits_")]
         parents = parents.merge(flags[["group_key", *hit_cols, "filing_history_url"]], on="group_key", how="left")
@@ -132,8 +176,8 @@ def build_master(parents, members, flags, jobs=None):
     # A company can sit in more than one group (or repeat as its own trading name):
     # keep it once, in its best tier.
     master["_key"] = master["companyname"].str.upper().str.replace(r"[^A-Z0-9]", "", regex=True)
-    master = (master.sort_values(["tier", "role"]).drop_duplicates("_key")
-              .drop(columns="_key").sort_values(["tier", "parent_name", "role", "companyname"]))
+    master = (master.sort_values(["segment", "role"]).drop_duplicates("_key")
+              .drop(columns="_key").sort_values(["segment", "parent_name", "role", "companyname"]))
     return master.reset_index(drop=True), parents
 
 
@@ -187,20 +231,24 @@ def main(argv=None):
     members = pd.read_csv(config.LARGE_PRODUCERS_CSV, dtype=str, keep_default_na=False)
     flags = load_optional(config.ACCOUNTS_FLAGS_CSV)
     jobs = load_optional(config.JOB_SIGNALS_CSV)
+    quals = load_optional(config.QUALIFICATION_CSV)
 
-    master, parents = build_master(parents, members, flags, jobs)
+    master, parents = build_master(parents, members, flags, jobs, quals)
     LINKEDIN_DIR.mkdir(parents=True, exist_ok=True)
     master.to_csv(LINKEDIN_DIR / "targeting_master.csv", index=False)
-    for tier in TIERS:
-        to_upload(master[master["tier"] == tier]).to_csv(LINKEDIN_DIR / f"company_list_tier_{tier}.csv", index=False)
-    to_upload(master).to_csv(LINKEDIN_DIR / "company_list_all.csv", index=False)
+    for name in SEGMENTS:
+        to_upload(master[master["segment"] == name]).to_csv(LINKEDIN_DIR / f"prn_{name}.csv", index=False)
+    qualified = master[master["segment"].isin(list(SEGMENTS))]
+    to_upload(qualified).to_csv(LINKEDIN_DIR / "prn_all_qualified.csv", index=False)
+    to_upload(master[master["segment"] == "unverified_turnover"]).to_csv(
+        LINKEDIN_DIR / "unverified_turnover.csv", index=False)
     scheme_exclusions(parents).to_csv(LINKEDIN_DIR / "exclude_compliance_schemes.csv", index=False)
 
-    print(f"{len(master)} companies across {master['group_key'].nunique()} groups:")
-    for tier, reason in TIERS.items():
-        part = master[master["tier"] == tier]
-        note = "  (under LinkedIn's 300-row minimum: merge into B)" if 0 < len(part) < 300 else ""
-        print(f"  Tier {tier} ({reason}): {part['group_key'].nunique()} groups, {len(part)} companies{note}")
+    print(f"{len(master)} companies across {master['group_key'].nunique()} groups, by segment:")
+    for name, part in master.groupby("segment"):
+        note = "  (under LinkedIn's 300-row minimum)" if name in SEGMENTS and len(part) < 300 else ""
+        print(f"  {name:22} {part['group_key'].nunique():5} groups {len(part):6} companies{note}")
+    print(f"  {'qualified (1+2+3)':22} {qualified['group_key'].nunique():5} groups {len(qualified):6} companies")
 
     if args.officers:
         if flags.empty:

@@ -83,6 +83,10 @@ WEAK_KEYWORDS = {"packaging_waste"}
 # It's a pointer for a human to check, not a reliable figure.
 EPR_AMOUNT_WINDOW = 80
 
+# Turnover a producer needs to be a customer prospect (over_5m column).
+MIN_TURNOVER = 5_000_000
+QUALIFICATION_CSV = DATA_DIR / "qualification.csv"  # quick pass: turnover and size only
+
 SNIPPET_CHARS = 120  # characters of context either side of a hit
 MAX_SNIPPETS = 2  # per keyword
 

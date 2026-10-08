@@ -46,6 +46,26 @@ FLAGS = frame([
 
 
 class Step3Tests(unittest.TestCase):
+    def test_segments(self):
+        parents = PARENTS.copy()
+        parents.loc[parents["group_key"] == "ORG:2", "recycling_obligation"] = "yes"
+        quals = frame([
+            {"group_key": "ORG:1", "over_5m": "likely", "turnover": "", "accounts_size": "full", "company_status": "active"},
+            {"group_key": "ORG:2", "over_5m": "yes", "turnover": "9000000", "accounts_size": "small", "company_status": "active"},
+            {"group_key": "ORG:3", "over_5m": "unknown", "turnover": "", "accounts_size": "small", "company_status": "active"},
+        ])
+        master, _ = s3.build_master(parents, MEMBERS, frame([]), frame([]), quals)
+        segments = master.groupby("parent_name")["segment"].first().to_dict()
+        self.assertEqual(segments, {"Acme Holdings Limited": "3_core", "Bravo Ltd": "1_direct_registrants",
+                                    "Charlie PLC": "unverified_turnover"})
+
+    def test_hot_needs_turnover_too(self):
+        quals = frame([{"group_key": "ORG:3", "over_5m": "no", "turnover": "3000000", "accounts_size": "full",
+                        "company_status": "active"}])
+        master, _ = s3.build_master(PARENTS, MEMBERS, FLAGS, frame([]), quals)
+        charlie = master[master["parent_name"] == "Charlie PLC"].iloc[0]
+        self.assertEqual((charlie["tier"], charlie["segment"]), ("A", "under_5m"))
+
     def test_linkedin_name_strips_legal_suffix(self):
         self.assertEqual(s3.linkedin_name("3M United Kingdom Plc"), "3M United Kingdom")
         self.assertEqual(s3.linkedin_name("Argos limited"), "Argos")

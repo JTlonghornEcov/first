@@ -31,9 +31,15 @@ MIN_TEXT_CHARS = 500  # less than this from a PDF means it's a scan
 
 OUTPUT_COLUMNS = [
     "parent_name", "companies_house_number", "match_method", "ch_company_name", "company_status",
-    "accounts_made_up_to", "filing_date", "accounts_type", "document_format", "text_chars",
+    "accounts_made_up_to", "filing_date", "accounts_type", "accounts_size", "turnover", "turnover_source",
+    "over_5m", "document_format", "text_chars",
     "flagged", "epr_amount", *[f"hits_{k}" for k in config.KEYWORDS], "snippets", "filing_history_url",
     "subsidiary_count", "error", "group_key",
+]
+QUALIFY_COLUMNS = [
+    "parent_name", "companies_house_number", "match_method", "ch_company_name", "company_status",
+    "accounts_made_up_to", "filing_date", "accounts_type", "accounts_size", "turnover", "turnover_source",
+    "over_5m", "document_format", "filing_history_url", "subsidiary_count", "error", "group_key",
 ]
 
 
@@ -114,7 +120,9 @@ def find_company_by_name(client, name):
 def latest_accounts_filing(client, number):
     data = client.get_json(f"/company/{number}/filing-history",
                            params={"category": "accounts", "items_per_page": 25}) or {}
-    items = [i for i in data.get("items", []) if i.get("links", {}).get("document_metadata")]
+    # The accounts category also holds change-of-accounting-date forms (AA01), which aren't accounts.
+    items = [i for i in data.get("items", []) if i.get("links", {}).get("document_metadata")
+             and i.get("description", "").startswith("accounts")]
     items.sort(key=lambda i: i.get("date", ""), reverse=True)
     return items[0] if items else None
 
@@ -123,12 +131,12 @@ def document_id(metadata_url):
     return metadata_url.rstrip("/").split("/")[-1]
 
 
-def fetch_accounts_document(client, filing, number):
+def fetch_accounts_document(client, filing, number, formats=PREFERRED_FORMATS):
     """Download the filing's document (iXBRL preferred, else PDF), using the cache when possible.
     Returns (path, format)."""
     doc_id = document_id(filing["links"]["document_metadata"])
     config.CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    for _, ext in PREFERRED_FORMATS:
+    for _, ext in formats:
         cached = config.CACHE_DIR / f"{number}_{doc_id}.{ext}"
         if cached.exists() and cached.stat().st_size > 0:
             return cached, ext
@@ -136,7 +144,7 @@ def fetch_accounts_document(client, filing, number):
     doc_url = f"{config.CH_API_BASE.replace('://api.', '://document-api.')}/document/{doc_id}"
     metadata = client.get_json(doc_url) or {}
     resources = metadata.get("resources", {})
-    for mime, ext in PREFERRED_FORMATS:
+    for mime, ext in formats:
         if mime in resources:
             # Companies House answers with a redirect to a short-lived download link.
             response = client.get(f"{doc_url}/content", accept=mime)
@@ -240,9 +248,128 @@ def find_epr_amount(text):
     return amount if amount.startswith("£") else f"£{amount}"
 
 
+# --- turnover and size ------------------------------------------------------
+
+class _TurnoverFacts(HTMLParser):
+    """Collects iXBRL turnover facts and the period end date of each context."""
+
+    NAME = re.compile(r":(TurnoverRevenue|Revenue)$")
+
+    def __init__(self):
+        super().__init__()
+        self.contexts, self.facts = {}, []
+        self._context = self._fact = None
+        self._in_date = self._dimensional = False
+        self._end, self._buffer = None, ""
+
+    def handle_starttag(self, tag, attrs):
+        attrs, name = dict(attrs), tag.split(":")[-1]
+        if name == "context":
+            self._context, self._end, self._dimensional = attrs.get("id"), None, False
+        elif self._context and name in ("enddate", "instant"):
+            self._in_date, self._buffer = True, ""
+        elif self._context and name in ("segment", "scenario"):
+            self._dimensional = True
+        elif name == "nonfraction" and self.NAME.search(attrs.get("name", "")):
+            self._fact, self._buffer = attrs, ""
+
+    def handle_endtag(self, tag):
+        name = tag.split(":")[-1]
+        if name in ("enddate", "instant") and self._in_date:
+            self._end, self._in_date = self._buffer.strip(), False
+        elif name == "context" and self._context:
+            self.contexts[self._context] = (self._end, self._dimensional)
+            self._context = None
+        elif name == "nonfraction" and self._fact is not None:
+            self.facts.append((self._fact, self._buffer.strip()))
+            self._fact = None
+
+    def handle_data(self, data):
+        if self._in_date or self._fact is not None:
+            self._buffer += data
+
+
+def ixbrl_turnover(path):
+    """Turnover tagged in iXBRL accounts: the latest period, whole entity (no dimensions)."""
+    parser = _TurnoverFacts()
+    parser.feed(path.read_text(encoding="utf-8", errors="replace"))
+    values = []
+    for attrs, text in parser.facts:
+        end, dimensional = parser.contexts.get(attrs.get("contextref"), (None, True))
+        if dimensional or not end:
+            continue
+        try:
+            value = float(text.replace(",", "") or 0) * 10 ** int(attrs.get("scale", "0"))
+        except ValueError:
+            continue
+        values.append((end, value))
+    if not values:
+        return None
+    latest = max(end for end, _ in values)
+    return max(value for end, value in values if end == latest)
+
+
+TURNOVER_LINE = re.compile(r"\b(?:Turnover|Revenue)\b\s*(?:\d{1,2}(?:\s*,\s*\d{1,2})?\s+)?\(?£?\s?(\d{1,3}(?:,\d{3})+|\d{3,})")
+THOUSANDS = re.compile(r"£\s?['’`]?\s?000|£k\b|\b000['’]?s\b|in thousands", re.IGNORECASE)
+MILLIONS = re.compile(r"£\s?['’`]?\s?m\b|£\s?million|in millions", re.IGNORECASE)
+# Large producers have over £2m turnover by definition, so a smaller figure read from text
+# is in thousands or millions with the unit lost (common in OCR'd plc accounts): don't trust it.
+MIN_PLAUSIBLE_TURNOVER = 1_000_000
+
+
+def text_turnover(text):
+    """The first "Turnover <note> 12,345,678" line in the accounts text, e.g. the P&L.
+    Figures shown in £'000 or £m (detected just before the line) are scaled up."""
+    for match in TURNOVER_LINE.finditer(text):
+        value = float(match.group(1).replace(",", ""))
+        before = text[max(0, match.start() - 600):match.start()]
+        if MILLIONS.search(before):
+            value *= 1_000_000
+        elif THOUSANDS.search(before):
+            value *= 1000
+        return value if value >= MIN_PLAUSIBLE_TURNOVER else None
+    return None
+
+
+def accounts_size(description):
+    """What the accounts type says about size. Full, group and medium accounts come from
+    companies above the small-company thresholds (turnover over £10.2m, £15m from April 2025,
+    or big on assets and staff)."""
+    for marker, size in (("group", "group"), ("medium", "medium"), ("micro", "micro"), ("dormant", "dormant"),
+                         ("abridged", "small"), ("total-exemption", "small"), ("small", "small"),
+                         ("audit-exemption-subsid", "subsidiary"), ("full", "full")):
+        if marker in description:
+            return size
+    return "unknown"
+
+
+def over_threshold(turnover, size, threshold=None):
+    """yes / no from the turnover figure; otherwise likely from the accounts type, else unknown."""
+    threshold = config.MIN_TURNOVER if threshold is None else threshold
+    if turnover is not None:
+        return "yes" if turnover >= threshold else "no"
+    if size in ("full", "group", "medium"):
+        return "likely"
+    if size in ("micro", "dormant"):
+        return "no"
+    return "unknown"
+
+
+def add_turnover(result, path, fmt, text):
+    turnover, source = (ixbrl_turnover(path), "ixbrl") if fmt == "xhtml" else (None, "")
+    if turnover is None and text:
+        turnover, source = text_turnover(text), "text"
+    result["turnover"] = int(turnover) if turnover is not None else ""
+    result["turnover_source"] = source if turnover is not None else ""
+    result["accounts_size"] = accounts_size(result.get("accounts_type", ""))
+    result["over_5m"] = over_threshold(turnover, result["accounts_size"])
+
+
 # --- per-company pipeline ---------------------------------------------------
 
-def process_parent(client, parent):
+def process_parent(client, parent, scan=True):
+    """scan=False is the quick qualification pass: turnover and accounts size only, from the
+    XHTML accounts when there are any. PDFs aren't downloaded or OCR'd."""
     number = str(parent.get("companies_house_number") or "").strip()
     result = {
         "parent_name": parent.get("parent_name", ""),
@@ -279,6 +406,13 @@ def process_parent(client, parent):
         if made_up:
             result["accounts_made_up_to"] = made_up
 
+        if not scan:
+            path, fmt = fetch_accounts_document(client, filing, number, formats=PREFERRED_FORMATS[:1])
+            text = extract_text(path, fmt)[0] if path is not None else ""
+            result["document_format"] = fmt or "pdf (not read)"
+            add_turnover(result, path, fmt, text)
+            return result
+
         path, fmt = fetch_accounts_document(client, filing, number)
         if path is None:
             result["error"] = "accounts document not available as XHTML or PDF"
@@ -299,6 +433,7 @@ def process_parent(client, parent):
         result["flagged"] = "yes" if any(n for k, n in hits.items() if k not in config.WEAK_KEYWORDS) else "no"
         result["snippets"] = "\n".join(snippets)
         result["epr_amount"] = find_epr_amount(text)
+        add_turnover(result, path, fmt, text)
     except Exception as exc:  # keep going; one bad company shouldn't stop the run
         result["error"] = f"{type(exc).__name__}: {exc}"
     return result
@@ -328,13 +463,17 @@ def stratified_sample(parents, n, seed):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--input", type=Path, default=config.PARENTS_CSV)
-    parser.add_argument("--output", type=Path, default=config.ACCOUNTS_FLAGS_CSV)
+    parser.add_argument("--output", type=Path, help="Default: data/accounts_flags.csv, or data/qualification.csv with --qualify")
     parser.add_argument("--limit", type=int, help="Process at most this many parents")
     parser.add_argument("--only", nargs="+", help="Only these Companies House numbers")
     parser.add_argument("--refresh", action="store_true", help="Reprocess parents already in the output")
     parser.add_argument("--sample", type=int, help="Process a fixed test sample of this many parents, spread across group sizes")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for --sample")
+    parser.add_argument("--qualify", action="store_true",
+                        help="Quick pass: turnover and accounts size only (XHTML accounts, no PDFs, no OCR)")
     args = parser.parse_args(argv)
+    args.output = args.output or (config.QUALIFICATION_CSV if args.qualify else config.ACCOUNTS_FLAGS_CSV)
+    columns = QUALIFY_COLUMNS if args.qualify else OUTPUT_COLUMNS
 
     if not args.input.exists():
         sys.exit(f"{args.input} not found. Run step1_register.py first.")
@@ -345,12 +484,14 @@ def main(argv=None):
     if args.sample:
         parents = stratified_sample(parents, args.sample, args.seed)
 
+    # Rows already in the output are kept; --refresh only means the selected parents are redone.
     done = {}
-    if args.output.exists() and not args.refresh:
+    if args.output.exists():
         for row in pd.read_csv(args.output, dtype=str, keep_default_na=False).to_dict("records"):
             done[row["group_key"]] = row
 
-    todo = [p for p in parents if p.get("group_key") not in done or done[p["group_key"]].get("error")]
+    todo = [p for p in parents
+            if args.refresh or p.get("group_key") not in done or done[p["group_key"]].get("error")]
     already_done = len(parents) - len(todo)
     if args.limit:
         todo = todo[:args.limit]
@@ -359,14 +500,18 @@ def main(argv=None):
     client = CompaniesHouseClient(load_api_key())
     args.output.parent.mkdir(parents=True, exist_ok=True)
     for i, parent in enumerate(todo, 1):
-        result = process_parent(client, parent)
+        result = process_parent(client, parent, scan=not args.qualify)
         done[result["group_key"]] = result
-        status = result["error"] or f"flagged={result.get('flagged')}"
+        status = result["error"] or (f"over_5m={result.get('over_5m')}" if args.qualify
+                                     else f"flagged={result.get('flagged')}")
         print(f"[{i}/{len(todo)}] {result['parent_name']} ({result['companies_house_number'] or '-'}): {status}")
-        pd.DataFrame(list(done.values())).reindex(columns=OUTPUT_COLUMNS).to_csv(args.output, index=False)
+        pd.DataFrame(list(done.values())).reindex(columns=columns).to_csv(args.output, index=False)
 
-    results = pd.DataFrame(list(done.values())).reindex(columns=OUTPUT_COLUMNS).fillna("")
-    if not results.empty:
+    results = pd.DataFrame(list(done.values())).reindex(columns=columns).fillna("")
+    if args.qualify and not results.empty:
+        print(results["over_5m"].value_counts().to_string())
+        print(f"Results in {args.output}")
+    elif not results.empty:
         flagged = int((results["flagged"] == "yes").sum())
         errors = int((results["error"] != "").sum())
         print(f"Done. {flagged} flagged, {errors} need manual checking. Results in {args.output}")

@@ -25,7 +25,8 @@ For who to target inside these companies and how to set up the campaign, see
 | Step 1 | **Run on the real 2026 register (8 Oct 2026):** 12,065 rows; 13 cancelled dropped; 11,225 large rows grouped into **7,167 parent companies**, 79 of them without a Companies House number |
 | Step 2 code + tests | Built and tested against a simulated Companies House |
 | Step 2 real run | **Test sample of 150 + first 15 (8 Oct 2026):** 162 screened, 2 foreign branches with no UK accounts. 91 of the 162 filings were scanned PDFs, read with OCR. **7 flagged**: 6 real EPR mentions (Crosta & Mollica, Halma, LOTAN, Paperwork, Rajapack, Specsavers) and Veolia (a waste company, excluded as a competitor). All 7 pay the disposal fee; none of the 39 non-payers was flagged |
-| Step 3 | Built. 12 tier A groups (accounts + job adverts), 4,767 tier B, 2,386 tier C |
+| Turnover check (`--qualify`) | Running on all 7,167 parents (started 8 Oct 2026, about 4.5 hours) |
+| Step 3 | Built: qualified segments for the PRN audit campaign |
 
 ## Setup
 
@@ -156,6 +157,26 @@ Requests are spaced 0.6s apart to stay under Companies House's limit of 600 requ
 Results are saved after every company. Rerunning skips companies already done and retries
 those that errored.
 
+### Quick qualification pass
+
+```bash
+python step2_companies_house.py --qualify     # all parents, about 2 seconds each (~4.5 hours)
+```
+
+Checks every parent for **turnover over £5m** without the keyword scan: Companies House
+profile (active?), latest accounts type, and the XHTML accounts if there are any. PDFs aren't
+downloaded. Writes `data/qualification.csv`:
+
+- `turnover` is the tagged iXBRL figure, or the first "Turnover … 12,345,678" line in the text
+  (scaled for £'000 / £m). Figures under £1m read from text are discarded, because a large
+  producer can't have turnover that small, so the unit must have been lost.
+- `accounts_size`: group / full / medium / small / micro / subsidiary, from the accounts type.
+- `over_5m`: `yes` / `no` from the turnover; otherwise `likely` for full, group or medium
+  accounts (only companies above the small thresholds file these), `unknown` for small
+  accounts without turnover.
+
+The full screen (without `--qualify`) records the same columns.
+
 ## Step 3: LinkedIn targeting files
 
 ```bash
@@ -163,8 +184,10 @@ python step3_linkedin.py              # company lists by tier
 python step3_linkedin.py --officers   # plus current directors of the companies step 2 screened
 ```
 
-Tiers each group: **A** if its accounts mention EPR or packaging costs (step 2), **B** if any
-company in the group pays the EPR disposal fee (register), otherwise **C**. Every company in
+Qualifies each group (over £5m turnover, active, not a compliance scheme or consultancy), then
+splits the qualified groups into segments for the free PRN audit campaign:
+`prn_1_direct_registrants` (registered without a scheme, so they buy their own PRNs),
+`prn_2_hot` (accounts or job adverts show active EPR work) and `prn_3_core`. Every company in
 a group (parent, subsidiaries up to 25, trading names) becomes a row in LinkedIn's
 company-list upload format. Details in [LINKEDIN_TARGETING.md](LINKEDIN_TARGETING.md).
 
