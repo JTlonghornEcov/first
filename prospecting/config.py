@@ -26,7 +26,7 @@ COLUMN_CANDIDATES = {
     "companies_house_number": ["companies house number", "company number",
                                "companies house registration number", "registration number",
                                "company registration number"],
-    "size": ["organisation size", "producer size", "size", "producer type", "organisation type"],
+    "size": ["large/small", "organisation size", "producer size", "size", "producer type", "organisation type"],
     "organisation_id": ["organisation id", "organisationid", "org id", "producer id",
                         "rpd organisation id", "organisation reference"],
     "subsidiary_id": ["subsidiary id", "subsidiaryid"],
@@ -36,12 +36,20 @@ COLUMN_CANDIDATES = {
                                       "parent companies house number", "parent company number",
                                       "holding company number"],
     "nation": ["nation", "nation of enrolment", "home nation", "regulator nation"],
-    "compliance_scheme": ["compliance scheme", "compliance scheme name"],
+    "compliance_scheme": ["name of compliance scheme", "compliance scheme", "compliance scheme name"],
+    "registration_number": ["producer registration number"],
+    "town": ["town", "city"],
+    "postcode": ["postcode", "post code"],
+    "cancellation_date": ["cancellation date"],
     "address": ["registered address", "address", "registered office address"],
 }
 
-# A row is "large" if its size value contains this (case-insensitive).
-LARGE_SIZE_MARKERS = ["large"]
+# A row is "large" if its size value is one of these, or contains "large" (case-insensitive).
+# The Defra register uses "L" / "S".
+LARGE_SIZE_VALUES = ["l", "large"]
+
+# Rows with a cancellation date have left the register, so they're dropped.
+EXCLUDE_CANCELLED = True
 
 # --- Step 2: Companies House ------------------------------------------------
 

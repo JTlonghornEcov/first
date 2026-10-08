@@ -83,5 +83,27 @@ class ParentColumnGrouping(unittest.TestCase):
         self.assertNotIn("Delta Ltd", self.parents.index)
 
 
+class DefraFormat(unittest.TestCase):
+    """Matches the real 2026 register: title lines above the header, L/S sizes, cancellations."""
+
+    def setUp(self):
+        self.cols, self.strategy, self.parents, self.members = run("register_defra_format.csv")
+
+    def test_skips_title_lines_and_detects_columns(self):
+        self.assertEqual(self.cols["name"], "Organisation name")
+        self.assertEqual(self.cols["size"], "Large/Small")
+        self.assertEqual(self.cols["compliance_scheme"], "Name of compliance scheme")
+
+    def test_groups_and_filters(self):
+        self.assertEqual(list(self.parents.index), ["Zeta Holdings Limited"])
+        zeta = self.parents.loc["Zeta Holdings Limited"]
+        self.assertEqual(zeta["subsidiary_names"], "Zeta Retail Ltd")
+        self.assertEqual(zeta["subsidiary_companies_house_numbers"], "01924997")
+        self.assertEqual(zeta["postcode"], "LS1 1AA")
+
+    def test_cancelled_registrations_dropped(self):
+        self.assertNotIn("Gone Away Ltd", set(self.members["name"]))
+
+
 if __name__ == "__main__":
     unittest.main()

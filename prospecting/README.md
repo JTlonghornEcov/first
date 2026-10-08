@@ -17,10 +17,9 @@ Defra public register CSV
 
 | Piece | State |
 | --- | --- |
-| Step 1 code + tests | Built and tested on sample data shaped like the register |
+| Step 1 | **Run on the real 2026 register (8 Oct 2026):** 12,065 rows; 13 cancelled dropped; 11,225 large rows grouped into **7,167 parent companies**, 79 of them without a Companies House number |
 | Step 2 code + tests | Built and tested against a simulated Companies House |
-| Run on the real register | **Not yet.** The cloud session that built this couldn't reach the Defra site, so the real CSV's column names are unconfirmed (see "First real run") |
-| Run against Companies House | **Not yet.** Needs an API key and network access |
+| Step 2 real run | **Not yet.** Waiting on the `COMPANIES_HOUSE_API_KEY` environment variable |
 
 ## Setup
 
@@ -39,6 +38,25 @@ Network access needed: `report-packaging-data.defra.gov.uk`,
 Documents are downloaded through a redirect to an Amazon S3 address
 (`*.s3.eu-west-2.amazonaws.com`). In a Claude Code cloud session, add these to the
 environment's allowed domains.
+
+## The real register file (2026)
+
+Saved from the "2026 register of producers" link on the public-register page. Notes:
+
+- The first 3 lines are a title, "All agencies" and a "Report created at…" timestamp. The
+  script finds the real header row automatically.
+- Columns: `Organisation name, Companies House number, Producer Registration Number,
+  Organisation ID, Subsidiary ID, Name of compliance scheme, Large/Small, Address line 1,
+  Address line 2, Town, County, Country, Postcode, Subject to recycling and certification
+  obligations, Required to pay disposal fee, Cancellation date`.
+- `Large/Small` is `L` or `S`. Small producers are on the register too (829 rows in 2026).
+- Groups: each subsidiary shares its parent's `Organisation ID` and has its own
+  `Subsidiary ID`. The parent's row has a blank `Subsidiary ID`.
+- A row with a `Cancellation date` has left the register and is dropped.
+- There are no parent-name columns or nation column, so the "explicit parent columns" rule
+  below isn't used for this file.
+- Specsavers is the biggest group by far (1,274 subsidiaries: its separately registered
+  stores), so subsidiary count isn't a straight measure of company size.
 
 ## Step 1: register → large parent companies
 
@@ -156,4 +174,5 @@ tests use a fake Companies House, so they run offline without a key.
 | `step1_register.py` | Download, filter and group the Defra register |
 | `step2_companies_house.py` | Companies House lookup and accounts keyword scan |
 | `tests/` | Offline tests and sample registers |
-| `data/` | Outputs. `data/raw/` and `data/cache/` are git-ignored |
+| `data/parents.csv`, `data/large_producers.csv` | Step 1 output (committed) |
+| `data/raw/`, `data/cache/` | Downloaded register and accounts. Git-ignored |

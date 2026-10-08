@@ -9,6 +9,7 @@ tagged with its parent). See README.md for the grouping rules.
 """
 
 import argparse
+import csv
 import re
 import sys
 from datetime import date
@@ -133,18 +134,32 @@ def download_register(url=None):
 
 # --- processing -------------------------------------------------------------
 
+def find_header_row(lines):
+    """The Defra file starts with a few title lines; the header is the first line that
+    contains a recognised organisation-name column."""
+    names = {normalise_header(c) for c in config.COLUMN_CANDIDATES["name"]}
+    for index, line in enumerate(lines[:50]):
+        fields = next(csv.reader([line]), [])
+        if len(fields) > 2 and any(normalise_header(f) in names for f in fields):
+            return index
+    return 0
+
+
 def read_register(path):
     for encoding in ("utf-8-sig", "cp1252"):
         try:
-            return pd.read_csv(path, dtype=str, keep_default_na=False, encoding=encoding)
+            lines = Path(path).read_text(encoding=encoding).splitlines()
         except UnicodeDecodeError:
             continue
+        header_row = find_header_row(lines)
+        return pd.read_csv(path, dtype=str, keep_default_na=False, encoding=encoding,
+                           skiprows=header_row)
     sys.exit(f"Could not decode {path} as UTF-8 or Windows-1252")
 
 
 def is_large(size_value):
     value = clean(size_value).lower()
-    return any(marker in value for marker in config.LARGE_SIZE_MARKERS)
+    return value in config.LARGE_SIZE_VALUES or "large" in value
 
 
 def build_groups(df, cols):
@@ -173,7 +188,13 @@ def build_groups(df, cols):
             "nation": get(row, "nation"),
             "compliance_scheme": get(row, "compliance_scheme"),
             "address": get(row, "address"),
+            "town": get(row, "town"),
+            "postcode": get(row, "postcode"),
+            "registration_number": get(row, "registration_number"),
+            "cancellation_date": get(row, "cancellation_date"),
         }
+        if config.EXCLUDE_CANCELLED and record["cancellation_date"]:
+            continue
         own_key = record["companies_house_number"] or "NAME:" + record["name"].upper()
 
         if strategy == "explicit parent columns":
@@ -236,6 +257,8 @@ def summarise(rows):
             "companies_house_number": parent_ch,
             "parent_inferred": "yes" if inferred else "",
             "nation": parent.get("nation", ""),
+            "town": parent.get("town", ""),
+            "postcode": parent.get("postcode", ""),
             "compliance_scheme": parent.get("compliance_scheme", ""),
             "organisation_id": parent.get("organisation_id", ""),
             "register_rows": len(members),
@@ -251,7 +274,8 @@ def summarise(rows):
                 "is_parent": "yes" if m is parent else "",
                 **{k: m[k] for k in ("name", "trading_name", "companies_house_number", "size",
                                      "organisation_id", "subsidiary_id", "nation",
-                                     "compliance_scheme", "address")},
+                                     "compliance_scheme", "address", "town", "postcode",
+                                     "registration_number")},
             })
 
     parents_df = pd.DataFrame(parents)
@@ -293,6 +317,8 @@ def main(argv=None):
 
     rows, strategy = build_groups(df, cols)
     print(f"Grouping strategy: {strategy}")
+    if len(rows) < len(df):
+        print(f"Dropped {len(df) - len(rows)} cancelled registrations.")
     parents_df, members_df = summarise(rows)
 
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)
