@@ -19,7 +19,7 @@ Defra public register CSV
 | --- | --- |
 | Step 1 | **Run on the real 2026 register (8 Oct 2026):** 12,065 rows; 13 cancelled dropped; 11,225 large rows grouped into **7,167 parent companies**, 79 of them without a Companies House number |
 | Step 2 code + tests | Built and tested against a simulated Companies House |
-| Step 2 real run | **Not yet.** Waiting on the `COMPANIES_HOUSE_API_KEY` environment variable |
+| Step 2 real run | **First 10 parents (8 Oct 2026):** all 10 matched and their latest accounts downloaded. 5 iXBRL filings scanned, none flagged. 5 are image-only scanned PDFs (no text layer), marked for manual checking |
 
 ## Setup
 
