@@ -1,0 +1,6 @@
+Company Name,Company Number,Producer Size,Parent Company Name,Parent Company Number
+Gamma Group plc,111,Large,,
+Gamma Packaging Ltd,222,Large,Gamma Group plc,111
+Gamma Logistics Ltd,333,Large,Gamma Group plc,111
+Delta Ltd,444,Small,,
+Epsilon Sub Ltd,555,Large,Epsilon Holdings Ltd,

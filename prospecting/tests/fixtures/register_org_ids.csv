@@ -1,0 +1,7 @@
+Organisation ID,Subsidiary ID,Organisation name,Trading name,Companies House number,Organisation size,Nation,Compliance scheme
+100001,,Acme Foods Holdings Limited,Acme,1234567,Large,England,Valpak
+100001,S1,Acme Bakeries Ltd,,2345678,Large,England,Valpak
+100001,S2,Acme Drinks Ltd,,SC12345,,Scotland,Valpak
+100002,,Tiny Crafts Ltd,,3456789,Small,Wales,
+100003,,Big Retail PLC,,04567890,LARGE,England,
+100004,S1,Orphan Sub Ltd,,5678901,Large,England,
