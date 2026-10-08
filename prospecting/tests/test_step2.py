@@ -68,6 +68,14 @@ class ScanTests(unittest.TestCase):
         hits, _ = s2.scan_text("The REPRESENTATIVE signed. Packaging costing model.")
         self.assertEqual(sum(hits.values()), 0)
 
+    def test_stratified_sample_covers_every_size_band(self):
+        parents = [{"parent_name": f"P{i}", "subsidiary_count": str(count), "group_key": f"G{i}"}
+                   for i, count in enumerate([0] * 900 + [2] * 90 + [8] * 9 + [40])]
+        sample = s2.stratified_sample(parents, 40, seed=1)
+        bands = {s2.size_band(p["subsidiary_count"]) for p in sample}
+        self.assertEqual(bands, {"0", "1-4", "5-19", "20+"})
+        self.assertEqual(sample, s2.stratified_sample(parents, 40, seed=1))
+
     def test_name_normalisation(self):
         self.assertEqual(s2.normalise_company_name("The Acme & Co. Limited"),
                          s2.normalise_company_name("ACME AND CO LTD"))
@@ -120,6 +128,29 @@ class PipelineTests(unittest.TestCase):
         result = s2.process_parent(self.client, {"parent_name": "Ghost", "companies_house_number": "07777777",
                                                  "group_key": "G"})
         self.assertEqual(result["error"], "company not found at Companies House")
+
+
+@unittest.skipUnless(s2.ocr_available(), "needs pdftoppm and tesseract")
+class OcrTests(unittest.TestCase):
+    def test_scanned_pdf_is_read_with_ocr(self):
+        from PIL import Image, ImageDraw, ImageFont
+
+        lines = ["Strategic report", "Extended Producer Responsibility (EPR) fees",
+                 "increased our packaging costs this year."] * 6
+        page = Image.new("L", (2480, 3508), 255)
+        draw = ImageDraw.Draw(page)
+        font = ImageFont.load_default(size=60)
+        for i, line in enumerate(lines):
+            draw.text((200, 200 + i * 120), line, fill=0, font=font)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "scan.pdf"
+            page.save(path, resolution=300)
+            text, method = s2.extract_text(path, "pdf")
+            self.assertEqual(method, "ocr")
+            hits, _ = s2.scan_text(text)
+            self.assertGreater(hits["extended_producer_responsibility"], 0)
+            self.assertGreater(hits["epr"], 0)
+            self.assertTrue(path.with_suffix(".ocr.txt").exists())
 
 
 if __name__ == "__main__":

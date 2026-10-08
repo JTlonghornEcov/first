@@ -13,8 +13,12 @@ interrupted run picks up where it left off. Downloaded accounts are cached in da
 import argparse
 import os
 import re
+import shutil
+import subprocess
 import sys
+import tempfile
 import time
+from concurrent.futures import ThreadPoolExecutor
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -23,6 +27,7 @@ import pandas as pd
 import config
 
 PREFERRED_FORMATS = [("application/xhtml+xml", "xhtml"), ("application/pdf", "pdf")]
+MIN_TEXT_CHARS = 500  # less than this from a PDF means it's a scan
 
 OUTPUT_COLUMNS = [
     "parent_name", "companies_house_number", "match_method", "ch_company_name", "company_status",
@@ -163,7 +168,37 @@ class _TextCollector(HTMLParser):
             self.parts.append(data)
 
 
+def ocr_available():
+    return config.OCR_ENABLED and all(shutil.which(tool) for tool in ("pdftoppm", "tesseract"))
+
+
+def _ocr_page(path, page, workdir):
+    image = Path(workdir) / f"p{page}"
+    subprocess.run(["pdftoppm", "-r", str(config.OCR_DPI), "-gray", "-tiff", "-singlefile",
+                    "-f", str(page), "-l", str(page), str(path), str(image)],
+                   check=True, capture_output=True)
+    # One thread per tesseract: with several pages in parallel, its default threading
+    # oversubscribes the CPU and a 3-second page takes minutes.
+    done = subprocess.run(["tesseract", f"{image}.tif", "-", "--dpi", str(config.OCR_DPI), "-l", "eng"],
+                          check=True, capture_output=True, env={**os.environ, "OMP_THREAD_LIMIT": "1"})
+    return done.stdout.decode("utf-8", errors="replace")
+
+
+def ocr_pdf(path, page_count):
+    """OCR a scanned PDF, caching the text beside it so reruns don't repeat the work."""
+    cached = path.with_suffix(".ocr.txt")
+    if cached.exists():
+        return cached.read_text(encoding="utf-8")
+    pages = range(1, min(page_count, config.OCR_MAX_PAGES) + 1)
+    with tempfile.TemporaryDirectory() as workdir, ThreadPoolExecutor(config.OCR_WORKERS) as pool:
+        text = " ".join(pool.map(lambda page: _ocr_page(path, page, workdir), pages))
+    cached.write_text(text, encoding="utf-8")
+    return text
+
+
 def extract_text(path, fmt):
+    """Returns (text, method): method is "ocr" when the PDF had no text layer and was OCR'd."""
+    method = "text"
     if fmt == "xhtml":
         parser = _TextCollector()
         parser.feed(path.read_text(encoding="utf-8", errors="replace"))
@@ -173,7 +208,9 @@ def extract_text(path, fmt):
 
         reader = PdfReader(str(path))
         text = " ".join(page.extract_text() or "" for page in reader.pages)
-    return " ".join(text.split())
+        if len(text.strip()) < MIN_TEXT_CHARS and ocr_available():
+            text, method = ocr_pdf(path, len(reader.pages)), "ocr"
+    return " ".join(text.split()), method
 
 
 def scan_text(text):
@@ -236,9 +273,11 @@ def process_parent(client, parent):
             return result
         result["document_format"] = fmt
 
-        text = extract_text(path, fmt)
+        text, method = extract_text(path, fmt)
+        if method == "ocr":
+            result["document_format"] = "pdf (ocr)"
         result["text_chars"] = len(text)
-        if len(text) < 500:
+        if len(text) < MIN_TEXT_CHARS:
             result["error"] = "little or no text extracted (probably a scanned PDF): check manually"
             return result
 
@@ -252,6 +291,27 @@ def process_parent(client, parent):
     return result
 
 
+SIZE_BANDS = [(0, 0, "0"), (1, 4, "1-4"), (5, 19, "5-19"), (20, 10**9, "20+")]
+
+
+def size_band(subsidiary_count):
+    count = int(subsidiary_count or 0)
+    return next(label for low, high, label in SIZE_BANDS if low <= count <= high)
+
+
+def stratified_sample(parents, n, seed):
+    """A test sample spread across group sizes. Each subsidiary-count band gets places in
+    proportion to the square root of its size, so the few big groups aren't all left out
+    (a plain random sample of 150 would likely have no 20+ groups). Same seed, same sample."""
+    frame = pd.DataFrame(parents)
+    frame["size_band"] = frame["subsidiary_count"].map(size_band)
+    bands = frame.groupby("size_band", sort=False)
+    weights = bands.size() ** 0.5
+    quota = (weights / weights.sum() * n).round().astype(int).clip(upper=bands.size())
+    picked = [group.sample(quota[band], random_state=seed) for band, group in bands]
+    return pd.concat(picked).sort_values("parent_name").to_dict("records")
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--input", type=Path, default=config.PARENTS_CSV)
@@ -259,6 +319,8 @@ def main(argv=None):
     parser.add_argument("--limit", type=int, help="Process at most this many parents")
     parser.add_argument("--only", nargs="+", help="Only these Companies House numbers")
     parser.add_argument("--refresh", action="store_true", help="Reprocess parents already in the output")
+    parser.add_argument("--sample", type=int, help="Process a fixed test sample of this many parents, spread across group sizes")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed for --sample")
     args = parser.parse_args(argv)
 
     if not args.input.exists():
@@ -267,6 +329,8 @@ def main(argv=None):
     if args.only:
         wanted = set(args.only)
         parents = [p for p in parents if p.get("companies_house_number") in wanted]
+    if args.sample:
+        parents = stratified_sample(parents, args.sample, args.seed)
 
     done = {}
     if args.output.exists() and not args.refresh:
@@ -274,9 +338,10 @@ def main(argv=None):
             done[row["group_key"]] = row
 
     todo = [p for p in parents if p.get("group_key") not in done or done[p["group_key"]].get("error")]
+    already_done = len(parents) - len(todo)
     if args.limit:
         todo = todo[:args.limit]
-    print(f"{len(parents)} parents, {len(todo)} to process ({len(parents) - len(todo)} already done)")
+    print(f"{len(parents)} parents, {already_done} already done, processing {len(todo)}")
 
     client = CompaniesHouseClient(load_api_key())
     args.output.parent.mkdir(parents=True, exist_ok=True)

@@ -41,6 +41,8 @@ COLUMN_CANDIDATES = {
     "town": ["town", "city"],
     "postcode": ["postcode", "post code"],
     "cancellation_date": ["cancellation date"],
+    "recycling_obligation": ["subject to recycling and certification obligations"],
+    "disposal_fee": ["required to pay disposal fee"],
     "address": ["registered address", "address", "registered office address"],
 }
 
@@ -70,3 +72,11 @@ KEYWORDS = {
 
 SNIPPET_CHARS = 120  # characters of context either side of a hit
 MAX_SNIPPETS = 3
+
+# Scanned (image-only) PDFs are read with OCR: poppler's pdftoppm renders each page and
+# tesseract reads it. Needs both installed (apt install poppler-utils tesseract-ocr).
+# Without them, scanned PDFs are marked for manual checking as before.
+OCR_ENABLED = True
+OCR_DPI = 300
+OCR_MAX_PAGES = 80   # long group accounts: the strategic and directors' reports come first
+OCR_WORKERS = 4      # pages read in parallel; each tesseract is held to one thread

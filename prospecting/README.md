@@ -11,7 +11,12 @@ Defra public register CSV
                                 │
    Companies House API ◄────────┘
    └─ step2_companies_house.py ──► data/accounts_flags.csv   latest accounts + keyword flags
+                                │
+   └─ step3_linkedin.py ──► data/linkedin/                   LinkedIn company lists by tier
 ```
+
+For who to target inside these companies and how to set up the campaign, see
+[LINKEDIN_TARGETING.md](LINKEDIN_TARGETING.md).
 
 ## Status
 
@@ -26,6 +31,7 @@ Defra public register CSV
 ```bash
 cd prospecting
 pip install -r requirements.txt
+sudo apt install poppler-utils tesseract-ocr   # OCR for scanned PDF accounts (optional)
 cp .env.example .env        # then paste your Companies House API key into .env
 ```
 
@@ -89,8 +95,9 @@ What it does:
    `SC1234` → `SC001234`).
 
 Output columns in `parents.csv`: `parent_name, companies_house_number, parent_inferred,
-nation, compliance_scheme, organisation_id, register_rows, subsidiary_count,
-subsidiary_names, subsidiary_companies_house_numbers, group_key`.
+nation, town, postcode, compliance_scheme, organisation_id, register_rows, subsidiary_count,
+subsidiary_names, subsidiary_companies_house_numbers, pays_disposal_fee, recycling_obligation,
+group_key`.
 
 `parent_inferred = yes` means the register had no row for the parent itself. Either every
 row in the group was a subsidiary, or the parent was only named in a parent column. Check
@@ -100,6 +107,7 @@ these by hand.
 
 ```bash
 python step2_companies_house.py --limit 10      # test on the first 10
+python step2_companies_house.py --sample 150    # fixed test sample spread across group sizes
 python step2_companies_house.py                 # everything (resumes if interrupted)
 python step2_companies_house.py --only 01234567 09876543
 python step2_companies_house.py --refresh       # redo companies already processed
@@ -121,18 +129,45 @@ For each parent:
    - `epr`: "EPR" as a whole word, capitals only, so "representative" doesn't count
    - `extended_producer_responsibility`
    - `packaging_costs`: "packaging cost" or "packaging costs"
-6. **Screen out scanned PDFs.** A PDF with almost no extractable text (a scanned image) is
-   marked as an error, *not* as "no mention", so nothing gets wrongly ruled out.
+6. **OCR scanned PDFs.** About half of filings are scanned images with no text. These are
+   read with OCR (`pdftoppm` + `tesseract`, 4 pages in parallel, up to 80 pages), shown as
+   `document_format = pdf (ocr)`. The OCR text is cached beside the PDF. Without those tools
+   installed, or if OCR still finds almost no text, the company is marked as an error, *not*
+   as "no mention", so nothing gets wrongly ruled out.
+
+`--sample N` picks a fixed (seeded) random sample. Each band of group size (0, 1–4, 5–19,
+20+ subsidiaries) gets places in proportion to the square root of its size, so the few big
+groups are represented. Results go into the same `accounts_flags.csv`, so a later full run
+skips them.
 
 Output columns in `accounts_flags.csv`: `flagged` (yes/no), `hits_<keyword>` counts,
 `snippets`, `accounts_made_up_to`, `filing_date`, `accounts_type`, `document_format`,
 `filing_history_url` (opens the company's filings in a browser) and `error`. A non-empty
 `error` means the company needs checking by hand.
 
+Timing: about 15 seconds a company on average (OCR'd filings take longer), so the full list
+of ~7,200 parents takes about 30 hours and roughly 6 GB of cached documents.
+
 Requests are spaced 0.6s apart to stay under Companies House's limit of 600 requests per
 5 minutes. Each company takes about 4 requests, so roughly 400 companies take 15 minutes.
 Results are saved after every company. Rerunning skips companies already done and retries
 those that errored.
+
+## Step 3: LinkedIn targeting files
+
+```bash
+python step3_linkedin.py              # company lists by tier
+python step3_linkedin.py --officers   # plus current directors of the companies step 2 screened
+```
+
+Tiers each group: **A** if its accounts mention EPR or packaging costs (step 2), **B** if any
+company in the group pays the EPR disposal fee (register), otherwise **C**. Every company in
+a group (parent, subsidiaries up to 25, trading names) becomes a row in LinkedIn's
+company-list upload format. Details in [LINKEDIN_TARGETING.md](LINKEDIN_TARGETING.md).
+
+Step 1 now keeps the register's `Required to pay disposal fee` and `Subject to recycling and
+certification obligations` columns as `pays_disposal_fee` / `recycling_obligation` in
+`parents.csv` (yes if any company in the group says yes).
 
 ## First real run: checklist
 
@@ -173,6 +208,8 @@ tests use a fake Companies House, so they run offline without a key.
 | `config.py` | Paths, column names, size markers, keywords, rate limit |
 | `step1_register.py` | Download, filter and group the Defra register |
 | `step2_companies_house.py` | Companies House lookup and accounts keyword scan |
+| `step3_linkedin.py` | LinkedIn company lists, tiers, compliance-scheme exclusions, directors |
+| `LINKEDIN_TARGETING.md` | Who to target and how to set up the campaign |
 | `tests/` | Offline tests and sample registers |
 | `data/parents.csv`, `data/large_producers.csv` | Step 1 output (committed) |
 | `data/raw/`, `data/cache/` | Downloaded register and accounts. Git-ignored |

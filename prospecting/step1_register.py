@@ -157,6 +157,11 @@ def read_register(path):
     sys.exit(f"Could not decode {path} as UTF-8 or Windows-1252")
 
 
+def yes_no(value):
+    """The register's yes/no columns are typed by hand ("YES", "Y", "No ", "Np"): keep "yes" or ""."""
+    return "yes" if clean(value).lower().startswith("y") else ""
+
+
 def is_large(size_value):
     value = clean(size_value).lower()
     return value in config.LARGE_SIZE_VALUES or "large" in value
@@ -192,6 +197,8 @@ def build_groups(df, cols):
             "postcode": get(row, "postcode"),
             "registration_number": get(row, "registration_number"),
             "cancellation_date": get(row, "cancellation_date"),
+            "recycling_obligation": yes_no(get(row, "recycling_obligation")),
+            "disposal_fee": yes_no(get(row, "disposal_fee")),
         }
         if config.EXCLUDE_CANCELLED and record["cancellation_date"]:
             continue
@@ -265,6 +272,9 @@ def summarise(rows):
             "subsidiary_count": len(sub_names),
             "subsidiary_names": "; ".join(sub_names),
             "subsidiary_companies_house_numbers": "; ".join(sub_numbers),
+            # Yes if any company in the group is flagged, since EPR obligations are assessed group-wide.
+            "pays_disposal_fee": "yes" if any(m.get("disposal_fee") for m in members) else "",
+            "recycling_obligation": "yes" if any(m.get("recycling_obligation") for m in members) else "",
             "group_key": key,
         })
         for m in members:
@@ -275,7 +285,7 @@ def summarise(rows):
                 **{k: m[k] for k in ("name", "trading_name", "companies_house_number", "size",
                                      "organisation_id", "subsidiary_id", "nation",
                                      "compliance_scheme", "address", "town", "postcode",
-                                     "registration_number")},
+                                     "registration_number", "disposal_fee", "recycling_obligation")},
             })
 
     parents_df = pd.DataFrame(parents)
