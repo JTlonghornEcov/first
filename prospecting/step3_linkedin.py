@@ -32,8 +32,15 @@ COUNTRY = "GB"
 LEGAL_SUFFIX = re.compile(r"[\s,.]+(limited|ltd\.?|plc|p\.l\.c\.|llp|lp|uk ltd|\(uk\) ltd)$", re.IGNORECASE)
 SCHEME_REGION = re.compile(r"\s*\((EA|SEPA|NRW|NIEA|NI|Wales|Scotland|England)\)\s*$", re.IGNORECASE)
 MAX_SUBSIDIARIES_PER_GROUP = 25  # Specsavers alone registers ~1,270 stores; its page is "Specsavers"
-TIERS = {"A": "accounts mention EPR or packaging costs", "B": "pays the EPR disposal fee",
+TIERS = {"A": "evidence of active EPR work (accounts or job adverts)", "B": "pays the EPR disposal fee",
          "C": "other large producer"}
+# Compliance schemes and EPR consultancies: their staff hold the same job titles as buyers but
+# are competitors. Matched as a substring of the tidied name. Scheme names from the register
+# are added automatically.
+EXCLUDE_COMPANIES = ["Ecoveritas", "Comply Direct", "Kite Environmental Solutions", "Kite Packaging",
+                     "Clarity Environmental", "Comply with Clarity", "Ecosurety", "Valpak", "ERP UK",
+                     "Recycling Lives", "Wastepack", "Biffpack", "Beyondly", "Smart Comply", "Paperpak",
+                     "Packcare", "Scotpak", "REPIC", "Veolia", "Leafield Environmental"]
 
 
 def linkedin_name(name):
@@ -47,38 +54,65 @@ def load_optional(path):
     return pd.read_csv(path, dtype=str, keep_default_na=False) if path.exists() else pd.DataFrame()
 
 
-def assign_tiers(parents, flags):
-    flagged = set(flags.loc[flags.get("flagged", pd.Series(dtype=str)) == "yes", "group_key"]) if not flags.empty else set()
-    screened = set(flags.loc[flags.get("error", pd.Series(dtype=str)) == "", "group_key"]) if not flags.empty else set()
-
-    def tier(row):
-        if row["group_key"] in flagged:
-            return "A"
-        return "B" if row.get("pays_disposal_fee") == "yes" else "C"
-
-    parents = parents.copy()
-    parents["tier"] = parents.apply(tier, axis=1)
-    parents["tier_reason"] = parents["tier"].map(TIERS)
-    parents["accounts_screened"] = parents["group_key"].map(lambda k: "yes" if k in screened else "")
-    return parents
-
-
-def build_master(parents, members, flags):
-    parents = assign_tiers(parents, flags)
-    keep = ["group_key", "parent_name", "tier", "tier_reason", "pays_disposal_fee", "recycling_obligation",
-            "accounts_screened", "subsidiary_count", "compliance_scheme"]
-    if not flags.empty:
-        hit_cols = [c for c in flags.columns if c.startswith("hits_")]
-        parents = parents.merge(flags[["group_key", *hit_cols, "filing_history_url"]], on="group_key", how="left")
-        keep += [*hit_cols, "filing_history_url"]
-    group_info = parents[keep]
-
-    # large_producers.csv has every company in each group, keyed by the parent's name/number.
+def member_group_keys(members, parents):
+    """large_producers.csv rows carry their organisation ID; fall back to the parent's number."""
     members = members.copy()
     members["group_key"] = members["organisation_id"].map(lambda o: f"ORG:{o}" if o else "")
     by_number = dict(zip(parents["companies_house_number"], parents["group_key"]))
     no_org = members["group_key"] == ""
     members.loc[no_org, "group_key"] = members.loc[no_org, "parent_companies_house_number"].map(by_number).fillna("")
+    return members
+
+
+def assign_tiers(parents, members, flags, jobs):
+    """A: evidence of active EPR work (accounts mention it, or an EPR job advert);
+    B: pays the disposal fee; C: the rest."""
+    flagged = set(flags.loc[flags["flagged"] == "yes", "group_key"]) if not flags.empty else set()
+    screened = set(flags.loc[flags["error"] == "", "group_key"]) if not flags.empty else set()
+    group_of = dict(zip(members["companies_house_number"], members["group_key"]))
+    hiring = {}
+    if not jobs.empty:
+        for job in jobs.to_dict("records"):
+            key = group_of.get(job["companies_house_number"])
+            if key:
+                hiring.setdefault(key, []).append(job)
+
+    def reasons(row):
+        found = []
+        if row["group_key"] in flagged:
+            found.append("accounts mention EPR or packaging costs")
+        if any(j["strength"] == "strong" for j in hiring.get(row["group_key"], [])):
+            found.append("hiring for an EPR role")
+        return found
+
+    parents = parents.copy()
+    parents["_reasons"] = parents.apply(reasons, axis=1)
+    parents["tier"] = parents.apply(
+        lambda r: "A" if r["_reasons"] else ("B" if r.get("pays_disposal_fee") == "yes" else "C"), axis=1)
+    parents["tier_reason"] = parents.apply(
+        lambda r: "; ".join(r["_reasons"]) if r["_reasons"] else TIERS[r["tier"]], axis=1)
+    parents["job_signals"] = parents["group_key"].map(
+        lambda k: "; ".join(f"{j['role']} ({j['strength']})" for j in hiring.get(k, [])))
+    parents["accounts_screened"] = parents["group_key"].map(lambda k: "yes" if k in screened else "")
+    return parents.drop(columns="_reasons")
+
+
+def is_excluded(name):
+    key = re.sub(r"[^A-Z0-9]", "", name.upper())
+    return any(re.sub(r"[^A-Z0-9]", "", x.upper()) in key for x in EXCLUDE_COMPANIES)
+
+
+def build_master(parents, members, flags, jobs=None):
+    jobs = pd.DataFrame() if jobs is None else jobs
+    members = member_group_keys(members, parents)
+    parents = assign_tiers(parents, members, flags, jobs)
+    keep = ["group_key", "parent_name", "tier", "tier_reason", "job_signals", "pays_disposal_fee",
+            "recycling_obligation", "accounts_screened", "subsidiary_count", "compliance_scheme"]
+    if not flags.empty:
+        hit_cols = [c for c in flags.columns if c.startswith("hits_")]
+        parents = parents.merge(flags[["group_key", *hit_cols, "filing_history_url"]], on="group_key", how="left")
+        keep += [*hit_cols, "filing_history_url"]
+    group_info = parents[keep]
 
     members["_subsidiary_rank"] = members.groupby("group_key").cumcount()
     members = members[(members["is_parent"] == "yes") | (members["_subsidiary_rank"] <= MAX_SUBSIDIARIES_PER_GROUP)]
@@ -94,6 +128,7 @@ def build_master(parents, members, flags):
             rows.append({**base, "companyname": linkedin_name(m["trading_name"]), "role": f"{role} trading name"})
 
     master = pd.DataFrame(rows).merge(group_info, on="group_key", how="inner")
+    master = master[~(master["companyname"].map(is_excluded) | master["parent_name"].map(is_excluded))]
     # A company can sit in more than one group (or repeat as its own trading name):
     # keep it once, in its best tier.
     master["_key"] = master["companyname"].str.upper().str.replace(r"[^A-Z0-9]", "", regex=True)
@@ -110,6 +145,7 @@ def to_upload(frame):
 
 def scheme_exclusions(parents):
     names = {SCHEME_REGION.sub("", s).strip() for s in parents["compliance_scheme"] if s.strip()}
+    names |= set(EXCLUDE_COMPANIES)
     return pd.DataFrame({"companyname": sorted(names)}).reindex(columns=UPLOAD_COLUMNS).fillna("")
 
 
@@ -150,8 +186,9 @@ def main(argv=None):
         sys.exit("parents.csv has no pays_disposal_fee column: rerun step1_register.py.")
     members = pd.read_csv(config.LARGE_PRODUCERS_CSV, dtype=str, keep_default_na=False)
     flags = load_optional(config.ACCOUNTS_FLAGS_CSV)
+    jobs = load_optional(config.JOB_SIGNALS_CSV)
 
-    master, parents = build_master(parents, members, flags)
+    master, parents = build_master(parents, members, flags, jobs)
     LINKEDIN_DIR.mkdir(parents=True, exist_ok=True)
     master.to_csv(LINKEDIN_DIR / "targeting_master.csv", index=False)
     for tier in TIERS:

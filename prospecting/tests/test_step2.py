@@ -61,8 +61,20 @@ class ScanTests(unittest.TestCase):
     def test_keywords(self):
         hits, snippets = s2.scan_text("Our packaging cost rose. epr is lowercase. EPR and extended producer "
                                       "responsibilities apply. Packaging costs too.")
-        self.assertEqual(hits, {"epr": 1, "extended_producer_responsibility": 1, "packaging_costs": 2})
-        self.assertEqual(len(snippets), 3)
+        self.assertEqual(hits, {"epr": 1, "extended_producer_responsibility": 1, "packaging_costs": 2,
+                                "disposal_fee": 0, "packaging_waste": 0, "prn": 0})
+        self.assertEqual(len(snippets), 4)  # up to 2 per keyword
+
+    def test_new_keywords(self):
+        hits, _ = s2.scan_text("Waste disposal fees under EPR. Packaging waste regulations. PRNs bought. "
+                               "Packaging Recovery Notes. The sprn code.")
+        self.assertEqual((hits["disposal_fee"], hits["packaging_waste"], hits["prn"]), (1, 1, 2))
+
+    def test_epr_amount(self):
+        self.assertEqual(s2.find_epr_amount("Provisions Extended Producer Responsibility provision 465,399 -"),
+                         "£465,399")
+        self.assertEqual(s2.find_epr_amount("EPR costs of £1.2m were incurred in 2025"), "£1.2m")
+        self.assertEqual(s2.find_epr_amount("EPR applies from 2025 onwards"), "")
 
     def test_no_false_positive_inside_words(self):
         hits, _ = s2.scan_text("The REPRESENTATIVE signed. Packaging costing model.")

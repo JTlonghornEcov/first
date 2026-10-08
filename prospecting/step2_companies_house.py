@@ -32,7 +32,7 @@ MIN_TEXT_CHARS = 500  # less than this from a PDF means it's a scan
 OUTPUT_COLUMNS = [
     "parent_name", "companies_house_number", "match_method", "ch_company_name", "company_status",
     "accounts_made_up_to", "filing_date", "accounts_type", "document_format", "text_chars",
-    "flagged", *[f"hits_{k}" for k in config.KEYWORDS], "snippets", "filing_history_url",
+    "flagged", "epr_amount", *[f"hits_{k}" for k in config.KEYWORDS], "snippets", "filing_history_url",
     "subsidiary_count", "error", "group_key",
 ]
 
@@ -219,13 +219,25 @@ def scan_text(text):
         regex = re.compile(pattern, 0 if case_sensitive else re.IGNORECASE)
         found = list(regex.finditer(text))
         hits[name] = len(found)
-        for match in found:
-            if len(snippets) >= config.MAX_SNIPPETS:
-                break
+        for match in found[:config.MAX_SNIPPETS]:
             start = max(0, match.start() - config.SNIPPET_CHARS)
             end = min(len(text), match.end() + config.SNIPPET_CHARS)
             snippets.append(f"[{name}] …{text[start:end]}…")
     return hits, snippets
+
+
+EPR_AMOUNT = re.compile(
+    r"(?:\bEPR\b|[Ee]xtended\s+[Pp]roducer\s+[Rr]esponsibility)[^£\n]{0,%d}?"
+    r"(£\s?\d[\d,.]*(?:\s?(?:m|million|k|bn)\b)?|\b\d{1,3}(?:,\d{3})+\b)" % config.EPR_AMOUNT_WINDOW)
+
+
+def find_epr_amount(text):
+    """First money amount shortly after an EPR mention, e.g. "£465,399" or "£1.2m"."""
+    match = EPR_AMOUNT.search(text)
+    if not match:
+        return ""
+    amount = match.group(1).replace(" ", "")
+    return amount if amount.startswith("£") else f"£{amount}"
 
 
 # --- per-company pipeline ---------------------------------------------------
@@ -286,6 +298,7 @@ def process_parent(client, parent):
             result[f"hits_{name}"] = count
         result["flagged"] = "yes" if any(hits.values()) else "no"
         result["snippets"] = "\n".join(snippets)
+        result["epr_amount"] = find_epr_amount(text)
     except Exception as exc:  # keep going; one bad company shouldn't stop the run
         result["error"] = f"{type(exc).__name__}: {exc}"
     return result

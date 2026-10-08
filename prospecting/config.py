@@ -10,6 +10,7 @@ CACHE_DIR = DATA_DIR / "cache"
 PARENTS_CSV = DATA_DIR / "parents.csv"
 LARGE_PRODUCERS_CSV = DATA_DIR / "large_producers.csv"
 ACCOUNTS_FLAGS_CSV = DATA_DIR / "accounts_flags.csv"
+JOB_SIGNALS_CSV = DATA_DIR / "job_signals.csv"  # EPR job adverts, added by hand
 
 # --- Step 1: Defra EPR packaging public register ---------------------------
 
@@ -68,10 +69,18 @@ KEYWORDS = {
     "epr": (r"\bEPR\b", True),
     "extended_producer_responsibility": (r"extended\s+producer\s+responsibilit(?:y|ies)", False),
     "packaging_costs": (r"packaging\s+costs?\b", False),
+    "disposal_fee": (r"(?:waste\s+)?disposal\s+fees?\b", False),
+    "packaging_waste": (r"packaging\s+waste\b", False),
+    "prn": (r"\bPRNs?\b|\b[Pp]ackaging\s+[Rr]ecovery\s+[Nn]otes?\b", True),
 }
 
+# A money amount within this many characters after "EPR" / "extended producer responsibility"
+# is reported as epr_amount, e.g. "Extended Producer Responsibility provision 465,399".
+# It's a pointer for a human to check, not a reliable figure.
+EPR_AMOUNT_WINDOW = 80
+
 SNIPPET_CHARS = 120  # characters of context either side of a hit
-MAX_SNIPPETS = 3
+MAX_SNIPPETS = 2  # per keyword
 
 # Scanned (image-only) PDFs are read with OCR: poppler's pdftoppm renders each page and
 # tesseract reads it. Needs both installed (apt install poppler-utils tesseract-ocr).

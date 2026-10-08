@@ -57,6 +57,28 @@ class Step3Tests(unittest.TestCase):
         # Accounts evidence beats the fee flag; fee payers are B; the rest are C.
         self.assertEqual(tiers, {"Charlie PLC": "A", "Acme Holdings Limited": "B", "Bravo Ltd": "C"})
 
+    def test_epr_job_advert_moves_group_to_tier_a(self):
+        jobs = frame([{"companies_house_number": "00000011", "role": "Packaging Compliance Manager",
+                       "strength": "strong"},
+                      {"companies_house_number": "00000002", "role": "Packaging Technologist", "strength": "weak"}])
+        master, _ = s3.build_master(PARENTS, MEMBERS, frame([]), jobs)
+        tiers = master.groupby("parent_name")["tier"].first().to_dict()
+        # A subsidiary's advert lifts the whole group; a weak signal is noted but doesn't.
+        self.assertEqual(tiers["Acme Holdings Limited"], "A")
+        self.assertEqual(tiers["Bravo Ltd"], "C")
+        self.assertIn("Packaging Technologist (weak)", set(master["job_signals"]))
+
+    def test_competitors_are_left_out(self):
+        members = pd.concat([MEMBERS, frame([{
+            "parent_name": "Valpak Limited", "parent_companies_house_number": "00000009", "is_parent": "yes",
+            "name": "Valpak Limited", "trading_name": "", "companies_house_number": "00000009",
+            "organisation_id": "9", "town": "Stratford", "postcode": "CV37 1AA"}])])
+        parents = pd.concat([PARENTS, frame([{"group_key": "ORG:9", "parent_name": "Valpak Limited",
+                                              "companies_house_number": "00000009", "pays_disposal_fee": "yes",
+                                              "subsidiary_count": "0", "compliance_scheme": ""}])])
+        master, _ = s3.build_master(parents.fillna(""), members, frame([]))
+        self.assertNotIn("Valpak", set(master["companyname"]))
+
     def test_every_group_company_and_trading_name_gets_a_row(self):
         master, _ = s3.build_master(PARENTS, MEMBERS, frame([]))
         acme = master[master["group_key"] == "ORG:1"]
@@ -70,7 +92,9 @@ class Step3Tests(unittest.TestCase):
         self.assertEqual(set(upload["companycountry"]), {"GB"})
 
     def test_scheme_exclusions_drop_region_suffix(self):
-        self.assertEqual(list(s3.scheme_exclusions(PARENTS)["companyname"]), ["Valpak"])
+        names = list(s3.scheme_exclusions(PARENTS)["companyname"])
+        self.assertIn("Valpak", names)
+        self.assertNotIn("Valpak (EA)", names)
 
 
 if __name__ == "__main__":
