@@ -4,6 +4,8 @@ import fs from 'node:fs';
 const ALLOW_LIVE = false;   // this is a test page: it must never be enabled by this script
 const html = fs.readFileSync('payloads/uk-epr-concept/page.html', 'utf8');
 const link = (value, label) => ({ type: 'url', url: { value }, label, target: '' });
+const CTA_HTML = '<h2 id="evx-contact">Ready to collaborate?</h2><p><strong>Let Ecoveritas take the strain.</strong> Contact us to discuss your needs.</p>';
+// Closing contact block with the enquiry form; every on-page 'contact' link jumps to #evx-contact.
 const payload = {
   sectionId: 1, typeId: 1,
   title: 'UK EPR concept (test page, do not publish)', slug: 'uk-epr-concept-test',
@@ -14,9 +16,9 @@ const payload = {
     heroImage: [8811],
     heroButtons: { sortOrder: ['new1', 'new2'], entries: {
       new1: { type: 'heroButtonItem', enabled: true, fields: { heroButtonUrl: link('#evx-affected', 'Am I affected?'), heroButtonStyle: 'default' } },
-      new2: { type: 'heroButtonItem', enabled: true, fields: { heroButtonUrl: link('https://www.ecoveritas.com/contact-us', 'Contact us'), heroButtonStyle: 'transparent' } } } },
-    pageBuilder: { sortOrder: ['new1'], entries: { new1: { type: 'general_content', enabled: true, fields: { generalContent: html, spacing: 'medium', theme: 'default' } } } },
-    ctaPicker: [356],
+      new2: { type: 'heroButtonItem', enabled: true, fields: { heroButtonUrl: link('#evx-contact', 'Contact us'), heroButtonStyle: 'transparent' } } } },
+    pageBuilder: { sortOrder: ['new1', 'new2'], entries: { new1: { type: 'general_content', enabled: true, fields: { generalContent: html, spacing: 'medium', theme: 'default' } }, new2: { type: 'callToAction', enabled: true, fields: { richTitle: CTA_HTML, theme: 'default' } } } },
+    ctaPicker: [],   // replaced by the on-page contact block above
     seo: { titleRaw: { 1: 'UK EPR concept (test)' }, description: '' },
   },
 };

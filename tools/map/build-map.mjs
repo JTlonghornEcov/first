@@ -84,7 +84,7 @@ const cards = eu.map(c => `
           <div class="evx-row"><dt class="evx-dt">Next deadline</dt><dd class="evx-dd">00 Month 0000</dd></div>
         </dl>
         <p class="evx-p evx-muted">${lorem[1]}</p>
-        <a class="evx-link" href="https://www.ecoveritas.com/contact-us">Talk to us about ${esc(c.name)}</a>
+        <a class="evx-link" href="#evx-contact">Talk to us about ${esc(c.name)}</a>
       </article>`).join('');
 
 const list = eu.map(c => `<li class="evx-item"><a href="#evx-c-${c.code}" data-s="${c.status}">${esc(c.name)}</a></li>`).join('');
