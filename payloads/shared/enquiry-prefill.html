@@ -1,0 +1,24 @@
+<script>
+/* Enquiry prefill: links with data-enquiry="…" jump to #evx-contact (normal anchor behaviour) and pre-fill the
+   enquiry box with that message. Never overwrites text the visitor typed. Without JS the links still jump.
+   The form is looked up on click because the contact block is rendered after this script. */
+(function () {
+  var lastAuto = '';
+  function enquiryBox() {
+    var target = document.getElementById('evx-contact');
+    var section = target && target.closest('section');
+    return section && section.querySelector('form textarea');
+  }
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('a[data-enquiry]');
+    var box = link && enquiryBox();
+    if (!box) return;
+    if (box.value.trim() === '' || box.value === lastAuto) {
+      box.value = lastAuto = link.getAttribute('data-enquiry');
+      box.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    // let the anchor scroll first, then put the cursor at the end of the message
+    setTimeout(function () { try { box.focus({ preventScroll: true }); box.setSelectionRange(box.value.length, box.value.length); } catch (err) {} }, 400);
+  });
+})();
+</script>

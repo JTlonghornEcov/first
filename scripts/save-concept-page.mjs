@@ -2,7 +2,7 @@
 import { launch } from './lib.mjs';
 import fs from 'node:fs';
 const ALLOW_LIVE = false;   // this is a test page: it must never be enabled by this script
-const html = fs.readFileSync('payloads/uk-epr-concept/page.html', 'utf8');
+const html = fs.readFileSync('payloads/uk-epr-concept/page.html', 'utf8') + fs.readFileSync('payloads/shared/enquiry-prefill.html', 'utf8');
 const link = (value, label) => ({ type: 'url', url: { value }, label, target: '' });
 const CTA_HTML = '<h2 id="evx-contact">Ready to collaborate?</h2><p><strong>Let Ecoveritas take the strain.</strong> Contact us to discuss your needs.</p>';
 // Closing contact block with the enquiry form; every on-page 'contact' link jumps to #evx-contact.
