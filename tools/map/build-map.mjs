@@ -165,6 +165,8 @@ ${selectedLabelRules} { opacity:1; }
 ${selectedListRules} { background:var(--evx-yellow); border-color:var(--evx-yellow); }
 @media (max-width:640px) { .evx .evx-label { display:none; } .evx .evx-pin { r:7; } }
 @media (prefers-reduced-motion:reduce) { .evx * { transition:none !important; animation:none !important; } }
+/* Contact block sits outside .evx (it is a page-builder block); leave room above it when jumped to. */
+#evx-contact { scroll-margin-top: 96px; }
 </style>
 
 <div class="evx">
