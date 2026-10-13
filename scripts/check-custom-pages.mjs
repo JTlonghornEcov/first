@@ -11,6 +11,8 @@ const PAGES = [
     expect: { '.evx': 1, '.evx-country': 27, '.evx-pin': 27, '.evx-card': 27, '.evx-country-list a': 27, '#evx-contact': 1, 'a[data-enquiry]': 27, 'main script': 1 } },
   { name: 'LinkedIn Challenge preview', id: 10955, slug: 'linkedin-challenge-preview', expectPublic: 404, noindex: true,
     expect: { '.evx': 1, '.lc-sec': 7, '#lc-range': 1, '#lc-notes-box': 1, '#lc-how': 1, '#lc-calc': 1, 'main script': 1 } },
+  { name: 'Services hub', id: 11013, slug: 'services-hub-test', expectPublic: 404, noindex: true,
+    expect: { '.evx': 1, '#svc-finder': 1, '#svc-hub .card': 9, '#svc-hub [role=tab]': 5, '#svc-hub [role=tabpanel]': 5, '[data-count]': 6, '#evx-contact': 1, 'a[data-enquiry]': 9, 'main script': 2 } },
 ];
 
 let failed = 0;

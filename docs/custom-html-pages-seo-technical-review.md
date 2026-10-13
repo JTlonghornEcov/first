@@ -7,6 +7,7 @@ Pages reviewed (all **disabled**, public URL returns 404):
 | UK EPR concept | 10879 | `/uk-epr-concept-test` |
 | EU interactive map | 10894 | `/eu-map-test` |
 | LinkedIn Challenge preview | 10955 | `/linkedin-challenge-preview` |
+| Services hub | 11013 | `/services-hub-test` |
 
 Also checked: `/services/ppwr-compliance-design` (live, built the same way earlier).
 
