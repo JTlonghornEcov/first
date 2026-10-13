@@ -17,7 +17,7 @@ const payload = {
       fields: { heroButtonUrl: { type: 'url', url: { value: '#evx-map' }, label: 'Explore the map', target: '' }, heroButtonStyle: 'default' } } } },
     pageBuilder: { sortOrder: ['new1', 'new2'], entries: { new1: { type: 'general_content', enabled: true, fields: { generalContent: html, spacing: 'medium', theme: 'default' } }, new2: { type: 'callToAction', enabled: true, fields: { richTitle: CTA_HTML, theme: 'default' } } } },
     ctaPicker: [],   // replaced by the on-page contact block above
-    seo: { titleRaw: { 1: 'EU interactive map (test)' }, description: '' },
+    seo: { titleRaw: { 1: 'EU interactive map (test)' }, description: '', advanced: { robots: ['noindex', 'nofollow'], canonical: '' } },   // test pages: never indexed, even if enabled by mistake
   },
 };
 if (process.env.ENTRY_ID) payload.entryId = process.env.ENTRY_ID;

@@ -17,7 +17,7 @@ const payload = {
       new2: { type: 'heroButtonItem', enabled: true, fields: { heroButtonUrl: link('#lc-calc', 'Try the odds calculator'), heroButtonStyle: 'transparent' } } } },
     pageBuilder: { sortOrder: ['new1'], entries: { new1: { type: 'general_content', enabled: true, fields: { generalContent: html, spacing: 'medium', theme: 'default' } } } },
     ctaPicker: [],
-    seo: { titleRaw: { 1: 'LinkedIn Challenge (preview)' }, description: '' },
+    seo: { titleRaw: { 1: 'LinkedIn Challenge (preview)' }, description: '', advanced: { robots: ['noindex', 'nofollow'], canonical: '' } },   // test pages: never indexed, even if enabled by mistake
   },
 };
 if (process.env.ENTRY_ID) payload.entryId = process.env.ENTRY_ID;

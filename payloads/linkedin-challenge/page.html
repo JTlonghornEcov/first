@@ -1,8 +1,8 @@
 <style>
-/* LinkedIn Challenge preview. Scoped to .evx; colours from the challenge one-pager, typography from the site. */
+/* LinkedIn Challenge preview. Scoped to .evx; colours from the challenge one-pager (mist-blue and slate nudged for WCAG AA), typography from the site. */
 .evx {
-  --lc-deep:#29454F; --lc-ocean:#007890; --lc-atlantic:#006377; --lc-signal:#FFCE00; --lc-sand:#F4E4BC; --lc-mist-blue:#86A9B9;
-  --lc-cloud:#F7F9FA; --lc-mist:#E6EBEE; --lc-stone:#B8C2C9; --lc-slate:#5d6d76; --lc-charcoal:#2A363B;
+  --lc-deep:#29454F; --lc-ocean:#007890; --lc-atlantic:#006377; --lc-signal:#FFCE00; --lc-sand:#F4E4BC; --lc-mist-blue:#AAC5D1;
+  --lc-cloud:#F7F9FA; --lc-mist:#E6EBEE; --lc-stone:#B8C2C9; --lc-slate:#58676f; --lc-charcoal:#2A363B;
   --lc-gap:clamp(16px,2.4vw,26px); --lc-pad:clamp(28px,5vw,64px);
   color:var(--lc-deep); display:grid; gap:clamp(40px,6vw,72px);
 }
@@ -68,7 +68,7 @@
 .evx .lc-pz--gold { background:var(--lc-signal); color:var(--lc-deep); }
 .evx .lc-pz--dark { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.16); }
 .evx .lc-pz .lc-lbl { font-size:12px; letter-spacing:.2em; text-transform:uppercase; font-weight:600; margin-bottom:14px; }
-.evx .lc-pz--gold .lc-lbl { opacity:.75; } .evx .lc-pz--dark .lc-lbl { color:var(--lc-mist-blue); }
+.evx .lc-pz--gold .lc-lbl { opacity:1; }   /* full strength for WCAG AA on yellow */ .evx .lc-pz--dark .lc-lbl { color:var(--lc-mist-blue); }
 .evx .lc-pz .lc-amt { font-size:clamp(46px,6vw,68px); font-weight:700; line-height:1; }
 .evx .lc-pz .lc-who { font-size:18px; font-weight:700; margin-top:12px; }
 .evx .lc-pz .lc-p:not(.lc-lbl):not(.lc-amt):not(.lc-who) { font-size:14.5px; margin-top:10px; }
