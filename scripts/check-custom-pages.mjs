@@ -13,6 +13,8 @@ const PAGES = [
     expect: { '.evx': 1, '.lc-sec': 7, '#lc-range': 1, '#lc-notes-box': 1, '#lc-how': 1, '#lc-calc': 1, 'main script': 1 } },
   { name: 'Services hub', id: 11013, slug: 'services-hub-test', expectPublic: 404, noindex: true,
     expect: { '.evx': 1, '#svc-finder': 1, '#svc-hub .card': 9, '#svc-hub [role=tab]': 5, '#svc-hub [role=tabpanel]': 5, '[data-count]': 6, '#evx-contact': 1, 'a[data-enquiry]': 9, 'main script': 2 } },
+  { name: 'US EPR eco-modulation post', id: 11093, slug: 'articles/us-packaging-epr-eco-modulation-three-states-three-very-different-approaches', expectPublic: 404, noindex: true, root: '#usepr',
+    expect: { '#usepr': 1, '#usepr .glance a': 3, '#usepr .step': 4, '#us-srim': 1, '#us-orcalc': 1, '#us-ready': 1, '#evx-contact': 1, 'a[data-enquiry]': 2, 'main script': 2 } },
 ];
 
 let failed = 0;
@@ -25,14 +27,14 @@ for (const p of PAGES) {
   if (/\/login/.test(page.url())) { console.error('Not logged in: run node scripts/login.mjs first'); process.exit(2); }
   const preview = await page.evaluate(async (slug) => Craft.cp.$primaryForm.data('elementEditor').getTokenizedPreviewUrl(`https://www.ecoveritas.com/${slug}`, 'x-craft-preview', true), p.slug);
   await page.goto(preview, { waitUntil: 'networkidle' });
-  const found = await page.evaluate((sels) => {
+  const found = await page.evaluate(([sels, root]) => {
     const out = {}; for (const s of sels) out[s] = document.querySelectorAll(s).length;
-    out.styleKept = !!document.querySelector('.evx')?.parentElement.querySelector('style');
+    out.styleKept = !!document.querySelector(root)?.parentElement.querySelector('style');
     out.robots = document.querySelector('meta[name="robots"]')?.content || '';
     out.h1 = document.querySelectorAll('h1').length;
     out.brokenAnchors = [...document.querySelectorAll('main a[href^="#"]')].map(a => a.getAttribute('href')).filter(h => h.length > 1 && !document.querySelector(h));
     return out;
-  }, Object.keys(p.expect));
+  }, [Object.keys(p.expect), p.root || '.evx']);
   for (const [sel, n] of Object.entries(p.expect)) if (found[sel] !== n) problems.push(`${sel}: found ${found[sel]}, expected ${n}`);
   if (!found.styleKept) problems.push('page <style> is missing (design stripped?)');
   if (p.noindex && !/noindex/.test(found.robots)) problems.push(`robots meta is "${found.robots}", expected noindex`);

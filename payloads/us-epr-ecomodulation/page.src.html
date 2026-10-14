@@ -1,0 +1,427 @@
+<style>
+/* US packaging EPR eco-modulation article body. Scoped to #usepr; site font, brand colours.
+   Without JS all article text, charts and steps are visible; JS adds the SRIM slider, the Oregon calculator and the
+   data checklist. Figures in the tools are the article's own; tools are labelled illustrative. */
+#usepr {
+  --ink:#212121; --muted:#55656d; --slate:#2f444e; --slate-2:#3d5662; --slate-3:#4d6875; --teal:#0f6378; --teal-2:#e3f0f3;
+  --yellow:#ffcd03; --yellow-2:#fff6cc; --grey:#f4f6f6; --line:#dfe5e7; --mist:#aac5d1; --r:16px;
+  color:var(--ink); display:grid; gap:clamp(48px,7vw,88px); font-size:16px; line-height:1.6;
+}
+#usepr *, #usepr *::before, #usepr *::after { box-sizing:border-box; }
+#usepr > * { min-width:0; }
+#usepr h2, #usepr h3, #usepr h4, #usepr p, #usepr ul, #usepr ol, #usepr li, #usepr dl, #usepr dd, #usepr figure, #usepr fieldset { margin:0; padding:0; font-family:inherit; color:inherit; border:0; }
+#usepr ul, #usepr ol { list-style:none; }
+#usepr h2 { font-size:clamp(28px,3.6vw,40px); line-height:1.12; font-weight:700; letter-spacing:-.01em; }
+#usepr h3 { font-size:20px; line-height:1.25; font-weight:700; }
+#usepr h4 { font-size:17px; line-height:1.3; font-weight:700; }
+#usepr p + p { margin-top:14px; }
+#usepr a { color:var(--teal); text-decoration:underline; text-underline-offset:3px; }
+#usepr .wrap { max-width:820px; }
+#usepr .lead { font-size:clamp(18px,1.8vw,21px); line-height:1.55; }
+#usepr .muted { color:var(--muted); }
+#usepr .eyebrow { display:inline-flex; align-items:center; gap:10px; margin:0 0 12px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+#usepr .eyebrow::before { content:""; width:28px; height:4px; border-radius:2px; background:var(--yellow); }
+#usepr .sec { scroll-margin-top:110px; display:grid; gap:clamp(24px,3.4vw,36px); }
+#usepr .sec > header { display:grid; gap:14px; }
+#usepr .icon { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+#usepr .sr { position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+#usepr :is(a, button, input, select, summary):focus-visible { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+#usepr:not(.is-js) [data-js-only] { display:none; }
+#usepr .note { font-size:13px; color:var(--muted); }
+
+/* At a glance */
+#usepr .glance { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr)); gap:16px; }
+#usepr .glance li { display:flex; }
+#usepr .glance a { flex:1; position:relative; display:flex; flex-direction:column; min-height:250px; padding:24px; border-radius:var(--r); background:var(--slate); color:#fff; text-decoration:none; overflow:hidden; isolation:isolate; transition:transform .2s ease, box-shadow .2s ease; }
+#usepr .glance a:hover { transform:translateY(-3px); box-shadow:0 14px 30px rgba(33,33,33,.18); }
+#usepr .glance svg.state { position:absolute; right:-8px; bottom:-8px; width:62%; height:82%; z-index:-1; fill:var(--slate-2); }
+#usepr .glance .tag { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--mist); }
+#usepr .glance .tag::before { content:""; width:10px; height:10px; border-radius:50%; background:var(--yellow); }
+#usepr .glance .big { margin-top:18px; font-size:clamp(52px,6vw,72px); font-weight:600; line-height:1; letter-spacing:-.03em; color:var(--yellow); font-variant-numeric:tabular-nums; }
+#usepr .glance .cap { margin-top:10px; max-width:24ch; font-size:15px; line-height:1.4; color:#e6edf0; }
+#usepr .glance .go { margin-top:auto; padding-top:20px; font-size:15px; font-weight:700; color:#fff; }
+#usepr .glance .go span { display:inline-block; transition:transform .2s ease; }
+#usepr .glance a:hover .go span { transform:translateX(4px); }
+
+/* California framework */
+#usepr .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); gap:14px; counter-reset:step; }
+#usepr .step { position:relative; display:flex; flex-direction:column; gap:12px; padding:22px; border:1px solid var(--line); border-radius:var(--r); background:#fff; }
+#usepr .step .top { display:flex; align-items:center; justify-content:space-between; }
+#usepr .step .ic { display:grid; place-items:center; width:44px; height:44px; border-radius:12px; background:var(--teal-2); color:var(--teal); }
+#usepr .step .n { font-size:30px; font-weight:700; line-height:1; color:#6f8791; }
+#usepr .step p { font-size:15px; line-height:1.55; color:var(--muted); }
+#usepr .target { display:flex; flex-wrap:wrap; align-items:center; gap:10px 24px; padding:22px 26px; border-radius:var(--r); background:var(--slate); color:#fff; }
+#usepr .target .big { font-size:clamp(40px,5vw,56px); font-weight:700; line-height:1; color:var(--yellow); letter-spacing:-.02em; }
+#usepr .target .txt { flex:1 1 260px; }
+#usepr .target .txt b { display:block; font-size:18px; }
+#usepr .target .txt span { color:var(--mist); font-size:15px; }
+#usepr .timeline { flex:1 1 100%; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px; margin-top:6px; font-size:14px; font-weight:700; }
+#usepr .timeline .bar { position:relative; height:8px; border-radius:4px; background:var(--slate-3); overflow:hidden; }
+#usepr .timeline .bar::after { content:""; position:absolute; inset:0 auto 0 0; width:100%; background:linear-gradient(90deg,var(--mist),var(--yellow)); }
+
+/* SRIM tool */
+#usepr .split { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr)); gap:clamp(24px,4vw,48px); align-items:start; }
+#usepr .tool { border-radius:var(--r); background:var(--grey); padding:clamp(20px,3vw,32px); display:grid; gap:18px; }
+#usepr .tool h3 { display:flex; align-items:center; gap:10px; }
+#usepr .tool h3 .icon { color:var(--teal); }
+#usepr .tool label, #usepr .tool legend { font-weight:700; font-size:15px; }
+#usepr input[type=range] { width:100%; accent-color:var(--teal); height:28px; }
+#usepr .scale { display:flex; justify-content:space-between; font-size:13px; color:var(--muted); margin-top:-6px; }
+#usepr .out { display:grid; gap:6px; padding:18px 20px; border-radius:12px; background:#fff; border:1px solid var(--line); }
+#usepr .out .k { font-size:14px; color:var(--muted); }
+#usepr .out .v { font-size:clamp(34px,4.4vw,46px); font-weight:700; line-height:1.05; font-variant-numeric:tabular-nums; letter-spacing:-.02em; }
+#usepr .out .sum { font-size:14px; color:var(--muted); font-variant-numeric:tabular-nums; }
+#usepr .dots { display:grid; grid-template-columns:repeat(20,1fr); gap:4px; }
+#usepr .dots i { aspect-ratio:1; border-radius:50%; background:var(--teal); transition:background .25s ease; }
+#usepr .dots i.paying { background:var(--yellow); box-shadow:inset 0 0 0 1.5px #c9a000; }
+#usepr .legend { display:flex; flex-wrap:wrap; gap:6px 18px; font-size:13px; color:var(--muted); }
+#usepr .legend span::before { content:""; display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:6px; vertical-align:-1px; background:var(--teal); }
+#usepr .legend span.p::before { background:var(--yellow); box-shadow:inset 0 0 0 1.5px #c9a000; }
+#usepr .pull { padding:18px 22px; border-left:5px solid var(--yellow); background:var(--yellow-2); border-radius:0 12px 12px 0; font-weight:700; font-size:17px; line-height:1.45; }
+
+/* Colorado */
+#usepr .chart { border-radius:var(--r); background:var(--grey); padding:clamp(20px,3vw,32px); }
+#usepr .chart h3 { margin-bottom:6px; }
+#usepr .fx { display:grid; gap:14px; margin-top:20px; }
+#usepr .fx li { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.5fr); gap:14px; align-items:center; }
+#usepr .fx .l b { display:block; font-size:15px; }
+#usepr .fx .l span { font-size:13px; color:var(--muted); }
+#usepr .fx .track { position:relative; display:grid; grid-template-columns:1fr 3fr; align-items:center; height:32px; }
+#usepr .fx .track::before { content:""; position:absolute; left:25%; top:-7px; bottom:-7px; width:2px; background:var(--ink); }
+#usepr .fx .bar { position:relative; height:24px; border-radius:4px; }
+#usepr .fx .bar em { position:absolute; top:50%; transform:translateY(-50%); font-style:normal; font-weight:700; font-size:14px; white-space:nowrap; }
+#usepr .fx .neg { grid-column:1; justify-self:end; background:var(--teal); width:calc(var(--v) * 10%); }
+#usepr .fx .neg em { right:calc(100% + 8px); }
+#usepr .fx .pos { grid-column:2; background:var(--yellow); width:calc(var(--v) * 100% / 60); }
+#usepr .fx .pos em { left:calc(100% + 8px); }
+#usepr .practices { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr)); gap:12px; }
+#usepr .practices li { display:flex; align-items:center; gap:12px; padding:16px; border-radius:12px; background:var(--grey); font-weight:700; font-size:15px; line-height:1.25; }
+#usepr .practices .ic { display:grid; place-items:center; width:42px; height:42px; border-radius:50%; background:#fff; color:var(--teal); flex:none; }
+#usepr .flow { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr)); border-radius:var(--r); background:var(--slate); color:#fff; overflow:hidden; }
+#usepr .flow li { padding:18px 20px; border-right:1px solid var(--slate-3); }
+#usepr .flow li:last-child { border-right:0; }
+#usepr .flow .icon { color:var(--yellow); }
+#usepr .flow b { display:block; margin-top:8px; font-size:15px; }
+#usepr .flow span { font-size:13px; color:var(--mist); }
+
+/* Oregon */
+#usepr .bonuses { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr)); gap:16px; }
+#usepr .bonus { display:flex; flex-direction:column; gap:12px; padding:24px; border-radius:var(--r); border:1px solid var(--line); background:#fff; }
+#usepr .bonus .badge { display:grid; place-items:center; width:48px; height:48px; border-radius:12px; background:var(--yellow); font-size:26px; font-weight:700; }
+#usepr .bonus .amt { margin-top:auto; padding-top:14px; border-top:1px solid var(--line); font-size:14px; color:var(--muted); }
+#usepr .bonus .amt b { display:block; font-size:26px; color:var(--ink); letter-spacing:-.01em; }
+#usepr .tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; align-items:end; height:92px; margin-top:4px; }
+#usepr .tiers div { display:flex; flex-direction:column; justify-content:flex-end; text-align:center; font-size:12px; color:var(--muted); }
+#usepr .tiers i { display:block; border-radius:4px 4px 0 0; background:var(--yellow); margin-bottom:4px; }
+#usepr .tiers b { font-size:14px; color:var(--ink); }
+#usepr .callout { display:flex; gap:14px; align-items:flex-start; padding:18px 22px; border-radius:12px; background:var(--yellow-2); border:1px solid #f2dc7a; }
+#usepr .callout .icon { color:var(--ink); margin-top:2px; }
+#usepr .calc { display:grid; gap:18px; }
+#usepr .seg { display:flex; flex-wrap:wrap; gap:8px; }
+#usepr .seg label { position:relative; font-weight:700; font-size:15px; }
+#usepr .seg input { position:absolute; opacity:0; inset:0; margin:0; cursor:pointer; }
+#usepr .seg span { display:inline-block; padding:10px 16px; border:2px solid var(--line); border-radius:999px; background:#fff; cursor:pointer; transition:background .15s ease, border-color .15s ease; }
+#usepr .seg input:checked + span { background:var(--slate); border-color:var(--slate); color:#fff; }
+#usepr .seg input:focus-visible + span { outline:3px solid var(--yellow); outline-offset:3px; }
+#usepr .field { display:grid; gap:8px; }
+#usepr .money { position:relative; max-width:260px; }
+#usepr .money::before { content:"$"; position:absolute; left:16px; top:50%; transform:translateY(-50%); font-weight:700; color:var(--muted); }
+#usepr .money input { width:100%; height:50px; padding:0 16px 0 32px; border:2px solid var(--line); border-radius:10px; font:inherit; font-size:17px; font-variant-numeric:tabular-nums; }
+#usepr .money input:focus { border-color:var(--slate); outline:none; }
+#usepr .calc .out .v { color:var(--teal); }
+#usepr .btn { display:inline-flex; align-items:center; gap:10px; justify-self:start; padding:12px 20px; border-radius:2px; background:var(--yellow); color:var(--ink); font-weight:700; text-decoration:none; }
+#usepr .btn:hover { background:#f0bf00; }
+
+/* Where to start */
+#usepr .found { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:clamp(12px,3vw,32px); align-items:center; padding:clamp(20px,3vw,32px); border-radius:var(--r); background:var(--grey); }
+#usepr .found ul { display:grid; gap:10px; }
+#usepr .found li { display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:10px; background:#fff; border:1px solid var(--line); font-weight:700; font-size:15px; }
+#usepr .found .in .icon { color:var(--teal); }
+#usepr .found .hub { display:grid; place-items:center; width:clamp(140px,16vw,180px); aspect-ratio:1; border-radius:50%; background:var(--slate); color:#fff; text-align:center; font-weight:700; font-size:17px; line-height:1.2; padding:18px; box-shadow:0 0 0 10px #fff, 0 0 0 12px var(--line); }
+#usepr .found .outs li { border-left:4px solid var(--yellow); }
+#usepr .found .outs svg.state { width:30px; height:30px; fill:var(--teal); flex:none; }
+#usepr .found .outs small { display:block; font-weight:400; font-size:13px; color:var(--muted); }
+#usepr .check { display:grid; gap:10px; }
+#usepr .check label { display:flex; gap:12px; align-items:center; padding:12px 14px; border-radius:10px; background:#fff; border:1px solid var(--line); cursor:pointer; font-weight:700; font-size:15px; }
+#usepr .check input { width:20px; height:20px; accent-color:var(--teal); flex:none; }
+#usepr .meter { height:10px; border-radius:5px; background:var(--line); overflow:hidden; }
+#usepr .meter i { display:block; height:100%; width:0; background:var(--teal); transition:width .3s ease; }
+
+@media (max-width:767px) {
+  #usepr .found { grid-template-columns:1fr; justify-items:stretch; }
+  #usepr .found .hub { justify-self:center; }
+  #usepr .fx li { grid-template-columns:1fr; gap:6px; }
+  #usepr .dots { gap:3px; }
+}
+@media (prefers-reduced-motion:reduce) { #usepr *, #usepr *::before, #usepr *::after { transition:none !important; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="u-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+  <symbol id="u-map" viewBox="0 0 24 24"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></symbol>
+  <symbol id="u-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16"/><path d="m7 15 4-4 3 3 5-6"/></symbol>
+  <symbol id="u-scale" viewBox="0 0 24 24"><path d="M12 4v16M5 20h14M7 8h10"/><path d="m7 8-3 6h6zM17 8l-3 6h6z"/></symbol>
+  <symbol id="u-minus" viewBox="0 0 24 24"><path d="M12 3v7M8 7l4 4 4-4"/><rect x="5" y="14" width="14" height="6" rx="1"/></symbol>
+  <symbol id="u-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="u-recycle" viewBox="0 0 24 24"><path d="M7 19H4l3-5M17 19h3l-3-5M9 5l3-2 3 2"/><path d="M7 14 10 8M17 14l-3-6M7 19h10"/></symbol>
+  <symbol id="u-refill" viewBox="0 0 24 24"><path d="M8 3h8M9 3v3l-2 3v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V9l-2-3V3"/><path d="M7 13h10M12 15.5v3M10.5 17h3"/></symbol>
+  <symbol id="u-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></symbol>
+  <symbol id="u-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+  <symbol id="u-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c3 0 6 2 6 5.5"/></symbol>
+  <symbol id="u-cycle" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-14.6 4.5M4 12a8 8 0 0 1 14.6-4.5"/><path d="M19 3v5h-5M5 21v-5h5"/></symbol>
+  <symbol id="u-box" viewBox="0 0 24 24"><path d="m3 7 9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7M12 11v10"/></symbol>
+  <symbol id="u-weight" viewBox="0 0 24 24"><path d="M6 9h12l2 11H4z"/><circle cx="12" cy="6" r="2.5"/></symbol>
+  <symbol id="u-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z"/><path d="M5 19 13 11"/></symbol>
+  <symbol id="u-calc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h2M12 18h2M16 15v3"/></symbol>
+  <symbol id="u-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></symbol>
+  <symbol id="s-ca" viewBox="{{CA_VB}}"><path d="{{CA}}"/></symbol>
+  <symbol id="s-co" viewBox="{{CO_VB}}"><path d="{{CO}}"/></symbol>
+  <symbol id="s-or" viewBox="{{OR_VB}}"><path d="{{OR}}"/></symbol>
+</svg>
+
+<div id="usepr">
+
+  <section class="sec" aria-labelledby="us-glance-h">
+    <div class="wrap"><p class="lead">Instead of every producer paying the same rate per pound of a given material, fees are adjusted to reward better packaging design and sustainability.</p></div>
+    <h2 id="us-glance-h" class="sr">Three states at a glance</h2>
+    <ul class="glance">
+      <li><a href="#us-ca"><svg class="state" aria-hidden="true"><use href="#s-ca"/></svg><span class="tag">California</span><span class="big">25%</span><span class="cap">minimum plastic source reduction from 2023 levels by 2032</span><span class="go">Reduction targets <span aria-hidden="true">→</span></span></a></li>
+      <li><a href="#us-co"><svg class="state" aria-hidden="true"><use href="#s-co"/></svg><span class="tag">Colorado</span><span class="big">±5%</span><span class="cap">passive malus and incentive on base fees in the first programme year</span><span class="go">Fee factors <span aria-hidden="true">→</span></span></a></li>
+      <li><a href="#us-or"><svg class="state" aria-hidden="true"><use href="#s-or"/></svg><span class="tag">Oregon</span><span class="big">$500k</span><span class="cap">maximum Bonus B credit across ten SKUs or batches</span><span class="go">LCA bonuses <span aria-hidden="true">→</span></span></a></li>
+    </ul>
+  </section>
+
+  <section class="sec" id="us-ca" aria-labelledby="us-ca-h">
+    <header class="wrap">
+      <p class="eyebrow">California · SB 54</p>
+      <h2 id="us-ca-h">California: reduction targets with an exponentially increasing bill</h2>
+      <p>California's SB 54 is the most ambitious US EPR law, and the only one to write plastic reduction targets directly into statute: a minimum 25% plastic source reduction from 2023 levels by 2032. These targets are the cornerstone of the state's eco-modulation framework, which consists of four main elements.</p>
+    </header>
+    <ol class="steps">
+      <li class="step"><div class="top"><span class="ic"><svg class="icon" aria-hidden="true"><use href="#u-doc"/></svg></span><span class="n" aria-hidden="true">01</span></div>
+        <h3>2023 baseline report</h3><p>A report on packaging placed on the California market in 2023, including details on plastic components and weights, to function as the starting point for all future reductions.</p></li>
+      <li class="step"><div class="top"><span class="ic"><svg class="icon" aria-hidden="true"><use href="#u-map"/></svg></span><span class="n" aria-hidden="true">02</span></div>
+        <h3>Source Reduction Plan</h3><p>A roadmap of methods and timelines that is not binding but acts as an indication of the steps which will be taken to reduce the amount of plastic used in packaging.</p></li>
+      <li class="step"><div class="top"><span class="ic"><svg class="icon" aria-hidden="true"><use href="#u-chart"/></svg></span><span class="n" aria-hidden="true">03</span></div>
+        <h3>Annual source reduction reports</h3><p>Submitted on a regular basis to the PRO (CAA) alongside the usual annual supply reports. They measure reduction progress against the 2023 baseline, and are used alongside the supply reports to calculate the amount of reduction implemented.</p></li>
+      <li class="step"><div class="top"><span class="ic"><svg class="icon" aria-hidden="true"><use href="#u-scale"/></svg></span><span class="n" aria-hidden="true">04</span></div>
+        <h3>Source Reduction Incentive Mechanism (SRIM)</h3><p>CAA's mechanism to translate implemented plastic reduction into lower fees. As the reduction targets from SB 54 are binding on the PRO, rather than individual producers, the SRIM incentivises individual responsibility, with the aim of collectively meeting these targets.</p></li>
+    </ol>
+    <div class="target">
+      <span class="big">≥25%</span>
+      <p class="txt"><b>Plastic source reduction from 2023 levels by 2032</b><span>Binding on the PRO (CAA), not on individual producers.</span></p>
+      <div class="timeline" aria-hidden="true"><span>2023 baseline</span><span class="bar"></span><span>2032 target</span></div>
+    </div>
+
+    <div class="split">
+      <div>
+        <h3>How the SRIM bill grows</h3>
+        <p style="margin-top:12px">The SRIM is a carrot-and-stick system, but the system works reactively to increase maluses for producers lagging behind the majority. Bonuses are funded directly by maluses, so the size of the bonus pool determines the size of everyone else's bill.</p>
+        <p>$10 million in bonuses split across 10,000 producers leaves a malus of $1,000 per producer. When only 1,000 producers are left paying, the same pool means $10,000 each; with 100 left, it is $100,000 each.</p>
+        <p class="pull" style="margin-top:20px">The more producers that earn a bonus, the more expensive it becomes to keep packaging the same.</p>
+      </div>
+      <div class="tool" data-js-only id="us-srim">
+        <h3><svg class="icon" aria-hidden="true"><use href="#u-calc"/></svg>Try it: a $10m bonus pool</h3>
+        <div>
+          <label for="us-srim-range">Producers still paying a malus: <output id="us-srim-n" for="us-srim-range">10,000</output></label>
+          <input type="range" id="us-srim-range" min="0" max="100" step="1" value="100" aria-describedby="us-srim-note">
+          <div class="scale" aria-hidden="true"><span>100</span><span>1,000</span><span>10,000</span></div>
+        </div>
+        <div class="out" aria-live="polite">
+          <span class="k">Malus per paying producer</span>
+          <span class="v" id="us-srim-v">$1,000</span>
+          <span class="sum" id="us-srim-sum">$10,000,000 ÷ 10,000 producers</span>
+        </div>
+        <div>
+          <div class="dots" id="us-srim-dots" aria-hidden="true"></div>
+          <p class="legend" style="margin-top:10px"><span class="p">Still paying a malus</span><span>Earned a bonus</span></p>
+        </div>
+        <p class="note" id="us-srim-note">Illustrative only, using the example above: 10,000 producers, each dot is 100 producers. Actual SRIM values are set by CAA.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="us-co" aria-labelledby="us-co-h">
+    <header class="wrap">
+      <p class="eyebrow">Colorado</p>
+      <h2 id="us-co-h">Colorado: material-level factors and producer-level bonuses</h2>
+      <p>Colorado's approach is more traditional, applying a combination of passive and active eco-modulation factors to incentivise the use of more sustainable packaging. Notably, Colorado's eco-modulation applies to all materials.</p>
+    </header>
+    <div class="split">
+      <div>
+        <h3>Passive factors</h3>
+        <p style="margin-top:12px">Passive factors apply uniform factors across a whole material reporting category after base fees are calculated, drawing on the scoring from the state's Needs Assessment. In the first programme year, the malus raises base fees (excluding reserves) by 5% for the applicable category, and the incentive lowers them by 5%.</p>
+        <p>There is also a tiered malus for materials outside the Minimum Recycling List (MRL). Materials on the Additional Materials List (AML) must be priced at least 20% above the average for similar MRL materials, and non-collected materials at least 10% above similar AML materials.</p>
+      </div>
+      <figure class="chart">
+        <h3>How passive factors move the fee</h3>
+        <p class="note">Change against the reference fee, first programme year</p>
+        <ol class="fx">
+          <li><span class="l"><b>Incentive</b><span>vs category base fee</span></span><span class="track"><span class="bar neg" style="--v:5"><em>−5%</em></span></span></li>
+          <li><span class="l"><b>Malus</b><span>vs category base fee</span></span><span class="track"><span class="bar pos" style="--v:5"><em>+5%</em></span></span></li>
+          <li><span class="l"><b>Additional Materials List</b><span>vs similar MRL materials</span></span><span class="track"><span class="bar pos" style="--v:20"><em>at least +20%</em></span></span></li>
+          <li><span class="l"><b>Not collected</b><span>+10% on similar AML, so at least +32% vs MRL</span></span><span class="track"><span class="bar pos" style="--v:32"><em>at least +32%</em></span></span></li>
+        </ol>
+      </figure>
+    </div>
+    <div class="wrap">
+      <h3>Active factors</h3>
+      <p style="margin-top:12px">Active factors reward individual producer practices that cannot be assessed at material level: source reduction, recyclability innovation, high PCR content, and reuse and refill.</p>
+    </div>
+    <ul class="practices">
+      <li><span class="ic"><svg class="icon" aria-hidden="true"><use href="#u-minus"/></svg></span>Source reduction</li>
+      <li><span class="ic"><svg class="icon" aria-hidden="true"><use href="#u-bulb"/></svg></span>Recyclability innovation</li>
+      <li><span class="ic"><svg class="icon" aria-hidden="true"><use href="#u-recycle"/></svg></span>High PCR content</li>
+      <li><span class="ic"><svg class="icon" aria-hidden="true"><use href="#u-refill"/></svg></span>Reuse and refill</li>
+    </ul>
+    <div class="wrap"><p>Producers submit additional data through the portal, which is then verified, and thresholds are informed by an independent technical committee. The data burden is considerable, but so is the opportunity to earn a fee reduction. Colorado also plans to refine the system annually, so these benchmarks will move.</p></div>
+    <ol class="flow" aria-label="How active factors are claimed">
+      <li><svg class="icon" aria-hidden="true"><use href="#u-upload"/></svg><b>Submit data</b><span>through the portal</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#u-shield"/></svg><b>Data verified</b><span>once submitted</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#u-people"/></svg><b>Thresholds informed</b><span>by an independent technical committee</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#u-cycle"/></svg><b>Refined annually</b><span>so benchmarks will move</span></li>
+    </ol>
+  </section>
+
+  <section class="sec" id="us-or" aria-labelledby="us-or-h">
+    <header class="wrap">
+      <p class="eyebrow">Oregon</p>
+      <h2 id="us-or-h">Oregon: bonuses for life cycle assessment</h2>
+      <p>Oregon has built its system around third-party reviewed Life Cycle Assessments (LCAs), all conducted under OAR 340-090-0900 to 0940 and the EU's Product Environmental Footprint method, covering 16 impact categories.</p>
+    </header>
+    <ul class="bonuses">
+      <li class="bonus"><span class="badge" aria-hidden="true">A</span><h3>Bonus A: LCA disclosure</h3>
+        <p>Rewards voluntary LCA disclosure with 10% of base fees (excluding reserves) for the primary packaging in a SKU or batch of related SKUs, capped at $20,000 per SKU or batch. With a maximum of 10 SKUs or batches, that adds up to $200,000 in total.</p>
+        <p class="amt">Up to<b>$200,000</b></p></li>
+      <li class="bonus"><span class="badge" aria-hidden="true">B</span><h3>Bonus B: lower impact</h3>
+        <p>Rewards comparative LCAs showing reduced environmental impact of a primary packaging system, tiered by reduction: up to $40,000 for 10 to 40%, $45,000 for 40 to 70%, and $50,000 above 70%. The total across ten SKUs or batches is up to $500,000, credited against future fees.</p>
+        <div class="tiers" aria-hidden="true"><div><b>$40k</b><i style="height:56px"></i>10–40%</div><div><b>$45k</b><i style="height:63px"></i>40–70%</div><div><b>$50k</b><i style="height:70px"></i>70%+</div></div>
+        <p class="amt">Up to<b>$500,000</b></p></li>
+      <li class="bonus"><span class="badge" aria-hidden="true">C</span><h3>Bonus C: reuse and refill</h3>
+        <p>Uses the same tiers for comparative LCAs showing impact reductions from moving from single-use plastic to reusable or refillable formats.</p>
+        <p class="amt">Per SKU or batch<b>Same tiers as B</b></p></li>
+    </ul>
+    <p class="callout"><svg class="icon" aria-hidden="true"><use href="#u-info"/></svg><span>Producers can claim <strong>Bonus A or B, not both</strong>. The first submissions for Bonus B and C were due by <strong>31 May 2026</strong>.</span></p>
+
+    <div class="tool calc" data-js-only id="us-orcalc">
+      <h3><svg class="icon" aria-hidden="true"><use href="#u-calc"/></svg>Estimate your maximum Oregon bonus</h3>
+      <fieldset><legend>Which bonus?</legend>
+        <div class="seg" style="margin-top:10px">
+          <label><input type="radio" name="us-or-b" value="A" checked><span>Bonus A</span></label>
+          <label><input type="radio" name="us-or-b" value="B"><span>Bonus B</span></label>
+          <label><input type="radio" name="us-or-b" value="C"><span>Bonus C</span></label>
+        </div></fieldset>
+      <div class="field" data-for="A">
+        <label for="us-or-fee">Base fees per SKU or batch (excluding reserves)</label>
+        <div class="money"><input id="us-or-fee" type="text" inputmode="numeric" autocomplete="off" value="150,000"></div>
+      </div>
+      <fieldset data-for="B C"><legend>Impact reduction shown by the comparative LCA</legend>
+        <div class="seg" style="margin-top:10px">
+          <label><input type="radio" name="us-or-t" value="40000" checked><span>10–40%</span></label>
+          <label><input type="radio" name="us-or-t" value="45000"><span>40–70%</span></label>
+          <label><input type="radio" name="us-or-t" value="50000"><span>Above 70%</span></label>
+        </div></fieldset>
+      <div class="field" data-for="A B">
+        <label for="us-or-n">SKUs or batches: <output id="us-or-n-out" for="us-or-n">10</output></label>
+        <input type="range" id="us-or-n" min="1" max="10" step="1" value="10">
+      </div>
+      <div class="out" aria-live="polite">
+        <span class="k" id="us-or-k">Maximum Bonus A</span>
+        <span class="v" id="us-or-v">$150,000</span>
+        <span class="sum" id="us-or-sum">10% of $150,000 = $15,000 per SKU or batch × 10</span>
+      </div>
+      <p class="note">Indicative maximums from the figures in this article; awards depend on Oregon's review of each LCA. Bonus B and C are credited against future fees.</p>
+      <a class="btn" href="#evx-contact" id="us-or-talk" data-enquiry="Hi, I'd like help assessing Oregon's LCA bonuses for our packaging.">Talk to us about Oregon <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="sec" id="us-start" aria-labelledby="us-start-h">
+    <header class="wrap">
+      <p class="eyebrow">Where to start</p>
+      <h2 id="us-start-h">Build one data foundation for all three states</h2>
+      <p>For producers operating across the US, it is important to build a strong packaging data foundation: materials, weights, recycled content and recyclability evidence. That data will serve Colorado's verification process, California's reports, and Oregon's LCA submissions alike. <strong>The sooner you build it, the more of these bonuses you can claim.</strong></p>
+    </header>
+    <div class="found">
+      <ul class="in" aria-label="Your packaging data">
+        <li><svg class="icon" aria-hidden="true"><use href="#u-box"/></svg>Materials</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#u-weight"/></svg>Weights</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#u-recycle"/></svg>Recycled content</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#u-leaf"/></svg>Recyclability evidence</li>
+      </ul>
+      <div class="hub">Packaging data foundation</div>
+      <ul class="outs" aria-label="What it serves">
+        <li><svg class="state" aria-hidden="true"><use href="#s-co"/></svg><span>Colorado<small>Verification process</small></span></li>
+        <li><svg class="state" aria-hidden="true"><use href="#s-ca"/></svg><span>California<small>Source reduction reports</small></span></li>
+        <li><svg class="state" aria-hidden="true"><use href="#s-or"/></svg><span>Oregon<small>LCA submissions</small></span></li>
+      </ul>
+    </div>
+    <div class="tool" data-js-only id="us-ready">
+      <h3><svg class="icon" aria-hidden="true"><use href="#u-shield"/></svg>Quick check: which of these can you evidence today?</h3>
+      <div class="check">
+        <label><input type="checkbox">Packaging materials for every SKU</label>
+        <label><input type="checkbox">Component weights</label>
+        <label><input type="checkbox">Recycled content</label>
+        <label><input type="checkbox">Recyclability evidence</label>
+      </div>
+      <div class="meter" aria-hidden="true"><i id="us-ready-bar"></i></div>
+      <p id="us-ready-msg" aria-live="polite"><strong>0 of 4 in place.</strong> Start with the data you already hold; we can help fill the gaps.</p>
+      <a class="btn" href="#evx-contact" data-enquiry="Hi, I'd like help building our packaging data for US EPR (California, Colorado and Oregon).">Get help with your data <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* US EPR eco-modulation article: progressive enhancement for the SRIM slider, Oregon calculator and data checklist. */
+(function () {
+  var root = document.getElementById('usepr'); if (!root) return;
+  root.classList.add('is-js');
+  var fmt = function (n) { return Math.round(n).toLocaleString('en-GB'); };
+
+  /* SRIM: same $10m pool, fewer producers paying. Log scale 100–10,000. */
+  var POOL = 10000000, r = root.querySelector('#us-srim-range'), dots = root.querySelector('#us-srim-dots');
+  for (var i = 0; i < 100; i++) dots.appendChild(document.createElement('i'));
+  var dotEls = dots.children;
+  function srim() {
+    var n = Math.pow(10, 2 + r.value / 50), step = n < 1000 ? 10 : 100; n = Math.max(100, Math.round(n / step) * step);
+    root.querySelector('#us-srim-n').textContent = fmt(n);
+    root.querySelector('#us-srim-v').textContent = '$' + fmt(POOL / n);
+    root.querySelector('#us-srim-sum').textContent = '$10,000,000 ÷ ' + fmt(n) + ' producers';
+    r.setAttribute('aria-valuetext', fmt(n) + ' producers paying, $' + fmt(POOL / n) + ' each');
+    var paying = Math.max(1, Math.round(n / 100));
+    for (var j = 0; j < 100; j++) dotEls[j].classList.toggle('paying', j < paying);
+  }
+  r.addEventListener('input', srim); srim();
+
+  /* Oregon bonus estimate */
+  var calc = root.querySelector('#us-orcalc'), fee = calc.querySelector('#us-or-fee'), num = calc.querySelector('#us-or-n');
+  function pick(name) { return calc.querySelector('input[name="' + name + '"]:checked').value; }
+  function orcalc() {
+    var b = pick('us-or-b'), n = +num.value, per, sum;
+    calc.querySelector('#us-or-n-out').textContent = n;
+    [].forEach.call(calc.querySelectorAll('[data-for]'), function (el) { el.hidden = el.getAttribute('data-for').split(' ').indexOf(b) < 0; });
+    if (b === 'A') {
+      var f = +(fee.value.replace(/[^\d.]/g, '')) || 0; per = Math.min(f * 0.1, 20000);
+      sum = '10% of $' + fmt(f) + (f * 0.1 > 20000 ? ', capped at $20,000' : '') + ' = $' + fmt(per) + ' per SKU or batch × ' + n;
+    } else if (b === 'B') {
+      per = +pick('us-or-t'); sum = 'Up to $' + fmt(per) + ' per SKU or batch × ' + n;
+    } else {
+      per = +pick('us-or-t'); n = 1; sum = 'Same tiers as Bonus B, per SKU or batch';
+    }
+    calc.querySelector('#us-or-k').textContent = 'Maximum Bonus ' + b + (b === 'C' ? ' per SKU or batch' : '');
+    calc.querySelector('#us-or-v').textContent = '$' + fmt(per * n);
+    calc.querySelector('#us-or-sum').textContent = sum;
+  }
+  calc.addEventListener('input', orcalc); calc.addEventListener('change', orcalc);
+  fee.addEventListener('blur', function () { var f = +(fee.value.replace(/[^\d.]/g, '')) || 0; fee.value = fmt(f); });
+  orcalc();
+
+  /* Data readiness checklist */
+  var boxes = root.querySelectorAll('#us-ready input'), bar = root.querySelector('#us-ready-bar'), msg = root.querySelector('#us-ready-msg');
+  var notes = ['Start with the data you already hold; we can help fill the gaps.', 'A start. Each data set you add makes every state’s reporting easier.',
+    'Halfway there. Closing the gaps now puts you in line for more of these bonuses.', 'Nearly there: one more data set to evidence.', 'A strong foundation for all three states.'];
+  function ready() { var c = [].filter.call(boxes, function (b) { return b.checked; }).length;
+    bar.style.width = c * 25 + '%'; msg.innerHTML = '<strong>' + c + ' of 4 in place.</strong> ' + notes[c]; }
+  [].forEach.call(boxes, function (b) { b.addEventListener('change', ready); });
+})();
+</script>

@@ -16,13 +16,13 @@ function bodyActionsOf(q) {
   return [];
 }
 
-export async function launch({ write = null, state = true, log = true } = {}) {
+export async function launch({ write = null, state = true, log = true, scale = 1 } = {}) {
   const proxyUrl = process.env.HTTPS_PROXY || process.env.https_proxy;
   const launchOpts = proxyUrl ? { proxy: { server: proxyUrl } } : {};
   let browser;
   try { browser = await chromium.launch(launchOpts); }
   catch { browser = await chromium.launch({ ...launchOpts, executablePath: '/opt/pw-browsers/chromium' }); }
-  const opts = { viewport: { width: 1440, height: 1000 } };
+  const opts = { viewport: { width: 1440, height: 1000 }, deviceScaleFactor: scale };
   if (state && fs.existsSync('state.json')) opts.storageState = 'state.json';
   const ctx = await browser.newContext(opts);
   const page = await ctx.newPage();
