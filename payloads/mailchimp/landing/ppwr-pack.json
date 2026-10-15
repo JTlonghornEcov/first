@@ -1,0 +1,34 @@
+{
+  "slug": "ppwr-pack",
+  "landing_page": {
+    "name": "TEST – EU PPWR essentials pack",
+    "title": "Free EU PPWR essentials pack | Ecoveritas",
+    "description": "Webinar slides, Q&A and a practical checklist for complying with the EU Packaging and Packaging Waste Regulation."
+  },
+  "tag": { "name": "EU PPWR Lead Magnet" },
+  "hero": {
+    "eyebrow": "Free resource",
+    "title": "Get our EU PPWR essentials pack",
+    "intro": [
+      "The EU Packaging and Packaging Waste Regulation has applied since 12 August 2026. Every pack you place on the EU market now needs evidence and a signed Declaration of Conformity.",
+      "Our essentials pack gives you the slides and answers from our PPWR webinar with Veolia, so you can see what applies to you and what to do first."
+    ],
+    "cta": "Send me the pack",
+    "image": "https://www.ecoveritas.com/assets/general/01-ppwr-hero-declaration.png",
+    "image_alt": "PPWR Declaration of Conformity"
+  },
+  "alert": "Already in force: PPWR has applied since 12 August 2026.",
+  "list_title": "What's in the pack",
+  "list": [
+    { "title": "Webinar slides", "text": "The full deck from our August 2026 PPWR webinar with Veolia." },
+    { "title": "Your questions answered", "text": "The live Q&A, written up: scope, DoCs, labelling and timelines." },
+    { "title": "Where to start", "text": "The first steps we take with clients: scoping your packs and gathering supplier evidence." }
+  ],
+  "form": {
+    "title": "Request your free pack",
+    "text": "Tell us where to send it. We'll email you the pack straight away.",
+    "fields": ["EMAIL", "FNAME", "LNAME", "MMERGE6", "MMERGE9"],
+    "button": "Send me the pack",
+    "consent": "We'll email you the pack and our monthly compliance bulletin. You can unsubscribe at any time. See our"
+  }
+}

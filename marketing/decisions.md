@@ -19,3 +19,10 @@
 - Bulletin finalised: Kosovo piece cleared by policy team, PRN audit CTA → /request-free-prn-audit, phone 01865 502176.
 - Email header uses the website logo (dist/images/logo.svg) reversed to white for the teal header; uploaded to Mailchimp
   file manager, source in `payloads/mailchimp/assets/`.
+
+## 2026-10-15
+- Website enquiry form is a Mailchimp embed with hidden `tags=12457554` (Information Request); the PRN audit page uses the
+  same form, so PRN applications are mixed with enquiries. Long-term fix: developer makes the tag configurable per block.
+- Interim workaround agreed: Mailchimp landing pages per lead magnet, each tagging its own leads. Built two TEST drafts
+  (EU PPWR essentials pack, PRN audit application), styled to the site (Space Grotesk, #2F444E, #FFCD03). Content must be
+  pasted into a Code block by hand: the API can't write landing page content (405). New tag: PRN Audit Request (12461223).

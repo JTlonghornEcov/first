@@ -1,0 +1,35 @@
+{
+  "slug": "prn-audit",
+  "landing_page": {
+    "name": "TEST – Free PRN audit application",
+    "title": "Apply for a free PRN audit | Ecoveritas",
+    "description": "An independent review of your packaging data, so you only buy the PRNs you actually owe and only pay the EPR fees you should."
+  },
+  "tag": { "name": "PRN Audit Request" },
+  "hero": {
+    "eyebrow": "Free PRN audit",
+    "title": "Check your PRN data. Free.",
+    "intro": [
+      "Get a full, independent review of your packaging data, so you only buy the PRNs you actually owe and only pay the EPR fees you should.",
+      "Ecoveritas is fully independent of compliance schemes, so our only interest is getting your numbers right."
+    ],
+    "cta": "Apply for a free audit",
+    "image": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/8933/ECOV_data-collection_horizontal_1472x828_v.1.webp",
+    "image_alt": "Reviewing packaging data"
+  },
+  "alert": "Why now: PRN prices have risen 3–4x. Accurate packaging data matters more than ever.",
+  "list_title": "How it works",
+  "list": [
+    { "title": "01 · Apply", "text": "Submit a short application using the form below." },
+    { "title": "02 · We review your data", "text": "We confirm how many PRNs you need, and that your EPR fee is accurate." },
+    { "title": "03 · No upfront cost", "text": "Selected producers get their audit at no cost, with nothing to pay upfront." }
+  ],
+  "form": {
+    "title": "Apply for a free PRN audit",
+    "text": "Places are limited and allocated by application. Tell us a little about your business so we can assess it.",
+    "fields": ["EMAIL", "MMERGE6", "FNAME", "LNAME", "MMERGE10"],
+    "enquiry_placeholder": "Your annual turnover (a rough bracket is fine) and your packaging tonnage or number of SKUs",
+    "button": "Apply now",
+    "consent": "We'll use your details to assess your application and may send you our monthly compliance bulletin. You can unsubscribe at any time. See our"
+  }
+}
