@@ -19,7 +19,9 @@ const EU = {
   '616': ['pl', 'Poland', 'b'], '620': ['pt', 'Portugal', 'b'], '642': ['ro', 'Romania', 'c'], '703': ['sk', 'Slovakia', 'b'],
   '705': ['si', 'Slovenia', 'c'], '724': ['es', 'Spain', 'a'], '752': ['se', 'Sweden', 'a'],
 };
-const STATUS = { a: 'Placeholder status A', b: 'Placeholder status B', c: 'Placeholder status C' };
+const STATUS = { a: 'We support', b: '', c: '' };   // all 27 are markets we support (matches the original Europe map)
+const INFO = JSON.parse(fs.readFileSync('../../payloads/europe-map/countries.json'));
+const REVIEW = process.env.REVIEW !== '0';   // shows the 'under review' note; build with REVIEW=0 once the policy team signs off
 // Pin positions where the largest-polygon centroid would land badly (lon, lat)
 const PIN_FIX = { hr: [15.9, 45.5], gr: [22.0, 39.6], dk: [9.2, 56.1], it: [12.6, 42.8], se: [15.2, 60.6], fi: [26.0, 62.6] };
 // Label offsets so names sit clear of pins
@@ -45,7 +47,7 @@ for (const f of countries) {
   if (!inFrame(f) && !EU[f.id]) continue;
   const d = path(f) || '';
   if (EU[f.id]) {                                   // EU states always render: tiny ones (Malta) are just their pin
-    const [code, name, status] = EU[f.id];
+    const [code, name] = EU[f.id], status = 'a';
     const [px, py] = projection(PIN_FIX[code] || geoCentroid(largest(f))).map(n => Math.round(n * 10) / 10);
     eu.push({ code, name, status, d, px, py });
   } else if (d) bg.push(d);
@@ -53,21 +55,22 @@ for (const f of countries) {
 eu.sort((a, b) => a.name.localeCompare(b.name));
 
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
-const lorem = [
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.',
-  'Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.',
-];
 
 const svgCountries = eu.map(c => {
   const lx = c.px + (LABEL_DX[c.code] || 0), anchor = (LABEL_DX[c.code] || 0) < 0 ? 'end' : (LABEL_DX[c.code] > 0 ? 'start' : 'middle');
   return `<a class="evx-country" data-c="${c.code}" data-s="${c.status}" href="#evx-c-${c.code}" aria-label="${esc(c.name)}">` +
     (c.d ? `<path d="${c.d}"/>` : '') +
-    `<circle class="evx-pin" cx="${c.px}" cy="${c.py}" r="5.5"/>` +
-    `<text class="evx-label" x="${lx}" y="${(c.py - 12).toFixed(1)}" text-anchor="${anchor}">${esc(c.name)}</text></a>`;
+    `<circle class="evx-pin" cx="${c.px}" cy="${c.py}" r="5.5"/></a>`;
 }).join('\n');
+// Names live in their own layer above every country, so a neighbour drawn later can never cover them.
+const svgLabels = eu.map(c => {
+  const lx = c.px + (LABEL_DX[c.code] || 0), anchor = (LABEL_DX[c.code] || 0) < 0 ? 'end' : (LABEL_DX[c.code] > 0 ? 'start' : 'middle');
+  return `<text class="evx-label" data-c="${c.code}" x="${lx}" y="${(c.py - 12).toFixed(1)}" text-anchor="${anchor}">${esc(c.name)}</text>`;
+}).join('');
+const hoverLabelRules = eu.map(c => `.evx .evx-svg:has(.evx-country[data-c="${c.code}"]:is(:hover,:focus-visible)) .evx-label[data-c="${c.code}"]`).join(',\n');
 
 const selectedRules = eu.map(c => `.evx .evx-map-grid:has(#evx-c-${c.code}:target) .evx-country[data-c="${c.code}"]`).join(',\n');
-const selectedLabelRules = eu.map(c => `.evx .evx-map-grid:has(#evx-c-${c.code}:target) .evx-country[data-c="${c.code}"] .evx-label`).join(',\n');
+const selectedLabelRules = eu.map(c => `.evx .evx-map-grid:has(#evx-c-${c.code}:target) .evx-label[data-c="${c.code}"]`).join(',\n');
 const selectedListRules = eu.map(c => `.evx .evx-map-sec:has(#evx-c-${c.code}:target) .evx-country-list a[href="#evx-c-${c.code}"]`).join(',\n');
 
 const cards = eu.map(c => `
@@ -77,13 +80,13 @@ const cards = eu.map(c => `
           <a class="evx-close" href="#evx-map">Close<span class="evx-sr"> ${esc(c.name)}</span></a>
         </div>
         <h3 class="evx-h3" id="evx-c-${c.code}-h">${esc(c.name)}</h3>
-        <p class="evx-p">${lorem[0]}</p>
+        <p class="evx-p">${esc(INFO[c.code].summary)}</p>
         <dl class="evx-dl">
-          <div class="evx-row"><dt class="evx-dt">Scheme</dt><dd class="evx-dd">Lorem ipsum</dd></div>
-          <div class="evx-row"><dt class="evx-dt">Authority</dt><dd class="evx-dd">Dolor sit amet</dd></div>
-          <div class="evx-row"><dt class="evx-dt">Next deadline</dt><dd class="evx-dd">00 Month 0000</dd></div>
+          <div class="evx-row"><dt class="evx-dt">Key law</dt><dd class="evx-dd">${esc(INFO[c.code].law)}</dd></div>
+          <div class="evx-row"><dt class="evx-dt">Register</dt><dd class="evx-dd">${esc(INFO[c.code].register)}</dd></div>
+          <div class="evx-row"><dt class="evx-dt">How producers comply</dt><dd class="evx-dd">${esc(INFO[c.code].route)}</dd></div>
         </dl>
-        <p class="evx-p evx-muted">${lorem[1]}</p>
+        <p class="evx-p evx-muted">${esc(INFO[c.code].note)}</p>
         <a class="evx-link" href="#evx-contact" data-enquiry="Hi, I'm interested in advice on EPR compliance in ${esc(c.name)}.">Talk to us about ${esc(c.name)}</a>
       </article>`).join('');
 
@@ -122,10 +125,11 @@ const html = `<style>
 .evx .evx-country[data-s="b"] path { fill:var(--evx-b); }
 .evx .evx-country[data-s="c"] path { fill:var(--evx-c); }
 .evx .evx-pin { fill:var(--evx-yellow); stroke:var(--evx-ink); stroke-width:1.5; transition:r .2s ease; }
-.evx .evx-label { font-size:15px; font-weight:700; fill:var(--evx-ink); paint-order:stroke; stroke:#fff; stroke-width:4px; stroke-linejoin:round; opacity:0; pointer-events:none; transition:opacity .15s ease; }
+.evx .evx-labels { pointer-events:none; }
+.evx .evx-label { font-size:15px; font-weight:700; fill:var(--evx-ink); paint-order:stroke; stroke:#fff; stroke-width:5px; stroke-linejoin:round; opacity:0; transition:opacity .15s ease; }
 .evx .evx-country:hover path, .evx .evx-country:focus-visible path { fill:var(--evx-slate); }
 .evx .evx-country:hover .evx-pin, .evx .evx-country:focus-visible .evx-pin { r:8; }
-.evx .evx-country:hover .evx-label, .evx .evx-country:focus-visible .evx-label { opacity:1; }
+${hoverLabelRules} { opacity:1; }
 .evx .evx-country:focus-visible path { stroke:var(--evx-yellow); stroke-width:3; }
 /* Selected country (its card is the :target) */
 ${selectedRules.split(',\n').map(r => r + ' path').join(',\n')} { fill:var(--evx-yellow); }
@@ -151,8 +155,8 @@ ${selectedLabelRules} { opacity:1; }
 .evx .evx-close { color:#fff; font-size:14px; font-weight:700; text-decoration:none; }
 .evx .evx-close::after { content:" \\2715"; }
 .evx .evx-dl { display:grid; gap:10px; }
-.evx .evx-row { display:grid; grid-template-columns:1fr auto; gap:16px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,.2); }
-.evx .evx-dt { color:#c7d3d8; } .evx .evx-dd { font-weight:700; text-align:right; }
+.evx .evx-row { display:grid; gap:2px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,.2); }
+.evx .evx-dt { color:#c7d3d8; font-size:13px; } .evx .evx-dd { font-weight:700; line-height:1.4; }
 .evx .evx-link { justify-self:start; display:inline-flex; gap:8px; font-weight:700; color:#fff; text-decoration:none; border-bottom:2px solid var(--evx-yellow); padding-bottom:2px; }
 .evx .evx-link::after { content:"\\2192"; }
 @keyframes evx-in { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
@@ -175,8 +179,7 @@ ${selectedListRules} { background:var(--evx-yellow); border-color:var(--evx-yell
     <div class="evx-head">
       <p class="evx-eyebrow">Europe at a glance</p>
       <h2 class="evx-h2" id="evx-map-h">EPR across the European Union</h2>
-      <p class="evx-p evx-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Select a country on the map or from the list to see its key requirements.</p>
-      <p class="evx-note">Design preview: all country details are placeholder text</p>
+      <p class="evx-p evx-lead">Every EU member state runs its own packaging EPR scheme alongside PPWR. Select a country on the map or from the list to see how its national rules work.</p>${REVIEW ? '\n      <p class="evx-note">Draft: country details are being reviewed by our policy team</p>' : ''}
     </div>
     <div class="evx-map-grid">
       <figure class="evx-figure">
@@ -186,14 +189,15 @@ ${selectedListRules} { background:var(--evx-yellow); border-color:var(--evx-yell
           <g class="evx-eu">
 ${svgCountries}
           </g>
+          <g class="evx-labels" aria-hidden="true">${svgLabels}</g>
         </svg>
-        <figcaption class="evx-legend"><span style="--k:var(--evx-a)">${STATUS.a}</span><span style="--k:var(--evx-b)">${STATUS.b}</span><span style="--k:var(--evx-c)">${STATUS.c}</span><span style="--k:var(--evx-land)">Outside the EU</span></figcaption>
+        <figcaption class="evx-legend"><span style="--k:var(--evx-a)">EU markets we support</span><span style="--k:var(--evx-land)">Outside the EU</span></figcaption>
       </figure>
       <div class="evx-panel">
         <div class="evx-intro">
           <svg class="evx-intro-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="24" cy="24" r="24" fill="#ffcd03"/><path d="M24 12c-5 0-9 4-9 9 0 7 9 15 9 15s9-8 9-15c0-5-4-9-9-9zm0 12.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" fill="#212121"/></svg>
           <h3 class="evx-h3">Choose a country</h3>
-          <p class="evx-p evx-muted">Lorem ipsum dolor sit amet. Hover over the map to explore, then select a country to see its scheme, authority and next deadline.</p>
+          <p class="evx-p evx-muted">Hover over the map to explore, then select a country to see its key law, where producers register and how they comply.</p>
         </div>${cards}
       </div>
     </div>
