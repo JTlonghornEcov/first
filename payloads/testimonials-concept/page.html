@@ -1,0 +1,275 @@
+<style>
+/* Testimonials concept. Scoped to #tst. Quotes are verbatim from the live page. Anchors: #case-studies, #testimonials, #t-<client>.
+   Without JS every case study and testimonial is visible; JS adds the sector filter. */
+#tst { --ink:#212121; --body:#333c45; --muted:#55656d; --slate:#2f444e; --slate-2:#3d5662; --slate-3:#4d6875; --teal:#006374; --teal-2:#e3f0f3;
+  --yellow:#ffcd03; --yellow-2:#fff6cc; --grey:#f6f7f7; --line:#dfe5e7; --mist:#aac5d1; --r:16px;
+  color:var(--ink); display:grid; gap:clamp(56px,8vw,104px); font-size:16px; line-height:1.6; }
+#tst *, #tst *::before, #tst *::after { box-sizing:border-box; }
+#tst > * { min-width:0; }
+#tst :is(h2,h3,p,ul,ol,li,blockquote,figure,dl,dd,dt) { margin:0; padding:0; border:0; font-family:inherit; }
+#tst :is(ul,ol) { list-style:none; }
+#tst h2 { font-size:clamp(28px,3.6vw,42px); line-height:1.12; font-weight:700; letter-spacing:-.01em; color:var(--ink); }
+#tst h3 { font-size:22px; line-height:1.25; font-weight:700; color:var(--ink); }
+#tst p { color:var(--body); }
+#tst .eyebrow { display:inline-flex; align-items:center; gap:10px; margin:0 0 12px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+#tst .eyebrow::before { content:""; width:28px; height:4px; border-radius:2px; background:var(--yellow); }
+#tst .head { display:grid; gap:12px; max-width:760px; }
+#tst .lead { font-size:clamp(17px,1.6vw,19px); line-height:1.55; }
+#tst .sec { display:grid; gap:clamp(24px,3.4vw,40px); scroll-margin-top:120px; }
+#tst :is(a,button):focus-visible { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+#tst:not(.is-js) [data-js-only] { display:none; }
+#tst .icon { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+
+/* Jump bar */
+#tst .jump { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+#tst .jump b { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-right:4px; }
+#tst .jump a { display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:99px; border:2px solid var(--line); background:#fff; color:var(--ink); font-weight:700; text-decoration:none; transition:border-color .15s ease, background .15s ease; }
+#tst .jump a:hover { border-color:var(--slate); }
+#tst .jump a span { display:grid; place-items:center; min-width:26px; height:26px; padding:0 6px; border-radius:99px; background:var(--teal-2); color:var(--teal); font-size:13px; }
+
+/* Spotlight */
+#tst .spot { position:relative; overflow:hidden; isolation:isolate; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr)); gap:clamp(20px,4vw,56px); align-items:center; padding:clamp(28px,4.4vw,56px); border-radius:var(--r); background:var(--slate); color:#fff; }
+#tst .spot::after { content:"\201C"; position:absolute; z-index:-1; right:-10px; top:-90px; font-size:420px; line-height:1; font-weight:700; color:rgba(255,255,255,.05); }
+#tst .spot .big { font-size:clamp(96px,14vw,180px); font-weight:700; line-height:.9; letter-spacing:-.05em; color:var(--yellow); }
+#tst .spot .big small { display:block; margin-top:12px; font-size:16px; letter-spacing:.02em; font-weight:700; color:var(--mist); line-height:1.4; }
+#tst .spot blockquote p { font-size:clamp(19px,2vw,24px); line-height:1.45; font-weight:500; color:#fff; }
+#tst .spot .who { margin-top:16px; color:#c9d6db; font-size:15px; }
+#tst .spot .who b { color:#fff; display:block; }
+#tst .spot a { display:inline-flex; margin-top:18px; color:#fff; font-weight:700; text-decoration:none; border-bottom:2px solid var(--yellow); padding-bottom:2px; }
+
+/* Case studies */
+#tst .cases { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr)); gap:20px; }
+#tst .case { display:flex; flex-direction:column; border-radius:var(--r); overflow:hidden; border:1px solid var(--line); background:#fff; text-decoration:none; color:var(--ink); scroll-margin-top:120px; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+#tst .case:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(33,33,33,.12); border-color:var(--slate); }
+#tst .case .media { aspect-ratio:16/9; background:var(--grey); }
+#tst .case .media img { display:block; width:100%; height:100%; object-fit:cover; }
+#tst .ph { display:grid; place-content:center; gap:6px; height:100%; padding:18px; border-bottom:2px dashed var(--mist); background:repeating-linear-gradient(135deg,#f3f6f7 0 14px,#eef2f4 14px 28px); text-align:center; color:var(--slate); }
+#tst .ph b { font-size:16px; } #tst .ph span { font-size:13px; color:var(--muted); }
+#tst .case .body { display:flex; flex-direction:column; gap:12px; padding:clamp(20px,2.6vw,30px); flex:1; }
+#tst .case .kicker { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); }
+#tst .case .facts { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:6px 0 4px; }
+#tst .case .facts div { padding:12px 14px; border-radius:12px; background:var(--grey); }
+#tst .case .facts dt { font-size:22px; font-weight:700; line-height:1.1; color:var(--ink); }
+#tst .case .facts dd { margin-top:4px; font-size:13px; line-height:1.4; color:var(--muted); }
+#tst .case .read { margin-top:auto; align-self:flex-start; display:inline-flex; align-items:center; gap:8px; font-weight:700; border-bottom:2px solid var(--yellow); padding-bottom:2px; }
+
+/* Years together */
+#tst .years { padding:clamp(22px,3.4vw,36px); border-radius:var(--r); background:var(--grey); display:grid; gap:18px; }
+#tst .years h3 { font-size:20px; }
+#tst .line { position:relative; display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:8px; }
+#tst .line::before { content:""; position:absolute; left:0; right:0; top:15px; height:3px; border-radius:2px; background:linear-gradient(90deg,var(--teal),var(--yellow)); }
+#tst .line a { position:relative; display:flex; flex-direction:column; align-items:flex-start; gap:6px; padding-top:38px; text-decoration:none; color:var(--ink); }
+#tst .line a::before { content:""; position:absolute; top:6px; left:0; width:21px; height:21px; border-radius:50%; background:#fff; border:3px solid var(--teal); transition:transform .2s ease, background .2s ease; }
+#tst .line a:hover::before { transform:scale(1.2); background:var(--yellow); }
+#tst .line .yr { font-size:clamp(20px,2.2vw,28px); font-weight:700; line-height:1; }
+#tst .line .org { font-size:14px; font-weight:700; color:var(--muted); line-height:1.3; }
+@media (max-width:767px) {
+  #tst .line { grid-template-columns:1fr; gap:4px; padding-left:6px; }
+  #tst .line::before { left:15px; right:auto; top:8px; bottom:8px; width:3px; height:auto; background:linear-gradient(180deg,var(--teal),var(--yellow)); }
+  #tst .line a { flex-direction:row; align-items:baseline; gap:12px; padding:8px 0 8px 40px; }
+  #tst .line a::before { top:9px; left:0; }
+}
+
+/* Testimonial wall */
+#tst .filters { display:flex; flex-wrap:wrap; gap:8px; }
+#tst .filters button { display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:99px; border:2px solid var(--line); background:#fff; font:inherit; font-weight:700; font-size:15px; color:var(--ink); cursor:pointer; transition:background .15s ease, border-color .15s ease; }
+#tst .filters button span { font-size:13px; color:var(--muted); }
+#tst .filters button[aria-pressed="true"] { background:var(--slate); border-color:var(--slate); color:#fff; }
+#tst .filters button[aria-pressed="true"] span { color:var(--mist); }
+#tst .status { font-size:14px; color:var(--muted); min-height:1.4em; }
+#tst .wall { columns:3 320px; column-gap:18px; }
+#tst .card { break-inside:avoid; display:flex; flex-direction:column; gap:14px; margin:0 0 18px; padding:22px; border-radius:var(--r); border:1px solid var(--line); background:#fff; scroll-margin-top:120px; transition:border-color .25s ease, box-shadow .25s ease; }
+#tst .card:target { border-color:var(--ink); box-shadow:0 0 0 4px var(--yellow); }
+#tst .card[hidden] { display:none; }
+#tst .card-top { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+#tst .card .logo img { display:block; width:auto; height:36px; max-width:150px; object-fit:contain; object-position:left center; }
+#tst .card .logo .tx { display:block; font-weight:700; font-size:15px; line-height:1.25; color:var(--slate); max-width:18ch; }
+#tst .card .tag { flex:none; padding:4px 10px; border-radius:99px; background:var(--teal-2); color:var(--teal); font-size:12px; font-weight:700; }
+#tst blockquote { font-style:normal; padding:0; margin:0; border:0; overflow:visible; }
+#tst .card blockquote p { font-size:15.5px; line-height:1.6; color:var(--body); }
+#tst .card blockquote p::before { content:"\201C"; } #tst .card blockquote p::after { content:"\201D"; }
+#tst mark { background:linear-gradient(transparent 55%,#ffe36b 55%); color:var(--ink); font-weight:700; padding:0 1px; }
+#tst .card .who { padding-top:12px; border-top:1px solid var(--line); font-size:13.5px; color:var(--muted); line-height:1.45; }
+#tst .card .who b { display:block; font-size:15px; color:var(--ink); }
+@media (prefers-reduced-motion:reduce) { #tst *, #tst *::before, #tst *::after { transition:none !important; } }
+#evx-contact { scroll-margin-top:96px; }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="ts-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="ts-cam" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+</svg>
+
+<div id="tst">
+
+  <nav class="jump" aria-label="On this page"><b>Jump to</b>
+    <a href="#case-studies">Case studies <span>2</span></a>
+    <a href="#testimonials">Testimonials <span>13</span></a>
+  </nav>
+
+  <figure class="spot">
+    <div class="big" aria-hidden="true">65%<small>lower packaging compliance costs at Fenwick</small></div>
+    <div>
+      <blockquote><p>"Their management of REPRA has given me increased confidence that we comply, has reduced our costs by 65%, and freed up my time to tackle other priorities."</p></blockquote>
+      <figcaption class="who"><b>Jill Anders</b>Company Secretary, Fenwick Limited</figcaption>
+      <a href="#t-fenwick">Read the full testimonial</a>
+    </div>
+  </figure>
+
+  <section class="sec" id="case-studies" aria-labelledby="ts-cs-h">
+    <header class="head">
+      <p class="eyebrow">Case studies</p>
+      <h2 id="ts-cs-h">View our case studies</h2>
+      <p class="lead">How we've helped clients put accurate, defensible packaging data behind their compliance.</p>
+    </header>
+    <div class="cases">
+      <a class="case" id="cs-heidelberg" href="https://www.ecoveritas.com/case-studies/case-study-heidelberg-materials-uk">
+        <div class="media"><img src="https://www.ecoveritas.com/assets/general/_736x414_crop_center-center_80_none/7552/Heidelberg-Case-Study.webp" alt="" width="736" height="414" loading="lazy"></div>
+        <div class="body">
+          <span class="kicker">Construction materials · UK EPR</span>
+          <h3>Heidelberg Materials UK</h3>
+          <p>Replacing estimation-heavy legacy assumptions with documented, customer-validated classifications supported by a clear audit trail.</p>
+          <dl class="facts"><div><dt>367</dt><dd>customers' data collected and validated</dd></div><div><dt>HY1 + HY2</dt><dd>2024 submissions fully recalculated</dd></div><div><dt>Audit-ready</dt><dd>full audit trail for Environment Agency review</dd></div></dl>
+          <span class="read">Read the case study <svg class="icon" aria-hidden="true"><use href="#ts-arrow"/></svg></span>
+        </div>
+      </a>
+      <a class="case" id="cs-new-look" href="https://www.ecoveritas.com/case-studies/new-look">
+        <div class="media"><div class="ph" role="img" aria-label="Photo to be sourced"><svg class="icon" aria-hidden="true" style="width:34px;height:34px;margin:0 auto;color:#006374"><use href="#ts-cam"/></svg><b>Photo to be sourced</b><span>New Look store or product packaging.</span></div></div>
+        <div class="body">
+          <span class="kicker">Fashion retail · Packaging, WEEE & batteries</span>
+          <h3>New Look: making packaging compliance fashionable</h3>
+          <p>Supporting the British omnichannel fashion retailer with packaging, WEEE and battery compliance calculations and submissions.</p>
+          <dl class="facts"><div><dt>Since 2010</dt><dd>working with New Look</dd></div><div><dt>3 regimes</dt><dd>packaging, WEEE and batteries</dd></div></dl>
+          <span class="read">Read the case study <svg class="icon" aria-hidden="true"><use href="#ts-arrow"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <figure class="years">
+    <h3>Relationships measured in decades</h3>
+    <ol class="line"><li><a href="#t-john-lewis"><span class="yr">2002</span><span class="org">John Lewis Partnership</span></a></li><li><a href="#t-selfridges"><span class="yr">2004</span><span class="org">Selfridges &amp; Co.</span></a></li><li><a href="#t-harvey-nichols"><span class="yr">2006</span><span class="org">Harvey Nichols</span></a></li><li><a href="#cs-new-look"><span class="yr">2010</span><span class="org">New Look</span></a></li><li><a href="#t-claires"><span class="yr">2014</span><span class="org">Claire's Accessories</span></a></li><li><a href="#t-united-biscuits"><span class="yr">2015</span><span class="org">United Biscuits</span></a></li></ol>
+  </figure>
+
+  <section class="sec" id="testimonials" aria-labelledby="ts-t-h">
+    <header class="head">
+      <p class="eyebrow">Testimonials</p>
+      <h2 id="ts-t-h">In our clients' words</h2>
+      <p class="lead">Quotes from clients across retail, food and grocery, pharmaceuticals and horticulture on working with Ecoveritas.</p>
+    </header>
+    <div data-js-only style="display:grid;gap:10px">
+      <div class="filters" role="group" aria-label="Filter testimonials by sector"><button type="button" data-f="all" aria-pressed="true">All <span>13</span></button><button type="button" data-f="retail" aria-pressed="false">Retail <span>6</span></button><button type="button" data-f="food" aria-pressed="false">Food & grocery <span>3</span></button><button type="button" data-f="pharma" aria-pressed="false">Pharmaceuticals <span>1</span></button><button type="button" data-f="horticulture" aria-pressed="false">Horticulture <span>3</span></button></div>
+      <p class="status" id="ts-status" aria-live="polite"></p>
+    </div>
+    <ul class="wall" id="ts-wall">
+      <li class="card" id="t-claires" data-sector="retail">
+        <div class="card-top"><span class="logo"><img src="https://www.ecoveritas.com/assets/general/claires.svg" alt="Claire's Accessories" width="150" height="36" loading="lazy"></span><span class="tag">Retail</span></div>
+        <blockquote><p>Ecoveritas took over our EU compliance for packaging waste as well as WEEE &amp; batteries in 2014. They were able to provide a seamless transition from our existing compliance work and successfully dealt with numerous scheme registration issues. Their expertise and efficiency have enabled Claire's to <mark>achieve EU Producer Responsibility compliance cost-effectively, while dramatically minimising input from our staff</mark>.</p></blockquote>
+        <p class="who"><b>Allan Watwood</b>European Risk Manager, Claire's Accessories</p>
+      </li>
+      <li class="card" id="t-eisai" data-sector="pharma">
+        <div class="card-top"><span class="logo"><img src="https://www.ecoveritas.com/assets/general/eisai-logo.svg" alt="Eisai Europe" width="150" height="36" loading="lazy"></span><span class="tag">Pharmaceuticals</span></div>
+        <blockquote><p>As a pharmaceutical company which places a strong emphasis on full compliance, <mark>Ecoveritas fully understood our needs for a highly accurate calculation</mark>. They worked professionally and displayed an excellent understanding of the pharmaceutical sector, its supply chain and the packaging regulations. We would strongly recommend them to other companies with similar exacting needs.</p></blockquote>
+        <p class="who"><b>Michael Clarke</b>EHS Advisor, Eisai Europe</p>
+      </li>
+      <li class="card" id="t-fenwick" data-sector="retail">
+        <div class="card-top"><span class="logo"><img src="https://www.ecoveritas.com/assets/general/fenwick.svg" alt="Fenwick" width="150" height="36" loading="lazy"></span><span class="tag">Retail</span></div>
+        <blockquote><p>Fenwick uses very few consultants — our philosophy is to do things in-house wherever we can. However, Fenwick's directors made an exception for our packaging waste calculation because Ecoveritas can do this work at significantly lower cost than ourselves. Their management of REPRA has given me increased confidence that we comply, <mark>has reduced our costs by 65%</mark>, and freed up my time to tackle other priorities.</p></blockquote>
+        <p class="who"><b>Jill Anders</b>Company Secretary, Fenwick Limited</p>
+      </li>
+      <li class="card" id="t-fortnum-mason" data-sector="retail">
+        <div class="card-top"><span class="logo"><img src="https://www.ecoveritas.com/assets/general/fortnun-and-mason.svg" alt="Fortnum &amp; Mason" width="150" height="36" loading="lazy"></span><span class="tag">Retail</span></div>
+        <blockquote><p>Since joining REPRA, my concerns with regard to packaging waste compliance have become virtually non-existent. Entrusting the relevant data to Ecoveritas' powerful bespoke software has meant a huge increase in the accuracy of our calculations. <mark>When we were audited by the Environment Agency, I was able to relax</mark> in the certain knowledge that Ecoveritas had done an excellent job on our behalf.</p></blockquote>
+        <p class="who"><b>David Woodroof</b>Logistics Manager, Fortnum &amp; Mason</p>
+      </li>
+      <li class="card" id="t-harvey-nichols" data-sector="retail">
+        <div class="card-top"><span class="logo"><img src="https://www.ecoveritas.com/assets/general/harvey-nichols-logo.svg" alt="Harvey Nichols" width="150" height="36" loading="lazy"></span><span class="tag">Retail</span></div>
+        <blockquote><p>Harvey Nichols became a member of REPRA in 2006, and we have been very happy with the service provided by Ecoveritas. We have the confidence of knowing that our packaging waste obligation is being <mark>calculated to a high level of accuracy, and at a very reasonable cost</mark>.</p></blockquote>
+        <p class="who"><b>Mark Knight</b>Office Services Manager, Harvey Nichols</p>
+      </li>
+      <li class="card" id="t-hta" data-sector="horticulture">
+        <div class="card-top"><span class="logo"><img src="https://www.ecoveritas.com/assets/general/hta-logo.svg" alt="Horticultural Trades Association" width="150" height="36" loading="lazy"></span><span class="tag">Horticulture</span></div>
+        <blockquote><p>Ecoveritas have provided supporting data for the HTA Packaging Waste WorkBook for several years. The takeover from their predecessor was seamless, and <mark>the quality and robustness of the data has improved greatly</mark>. Ecoveritas have highly educated staff who provide a quality and personalised service with excellent attention to detail.</p></blockquote>
+        <p class="who"><b>Gary Scroby</b>Policy Manager, Horticultural Trades Association</p>
+      </li>
+      <li class="card" id="t-john-lewis" data-sector="retail">
+        <div class="card-top"><span class="logo"><img src="https://www.ecoveritas.com/assets/general/johnlewis.svg" alt="John Lewis Partnership" width="150" height="36" loading="lazy"></span><span class="tag">Retail</span></div>
+        <blockquote><p>Ecoveritas have worked with John Lewis since 2002, providing valuable assistance with our packaging waste, WEEE and batteries compliance. Their comprehensive in-house software, commitment to developing their methodology, and <mark>willingness to go the extra mile</mark> have all helped to strengthen our approach to environmental reporting. I would have no hesitation in recommending Ecoveritas' services.</p></blockquote>
+        <p class="who"><b>Gemma Lacey</b>ex Head of CSR, John Lewis Partnership</p>
+      </li>
+      <li class="card" id="t-selfridges" data-sector="retail">
+        <div class="card-top"><span class="logo"><img src="https://www.ecoveritas.com/assets/general/selfridges-logo.svg" alt="Selfridges &amp; Co." width="150" height="36" loading="lazy"></span><span class="tag">Retail</span></div>
+        <blockquote><p>In 2004, Selfridges decided to contract out the calculation of our packaging waste obligation to reduce the burden on our own staff. Of the companies tendering for the contract, Ecoveritas/REPRA <mark>offered the best value for money, by a wide margin</mark>. As a result, our calculation costs are much lower than before, while the accuracy has increased significantly.</p></blockquote>
+        <p class="who"><b>Rolando Faley</b>Head of Facilities, Property Services, Selfridges &amp; Co.</p>
+      </li>
+      <li class="card" id="t-spar" data-sector="food">
+        <div class="card-top"><span class="logo"><img src="https://www.ecoveritas.com/assets/general/spar.svg" alt="SPAR UK" width="150" height="36" loading="lazy"></span><span class="tag">Food & grocery</span></div>
+        <blockquote><p>Switching to Ecoveritas for our packaging waste calculations has <mark>significantly lowered our overall compliance costs</mark>, at the same time as offering me greater assurance of Spar's legal compliance across our Grocery and Foodservice business. Ecoveritas have proven themselves to be excellent partners; diligent, hard-working and with an eye for detail.</p></blockquote>
+        <p class="who"><b>Vinesh Patel</b>Supply Chain Controller, SPAR UK</p>
+      </li>
+      <li class="card" id="t-sugro" data-sector="horticulture">
+        <div class="card-top"><span class="logo"><img src="https://www.ecoveritas.com/assets/general/sugro-testimonial-logo.png" alt="Sugro UK" width="150" height="36" loading="lazy"></span><span class="tag">Horticulture</span></div>
+        <blockquote><p>Ecoveritas has successfully completed our members' packaging waste calculations for several years. Their work has been highly professional, <mark>required minimal input from myself or the Sugro members</mark>, and has also proved more cost-effective than the previous suppliers of this service.</p></blockquote>
+        <p class="who"><b>Philip Jenkins</b>Managing Director, Sugro UK</p>
+      </li>
+      <li class="card" id="t-united-biscuits" data-sector="food">
+        <div class="card-top"><span class="logo"><img src="https://www.ecoveritas.com/assets/general/united-biscuits-logo.svg" alt="United Biscuits" width="150" height="36" loading="lazy"></span><span class="tag">Food & grocery</span></div>
+        <blockquote><p>Ecoveritas took over United Biscuits' UK packaging compliance in 2015. The process of changing to them from our previous supplier has been very smooth, and the whole team is very thorough, with work done to the highest of standards. Outsourcing the entire calculation process has made compliance <mark>a much easier, quicker and cost-effective process, while minimising risk and stress</mark>.</p></blockquote>
+        <p class="who"><b>Paul Cheeseman</b>United Biscuits</p>
+      </li>
+      <li class="card" id="t-waitrose" data-sector="food">
+        <div class="card-top"><span class="logo"><img src="https://www.ecoveritas.com/assets/general/waitrose.svg" alt="Waitrose" width="150" height="36" loading="lazy"></span><span class="tag">Food & grocery</span></div>
+        <blockquote><p>The Waitrose contract with Ecoveritas was renewed following three years of excellent service. I've been impressed with the quality of their calculations, and the increased accuracy achieved through greater sample weighing of actual product. <mark>They have also saved us money on glass by double checking our suppliers' data.</mark></p></blockquote>
+        <p class="who"><b>Mike Walters</b>Group Manager Waste &amp; Water Resource, The John Lewis Partnership</p>
+      </li>
+      <li class="card" id="t-garden-centre" data-sector="horticulture">
+        <div class="card-top"><span class="logo"><span class="tx">Garden Centre / Horticultural Industry</span></span><span class="tag">Horticulture</span></div>
+        <blockquote><p>It's important to us to find a service that can help complete EPR reports cost effectively — that's why we chose Ecoveritas. Overall we feel that <mark>they genuinely care about their clients and users</mark>. A great solution for the horticultural industry.</p></blockquote>
+        <p class="who"><b>Jonathan Briers</b>Garden Centre Manager</p>
+      </li>
+    </ul>
+  </section>
+
+</div>
+
+<script>
+/* Testimonials: sector filter. Deep links (#t-client) clear any filter so the target card is visible. */
+(function () {
+  var root = document.getElementById('tst'); if (!root) return;
+  root.classList.add('is-js');
+  var btns = root.querySelectorAll('.filters button'), cards = root.querySelectorAll('#ts-wall .card'), status = root.querySelector('#ts-status');
+  function apply(f) {
+    var n = 0;
+    [].forEach.call(btns, function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-f') === f); });
+    [].forEach.call(cards, function (c) { var on = f === 'all' || c.getAttribute('data-sector') === f; c.hidden = !on; if (on) n++; });
+    status.textContent = f === 'all' ? '' : 'Showing ' + n + ' of ' + cards.length + ' testimonials.';
+  }
+  [].forEach.call(btns, function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-f')); }); });
+  function reveal() { var h = location.hash; if (/^#t-/.test(h) && document.querySelector(h)) { apply('all'); document.querySelector(h).scrollIntoView({ block: 'start' }); } }
+  window.addEventListener('hashchange', reveal); reveal();
+})();
+</script>
+<script>
+/* Enquiry prefill: links with data-enquiry="…" jump to #evx-contact (normal anchor behaviour) and pre-fill the
+   enquiry box with that message. Never overwrites text the visitor typed. Without JS the links still jump.
+   The form is looked up on click because the contact block is rendered after this script. */
+(function () {
+  var lastAuto = '';
+  function enquiryBox() {
+    var target = document.getElementById('evx-contact');
+    var section = target && target.closest('section');
+    return section && section.querySelector('form textarea');
+  }
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('a[data-enquiry]');
+    var box = link && enquiryBox();
+    if (!box) return;
+    if (box.value.trim() === '' || box.value === lastAuto) {
+      box.value = lastAuto = link.getAttribute('data-enquiry');
+      box.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    // let the anchor scroll first, then put the cursor at the end of the message
+    setTimeout(function () { try { box.focus({ preventScroll: true }); box.setSelectionRange(box.value.length, box.value.length); } catch (err) {} }, 400);
+  });
+})();
+</script>

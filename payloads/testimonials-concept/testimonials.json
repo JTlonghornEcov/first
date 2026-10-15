@@ -1,0 +1,137 @@
+[
+ {
+  "id": "claires",
+  "org": "Claire's Accessories",
+  "logo": "claires.svg",
+  "sector": "retail",
+  "since": 2014,
+  "quote": "Ecoveritas took over our EU compliance for packaging waste as well as WEEE & batteries in 2014. They were able to provide a seamless transition from our existing compliance work and successfully dealt with numerous scheme registration issues. Their expertise and efficiency have enabled Claire's to achieve EU Producer Responsibility compliance cost-effectively, while dramatically minimising input from our staff.",
+  "hl": "achieve EU Producer Responsibility compliance cost-effectively, while dramatically minimising input from our staff",
+  "name": "Allan Watwood",
+  "role": "European Risk Manager, Claire's Accessories"
+ },
+ {
+  "id": "eisai",
+  "org": "Eisai Europe",
+  "logo": "eisai-logo.svg",
+  "sector": "pharma",
+  "quote": "As a pharmaceutical company which places a strong emphasis on full compliance, Ecoveritas fully understood our needs for a highly accurate calculation. They worked professionally and displayed an excellent understanding of the pharmaceutical sector, its supply chain and the packaging regulations. We would strongly recommend them to other companies with similar exacting needs.",
+  "hl": "Ecoveritas fully understood our needs for a highly accurate calculation",
+  "name": "Michael Clarke",
+  "role": "EHS Advisor, Eisai Europe"
+ },
+ {
+  "id": "fenwick",
+  "org": "Fenwick",
+  "logo": "fenwick.svg",
+  "sector": "retail",
+  "quote": "Fenwick uses very few consultants — our philosophy is to do things in-house wherever we can. However, Fenwick's directors made an exception for our packaging waste calculation because Ecoveritas can do this work at significantly lower cost than ourselves. Their management of REPRA has given me increased confidence that we comply, has reduced our costs by 65%, and freed up my time to tackle other priorities.",
+  "hl": "has reduced our costs by 65%",
+  "name": "Jill Anders",
+  "role": "Company Secretary, Fenwick Limited"
+ },
+ {
+  "id": "fortnum-mason",
+  "org": "Fortnum & Mason",
+  "logo": "fortnun-and-mason.svg",
+  "sector": "retail",
+  "quote": "Since joining REPRA, my concerns with regard to packaging waste compliance have become virtually non-existent. Entrusting the relevant data to Ecoveritas' powerful bespoke software has meant a huge increase in the accuracy of our calculations. When we were audited by the Environment Agency, I was able to relax in the certain knowledge that Ecoveritas had done an excellent job on our behalf.",
+  "hl": "When we were audited by the Environment Agency, I was able to relax",
+  "name": "David Woodroof",
+  "role": "Logistics Manager, Fortnum & Mason"
+ },
+ {
+  "id": "harvey-nichols",
+  "org": "Harvey Nichols",
+  "logo": "harvey-nichols-logo.svg",
+  "sector": "retail",
+  "since": 2006,
+  "quote": "Harvey Nichols became a member of REPRA in 2006, and we have been very happy with the service provided by Ecoveritas. We have the confidence of knowing that our packaging waste obligation is being calculated to a high level of accuracy, and at a very reasonable cost.",
+  "hl": "calculated to a high level of accuracy, and at a very reasonable cost",
+  "name": "Mark Knight",
+  "role": "Office Services Manager, Harvey Nichols"
+ },
+ {
+  "id": "hta",
+  "org": "Horticultural Trades Association",
+  "logo": "hta-logo.svg",
+  "sector": "horticulture",
+  "quote": "Ecoveritas have provided supporting data for the HTA Packaging Waste WorkBook for several years. The takeover from their predecessor was seamless, and the quality and robustness of the data has improved greatly. Ecoveritas have highly educated staff who provide a quality and personalised service with excellent attention to detail.",
+  "hl": "the quality and robustness of the data has improved greatly",
+  "name": "Gary Scroby",
+  "role": "Policy Manager, Horticultural Trades Association"
+ },
+ {
+  "id": "john-lewis",
+  "org": "John Lewis Partnership",
+  "logo": "johnlewis.svg",
+  "sector": "retail",
+  "since": 2002,
+  "quote": "Ecoveritas have worked with John Lewis since 2002, providing valuable assistance with our packaging waste, WEEE and batteries compliance. Their comprehensive in-house software, commitment to developing their methodology, and willingness to go the extra mile have all helped to strengthen our approach to environmental reporting. I would have no hesitation in recommending Ecoveritas' services.",
+  "hl": "willingness to go the extra mile",
+  "name": "Gemma Lacey",
+  "role": "ex Head of CSR, John Lewis Partnership"
+ },
+ {
+  "id": "selfridges",
+  "org": "Selfridges & Co.",
+  "logo": "selfridges-logo.svg",
+  "sector": "retail",
+  "since": 2004,
+  "quote": "In 2004, Selfridges decided to contract out the calculation of our packaging waste obligation to reduce the burden on our own staff. Of the companies tendering for the contract, Ecoveritas/REPRA offered the best value for money, by a wide margin. As a result, our calculation costs are much lower than before, while the accuracy has increased significantly.",
+  "hl": "offered the best value for money, by a wide margin",
+  "name": "Rolando Faley",
+  "role": "Head of Facilities, Property Services, Selfridges & Co."
+ },
+ {
+  "id": "spar",
+  "org": "SPAR UK",
+  "logo": "spar.svg",
+  "sector": "food",
+  "quote": "Switching to Ecoveritas for our packaging waste calculations has significantly lowered our overall compliance costs, at the same time as offering me greater assurance of Spar's legal compliance across our Grocery and Foodservice business. Ecoveritas have proven themselves to be excellent partners; diligent, hard-working and with an eye for detail.",
+  "hl": "significantly lowered our overall compliance costs",
+  "name": "Vinesh Patel",
+  "role": "Supply Chain Controller, SPAR UK"
+ },
+ {
+  "id": "sugro",
+  "org": "Sugro UK",
+  "logo": "sugro-testimonial-logo.png",
+  "sector": "horticulture",
+  "quote": "Ecoveritas has successfully completed our members' packaging waste calculations for several years. Their work has been highly professional, required minimal input from myself or the Sugro members, and has also proved more cost-effective than the previous suppliers of this service.",
+  "hl": "required minimal input from myself or the Sugro members",
+  "name": "Philip Jenkins",
+  "role": "Managing Director, Sugro UK"
+ },
+ {
+  "id": "united-biscuits",
+  "org": "United Biscuits",
+  "logo": "united-biscuits-logo.svg",
+  "sector": "food",
+  "since": 2015,
+  "quote": "Ecoveritas took over United Biscuits' UK packaging compliance in 2015. The process of changing to them from our previous supplier has been very smooth, and the whole team is very thorough, with work done to the highest of standards. Outsourcing the entire calculation process has made compliance a much easier, quicker and cost-effective process, while minimising risk and stress.",
+  "hl": "a much easier, quicker and cost-effective process, while minimising risk and stress",
+  "name": "Paul Cheeseman",
+  "role": "United Biscuits"
+ },
+ {
+  "id": "waitrose",
+  "org": "Waitrose",
+  "logo": "waitrose.svg",
+  "sector": "food",
+  "quote": "The Waitrose contract with Ecoveritas was renewed following three years of excellent service. I've been impressed with the quality of their calculations, and the increased accuracy achieved through greater sample weighing of actual product. They have also saved us money on glass by double checking our suppliers' data.",
+  "hl": "They have also saved us money on glass by double checking our suppliers' data.",
+  "name": "Mike Walters",
+  "role": "Group Manager Waste & Water Resource, The John Lewis Partnership"
+ },
+ {
+  "id": "garden-centre",
+  "org": "Garden Centre / Horticultural Industry",
+  "logo": null,
+  "sector": "horticulture",
+  "quote": "It's important to us to find a service that can help complete EPR reports cost effectively — that's why we chose Ecoveritas. Overall we feel that they genuinely care about their clients and users. A great solution for the horticultural industry.",
+  "hl": "they genuinely care about their clients and users",
+  "name": "Jonathan Briers",
+  "role": "Garden Centre Manager"
+ }
+]
