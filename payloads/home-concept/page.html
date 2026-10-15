@@ -1,0 +1,577 @@
+<style>
+/* Homepage concept. Scoped to #home2. Sections marked "copied" are the live homepage's own markup (site CSS + JS), with
+   their text styles pinned below so the CMS text block's .wysiwyg rules can't change them. New sections use site fonts
+   and brand colours. Without JS everything is visible; JS only adds the count-up and reveal animations. */
+html, body { overflow-x:clip; }
+main > section.hero { display:none; }   /* concept only: the template hero can't play video, so the live homepage hero is rebuilt below */
+#home2 { --ink:#212121; --body:#333c45; --muted:#55656d; --slate:#2f444e; --g200:#027a8f; --g600:#006374; --g900:#333c45; --grey:#f8f8f8;
+  --line:#e2e7e9; --yellow:#ffcd03; --mist:#aac5d1; --r:16px; margin:-72px 0; color:var(--ink); }
+@media (min-width:1024px) { #home2 { margin:-112px 0; } }
+#home2 *, #home2 *::before, #home2 *::after { box-sizing:border-box; }
+#home2 .bleed { width:100vw; margin-left:calc(50% - 50vw); }
+#home2 .wrapx { max-width:1280px; margin:0 auto; padding:0 16px; }
+@media (min-width:1024px) { #home2 .wrapx { padding:0 32px; } }
+#home2 .sec { padding:72px 0; }
+@media (min-width:1024px) { #home2 .sec { padding:112px 0; } }
+#home2 .sec h2.t { margin:0 0 12px; font-size:1.75rem; line-height:2.25rem; font-weight:700; color:var(--ink); letter-spacing:-.01em; }
+@media (min-width:1024px) { #home2 .sec h2.t { font-size:2.75rem; line-height:3.25rem; } }
+#home2 .sec p { margin:0; color:var(--body); font-size:16px; line-height:1.6; }
+#home2 .eyebrow { display:inline-flex; align-items:center; gap:10px; margin:0 0 12px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+#home2 .eyebrow::before { content:""; width:28px; height:4px; border-radius:2px; background:var(--yellow); }
+#home2 :is(a,button):focus-visible { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+#home2 .icon { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+#home2 .home2-sub { margin-top:8px; }
+#home2 video { display:block; }
+
+/* Hero: what we fix */
+#home2 .fix { margin:18px 0 22px; }
+#home2 .fix b { display:block; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+#home2 .fix ul { display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; list-style:none; }
+#home2 .fix li { margin:0; padding:7px 12px; border-radius:99px; background:#fff6cc; color:var(--ink); font-size:14px; font-weight:700; line-height:1.2; }
+
+/* 1 + 2: pathways */
+#home2 .paths { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr)); gap:20px; }
+#home2 .path { position:relative; overflow:hidden; isolation:isolate; display:flex; flex-direction:column; gap:16px; min-height:460px; padding:clamp(26px,4vw,44px); border-radius:var(--r); color:#fff; }
+#home2 .path.uk { background:var(--slate); }
+#home2 .path.gl { background:var(--g600); }
+#home2 .path .num { font-size:clamp(56px,7vw,88px); font-weight:700; line-height:.9; color:transparent; -webkit-text-stroke:2px var(--yellow); }
+#home2 .path .tag { font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--mist); }
+#home2 .path.gl .tag { color:#d3ecf1; }
+#home2 .path h2 { margin:0; font-size:clamp(28px,3.2vw,40px); line-height:1.1; font-weight:700; color:#fff; letter-spacing:-.01em; }
+#home2 .path h2 span { color:var(--yellow); }
+#home2 .path p { margin:0; color:#e6eef1; font-size:17px; line-height:1.55; max-width:46ch; }
+#home2 .path .partner { display:flex; flex-wrap:wrap; align-items:center; gap:6px 16px; padding-top:16px; border-top:1px solid rgba(255,255,255,.18); color:var(--mist); font-size:14px; font-weight:700; }
+#home2 .path .partner img { width:min(280px,100%); height:52px; object-fit:cover; object-position:center; }
+#home2 .path .links { display:flex; flex-wrap:wrap; gap:10px; margin-top:auto; }
+#home2 .path .btn { display:inline-flex; align-items:center; gap:10px; padding:13px 20px; border-radius:2px; background:var(--yellow); color:var(--ink); font-weight:700; text-decoration:none; transition:background .15s ease; }
+#home2 .path .btn:hover { background:#f0bf00; }
+#home2 .path .ghost { display:inline-flex; align-items:center; padding:12px 18px; border-radius:2px; box-shadow:inset 0 0 0 2px rgba(255,255,255,.7); color:#fff; font-weight:700; text-decoration:none; }
+#home2 .path .ghost:hover { background:rgba(255,255,255,.1); }
+#home2 .regions { display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; list-style:none; }
+#home2 .regions li { margin:0; }
+#home2 .regions a { display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:99px; background:rgba(255,255,255,.14); color:#fff; font-weight:700; font-size:14px; text-decoration:none; transition:background .15s ease; }
+#home2 .regions a:hover { background:rgba(255,255,255,.26); }
+#home2 .path .art { position:absolute; z-index:-1; right:-90px; bottom:-90px; width:360px; height:360px; opacity:.22; }
+#home2 .path.uk .art { opacity:.16; }
+#home2 .globe { animation:h2-spin 60s linear infinite; transform-origin:50% 50%; }
+@keyframes h2-spin { to { transform:rotate(360deg); } }
+
+/* Measured impact: every number visible */
+#home2 .impact { display:grid; gap:clamp(28px,4vw,48px); }
+@media (min-width:1024px) { #home2 .impact { grid-template-columns:4fr 8fr; align-items:start; } #home2 .impact .intro { position:sticky; top:120px; } }
+#home2 .impact .intro .cta { display:inline-flex; align-items:center; gap:10px; margin-top:24px; padding:13px 20px; border-radius:2px; background:var(--yellow); color:var(--ink); font-weight:700; text-decoration:none; }
+#home2 .bento { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:0; padding:0; list-style:none; }
+@media (min-width:768px) { #home2 .bento { grid-template-columns:repeat(3,minmax(0,1fr)); grid-auto-rows:minmax(210px,auto); } #home2 .bento li:first-child { grid-row:span 2; } }
+#home2 .bento li { position:relative; overflow:hidden; isolation:isolate; display:flex; flex-direction:column; justify-content:flex-end; gap:10px; min-height:170px; margin:0; padding:22px; border-radius:var(--r); color:#fff; }
+#home2 .bento li:first-child { grid-column:1 / -1; min-height:260px; }
+@media (min-width:768px) { #home2 .bento li:first-child { grid-column:auto; } }
+#home2 .bento li:nth-child(1) { background:var(--g900); }
+#home2 .bento li:nth-child(2) { background:var(--g200); }
+#home2 .bento li:nth-child(3) { background:var(--yellow); color:var(--ink); }
+#home2 .bento li:nth-child(4) { background:var(--g600); }
+#home2 .bento li:nth-child(5) { background:var(--slate); }
+#home2 .bento .n { display:block; font-size:clamp(40px,5.2vw,64px); font-weight:700; line-height:1; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+#home2 .bento li:first-child .n { font-size:clamp(56px,8vw,104px); }
+#home2 .bento .n sup { font-size:.5em; vertical-align:.7em; margin-left:2px; color:var(--yellow); }
+#home2 .bento li:nth-child(3) .n sup { color:var(--ink); }
+#home2 .bento .l { display:block; font-size:15px; font-weight:700; line-height:1.35; color:inherit; max-width:30ch; }
+#home2 .bento img { position:absolute; z-index:-1; left:0; right:0; top:0; width:100%; height:62%; object-fit:cover; object-position:top; opacity:.9; }
+#home2 .bento .dots { position:absolute; z-index:-1; inset:0; background-image:radial-gradient(rgba(255,255,255,.18) 1.4px,transparent 1.5px); background-size:16px 16px; -webkit-mask:linear-gradient(to bottom,#000,transparent 75%); mask:linear-gradient(to bottom,#000,transparent 75%); }
+#home2 .bento li:nth-child(3) .dots { background-image:radial-gradient(rgba(33,33,33,.16) 1.4px,transparent 1.5px); }
+
+/* Partners + case studies */
+#home2 .duo { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr)); gap:20px; }
+#home2 .duo > article { display:flex; flex-direction:column; gap:16px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+#home2 .duo h3 { margin:0; font-size:clamp(24px,2.4vw,30px); line-height:1.2; font-weight:700; color:var(--ink); }
+#home2 .duo .logo { display:block; width:100%; height:120px; object-fit:cover; object-position:center; border-radius:12px; background:var(--slate); }
+#home2 .gains { display:grid; gap:10px; margin:0; padding:0; list-style:none; }
+#home2 .gains li { display:flex; align-items:center; gap:12px; margin:0; padding:12px 14px; border-radius:10px; background:var(--grey); font-weight:700; color:var(--ink); }
+#home2 .gains .icon { color:var(--g200); }
+#home2 .more { display:inline-flex; align-items:center; gap:8px; margin-top:auto; font-weight:700; color:var(--ink); text-decoration:none; border-bottom:2px solid var(--yellow); align-self:flex-start; padding-bottom:2px; }
+#home2 .case { display:grid; grid-template-columns:minmax(0,150px) minmax(0,1fr); gap:16px; align-items:center; padding:12px; border-radius:12px; background:var(--grey); text-decoration:none; color:var(--ink); transition:background .15s ease; }
+#home2 .case:hover { background:#eef2f3; }
+#home2 .case img { width:100%; aspect-ratio:16/9; object-fit:contain; border-radius:8px; background:#fff; }
+#home2 .case .ph { display:grid; place-items:center; aspect-ratio:16/9; border-radius:8px; background:var(--slate); color:#fff; font-weight:700; font-size:18px; }
+#home2 .case b { display:block; font-size:16px; line-height:1.3; }
+#home2 .case span { font-size:14px; color:var(--muted); }
+#home2 blockquote { margin:0; padding:18px 20px; border-left:5px solid var(--yellow); border-radius:0 12px 12px 0; background:#fffbe6; font-style:normal; }
+#home2 blockquote p { font-size:15px; line-height:1.55; color:var(--ink); }
+#home2 blockquote cite { display:block; margin-top:10px; font-style:normal; font-size:14px; font-weight:700; color:var(--muted); }
+#home2 .duo .row { display:flex; flex-wrap:wrap; gap:18px; margin-top:auto; }
+
+/* Reveal */
+#home2.is-js .rv { opacity:0; translate:0 22px; transition:opacity .6s ease, translate .6s ease; }
+#home2.is-js .rv.in { opacity:1; translate:0 0; }
+@media (prefers-reduced-motion:reduce) { #home2 .globe { animation:none; } #home2.is-js .rv { opacity:1; translate:none; transition:none; } }
+#evx-contact { scroll-margin-top:96px; }
+
+/* Copied live-homepage sections: text styles measured on the live page and pinned (generated) */
+#home2 [data-k="hero-0"]{font-size:32px;line-height:40px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:16px;list-style-type:disc;padding-left:0px}
+@media (min-width:1024px){#home2 [data-k="hero-0"]{font-size:44px;line-height:52px}}
+#home2 [data-k="hero-1"]{font-size:32px;line-height:40px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:16px;list-style-type:disc;padding-left:0px}
+@media (min-width:1024px){#home2 [data-k="hero-1"]{font-size:44px;line-height:52px}}
+#home2 [data-k="hero-2"]{font-size:20px;line-height:28px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="hero-3"]{font-size:16px;line-height:24px;font-weight:400;color:rgb(51, 60, 69);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="hero-4"]{font-size:16px;line-height:24px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="logos-0"]{font-size:16px;line-height:24px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="trending-0"]{font-size:28px;line-height:36px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+@media (min-width:1024px){#home2 [data-k="trending-0"]{font-size:44px;line-height:52px}}
+#home2 [data-k="trending-1"]{font-size:16px;line-height:24px;font-weight:400;color:rgb(51, 60, 69);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="trending-2"]{font-size:18px;line-height:32px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+@media (min-width:1024px){#home2 [data-k="trending-2"]{font-size:24px}}
+#home2 [data-k="trending-3"]{font-size:14px;line-height:16px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="trending-4"]{font-size:18px;line-height:32px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+@media (min-width:1024px){#home2 [data-k="trending-4"]{font-size:24px}}
+#home2 [data-k="trending-5"]{font-size:14px;line-height:16px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="trending-6"]{font-size:18px;line-height:32px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+@media (min-width:1024px){#home2 [data-k="trending-6"]{font-size:20px;line-height:28px}}
+#home2 [data-k="trending-7"]{font-size:14px;line-height:16px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="trending-8"]{font-size:18px;line-height:32px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+@media (min-width:1024px){#home2 [data-k="trending-8"]{font-size:20px;line-height:28px}}
+#home2 [data-k="trending-9"]{font-size:14px;line-height:16px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="why-0"]{font-size:28px;line-height:36px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:8px;list-style-type:disc;padding-left:0px}
+@media (min-width:1024px){#home2 [data-k="why-0"]{font-size:44px;line-height:52px}}
+#home2 [data-k="why-1"]{font-size:16px;line-height:24px;font-weight:400;color:rgb(51, 60, 69);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="why-2"]{font-size:20px;line-height:28px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="why-3"]{font-size:16px;line-height:24px;font-weight:400;color:rgb(51, 60, 69);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="why-4"]{font-size:20px;line-height:28px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="why-5"]{font-size:16px;line-height:24px;font-weight:400;color:rgb(51, 60, 69);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="why-6"]{font-size:20px;line-height:28px;font-weight:700;color:rgb(33, 33, 33);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+#home2 [data-k="why-7"]{font-size:16px;line-height:24px;font-weight:400;color:rgb(51, 60, 69);letter-spacing:normal;text-transform:none;margin-top:0px;margin-bottom:0px;list-style-type:disc;padding-left:0px}
+
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="h2-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="h2-pound" viewBox="0 0 24 24"><path d="M17 20H7c2-2 2.5-4 2-7M6 13h8M16 7.5A4 4 0 0 0 9 9.5c0 1.5.5 2.5 1 3.5"/></symbol>
+  <symbol id="h2-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="h2-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z"/><path d="M5 19 13 11"/></symbol>
+</svg>
+
+
+
+<div id="home2">
+
+  <!-- Hero (copied from the live homepage, same video; one H1) -->
+  <div class="bleed"><section>
+    <div class="container mt-16 mb-12 lg:mt-21.5 lg:mb-18">
+        <div class="grid grid-cols-4 lg:grid-cols-12 gap-x-4">
+            <div class="col-span-full mb-3 lg:col-span-7 lg:mb-12">
+                <div class="wysiwyg">
+                    <h1 data-k="hero-0"><span style="color:rgb(255,205,3);">Comply</span> with Confidence. <br><span style="color:rgb(255,205,3);">Act</span> with Insight.</h1><p data-k="hero-2" class="home2-sub">Turn <span style="color:rgb(2,122,143);"><strong>Extended Producer Responsibility</strong> </span>reporting into strategic advantage.</p>
+                </div>
+            </div>
+            <div class="col-span-full lg:col-span-4 lg:col-start-9 mb-12 lg:pt-3">
+                <div class="wysiwyg mb-3">
+                    <p data-k="hero-3">Ecoveritas specialises in Extended Producer Responsibility (EPR), helping businesses stay compliant with evolving packaging requirements and avoid inflated fees. Our goal is to simplify regulations, support efficient data management, and ensure full compliance with packaging legislation.</p>
+                <div class="fix"><b>What we fix</b><ul><li>Inflated EPR fees</li><li>Incomplete packaging data</li><li>Rules that keep changing</li></ul></div></div>
+
+                                    <a href="#pathways" target="" class="flex font-bold items-center gap-3" data-k="hero-4">
+
+                        <span>
+                            How we help
+                        </span>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-5 text-yellow">
+                            <use xlink:href="#icon-link"></use>
+                        </svg>
+                    </a>
+                            </div>
+            <div class="col-span-full">
+
+                
+                                        
+                    
+                        <div class="aspect-[4/3] lg:aspect-[5/2] overflow-hidden flex justify-center relative">
+                            <div class="absolute bottom-[30%] -right-[2%] lg:bottom-1/4 lg:-right-[1%] rounded-full w-[70%] aspect-square lg:w-[710px] outline outline-white -outline-offset-[1.5px]"></div>
+                            <video class="w-full object-cover object-center" width="1920" height="1080" autoplay="" loop="" muted="">
+                                <source src="https://www.ecoveritas.com/assets/general/ecoveritas-hero-globe.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                    
+                            </div>
+        </div>
+    </div>
+</section></div>
+
+  <!-- 1 + 2: where we help -->
+  <section class="bleed sec" id="pathways" aria-label="How we help">
+    <div class="wrapx">
+      <div class="paths">
+        <article class="path uk rv">
+          <svg class="art" viewBox="0 0 200 200" aria-hidden="true"><g fill="none" stroke="#ffcd03" stroke-width="2"><circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="44"/></g></svg>
+          <span class="num" aria-hidden="true">01</span>
+          <span class="tag">UK compliance</span>
+          <h2>UK Compliance, <span>powered by Veolia</span></h2>
+          <p>UK packaging EPR, reporting and PRNs, delivered through the Veolia x Ecoveritas alliance: independent data you can trust from Ecoveritas, with Veolia's specialist compliance expertise applied on top.</p>
+          <span class="partner"><img src="https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/8886/veolia_ecoveritas_logo_1472x1012.webp" alt="Veolia x Ecoveritas" width="280" height="52" loading="lazy">Independent expertise. Delivered as one.</span>
+          <div class="links">
+            <a class="btn" href="https://www.ecoveritas.com/compliance/uk-extended-producer-responsibility-epr">UK EPR <svg class="icon" aria-hidden="true"><use href="#h2-arrow"/></svg></a>
+            <a class="ghost" href="https://www.ecoveritas.com/veolia-ecoveritas">The Veolia alliance</a>
+            <a class="ghost" href="https://www.ecoveritas.com/request-free-prn-audit">Free PRN audit</a>
+          </div>
+        </article>
+        <article class="path gl rv">
+          <svg class="art" viewBox="0 0 200 200" aria-hidden="true"><g class="globe" fill="none" stroke="#fff" stroke-width="2"><circle cx="100" cy="100" r="96"/><ellipse cx="100" cy="100" rx="40" ry="96"/><ellipse cx="100" cy="100" rx="76" ry="96"/><path d="M4 100h192M16 52h168M16 148h168"/></g></svg>
+          <span class="num" aria-hidden="true">02</span>
+          <span class="tag">Global compliance</span>
+          <h2>Global Compliance, <span>80+ countries, one team</span></h2>
+          <p>EPR legislation is evolving fast worldwide. Our compliance consultants assess your obligations country by country and provide an efficient, cost-effective, outsourced solution to your registration and reporting needs.</p>
+          <ul class="regions" aria-label="Regions">
+            <li><a href="https://www.ecoveritas.com/compliance/europe">Europe</a></li>
+            <li><a href="https://www.ecoveritas.com/compliance/americas">Americas</a></li>
+            <li><a href="https://www.ecoveritas.com/compliance/asia-australia">Asia &amp; Australia</a></li>
+            <li><a href="https://www.ecoveritas.com/compliance/africa-middle-east">Africa &amp; Middle East</a></li>
+          </ul>
+          <div class="links">
+            <a class="btn" href="https://www.ecoveritas.com/compliance/global-extended-producer-responsibility-epr">Global EPR <svg class="icon" aria-hidden="true"><use href="#h2-arrow"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients (copied from the live homepage: full-width auto-scroll) -->
+  <div class="bleed"><section class="pb-14 lg:pb-28 overflow-hidden">
+        <div class="container mb-7">
+    <h2 class="font-bold text-3/6" data-k="logos-0">Trusted by industry leaders:</h2>
+</div>
+<div class="logo-gallery flex items-center w-full gap-24">
+        
+                        <img src="https://www.ecoveritas.com/assets/general/fenwick.svg" alt="Fenwick">
+                    <img src="https://www.ecoveritas.com/assets/general/spar.svg" alt="Spar">
+                    <img src="https://www.ecoveritas.com/assets/general/claires.svg" alt="Claires">
+                    <img src="https://www.ecoveritas.com/assets/general/harrods.svg" alt="Harrods">
+                    <img src="https://www.ecoveritas.com/assets/general/johnlewis.svg" alt="Johnlewis">
+                    <img src="https://www.ecoveritas.com/assets/general/fatface.svg" alt="Fatface">
+                    <img src="https://www.ecoveritas.com/assets/general/whittard.svg" alt="Whittard">
+                    <img src="https://www.ecoveritas.com/assets/general/suzuki.svg" alt="Suzuki">
+                    <img src="https://www.ecoveritas.com/assets/general/fortnun-and-mason.svg" alt="Fortnun and mason">
+                    <img src="https://www.ecoveritas.com/assets/general/waitrose.svg" alt="Waitrose">
+                    <img src="https://www.ecoveritas.com/assets/general/tigi.svg" alt="Tigi">
+                    <img src="https://www.ecoveritas.com/assets/general/united-biscuits-logo.svg" alt="United biscuits logo">
+                    <img src="https://www.ecoveritas.com/assets/general/selfridges-logo.svg" alt="Selfridges logo">
+                    <img src="https://www.ecoveritas.com/assets/general/hta-logo.svg" alt="Hta logo">
+                    <img src="https://www.ecoveritas.com/assets/general/harvey-nichols-logo.svg" alt="Harvey nichols logo">
+                    <img src="https://www.ecoveritas.com/assets/general/eisai-logo.svg" alt="Eisai logo">
+            </div>
+    </section></div>
+
+  <!-- Measured impact: redesigned so every number is always visible -->
+  <section class="bleed sec" style="background:#f8f8f8" aria-labelledby="h2-impact">
+    <div class="wrapx impact">
+      <div class="intro rv">
+        <p class="eyebrow">Our strength in numbers</p>
+        <h2 class="t" id="h2-impact">Measured impact – our strength in numbers</h2>
+        <p>Trusted by leading brands, we process vast amounts of packaging data, ensuring compliance and accuracy at scale. The numbers behind our experience speak for themselves:</p>
+        <a class="cta" href="#evx-contact" data-enquiry="Hi, I'd like to talk to Ecoveritas about our compliance needs.">Contact us <svg class="icon" aria-hidden="true"><use href="#h2-arrow"/></svg></a>
+      </div>
+      <ul class="bento">
+        <li class="rv"><img src="https://www.ecoveritas.com/assets/general/impact-wave-01.svg" alt="" loading="lazy"><span class="n" data-count="250">250<sup>+</sup></span><span class="l">Annual returns for packaging, WEEE &amp; batteries calculations</span></li>
+        <li class="rv"><span class="dots"></span><span class="n" data-count="100">100<sup>+</sup></span><span class="l">Clients which have a combined turnover in excess of £50+ billion</span></li>
+        <li class="rv"><span class="dots"></span><span class="n" data-count="32000">32,000<sup>+</sup></span><span class="l">Supplier data request issued and processed each year</span></li>
+        <li class="rv"><img src="https://www.ecoveritas.com/assets/general/impact-lines-02.svg" alt="" loading="lazy"><span class="n" data-count="4" data-suffix="m">4m<sup>+</sup></span><span class="l">SKUs with unique packaging metrics held in our database</span></li>
+        <li class="rv"><span class="dots"></span><span class="n" data-count="80">80<sup>+</sup></span><span class="l">Countries where we manage global EPR data reporting</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Partners + case studies -->
+  <section class="bleed sec" aria-label="Partners and case studies">
+    <div class="wrapx duo">
+      <article class="rv">
+        <p class="eyebrow">Partners</p>
+        <h3>The Veolia alliance</h3>
+        <img class="logo" src="https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/8886/veolia_ecoveritas_logo_1472x1012.webp" alt="Veolia x Ecoveritas" width="560" height="120" loading="lazy">
+        <p>Ecoveritas handles the full upstream data journey: collection, supplier engagement, weight validation and impartial reporting. Veolia applies their specialist regulatory and compliance expertise on top.</p>
+        <ul class="gains">
+          <li><svg class="icon" aria-hidden="true"><use href="#h2-pound"/></svg>Real cost reduction</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#h2-bulb"/></svg>Actionable insight</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#h2-leaf"/></svg>Measurable sustainability</li>
+        </ul>
+        <a class="more" href="https://www.ecoveritas.com/veolia-ecoveritas">Explore the alliance <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="rv">
+        <p class="eyebrow">Case studies</p>
+        <h3>Trusted with the detail</h3>
+        <a class="case" href="https://www.ecoveritas.com/case-studies/case-study-heidelberg-materials-uk"><img src="https://www.ecoveritas.com/assets/general/_736x414_crop_center-center_80_none/7555/Heidelberg-Case-Study-1.webp" alt="" width="150" height="84" loading="lazy"><span><b>Heidelberg Materials UK</b><span>Read the case study</span></span></a>
+        <a class="case" href="https://www.ecoveritas.com/case-studies/new-look"><span class="ph" aria-hidden="true">New Look</span><span><b>New Look</b><span>Read the case study</span></span></a>
+        <blockquote><p>"As a pharmaceutical company which places a strong emphasis on full compliance, Ecoveritas fully understood our needs for a highly accurate calculation. They worked professionally and displayed an excellent understanding of the pharmaceutical sector, its supply chain and the packaging regulations."</p><cite>Michael Clarke, EHS Advisor, Eisai Europe</cite></blockquote>
+        <div class="row"><a class="more" href="https://www.ecoveritas.com/case-studies">All case studies <span aria-hidden="true">→</span></a><a class="more" href="https://www.ecoveritas.com/testimonials">Testimonials <span aria-hidden="true">→</span></a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Why Ecoveritas? (copied from the live homepage) -->
+  <div class="bleed"><section class="bg-gray-200 py-18 lg:py-30">
+        <div class="container">
+            <div class="grid grid-cols-4 lg:grid-cols-12 gap-5 lg:gap-0">
+                <div class="col-span-full lg:col-span-8 lg:bg-white lg:py-14 lg:px-16">
+                    <h3 class="text-7/9 lg:text-11/12 font-bold mb-2" data-k="why-0">Why Ecoveritas?</h3>
+                    <div class="wysiwyg text-3/6 text-gray-900 mb-5 lg:mb-8">
+                        <p data-k="why-1">We focus on the key elements that drive value for your business, ensuring seamless and effective solutions.</p>
+                    </div>
+
+                    <div class="flex gap-5 flex-col lg:flex-row">
+
+                        
+
+                            <div class="w-full lg:w-1/3 flex flex-col gap-2">
+
+                                                                    <div>
+                                                                                <img src="https://www.ecoveritas.com/assets/general/Reason-2.svg" alt="" height="32" width="32" loading="lazy">
+                                    </div>
+                                
+                                <h4 class="text-5/7 font-bold" data-k="why-2">Get closer to the experts</h4>
+                                <div class="text-gray-900"><p data-k="why-3">As an independent company, we keep clients directly connected to specialist insight- no layers, just solutions.</p></div>
+                            </div>
+                        
+
+                            <div class="w-full lg:w-1/3 flex flex-col gap-2">
+
+                                                                    <div>
+                                                                                <img src="https://www.ecoveritas.com/assets/general/Reason-Three.svg" alt="" height="32" width="32" loading="lazy">
+                                    </div>
+                                
+                                <h4 class="text-5/7 font-bold" data-k="why-4">Rely on proven experience</h4>
+                                <div class="text-gray-900"><p data-k="why-5">With over 25 years in compliance and sustainability data, we’ve seen it all and know how to navigate it.</p></div>
+                            </div>
+                        
+
+                            <div class="w-full lg:w-1/3 flex flex-col gap-2">
+
+                                                                    <div>
+                                                                                <img src="https://www.ecoveritas.com/assets/general/Reason-Four.svg" alt="" height="32" width="32" loading="lazy">
+                                    </div>
+                                
+                                <h4 class="text-5/7 font-bold" data-k="why-6">Stay ahead with smart tech</h4>
+                                <div class="text-gray-900"><p data-k="why-7">Our industry-leading technology simplifies complex data challenges and streamlines compliance workflows.</p></div>
+                            </div>
+                                            </div>
+                </div>
+
+                <div class="col-span-full lg:col-span-4">
+
+                    
+                        
+                        
+                        <img class="h-full w-full object-cover lazyload" src="https://www.ecoveritas.com/assets/general/_736x764_crop_center-center_80_none/3553/VP-Image.webp" srcset="https://www.ecoveritas.com/assets/general/_1472x1528_crop_center-center_80_none/3553/VP-Image.webp 2x" width="736" height="764" alt="VP Image" loading="lazy">
+
+
+                    
+                </div>
+            </div>
+        </div>
+    </section></div>
+
+  <!-- Trending topics (copied from the live homepage's news section) -->
+  <div class="bleed"><section class="pt-18 pb-20 lg:pt-28 lg:pb-30 bg-gray-200">
+    <div class="container">
+        <div class="grid grid-cols-4 lg:grid-cols-12 gap-4">
+            <div class="col-span-full lg:col-span-6 lg:mb-10">
+                <h2 class="text-7/9 lg:text-11/12 font-bold lg:max-w-[71%]" data-k="trending-0">Trending topics</h2>
+            </div>
+
+            <div class="col-span-full lg:col-start-8 lg:col-span-4 mb-4 lg:mb-0">
+                <div class="text-3/6 text-gray-900 mb-6 lg:mt-1"><p data-k="trending-1">Packaging compliance means different things depending on where you're operating and how far along you are. Tell us what you're here for, and we'll point you in the right direction.</p></div>
+
+                
+            </div>
+
+                                            
+                                                                        
+                <div class="col-span-full lg:col-span-6">
+                                            
+
+<div class="bg-white relative flex flex-col h-full">
+
+    <div class="relative">
+                                            <img class="aspect-video object-cover lazyload" src="https://www.ecoveritas.com/assets/general/_736x414_crop_center-center_80_none/6982/EPR-2026-Blog-Featured-Image.webp" srcset="https://www.ecoveritas.com/assets/general/_1472x828_crop_center-center_80_none/6982/EPR-2026-Blog-Featured-Image.webp 2x" width="736" height="414" alt="EPR 2026 Blog Featured Image" fetchpriority="high">
+        
+            </div>
+
+    <div class="flex flex-col grow justify-between p-8 text-black">
+        <div>
+                            <div class="text-1/3 bg-green text-yellow px-2.5 py-1 inline-flex mb-9">
+                    News
+                </div>
+                                        <span class="block mb-7 text-2/3 lg:text-3/5 text-gray-900">Feb 26, 2026</span>
+                        <div class="flex flex-col gap-2 mb-10">
+                <h4 class="text-4/8 lg:text-5/7  lg:text-6/8 font-bold" data-k="trending-2">
+                    UK Packaging EPR: Year 1 Fees Confirmed
+                </h4>
+                            </div>
+        </div>
+        <div>
+                            <a href="https://www.ecoveritas.com/articles/uk-packaging-epr-year-1-fees-confirmed" class="cover-link text-2/3 inline-flex items-center gap-1.5 font-bold" target="" data-k="trending-3">
+                    Continue reading
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3">
+                        <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                </a>
+                    </div>
+    </div>
+</div>
+                </div>
+
+                                            
+                                                                        
+                <div class="col-span-full lg:col-span-6">
+                                            
+
+<div class="bg-white relative flex flex-col h-full">
+
+    <div class="relative">
+                                            <img class="aspect-video object-cover lazyload" src="https://www.ecoveritas.com/assets/general/_736x414_crop_center-center_80_none/4368/UK-EPR-Mini-Series-Part-1-Featured.webp" srcset="https://www.ecoveritas.com/assets/general/_1472x828_crop_center-center_80_none/4368/UK-EPR-Mini-Series-Part-1-Featured.webp 2x" width="736" height="414" alt="UK EPR Mini Series Part 1 Featured" fetchpriority="high">
+        
+            </div>
+
+    <div class="flex flex-col grow justify-between p-8 text-black">
+        <div>
+                            <div class="text-1/3 bg-green text-yellow px-2.5 py-1 inline-flex mb-9">
+                    News
+                </div>
+                                        <span class="block mb-7 text-2/3 lg:text-3/5 text-gray-900">Mar 07, 2025</span>
+                        <div class="flex flex-col gap-2 mb-10">
+                <h4 class="text-4/8 lg:text-5/7  lg:text-6/8 font-bold" data-k="trending-4">
+                    How to understand the complex framework of United Kingdom Extended Producer Responsibility (Part 1)
+                </h4>
+                            </div>
+        </div>
+        <div>
+                            <a href="https://www.ecoveritas.com/articles/how-to-understand-the-complex-framework-of-united-kingdom-extended-producer-responsibility-part-1" class="cover-link text-2/3 inline-flex items-center gap-1.5 font-bold" target="" data-k="trending-5">
+                    Continue reading
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3">
+                        <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                </a>
+                    </div>
+    </div>
+</div>
+                </div>
+
+                                            
+                
+                <div class="col-span-full lg:col-span-4">
+                                            
+
+<div class="bg-white relative flex flex-col h-full">
+
+    <div class="relative">
+                                            <img class="aspect-video object-cover lazyload" src="https://www.ecoveritas.com/assets/general/_736x414_crop_center-center_80_none/4665/All-about-RAM-featured-image.webp" srcset="https://www.ecoveritas.com/assets/general/_1472x828_crop_center-center_80_none/4665/All-about-RAM-featured-image.webp 2x" width="736" height="414" alt="All about RAM featured image" fetchpriority="high">
+        
+            </div>
+
+    <div class="flex flex-col grow justify-between p-8 text-black">
+        <div>
+                            <div class="text-1/3 bg-green text-yellow px-2.5 py-1 inline-flex mb-9">
+                    News
+                </div>
+                                        <span class="block mb-7 text-2/3 lg:text-3/5 text-gray-900">Apr 30, 2025</span>
+                        <div class="flex flex-col gap-2 mb-10">
+                <h4 class="text-4/8 lg:text-5/7  font-bold" data-k="trending-6">
+                    All about Recyclability Assessment Methodology (RAM)
+                </h4>
+                            </div>
+        </div>
+        <div>
+                            <a href="https://www.ecoveritas.com/articles/all-about-recyclability-assessment-methodology-ram" class="cover-link text-2/3 inline-flex items-center gap-1.5 font-bold" target="" data-k="trending-7">
+                    Continue reading
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3">
+                        <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                </a>
+                    </div>
+    </div>
+</div>
+                </div>
+
+                                            
+                
+                <div class="col-span-full lg:col-span-4">
+                                            
+
+<div class="bg-white relative flex flex-col h-full">
+
+    <div class="relative">
+                                            <img class="aspect-video object-cover lazyload" src="https://www.ecoveritas.com/assets/general/_736x414_crop_center-center_80_none/11066/EPR-en-América-Latina_-20-banderas.webp" srcset="https://www.ecoveritas.com/assets/general/_1472x828_crop_center-center_80_none/11066/EPR-en-América-Latina_-20-banderas.webp 2x" width="736" height="414" alt="EPR en América Latina 20 banderas" fetchpriority="high">
+        
+            </div>
+
+    <div class="flex flex-col grow justify-between p-8 text-black">
+        <div>
+                            <div class="text-1/3 bg-green text-yellow px-2.5 py-1 inline-flex mb-9">
+                    News
+                </div>
+                                        <span class="block mb-7 text-2/3 lg:text-3/5 text-gray-900">Sept 05, 2025</span>
+                        <div class="flex flex-col gap-2 mb-10">
+                <h4 class="text-4/8 lg:text-5/7  font-bold" data-k="trending-8">
+                    The Scope of EPR throughout Latin America
+                </h4>
+                            </div>
+        </div>
+        <div>
+                            <a href="https://www.ecoveritas.com/articles/the-scope-of-epr-throughout-latin-america" class="cover-link text-2/3 inline-flex items-center gap-1.5 font-bold" target="" data-k="trending-9">
+                    Continue reading
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-3">
+                        <use xlink:href="#icon-arrow"></use>
+                    </svg>
+                </a>
+                    </div>
+    </div>
+</div>
+                </div>
+
+            
+        </div>
+    </div>
+
+</section></div>
+
+</div>
+
+<script>
+/* Homepage concept: count-up for the impact numbers and gentle reveals. Content is in the HTML already. */
+(function () {
+  var root = document.getElementById('home2'); if (!root) return;
+  root.classList.add('is-js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var vids = root.querySelectorAll('video'); [].forEach.call(vids, function (v) { v.setAttribute('playsinline', ''); v.muted = true; var p = v.play && v.play(); if (p && p.catch) p.catch(function () {}); });
+  function count(el) {
+    var end = +el.getAttribute('data-count'), suf = el.getAttribute('data-suffix') || '', sup = el.querySelector('sup').outerHTML, t0 = null;
+    function tick(t) { if (t0 === null) t0 = t; var k = Math.min(1, (t - t0) / 1400), e = 1 - Math.pow(1 - k, 3);
+      el.innerHTML = Math.round(end * e).toLocaleString('en-GB') + suf + sup; if (k < 1) requestAnimationFrame(tick); }
+    requestAnimationFrame(tick);
+  }
+  var items = root.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) { [].forEach.call(items, function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return;
+    e.target.classList.add('in'); var n = e.target.querySelector('[data-count]'); if (n) count(n); io.unobserve(e.target); }); }, { threshold: .2 });
+  [].forEach.call(items, function (e) { io.observe(e); });
+})();
+</script>
+<script>
+/* Enquiry prefill: links with data-enquiry="…" jump to #evx-contact (normal anchor behaviour) and pre-fill the
+   enquiry box with that message. Never overwrites text the visitor typed. Without JS the links still jump.
+   The form is looked up on click because the contact block is rendered after this script. */
+(function () {
+  var lastAuto = '';
+  function enquiryBox() {
+    var target = document.getElementById('evx-contact');
+    var section = target && target.closest('section');
+    return section && section.querySelector('form textarea');
+  }
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('a[data-enquiry]');
+    var box = link && enquiryBox();
+    if (!box) return;
+    if (box.value.trim() === '' || box.value === lastAuto) {
+      box.value = lastAuto = link.getAttribute('data-enquiry');
+      box.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    // let the anchor scroll first, then put the cursor at the end of the message
+    setTimeout(function () { try { box.focus({ preventScroll: true }); box.setSelectionRange(box.value.length, box.value.length); } catch (err) {} }, 400);
+  });
+})();
+</script>

@@ -17,6 +17,8 @@ const PAGES = [
     expect: { '#usepr': 1, '#usepr .glance a': 3, '#usepr .step': 4, '#us-srim': 1, '#us-orcalc': 1, '#us-ready': 1, '#evx-contact': 1, 'a[data-enquiry]': 2, 'main script': 2 } },
   { name: 'PPWR supplier DoC (draft)', id: 11200, slug: 'compliance/ppwr-supplier-declaration-of-conformity', expectPublic: 404, noindex: true, root: '#pdoc',
     expect: { '#pdoc': 1, '#pd-steps .step': 4, '#pdoc .level': 2, '#pd-checker': 1, '#pdoc details': 6, '#evx-contact': 1, 'a[data-enquiry]': 5, 'main script': 2 } },
+  { name: 'Homepage concept (draft)', id: 11227, slug: 'home-concept-2026', expectPublic: 404, noindex: true, root: '#home2', h1: 2,   // 2 = visible hero H1 + the template hero, hidden on this concept page
+    expect: { '#home2': 1, '#pathways': 1, '#home2 .bento li': 5, '#home2 video': 1, '#home2 .logo-gallery': 1, '#evx-contact': 1, 'main script': 2 } },
 ];
 
 let failed = 0;
@@ -40,7 +42,7 @@ for (const p of PAGES) {
   for (const [sel, n] of Object.entries(p.expect)) if (found[sel] !== n) problems.push(`${sel}: found ${found[sel]}, expected ${n}`);
   if (!found.styleKept) problems.push('page <style> is missing (design stripped?)');
   if (p.noindex && !/noindex/.test(found.robots)) problems.push(`robots meta is "${found.robots}", expected noindex`);
-  if (found.h1 !== 1) problems.push(`${found.h1} H1 headings, expected 1`);
+  if (found.h1 !== (p.h1 ?? 1)) problems.push(`${found.h1} H1 headings, expected ${p.h1 ?? 1}`);
   if (found.brokenAnchors.length) problems.push('jump links with no target: ' + found.brokenAnchors.join(', '));
   console.log(`${problems.length ? 'FAIL' : 'OK  '}  ${p.name} (entry ${p.id})${problems.length ? '\n      - ' + problems.join('\n      - ') : ''}`);
   if (problems.length) failed++;

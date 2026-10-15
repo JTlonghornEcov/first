@@ -1,0 +1,238 @@
+<style>
+/* Homepage concept. Scoped to #home2. Sections marked "copied" are the live homepage's own markup (site CSS + JS), with
+   their text styles pinned below so the CMS text block's .wysiwyg rules can't change them. New sections use site fonts
+   and brand colours. Without JS everything is visible; JS only adds the count-up and reveal animations. */
+html, body { overflow-x:clip; }
+main > section.hero { display:none; }   /* concept only: the template hero can't play video, so the live homepage hero is rebuilt below */
+#home2 { --ink:#212121; --body:#333c45; --muted:#55656d; --slate:#2f444e; --g200:#027a8f; --g600:#006374; --g900:#333c45; --grey:#f8f8f8;
+  --line:#e2e7e9; --yellow:#ffcd03; --mist:#aac5d1; --r:16px; margin:-72px 0; color:var(--ink); }
+@media (min-width:1024px) { #home2 { margin:-112px 0; } }
+#home2 *, #home2 *::before, #home2 *::after { box-sizing:border-box; }
+#home2 .bleed { width:100vw; margin-left:calc(50% - 50vw); }
+#home2 .wrapx { max-width:1280px; margin:0 auto; padding:0 16px; }
+@media (min-width:1024px) { #home2 .wrapx { padding:0 32px; } }
+#home2 .sec { padding:72px 0; }
+@media (min-width:1024px) { #home2 .sec { padding:112px 0; } }
+#home2 .sec h2.t { margin:0 0 12px; font-size:1.75rem; line-height:2.25rem; font-weight:700; color:var(--ink); letter-spacing:-.01em; }
+@media (min-width:1024px) { #home2 .sec h2.t { font-size:2.75rem; line-height:3.25rem; } }
+#home2 .sec p { margin:0; color:var(--body); font-size:16px; line-height:1.6; }
+#home2 .eyebrow { display:inline-flex; align-items:center; gap:10px; margin:0 0 12px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+#home2 .eyebrow::before { content:""; width:28px; height:4px; border-radius:2px; background:var(--yellow); }
+#home2 :is(a,button):focus-visible { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+#home2 .icon { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+#home2 .home2-sub { margin-top:8px; }
+#home2 video { display:block; }
+
+/* Hero: what we fix */
+#home2 .fix { margin:18px 0 22px; }
+#home2 .fix b { display:block; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+#home2 .fix ul { display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; list-style:none; }
+#home2 .fix li { margin:0; padding:7px 12px; border-radius:99px; background:#fff6cc; color:var(--ink); font-size:14px; font-weight:700; line-height:1.2; }
+
+/* 1 + 2: pathways */
+#home2 .paths { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr)); gap:20px; }
+#home2 .path { position:relative; overflow:hidden; isolation:isolate; display:flex; flex-direction:column; gap:16px; min-height:460px; padding:clamp(26px,4vw,44px); border-radius:var(--r); color:#fff; }
+#home2 .path.uk { background:var(--slate); }
+#home2 .path.gl { background:var(--g600); }
+#home2 .path .num { font-size:clamp(56px,7vw,88px); font-weight:700; line-height:.9; color:transparent; -webkit-text-stroke:2px var(--yellow); }
+#home2 .path .tag { font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--mist); }
+#home2 .path.gl .tag { color:#d3ecf1; }
+#home2 .path h2 { margin:0; font-size:clamp(28px,3.2vw,40px); line-height:1.1; font-weight:700; color:#fff; letter-spacing:-.01em; }
+#home2 .path h2 span { color:var(--yellow); }
+#home2 .path p { margin:0; color:#e6eef1; font-size:17px; line-height:1.55; max-width:46ch; }
+#home2 .path .partner { display:flex; flex-wrap:wrap; align-items:center; gap:6px 16px; padding-top:16px; border-top:1px solid rgba(255,255,255,.18); color:var(--mist); font-size:14px; font-weight:700; }
+#home2 .path .partner img { width:min(280px,100%); height:52px; object-fit:cover; object-position:center; }
+#home2 .path .links { display:flex; flex-wrap:wrap; gap:10px; margin-top:auto; }
+#home2 .path .btn { display:inline-flex; align-items:center; gap:10px; padding:13px 20px; border-radius:2px; background:var(--yellow); color:var(--ink); font-weight:700; text-decoration:none; transition:background .15s ease; }
+#home2 .path .btn:hover { background:#f0bf00; }
+#home2 .path .ghost { display:inline-flex; align-items:center; padding:12px 18px; border-radius:2px; box-shadow:inset 0 0 0 2px rgba(255,255,255,.7); color:#fff; font-weight:700; text-decoration:none; }
+#home2 .path .ghost:hover { background:rgba(255,255,255,.1); }
+#home2 .regions { display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; list-style:none; }
+#home2 .regions li { margin:0; }
+#home2 .regions a { display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:99px; background:rgba(255,255,255,.14); color:#fff; font-weight:700; font-size:14px; text-decoration:none; transition:background .15s ease; }
+#home2 .regions a:hover { background:rgba(255,255,255,.26); }
+#home2 .path .art { position:absolute; z-index:-1; right:-90px; bottom:-90px; width:360px; height:360px; opacity:.22; }
+#home2 .path.uk .art { opacity:.16; }
+#home2 .globe { animation:h2-spin 60s linear infinite; transform-origin:50% 50%; }
+@keyframes h2-spin { to { transform:rotate(360deg); } }
+
+/* Measured impact: every number visible */
+#home2 .impact { display:grid; gap:clamp(28px,4vw,48px); }
+@media (min-width:1024px) { #home2 .impact { grid-template-columns:4fr 8fr; align-items:start; } #home2 .impact .intro { position:sticky; top:120px; } }
+#home2 .impact .intro .cta { display:inline-flex; align-items:center; gap:10px; margin-top:24px; padding:13px 20px; border-radius:2px; background:var(--yellow); color:var(--ink); font-weight:700; text-decoration:none; }
+#home2 .bento { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:0; padding:0; list-style:none; }
+@media (min-width:768px) { #home2 .bento { grid-template-columns:repeat(3,minmax(0,1fr)); grid-auto-rows:minmax(210px,auto); } #home2 .bento li:first-child { grid-row:span 2; } }
+#home2 .bento li { position:relative; overflow:hidden; isolation:isolate; display:flex; flex-direction:column; justify-content:flex-end; gap:10px; min-height:170px; margin:0; padding:22px; border-radius:var(--r); color:#fff; }
+#home2 .bento li:first-child { grid-column:1 / -1; min-height:260px; }
+@media (min-width:768px) { #home2 .bento li:first-child { grid-column:auto; } }
+#home2 .bento li:nth-child(1) { background:var(--g900); }
+#home2 .bento li:nth-child(2) { background:var(--g200); }
+#home2 .bento li:nth-child(3) { background:var(--yellow); color:var(--ink); }
+#home2 .bento li:nth-child(4) { background:var(--g600); }
+#home2 .bento li:nth-child(5) { background:var(--slate); }
+#home2 .bento .n { display:block; font-size:clamp(40px,5.2vw,64px); font-weight:700; line-height:1; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+#home2 .bento li:first-child .n { font-size:clamp(56px,8vw,104px); }
+#home2 .bento .n sup { font-size:.5em; vertical-align:.7em; margin-left:2px; color:var(--yellow); }
+#home2 .bento li:nth-child(3) .n sup { color:var(--ink); }
+#home2 .bento .l { display:block; font-size:15px; font-weight:700; line-height:1.35; color:inherit; max-width:30ch; }
+#home2 .bento img { position:absolute; z-index:-1; left:0; right:0; top:0; width:100%; height:62%; object-fit:cover; object-position:top; opacity:.9; }
+#home2 .bento .dots { position:absolute; z-index:-1; inset:0; background-image:radial-gradient(rgba(255,255,255,.18) 1.4px,transparent 1.5px); background-size:16px 16px; -webkit-mask:linear-gradient(to bottom,#000,transparent 75%); mask:linear-gradient(to bottom,#000,transparent 75%); }
+#home2 .bento li:nth-child(3) .dots { background-image:radial-gradient(rgba(33,33,33,.16) 1.4px,transparent 1.5px); }
+
+/* Partners + case studies */
+#home2 .duo { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr)); gap:20px; }
+#home2 .duo > article { display:flex; flex-direction:column; gap:16px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+#home2 .duo h3 { margin:0; font-size:clamp(24px,2.4vw,30px); line-height:1.2; font-weight:700; color:var(--ink); }
+#home2 .duo .logo { display:block; width:100%; height:120px; object-fit:cover; object-position:center; border-radius:12px; background:var(--slate); }
+#home2 .gains { display:grid; gap:10px; margin:0; padding:0; list-style:none; }
+#home2 .gains li { display:flex; align-items:center; gap:12px; margin:0; padding:12px 14px; border-radius:10px; background:var(--grey); font-weight:700; color:var(--ink); }
+#home2 .gains .icon { color:var(--g200); }
+#home2 .more { display:inline-flex; align-items:center; gap:8px; margin-top:auto; font-weight:700; color:var(--ink); text-decoration:none; border-bottom:2px solid var(--yellow); align-self:flex-start; padding-bottom:2px; }
+#home2 .case { display:grid; grid-template-columns:minmax(0,150px) minmax(0,1fr); gap:16px; align-items:center; padding:12px; border-radius:12px; background:var(--grey); text-decoration:none; color:var(--ink); transition:background .15s ease; }
+#home2 .case:hover { background:#eef2f3; }
+#home2 .case img { width:100%; aspect-ratio:16/9; object-fit:contain; border-radius:8px; background:#fff; }
+#home2 .case .ph { display:grid; place-items:center; aspect-ratio:16/9; border-radius:8px; background:var(--slate); color:#fff; font-weight:700; font-size:18px; }
+#home2 .case b { display:block; font-size:16px; line-height:1.3; }
+#home2 .case span { font-size:14px; color:var(--muted); }
+#home2 blockquote { margin:0; padding:18px 20px; border-left:5px solid var(--yellow); border-radius:0 12px 12px 0; background:#fffbe6; font-style:normal; }
+#home2 blockquote p { font-size:15px; line-height:1.55; color:var(--ink); }
+#home2 blockquote cite { display:block; margin-top:10px; font-style:normal; font-size:14px; font-weight:700; color:var(--muted); }
+#home2 .duo .row { display:flex; flex-wrap:wrap; gap:18px; margin-top:auto; }
+
+/* Reveal */
+#home2.is-js .rv { opacity:0; translate:0 22px; transition:opacity .6s ease, translate .6s ease; }
+#home2.is-js .rv.in { opacity:1; translate:0 0; }
+@media (prefers-reduced-motion:reduce) { #home2 .globe { animation:none; } #home2.is-js .rv { opacity:1; translate:none; transition:none; } }
+#evx-contact { scroll-margin-top:96px; }
+
+/* Copied live-homepage sections: text styles measured on the live page and pinned (generated) */
+{{PINS}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="h2-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="h2-pound" viewBox="0 0 24 24"><path d="M17 20H7c2-2 2.5-4 2-7M6 13h8M16 7.5A4 4 0 0 0 9 9.5c0 1.5.5 2.5 1 3.5"/></symbol>
+  <symbol id="h2-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="h2-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z"/><path d="M5 19 13 11"/></symbol>
+</svg>
+
+<!--PROBLEMS--><div class="fix"><b>What we fix</b><ul><li>Inflated EPR fees</li><li>Incomplete packaging data</li><li>Rules that keep changing</li></ul></div><!--/PROBLEMS-->
+
+<div id="home2">
+
+  <!-- Hero (copied from the live homepage, same video; one H1) -->
+  <div class="bleed">{{HERO}}</div>
+
+  <!-- 1 + 2: where we help -->
+  <section class="bleed sec" id="pathways" aria-label="How we help">
+    <div class="wrapx">
+      <div class="paths">
+        <article class="path uk rv">
+          <svg class="art" viewBox="0 0 200 200" aria-hidden="true"><g fill="none" stroke="#ffcd03" stroke-width="2"><circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="44"/></g></svg>
+          <span class="num" aria-hidden="true">01</span>
+          <span class="tag">UK compliance</span>
+          <h2>UK Compliance, <span>powered by Veolia</span></h2>
+          <p>UK packaging EPR, reporting and PRNs, delivered through the Veolia x Ecoveritas alliance: independent data you can trust from Ecoveritas, with Veolia's specialist compliance expertise applied on top.</p>
+          <span class="partner"><img src="https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/8886/veolia_ecoveritas_logo_1472x1012.webp" alt="Veolia x Ecoveritas" width="280" height="52" loading="lazy">Independent expertise. Delivered as one.</span>
+          <div class="links">
+            <a class="btn" href="https://www.ecoveritas.com/compliance/uk-extended-producer-responsibility-epr">UK EPR <svg class="icon" aria-hidden="true"><use href="#h2-arrow"/></svg></a>
+            <a class="ghost" href="https://www.ecoveritas.com/veolia-ecoveritas">The Veolia alliance</a>
+            <a class="ghost" href="https://www.ecoveritas.com/request-free-prn-audit">Free PRN audit</a>
+          </div>
+        </article>
+        <article class="path gl rv">
+          <svg class="art" viewBox="0 0 200 200" aria-hidden="true"><g class="globe" fill="none" stroke="#fff" stroke-width="2"><circle cx="100" cy="100" r="96"/><ellipse cx="100" cy="100" rx="40" ry="96"/><ellipse cx="100" cy="100" rx="76" ry="96"/><path d="M4 100h192M16 52h168M16 148h168"/></g></svg>
+          <span class="num" aria-hidden="true">02</span>
+          <span class="tag">Global compliance</span>
+          <h2>Global Compliance, <span>80+ countries, one team</span></h2>
+          <p>EPR legislation is evolving fast worldwide. Our compliance consultants assess your obligations country by country and provide an efficient, cost-effective, outsourced solution to your registration and reporting needs.</p>
+          <ul class="regions" aria-label="Regions">
+            <li><a href="https://www.ecoveritas.com/compliance/europe">Europe</a></li>
+            <li><a href="https://www.ecoveritas.com/compliance/americas">Americas</a></li>
+            <li><a href="https://www.ecoveritas.com/compliance/asia-australia">Asia &amp; Australia</a></li>
+            <li><a href="https://www.ecoveritas.com/compliance/africa-middle-east">Africa &amp; Middle East</a></li>
+          </ul>
+          <div class="links">
+            <a class="btn" href="https://www.ecoveritas.com/compliance/global-extended-producer-responsibility-epr">Global EPR <svg class="icon" aria-hidden="true"><use href="#h2-arrow"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients (copied from the live homepage: full-width auto-scroll) -->
+  <div class="bleed">{{LOGOS}}</div>
+
+  <!-- Measured impact: redesigned so every number is always visible -->
+  <section class="bleed sec" style="background:#f8f8f8" aria-labelledby="h2-impact">
+    <div class="wrapx impact">
+      <div class="intro rv">
+        <p class="eyebrow">Our strength in numbers</p>
+        <h2 class="t" id="h2-impact">Measured impact – our strength in numbers</h2>
+        <p>Trusted by leading brands, we process vast amounts of packaging data, ensuring compliance and accuracy at scale. The numbers behind our experience speak for themselves:</p>
+        <a class="cta" href="#evx-contact" data-enquiry="Hi, I'd like to talk to Ecoveritas about our compliance needs.">Contact us <svg class="icon" aria-hidden="true"><use href="#h2-arrow"/></svg></a>
+      </div>
+      <ul class="bento">
+        <li class="rv"><img src="https://www.ecoveritas.com/assets/general/impact-wave-01.svg" alt="" loading="lazy"><span class="n" data-count="250">250<sup>+</sup></span><span class="l">Annual returns for packaging, WEEE &amp; batteries calculations</span></li>
+        <li class="rv"><span class="dots"></span><span class="n" data-count="100">100<sup>+</sup></span><span class="l">Clients which have a combined turnover in excess of £50+ billion</span></li>
+        <li class="rv"><span class="dots"></span><span class="n" data-count="32000">32,000<sup>+</sup></span><span class="l">Supplier data request issued and processed each year</span></li>
+        <li class="rv"><img src="https://www.ecoveritas.com/assets/general/impact-lines-02.svg" alt="" loading="lazy"><span class="n" data-count="4" data-suffix="m">4m<sup>+</sup></span><span class="l">SKUs with unique packaging metrics held in our database</span></li>
+        <li class="rv"><span class="dots"></span><span class="n" data-count="80">80<sup>+</sup></span><span class="l">Countries where we manage global EPR data reporting</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Partners + case studies -->
+  <section class="bleed sec" aria-label="Partners and case studies">
+    <div class="wrapx duo">
+      <article class="rv">
+        <p class="eyebrow">Partners</p>
+        <h3>The Veolia alliance</h3>
+        <img class="logo" src="https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/8886/veolia_ecoveritas_logo_1472x1012.webp" alt="Veolia x Ecoveritas" width="560" height="120" loading="lazy">
+        <p>Ecoveritas handles the full upstream data journey: collection, supplier engagement, weight validation and impartial reporting. Veolia applies their specialist regulatory and compliance expertise on top.</p>
+        <ul class="gains">
+          <li><svg class="icon" aria-hidden="true"><use href="#h2-pound"/></svg>Real cost reduction</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#h2-bulb"/></svg>Actionable insight</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#h2-leaf"/></svg>Measurable sustainability</li>
+        </ul>
+        <a class="more" href="https://www.ecoveritas.com/veolia-ecoveritas">Explore the alliance <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="rv">
+        <p class="eyebrow">Case studies</p>
+        <h3>Trusted with the detail</h3>
+        <a class="case" href="https://www.ecoveritas.com/case-studies/case-study-heidelberg-materials-uk"><img src="https://www.ecoveritas.com/assets/general/_736x414_crop_center-center_80_none/7555/Heidelberg-Case-Study-1.webp" alt="" width="150" height="84" loading="lazy"><span><b>Heidelberg Materials UK</b><span>Read the case study</span></span></a>
+        <a class="case" href="https://www.ecoveritas.com/case-studies/new-look"><span class="ph" aria-hidden="true">New Look</span><span><b>New Look</b><span>Read the case study</span></span></a>
+        <blockquote><p>"As a pharmaceutical company which places a strong emphasis on full compliance, Ecoveritas fully understood our needs for a highly accurate calculation. They worked professionally and displayed an excellent understanding of the pharmaceutical sector, its supply chain and the packaging regulations."</p><cite>Michael Clarke, EHS Advisor, Eisai Europe</cite></blockquote>
+        <div class="row"><a class="more" href="https://www.ecoveritas.com/case-studies">All case studies <span aria-hidden="true">→</span></a><a class="more" href="https://www.ecoveritas.com/testimonials">Testimonials <span aria-hidden="true">→</span></a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Why Ecoveritas? (copied from the live homepage) -->
+  <div class="bleed">{{WHY}}</div>
+
+  <!-- Trending topics (copied from the live homepage's news section) -->
+  <div class="bleed">{{TRENDING}}</div>
+
+</div>
+
+<script>
+/* Homepage concept: count-up for the impact numbers and gentle reveals. Content is in the HTML already. */
+(function () {
+  var root = document.getElementById('home2'); if (!root) return;
+  root.classList.add('is-js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var vids = root.querySelectorAll('video'); [].forEach.call(vids, function (v) { v.setAttribute('playsinline', ''); v.muted = true; var p = v.play && v.play(); if (p && p.catch) p.catch(function () {}); });
+  function count(el) {
+    var end = +el.getAttribute('data-count'), suf = el.getAttribute('data-suffix') || '', sup = el.querySelector('sup').outerHTML, t0 = null;
+    function tick(t) { if (t0 === null) t0 = t; var k = Math.min(1, (t - t0) / 1400), e = 1 - Math.pow(1 - k, 3);
+      el.innerHTML = Math.round(end * e).toLocaleString('en-GB') + suf + sup; if (k < 1) requestAnimationFrame(tick); }
+    requestAnimationFrame(tick);
+  }
+  var items = root.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) { [].forEach.call(items, function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return;
+    e.target.classList.add('in'); var n = e.target.querySelector('[data-count]'); if (n) count(n); io.unobserve(e.target); }); }, { threshold: .2 });
+  [].forEach.call(items, function (e) { io.observe(e); });
+})();
+</script>

@@ -21,7 +21,7 @@ const block = b => {
 };
 const pb = list('', P.blocks, b => ({ type: b.type, ...block(b) }));
 const payload = { ...NEWS, title: P.title, slug: P.slug, enabled: false, enabledForSite: false,
-  fields: { ...(P.heroTitle ? { heroTitle: P.heroTitle } : {}), ...(P.productMotif ? { productMotif: P.productMotif } : {}), heroIntroduction: P.heroIntroduction, heroImage: [P.heroImage], featuredImage: [P.featuredImage], excerpt: P.excerpt,
+  fields: { ...(P.heroTitle ? { heroTitle: P.heroTitle } : {}), ...(P.productMotif ? { productMotif: P.productMotif } : {}), heroIntroduction: P.heroIntroduction, ...(P.heroImage ? { heroImage: [P.heroImage] } : {}), ...(P.featuredImage ? { featuredImage: [P.featuredImage] } : {}), excerpt: P.excerpt,
     pageBuilder: pb, ctaPicker: [], seo: { titleRaw: { 1: P.seoTitle }, description: P.seoDescription, ...(P.robots ? { advanced: { robots: P.robots } } : {}) } } };   // HTML-method bodies stay noindex until approved
 if (process.env.ENTRY_ID) payload.entryId = process.env.ENTRY_ID;
 if (!ALLOW_LIVE && (payload.enabled !== false || payload.enabledForSite !== false)) throw new Error('must be disabled');
@@ -31,7 +31,7 @@ await page.waitForFunction(() => window.Craft && Craft.sendActionRequest);
 const res = await page.evaluate(async (data) => {
   try { const r = await Craft.sendActionRequest('POST', 'entries/save-entry', { data }); const d = r.data;
     return { id: d.id ?? d.entry?.id, cpEditUrl: d.cpEditUrl ?? d.entry?.cpEditUrl, status: (JSON.stringify(d).match(/data-status=\\"(\w+)/) || [])[1], msg: d.message }; }
-  catch (e) { return { error: e.message, data: JSON.stringify(e.response?.data).slice(0, 1500) }; }
+  catch (e) { return { error: e.message, data: JSON.stringify(e.response?.data?.errors ?? e.response?.data).slice(0, 1500) }; }
 }, payload);
 console.log(JSON.stringify(res));
 await browser.close();

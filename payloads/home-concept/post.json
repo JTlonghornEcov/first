@@ -1,0 +1,26 @@
+{
+ "sectionId": 1,
+ "typeId": 1,
+ "title": "Homepage concept (draft, do not publish)",
+ "slug": "home-concept-2026",
+ "heroTitle": "Comply with Confidence. Act with Insight.",
+ "heroIntroduction": "<p>Ecoveritas specialises in Extended Producer Responsibility (EPR), helping businesses stay compliant with evolving packaging requirements and avoid inflated fees. Our goal is to simplify regulations, support efficient data management, and ensure full compliance with packaging legislation.</p>",
+ "excerpt": "",
+ "seoTitle": "Homepage concept (test)",
+ "seoDescription": "",
+ "robots": [
+  "noindex",
+  "nofollow"
+ ],
+ "blocks": [
+  {
+   "type": "general_content",
+   "file": "payloads/home-concept/page.html",
+   "spacing": "medium"
+  },
+  {
+   "type": "callToAction",
+   "content": "<h2 id=\"evx-contact\">Ready to collaborate?</h2><p><strong>Let Ecoveritas take the strain.</strong> Contact us to discuss your needs.</p>"
+  }
+ ]
+}
