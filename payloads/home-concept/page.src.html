@@ -23,11 +23,54 @@ main > section.hero { display:none; }   /* concept only: the template hero can't
 #home2 .home2-sub { margin-top:8px; }
 #home2 video { display:block; }
 
-/* Hero: what we fix */
-#home2 .fix { margin:18px 0 22px; }
-#home2 .fix b { display:block; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
-#home2 .fix ul { display:flex; flex-wrap:wrap; gap:8px; margin:0; padding:0; list-style:none; }
-#home2 .fix li { margin:0; padding:7px 12px; border-radius:99px; background:#fff6cc; color:var(--ink); font-size:14px; font-weight:700; line-height:1.2; }
+/* Hero: purpose-built, full-bleed, globe video behind */
+#home2 .hx { position:relative; overflow:hidden; isolation:isolate; color:#fff; background:radial-gradient(120% 90% at 85% 30%,#0b5563 0%,#1c2f37 45%,#141f25 100%); }
+#home2 .hx-bg { position:absolute; z-index:-3; inset:0; width:100%; height:100%; object-fit:cover; opacity:.55; }
+#home2 .hx-shade { position:absolute; z-index:-2; inset:0; background:linear-gradient(90deg,rgba(17,27,32,.94) 0%,rgba(17,27,32,.82) 42%,rgba(17,27,32,.35) 100%), linear-gradient(0deg,rgba(17,27,32,.9) 0%,transparent 35%); }
+#home2 .hx-grid { position:absolute; z-index:-1; inset:0; background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size:72px 72px; -webkit-mask:linear-gradient(90deg,transparent,#000 35%,#000 70%,transparent); mask:linear-gradient(90deg,transparent,#000 35%,#000 70%,transparent); }
+#home2 .hx-in { display:grid; gap:clamp(32px,5vw,64px); align-items:center; padding-top:clamp(44px,6vw,76px); padding-bottom:clamp(36px,5vw,56px); }
+#home2 .hx-head { min-width:0; }
+@media (min-width:1024px) { #home2 .hx-in { grid-template-columns:minmax(0,7fr) minmax(0,5fr); grid-template-areas:'head head' 'copy panel'; align-items:start; row-gap:40px; } #home2 .hx-head { grid-area:head; } #home2 .hx-copy { grid-area:copy; } #home2 .hx-panel { grid-area:panel; } #home2 .hx h1 .ln { white-space:nowrap; } }
+#home2 .hx-kicker { display:inline-flex; align-items:center; gap:10px; margin:0 0 22px; padding:7px 14px 7px 10px; border-radius:99px; border:1px solid rgba(255,255,255,.22); background:rgba(255,255,255,.06); font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#d6e3e8; }
+#home2 .hx-kicker .live { width:8px; height:8px; border-radius:50%; background:var(--yellow); box-shadow:0 0 0 0 rgba(255,205,3,.7); animation:hx-pulse 2.4s ease-out infinite; }
+@keyframes hx-pulse { 70% { box-shadow:0 0 0 10px rgba(255,205,3,0); } 100% { box-shadow:0 0 0 0 rgba(255,205,3,0); } }
+#home2 .hx h1 { margin:0; font-size:clamp(44px,6.4vw,88px); line-height:.98; font-weight:700; letter-spacing:-.035em; color:#fff; }
+#home2 .hx h1 span:not(.ln) { color:var(--yellow); }
+#home2 .hx-sub { margin:0; max-width:54ch; font-size:clamp(17px,1.6vw,20px); line-height:1.55; color:#d6e3e8; }
+#home2 .hx-sub b { color:#fff; }
+#home2 .hx-cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+#home2 .hx-cta a { display:inline-flex; align-items:center; gap:10px; padding:15px 24px; border-radius:2px; font-weight:700; text-decoration:none; transition:background .15s ease, transform .15s ease; }
+#home2 .hx-cta .go { background:var(--yellow); color:var(--ink); }
+#home2 .hx-cta .go:hover { background:#f0bf00; transform:translateY(-1px); }
+#home2 .hx-cta .talk { color:#fff; box-shadow:inset 0 0 0 2px rgba(255,255,255,.55); }
+#home2 .hx-cta .talk:hover { background:rgba(255,255,255,.1); }
+#home2 .hx-panel { position:relative; border-radius:18px; padding:clamp(20px,2.4vw,28px); background:rgba(15,25,30,.62); border:1px solid rgba(255,255,255,.14); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); box-shadow:0 30px 60px rgba(0,0,0,.35); }
+#home2 .hx-panel::before { content:""; position:absolute; left:24px; right:24px; top:-1px; height:2px; background:linear-gradient(90deg,var(--yellow),transparent); }
+#home2 .hx-ph { display:flex; justify-content:space-between; align-items:center; margin:0 0 14px; font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--mist); }
+#home2 .hx-ph i { font-style:normal; color:#8fb0bd; letter-spacing:.06em; }
+#home2 .hx-panel ol { display:grid; gap:2px; margin:0; padding:0; list-style:none; }
+#home2 .hx-panel li { display:grid; grid-template-columns:auto minmax(0,1fr); gap:14px; margin:0; padding:16px 4px; border-top:1px solid rgba(255,255,255,.1); }
+#home2 .hx-panel li:first-child { border-top:0; }
+#home2 .hx-panel .no { font-size:13px; font-weight:700; color:var(--yellow); font-variant-numeric:tabular-nums; padding-top:3px; }
+#home2 .hx-panel b { display:block; font-size:17px; line-height:1.3; color:#fff; }
+#home2 .hx-panel span.d { display:block; margin-top:4px; font-size:14px; line-height:1.5; color:#c4d4da; }
+#home2 .hx-proof { border-top:1px solid rgba(255,255,255,.12); }
+#home2 .hx-proof dl { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); margin:0; }
+@media (min-width:900px) { #home2 .hx-proof dl { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+#home2 .hx-proof div { display:flex; flex-direction:column; justify-content:flex-start; gap:4px; padding:22px 16px 26px 0; }
+#home2 .hx-proof div + div { padding-left:16px; border-left:1px solid rgba(255,255,255,.12); }
+@media (max-width:899px) { #home2 .hx-proof div:nth-child(3) { padding-left:0; border-left:0; } #home2 .hx-proof div:nth-child(n+3) { border-top:1px solid rgba(255,255,255,.12); } }
+#home2 .hx-proof dt { margin:0; font-size:13px; line-height:1.4; color:#b8cad1; }
+#home2 .hx-proof dd { order:-1; margin:0; font-size:clamp(22px,2.4vw,30px); font-weight:700; line-height:1.1; color:#fff; letter-spacing:-.01em; }
+#home2 .hx-proof dd em { font-style:normal; color:var(--yellow); }
+#home2 .hx-pause { position:absolute; right:16px; top:16px; display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid rgba(255,255,255,.25); border-radius:99px; background:rgba(15,25,30,.55); color:#d6e3e8; font:inherit; font-size:12px; font-weight:700; cursor:pointer; }
+#home2 .hx-pause:hover { background:rgba(15,25,30,.85); }
+@media (max-width:767px) { #home2 .hx-pause { position:static; margin:0 16px 20px; } }
+#home2.is-js .hx .rise { opacity:0; translate:0 18px; transition:opacity .7s ease, translate .7s ease; }
+#home2.is-js .hx.in .rise { opacity:1; translate:0 0; }
+#home2.is-js .hx.in .rise:nth-child(2) { transition-delay:.08s; } #home2.is-js .hx.in .rise:nth-child(3) { transition-delay:.16s; } #home2.is-js .hx.in .rise:nth-child(4) { transition-delay:.24s; }
+#home2.is-js .hx.in .hx-panel.rise { transition-delay:.3s; }
+@media (prefers-reduced-motion:reduce) { #home2 .hx-kicker .live { animation:none; } #home2.is-js .hx .rise { opacity:1; translate:none; transition:none; } }
 
 /* 1 + 2: pathways */
 #home2 .paths { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr)); gap:20px; }
@@ -116,12 +159,43 @@ main > section.hero { display:none; }   /* concept only: the template hero can't
   <symbol id="h2-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z"/><path d="M5 19 13 11"/></symbol>
 </svg>
 
-<!--PROBLEMS--><div class="fix"><b>What we fix</b><ul><li>Inflated EPR fees</li><li>Incomplete packaging data</li><li>Rules that keep changing</li></ul></div><!--/PROBLEMS-->
-
 <div id="home2">
 
-  <!-- Hero (copied from the live homepage, same video; one H1) -->
-  <div class="bleed">{{HERO}}</div>
+  <!-- Hero (purpose-built; same globe video as the live homepage) -->
+  <section class="bleed hx" id="hx" aria-labelledby="hx-h">
+    <video class="hx-bg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"><source src="https://www.ecoveritas.com/assets/general/ecoveritas-hero-globe.mp4" type="video/mp4"></video>
+    <div class="hx-shade" aria-hidden="true"></div><div class="hx-grid" aria-hidden="true"></div>
+    <div class="wrapx hx-in">
+      <div class="hx-head">
+        <p class="hx-kicker rise"><span class="live" aria-hidden="true"></span>Extended Producer Responsibility specialists</p>
+        <h1 id="hx-h" class="rise"><span class="ln"><span>Comply</span> with confidence.</span> <br><span class="ln"><span>Act</span> with insight.</span></h1>
+      </div>
+      <div class="hx-copy">
+        <p class="hx-sub rise">Turn EPR reporting into strategic advantage. <b>Ecoveritas is the independent packaging-data and compliance team</b> that keeps businesses compliant in the UK and across 80+ countries, without the inflated fees.</p>
+        <div class="hx-cta rise">
+          <a class="go" href="#pathways">Find your route <svg class="icon" aria-hidden="true"><use href="#h2-arrow"/></svg></a>
+          <a class="talk" href="#evx-contact" data-enquiry="Hi, I'd like to talk to an EPR expert at Ecoveritas.">Talk to an expert</a>
+        </div>
+      </div>
+      <aside class="hx-panel rise" aria-labelledby="hx-fix">
+        <p class="hx-ph" id="hx-fix">What we fix <i>The problem / our fix</i></p>
+        <ol>
+          <li><span class="no">01</span><div><b>Inflated EPR fees</b><span class="d">We validate and challenge the data behind every submission, so you pay for what you actually place on the market.</span></div></li>
+          <li><span class="no">02</span><div><b>Incomplete packaging data</b><span class="d">We collect, weigh and calculate it, supplier by supplier, into data you can trust.</span></div></li>
+          <li><span class="no">03</span><div><b>Rules that keep changing</b><span class="d">We track obligations across the UK and 80+ countries, so your plan always has the right dates attached.</span></div></li>
+        </ol>
+      </aside>
+    </div>
+    <div class="wrapx hx-proof">
+      <dl>
+        <div><dt>in compliance and sustainability data</dt><dd><em>25+</em> years</dd></div>
+        <div><dt>countries where we manage EPR reporting</dt><dd><em>80+</em> countries</dd></div>
+        <div><dt>SKUs with packaging metrics in our database</dt><dd><em>4m+</em> SKUs</dd></div>
+        <div><dt>no compliance scheme, no PRN book</dt><dd>Independent</dd></div>
+      </dl>
+    </div>
+    <button type="button" class="hx-pause" aria-pressed="false"><span>Pause background</span></button>
+  </section>
 
   <!-- 1 + 2: where we help -->
   <section class="bleed sec" id="pathways" aria-label="How we help">
@@ -222,7 +296,13 @@ main > section.hero { display:none; }   /* concept only: the template hero can't
   var root = document.getElementById('home2'); if (!root) return;
   root.classList.add('is-js');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var vids = root.querySelectorAll('video'); [].forEach.call(vids, function (v) { v.setAttribute('playsinline', ''); v.muted = true; var p = v.play && v.play(); if (p && p.catch) p.catch(function () {}); });
+  var hx = root.querySelector('.hx'), bg = root.querySelector('.hx-bg'), pb = root.querySelector('.hx-pause');
+  requestAnimationFrame(function () { hx.classList.add('in'); });
+  function setPlay(on) { if (on) { var p = bg.play && bg.play(); if (p && p.catch) p.catch(function () {}); } else bg.pause();
+    pb.setAttribute('aria-pressed', !on); pb.querySelector('span').textContent = on ? 'Pause background' : 'Play background'; }
+  pb.addEventListener('click', function () { setPlay(bg.paused); });
+  if (reduce) setPlay(false);
+  var vids = root.querySelectorAll('video'); [].forEach.call(vids, function (v) { v.muted = true; if (!reduce) { var p = v.play && v.play(); if (p && p.catch) p.catch(function () {}); } });
   function count(el) {
     var end = +el.getAttribute('data-count'), suf = el.getAttribute('data-suffix') || '', sup = el.querySelector('sup').outerHTML, t0 = null;
     function tick(t) { if (t0 === null) t0 = t; var k = Math.min(1, (t - t0) / 1400), e = 1 - Math.pow(1 - k, 3);

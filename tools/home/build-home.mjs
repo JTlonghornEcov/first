@@ -1,5 +1,5 @@
 // Builds the homepage concept (payloads/home-concept/page.html) from page.src.html plus four sections copied from the
-// live homepage: hero (video), client logos, news ("Trending topics") and "Why Ecoveritas?".
+// live homepage: client logos, news ("Trending topics") and "Why Ecoveritas?". The hero is purpose-built in page.src.html.
 // Copied markup sits inside the CMS text block's .wysiwyg styles, which would change its headings, so every text
 // element's computed style is measured on the live homepage at four widths and pinned with scoped CSS.
 // Usage: node tools/home/build-home.mjs
@@ -8,7 +8,7 @@ import { launch } from '../../scripts/lib.mjs';
 
 const WIDTHS = [[375, 0], [768, 768], [1024, 1024], [1440, 1280]];   // [measure at, applies from min-width]
 const PROPS = ['font-size', 'line-height', 'font-weight', 'color', 'letter-spacing', 'text-transform', 'margin-top', 'margin-bottom', 'list-style-type', 'padding-left'];
-const PICK = { hero: 0, logos: 1, trending: 3, why: 5 };   // section index in the live homepage <main>
+const PICK = { logos: 1, trending: 3, why: 5 };   // section index in the live homepage <main>
 
 const { browser, page } = await launch({ state: false, log: false });
 const source = await (await fetch('https://www.ecoveritas.com/')).text();
@@ -44,20 +44,12 @@ for (const name of Object.keys(PICK)) {
   }
 }
 
-// Concept changes to the copied sections
-let hero = copies.hero
-  .replace(/<\/h1>\s*<h1[^>]*>/, ' <br>')                                                   // one H1, not two
-  .replace(/<h6([^>]*)>([\s\S]*?)<\/h6>/, '<p$1 class="home2-sub">$2</p>')                  // subtitle is not a heading
-  .replace('href="https://www.ecoveritas.com/#us"', 'href="#pathways"')
-  .replace(/(<\/div>\s*<a href="#pathways")/, `{{PROBLEMS}}$1`);
+// Concept change to a copied section
 const trending = copies.trending.replace(/(<h2[^>]*>)\s*Where to start\.\.\.\s*(<\/h2>)/, '$1Trending topics$2');
 if (trending === copies.trending) throw new Error('Trending title not found');
 
 let html = fs.readFileSync('payloads/home-concept/page.src.html', 'utf8');
-const problems = html.match(/<!--PROBLEMS-->([\s\S]*?)<!--\/PROBLEMS-->/)[1];
-html = html.replace(/<!--PROBLEMS-->[\s\S]*?<!--\/PROBLEMS-->/, '')
-  .replace('{{PINS}}', css)
-  .replace('{{HERO}}', hero.replace('{{PROBLEMS}}', problems))
+html = html.replace('{{PINS}}', css)
   .replace('{{LOGOS}}', copies.logos).replace('{{TRENDING}}', trending).replace('{{WHY}}', copies.why);
 if (/\{\{[A-Z]+\}\}/.test(html)) throw new Error('unfilled placeholder');
 html += fs.readFileSync('payloads/shared/enquiry-prefill.html', 'utf8');
