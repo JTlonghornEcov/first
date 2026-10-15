@@ -1,0 +1,411 @@
+<style>
+/* UK EPR explainer (v2 concept). Scoped to #ukx. Interactive explainers built from the live page's own facts; photo slots are
+   labelled placeholders for the team to source. Without JS every explanation, threshold and deadline is still shown as text. */
+#ukx { --ink:#212121; --body:#333c45; --muted:#55656d; --slate:#2f444e; --slate-2:#3d5662; --slate-3:#4d6875; --teal:#006374; --teal-l:#027a8f;
+  --teal-2:#e3f0f3; --yellow:#ffcd03; --yellow-2:#fff6cc; --grey:#f6f7f7; --line:#dfe5e7; --mist:#aac5d1; --r:16px;
+  color:var(--ink); display:grid; gap:clamp(64px,9vw,112px); font-size:16px; line-height:1.6; }
+#ukx *, #ukx *::before, #ukx *::after { box-sizing:border-box; }
+#ukx > * { min-width:0; }
+#ukx :is(h2,h3,h4,p,ul,ol,li,figure,fieldset,dl,dd,dt) { margin:0; padding:0; border:0; font-family:inherit; }
+#ukx :is(ul,ol) { list-style:none; }
+#ukx h2 { font-size:clamp(28px,3.6vw,42px); line-height:1.12; font-weight:700; letter-spacing:-.01em; color:var(--ink); }
+#ukx h3 { font-size:20px; line-height:1.25; font-weight:700; color:var(--ink); }
+#ukx p { color:var(--body); }
+#ukx p + p { margin-top:14px; }
+#ukx a { color:var(--teal); }
+#ukx .wrap { max-width:780px; }
+#ukx .lead { font-size:clamp(17px,1.7vw,20px); line-height:1.55; }
+#ukx .eyebrow { display:inline-flex; align-items:center; gap:10px; margin:0 0 12px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+#ukx .eyebrow::before { content:""; width:28px; height:4px; border-radius:2px; background:var(--yellow); }
+#ukx .sec { display:grid; gap:clamp(24px,3.4vw,40px); scroll-margin-top:110px; }
+#ukx .sec > header { display:grid; gap:14px; }
+#ukx .icon { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+#ukx .sr { position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+#ukx :is(a,button,input,summary):focus-visible { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+#ukx:not(.is-js) [data-js-only] { display:none; }
+#ukx.is-js [data-nojs] { display:none; }
+#ukx .btn { display:inline-flex; align-items:center; gap:10px; padding:14px 22px; border-radius:2px; background:var(--yellow); color:var(--ink); font-weight:700; text-decoration:none; transition:background .15s ease; }
+#ukx .btn:hover { background:#f0bf00; }
+#ukx .split { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr)); gap:clamp(24px,4vw,56px); align-items:start; }
+#ukx .bleed { width:100vw; margin-left:calc(50% - 50vw); }
+html, body { overflow-x:clip; }
+
+/* Photo placeholders (team to source) */
+#ukx .ph { position:relative; display:grid; place-content:center; gap:8px; min-height:220px; padding:22px; border-radius:var(--r); border:2px dashed var(--mist);
+  background:repeating-linear-gradient(135deg,#f3f6f7 0 14px,#eef2f4 14px 28px); text-align:center; color:var(--slate); }
+#ukx .ph svg { width:36px; height:36px; margin:0 auto; color:var(--teal); }
+#ukx .ph b { font-size:16px; }
+#ukx .ph span { font-size:13px; color:var(--muted); max-width:34ch; margin:0 auto; }
+
+/* 1. Starting point */
+#ukx .levels { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr)); gap:14px; }
+#ukx .level { position:relative; display:flex; flex-direction:column; gap:14px; padding:24px; border-radius:var(--r); border:1px solid var(--line); background:#fff; text-decoration:none; color:var(--ink); transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+#ukx .level:hover { border-color:var(--slate); transform:translateY(-3px); box-shadow:0 14px 30px rgba(33,33,33,.1); }
+#ukx .level .bars { display:flex; align-items:flex-end; gap:5px; height:34px; }
+#ukx .level .bars i { width:10px; border-radius:3px; background:var(--line); }
+#ukx .level .bars i:nth-child(1) { height:40%; } #ukx .level .bars i:nth-child(2) { height:70%; } #ukx .level .bars i:nth-child(3) { height:100%; }
+#ukx .level[data-l="1"] .bars i:nth-child(-n+1), #ukx .level[data-l="2"] .bars i:nth-child(-n+2), #ukx .level[data-l="3"] .bars i { background:var(--teal); }
+#ukx .level h3 { font-size:21px; }
+#ukx .level p { font-size:15px; color:var(--muted); }
+#ukx .level .go { margin-top:auto; font-weight:700; display:inline-flex; gap:8px; align-items:center; }
+#ukx .level .go::after { content:"→"; transition:transform .2s ease; }
+#ukx .level:hover .go::after { transform:translateX(4px); }
+
+/* 2. What is EPR: lifecycle + cost equation */
+#ukx .cycle { border-radius:var(--r); background:var(--grey); padding:clamp(20px,3vw,32px); display:grid; gap:20px; }
+#ukx .stages { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; counter-reset:st; }
+#ukx .stage { position:relative; display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; font-weight:700; font-size:14px; line-height:1.25; color:var(--ink); }
+#ukx .stage .dot { display:grid; place-items:center; width:64px; height:64px; border-radius:50%; background:#fff; border:2px solid var(--line); color:var(--slate); transition:background .25s ease, border-color .25s ease, color .25s ease, transform .25s ease; }
+#ukx .stage .dot svg { width:28px; height:28px; }
+#ukx .stage:not(:last-child)::after { content:""; position:absolute; top:31px; left:calc(50% + 38px); right:calc(-50% + 38px); height:2px; background:var(--line); }
+#ukx .stage.pay .dot { border-color:var(--teal); }
+#ukx .stage.hl .dot { background:var(--yellow); border-color:var(--ink); transform:scale(1.08); }
+#ukx .bracket { position:relative; margin:0 calc(20% / 2 + 0px) 0 calc(40% + 10px); padding-top:10px; border-top:3px solid var(--teal); text-align:center; font-size:13px; font-weight:700; color:var(--teal); }
+#ukx .bracket::before, #ukx .bracket::after { content:""; position:absolute; top:-10px; width:3px; height:10px; background:var(--teal); }
+#ukx .bracket::before { left:0; } #ukx .bracket::after { right:0; }
+#ukx .eq { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:10px; }
+#ukx .eq button, #ukx .eq .res { display:flex; flex-direction:column; gap:2px; min-width:120px; padding:12px 16px; border-radius:12px; border:2px solid var(--line); background:#fff; font:inherit; font-weight:700; font-size:15px; color:var(--ink); cursor:pointer; text-align:center; transition:border-color .2s ease, background .2s ease; }
+#ukx .eq button small { font-weight:400; font-size:12px; color:var(--muted); }
+#ukx .eq button[aria-pressed="true"] { border-color:var(--ink); background:var(--yellow); }
+#ukx .eq button.minus { border-style:dashed; }
+#ukx .eq .op { font-size:24px; font-weight:700; color:var(--muted); }
+#ukx .eq .res { cursor:default; background:var(--slate); border-color:var(--slate); color:#fff; }
+#ukx .eq .res small { color:var(--mist); font-weight:400; font-size:12px; }
+#ukx .cap { font-size:14px; color:var(--muted); text-align:center; }
+#ukx .since { display:inline-flex; align-items:center; gap:10px; padding:8px 14px; border-radius:99px; background:var(--teal-2); color:var(--teal); font-weight:700; font-size:14px; }
+@media (max-width:767px) {
+  #ukx .stages { grid-template-columns:1fr; gap:6px; }
+  #ukx .stage { flex-direction:row; text-align:left; gap:14px; }
+  #ukx .stage .dot { width:48px; height:48px; } #ukx .stage .dot svg { width:22px; height:22px; }
+  #ukx .stage:not(:last-child)::after { top:52px; bottom:-12px; left:23px; right:auto; width:2px; height:auto; }
+  #ukx .bracket { margin:0; border-top:0; border-left:3px solid var(--teal); padding:4px 0 4px 12px; text-align:left; }
+  #ukx .bracket::before, #ukx .bracket::after { display:none; }
+  #ukx .eq button, #ukx .eq .res { min-width:0; flex:1 1 40%; }
+}
+
+/* 3. Am I affected? */
+#ukx .tests { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); gap:14px; }
+#ukx .test { display:flex; gap:16px; align-items:center; padding:20px; border-radius:var(--r); background:var(--slate); color:#fff; }
+#ukx .test .big { font-size:clamp(30px,3.6vw,40px); font-weight:700; color:var(--yellow); line-height:1; white-space:nowrap; }
+#ukx .test h3 { color:#fff; font-size:17px; }
+#ukx .both { padding:16px 20px; border-radius:12px; background:var(--yellow-2); border-left:5px solid var(--yellow); font-weight:700; color:var(--ink); }
+#ukx .checker { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr)); gap:clamp(20px,3vw,36px); padding:clamp(20px,3vw,32px); border-radius:var(--r); background:var(--grey); align-items:start; }
+#ukx .checker h3 { display:flex; gap:10px; align-items:center; margin-bottom:14px; }
+#ukx .checker h3 .icon { color:var(--teal); }
+#ukx .ctl { display:grid; gap:6px; margin-bottom:16px; }
+#ukx .ctl label { display:flex; justify-content:space-between; gap:12px; font-weight:700; font-size:15px; }
+#ukx .ctl output { font-variant-numeric:tabular-nums; color:var(--teal); }
+#ukx input[type=range] { width:100%; accent-color:var(--teal); height:28px; }
+#ukx .ticks { display:flex; justify-content:space-between; font-size:12px; color:var(--muted); margin-top:-4px; }
+#ukx .zone-svg { display:block; width:100%; height:auto; border-radius:12px; background:#fff; border:1px solid var(--line); }
+#ukx .verdict { margin-top:16px; padding:18px 20px; border-radius:12px; background:#fff; border:1px solid var(--line); border-left:6px solid var(--muted); }
+#ukx .verdict[data-z="small"] { border-left-color:var(--teal-l); } #ukx .verdict[data-z="large"] { border-left-color:var(--slate); } #ukx .verdict[data-z="none"] { border-left-color:var(--mist); }
+#ukx .verdict b { display:block; font-size:19px; margin-bottom:4px; color:var(--ink); }
+#ukx .verdict p { font-size:15px; }
+#ukx .verdict .btn { margin-top:12px; padding:11px 18px; font-size:15px; }
+#ukx .sizes { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:14px; }
+#ukx .size { padding:22px; border-radius:var(--r); border:1px solid var(--line); background:#fff; display:grid; gap:10px; align-content:start; }
+#ukx .size .tag { justify-self:start; padding:4px 12px; border-radius:99px; font-size:13px; font-weight:700; background:var(--teal-2); color:var(--teal); }
+#ukx .size.large .tag { background:var(--slate); color:#fff; }
+#ukx .size dl { display:grid; gap:8px; }
+#ukx .size dt { font-size:13px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+#ukx .size dd { font-size:15px; color:var(--body); }
+
+/* 4. Deadlines */
+#ukx .cal { padding:clamp(20px,3vw,32px); border-radius:var(--r); background:var(--slate); color:#fff; display:grid; gap:18px; }
+#ukx .cal h3 { color:#fff; }
+#ukx .cal .filters { display:flex; flex-wrap:wrap; gap:8px; }
+#ukx .cal .filters button { border:2px solid var(--slate-3); background:transparent; color:#fff; font:inherit; font-weight:700; font-size:14px; padding:8px 16px; border-radius:99px; cursor:pointer; }
+#ukx .cal .filters button[aria-pressed="true"] { background:var(--yellow); border-color:var(--yellow); color:var(--ink); }
+#ukx .gantt { display:grid; grid-template-columns:minmax(64px,auto) repeat(16,minmax(0,1fr)); gap:6px 2px; align-items:center; }
+#ukx .gantt .m { font-size:11px; font-weight:700; color:var(--mist); text-align:center; }
+#ukx .gantt .y { grid-column:span 12; font-size:12px; font-weight:700; color:#fff; border-bottom:1px solid var(--slate-3); padding-bottom:4px; }
+#ukx .gantt .y2 { grid-column:span 4; }
+#ukx .gantt .rl { grid-column:1; font-size:13px; font-weight:700; color:#fff; padding-right:8px; }
+#ukx .gantt .bar { height:28px; border-radius:6px; display:flex; align-items:center; padding:0 8px; font-size:12px; font-weight:700; white-space:nowrap; overflow:hidden; transition:opacity .25s ease; }
+#ukx .gantt .bar.data { background:var(--slate-3); color:#fff; }
+#ukx .gantt .bar.data.l1 { background:var(--teal-l); }
+#ukx .gantt .due { position:relative; height:28px; display:grid; place-items:center; }
+#ukx .gantt .due i { display:block; width:22px; height:22px; border-radius:50%; background:var(--yellow); box-shadow:0 0 0 4px rgba(255,205,3,.25); }
+#ukx .gantt [data-row].dim { opacity:.18; }
+#ukx .dues { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); gap:10px; }
+#ukx .dues li { padding:14px 16px; border-radius:12px; background:var(--slate-2); font-size:14px; line-height:1.45; color:#e6eef1; transition:opacity .25s ease; }
+#ukx .dues li b { display:block; color:var(--yellow); font-size:16px; }
+#ukx .dues li.dim { opacity:.3; }
+@media (max-width:640px) { #ukx .gantt { grid-template-columns:48px repeat(16,minmax(0,1fr)); } #ukx .gantt .bar { font-size:0; padding:0; } #ukx .gantt .m { font-size:9px; } #ukx .gantt .due i { width:14px; height:14px; } }
+
+/* 5. Whitepaper */
+#ukx .paper { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr)); gap:clamp(20px,3vw,40px); align-items:center; padding:clamp(22px,3.4vw,40px); border-radius:var(--r); background:var(--yellow-2); }
+#ukx .paper ul { display:grid; gap:10px; margin:16px 0 22px; }
+#ukx .paper li { display:flex; gap:10px; align-items:center; font-weight:700; color:var(--ink); }
+#ukx .paper li::before { content:""; width:22px; height:22px; flex:none; border-radius:50%; background:var(--slate) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 12 4 4 8-8' fill='none' stroke='%23ffcd03' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat; }
+#ukx .paper .ph { background:repeating-linear-gradient(135deg,#fff 0 14px,#fdf6d6 14px 28px); border-color:#e7cf6a; min-height:260px; }
+
+/* 6. Where we come in */
+#ukx .path { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); gap:16px; counter-reset:p; }
+#ukx .svc { position:relative; display:flex; flex-direction:column; border-radius:var(--r); border:1px solid var(--line); background:#fff; overflow:hidden; }
+#ukx .svc .ph { min-height:0; aspect-ratio:16/9; border-radius:0; border-width:0 0 2px; }
+#ukx .svc .body { display:flex; flex-direction:column; gap:10px; padding:22px; flex:1; }
+#ukx .svc .step { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); }
+#ukx .svc p { font-size:15px; color:var(--muted); }
+#ukx .svc a.more { margin-top:auto; align-self:flex-start; font-weight:700; color:var(--ink); text-decoration:none; border-bottom:2px solid var(--yellow); padding-bottom:2px; }
+#ukx .tiers { display:flex; flex-wrap:wrap; gap:8px; }
+#ukx .tiers span { padding:6px 12px; border-radius:99px; background:var(--teal-2); color:var(--teal); font-weight:700; font-size:13px; }
+
+/* 7. Logos (same markup as the live page; site script scrolls it) */
+#ukx .trust h2 { font-size:1.25rem; line-height:1.75rem; margin-bottom:28px; }
+#ukx .trust { overflow:hidden; }
+#ukx .trust .wrapx { max-width:1280px; margin:0 auto; padding:0 16px; }
+@media (min-width:1024px) { #ukx .trust .wrapx { padding:0 32px; } }
+
+@media (prefers-reduced-motion:reduce) { #ukx *, #ukx *::before, #ukx *::after { transition:none !important; } }
+#evx-contact { scroll-margin-top:96px; }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="u2-cam" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+  <symbol id="u2-shelf" viewBox="0 0 24 24"><path d="M3 20h18M5 20V9h14v11M5 14h14"/><path d="M8 9V6h3v3M13 9V5h3v4"/></symbol>
+  <symbol id="u2-home" viewBox="0 0 24 24"><path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10M10 20v-5h4v5"/></symbol>
+  <symbol id="u2-truck" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></symbol>
+  <symbol id="u2-sort" viewBox="0 0 24 24"><path d="M4 5h16l-6 7v6l-4 2v-8z"/></symbol>
+  <symbol id="u2-recycle" viewBox="0 0 24 24"><path d="M7 19H4l3-5M17 19h3l-3-5M9 5l3-2 3 2"/><path d="M7 14 10 8M17 14l-3-6M7 19h10"/></symbol>
+  <symbol id="u2-gauge" viewBox="0 0 24 24"><path d="M4 16a8 8 0 1 1 16 0"/><path d="m12 16 4-5"/></symbol>
+  <symbol id="u2-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<div id="ukx">
+
+  <section class="sec" aria-labelledby="u2-start-h">
+    <header class="wrap">
+      <p class="eyebrow">Start here</p>
+      <h2 id="u2-start-h">Find the right starting point</h2>
+      <p class="lead">Not everyone comes in with the same level of knowledge. Choose the option that best fits you, and we'll guide you from there.</p>
+    </header>
+    <nav class="levels" aria-label="Choose your starting point">
+      <a class="level" data-l="1" href="#b"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><h3>I'm new to EPR</h3><p>What EPR is, and who pays for what.</p><span class="go">Take me there</span></a>
+      <a class="level" data-l="2" href="#informed"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><h3>I know some EPR</h3><p>Check if you're affected, and whether you're small or large.</p><span class="go">Take me there</span></a>
+      <a class="level" data-l="3" href="#expert"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><h3>I'm quite the expert!</h3><p>Modulated fees, the timeline and what EPR will cost.</p><span class="go">Take me there</span></a>
+    </nav>
+  </section>
+
+  <section class="sec" id="b" aria-labelledby="u2-what-h">
+    <header class="wrap">
+      <p class="eyebrow">The basics</p>
+      <h2 id="u2-what-h">What is Extended Producer Responsibility?</h2>
+      <p class="lead">EPR for packaging is new UK legislation that requires producers to take responsibility for and pay the total cost of dealing with their packaging from when it is placed onto the market to the end of its life.</p>
+      <p>If you are obligated under EPR, you are responsible for collecting and reporting data for all your obligated packaging placed onto the UK market.</p>
+    </header>
+
+    <figure class="cycle">
+      <h3>The life of your packaging, and the part producers pay for</h3>
+      <ol class="stages" id="u2-stages">
+        <li class="stage" data-s="market"><span class="dot"><svg aria-hidden="true" class="icon"><use href="#u2-shelf"/></svg></span>Placed on the market</li>
+        <li class="stage" data-s="use"><span class="dot"><svg aria-hidden="true" class="icon"><use href="#u2-home"/></svg></span>Used and thrown away at home</li>
+        <li class="stage pay" data-s="collection"><span class="dot"><svg aria-hidden="true" class="icon"><use href="#u2-truck"/></svg></span>Collected</li>
+        <li class="stage pay" data-s="treatment"><span class="dot"><svg aria-hidden="true" class="icon"><use href="#u2-sort"/></svg></span>Treated and sorted</li>
+        <li class="stage pay" data-s="recycling"><span class="dot"><svg aria-hidden="true" class="icon"><use href="#u2-recycle"/></svg></span>Recycled</li>
+      </ol>
+      <p class="bracket">Under EPR, household packaging producers pay for these stages</p>
+      <div class="eq" role="group" aria-label="What household packaging producers pay">
+        <button type="button" data-s="collection" aria-pressed="false">Collection<small>getting it off the street</small></button>
+        <span class="op" aria-hidden="true">+</span>
+        <button type="button" data-s="treatment" aria-pressed="false">Treatment<small>sorting and processing</small></button>
+        <span class="op" aria-hidden="true">+</span>
+        <button type="button" data-s="recycling" aria-pressed="false">Recycling<small>turning it into material</small></button>
+        <span class="op" aria-hidden="true">−</span>
+        <button type="button" class="minus" data-s="recycling" aria-pressed="false">Material value<small>what the recyclate sells for</small></button>
+        <span class="op" aria-hidden="true">=</span>
+        <span class="res">Your EPR cost<small>for household packaging</small></span>
+      </div>
+      <p class="cap">Household packaging producers are responsible for the entire cost of recycling the packaging they place on the market, including the cost of collection, treatment and recycling, minus the value received for the recycled material.</p>
+    </figure>
+    <p class="wrap"><span class="since">Builds on the Packaging Waste Regulations, in place since 1997</span></p>
+    <p class="wrap">The new regulations build on the existing Packaging Waste Regulations, and it is hoped that their implementation will reduce the environmental impact of packaging.</p>
+  </section>
+
+  <section class="sec" id="informed" aria-labelledby="u2-aff-h">
+    <span id="affected" aria-hidden="true"></span>
+    <div class="split">
+      <header style="display:grid;gap:14px">
+        <p class="eyebrow">Am I affected?</p>
+        <h2 id="u2-aff-h">Two questions decide whether EPR applies to you</h2>
+        <p class="lead">Across the board, businesses are facing unprecedented upheaval. Change is never easy, but this change has left retailers, manufacturers and suppliers scratching their heads.</p>
+      </header>
+      <div class="ph" role="img" aria-label="Photo to be sourced"><svg aria-hidden="true" class="icon"><use href="#u2-cam"/></svg><b>Photo to be sourced</b><span>A retailer or manufacturer's team reviewing packaging or stock in a warehouse.</span></div>
+    </div>
+    <div class="tests">
+      <div class="test"><span class="big">£1m+</span><h3>Does your business turn over more than £1 million?</h3></div>
+      <div class="test"><span class="big">25t+</span><h3>Does your business handle more than 25 tonnes of packaging?</h3></div>
+    </div>
+    <p class="both">If the answer is yes to both of these questions, you will be required to comply.</p>
+
+    <div class="checker" data-js-only id="u2-check">
+      <div>
+        <h3><svg class="icon" aria-hidden="true"><use href="#u2-gauge"/></svg>Where do you sit? Move the sliders.</h3>
+        <div class="ctl">
+          <label for="u2-t">Annual turnover <output id="u2-t-out" for="u2-t">£1.5m</output></label>
+          <input type="range" id="u2-t" min="0" max="5" step="0.1" value="1.5">
+          <div class="ticks" aria-hidden="true"><span>£0</span><span>£1m</span><span>£2m</span><span>£3m</span><span>£4m</span><span>£5m+</span></div>
+        </div>
+        <div class="ctl">
+          <label for="u2-w">Packaging handled a year <output id="u2-w-out" for="u2-w">40 tonnes</output></label>
+          <input type="range" id="u2-w" min="0" max="100" step="1" value="40">
+          <div class="ticks" aria-hidden="true"><span>0t</span><span>25t</span><span>50t</span><span>75t</span><span>100t+</span></div>
+        </div>
+        <div class="verdict" id="u2-verdict" aria-live="polite"></div>
+      </div>
+      <svg class="zone-svg" viewBox="0 0 400 320" role="img" aria-labelledby="u2-zone-t">
+        <title id="u2-zone-t">Map of producer size by turnover and packaging tonnage</title>
+        <rect x="44" y="16" width="340" height="256" fill="#f1f4f5"/>
+        <!-- small: £1-2m & >25t ; >£2m & 25-50t ; large: >£2m & >50t. x: 0..5 -> 44..384 ; y: 0..100 -> 272..16 -->
+        <rect x="112" y="16" width="68" height="192" fill="#027a8f" opacity=".85"/>
+        <rect x="180" y="144" width="204" height="64" fill="#027a8f" opacity=".85"/>
+        <rect x="180" y="16" width="204" height="128" fill="#2f444e"/>
+        <g font-family="inherit" font-weight="700" font-size="13">
+          <text x="282" y="84" fill="#fff" text-anchor="middle">Large producer</text>
+          <text x="146" y="104" fill="#fff" text-anchor="middle" font-size="12">Small</text>
+          <text x="282" y="182" fill="#fff" text-anchor="middle">Small producer</text>
+          <text x="214" y="246" fill="#55656d" text-anchor="middle">Not obligated by these tests</text>
+          <text x="78" y="120" fill="#55656d" text-anchor="middle" font-size="11">Under £1m</text>
+        </g>
+        <g stroke="#212121" stroke-width="1.2"><line x1="44" y1="272" x2="384" y2="272"/><line x1="44" y1="16" x2="44" y2="272"/></g>
+        <g font-family="inherit" font-size="11" fill="#55656d">
+          <text x="44" y="290" text-anchor="middle">£0</text><text x="112" y="290" text-anchor="middle">£1m</text><text x="180" y="290" text-anchor="middle">£2m</text><text x="384" y="290" text-anchor="end">£5m+</text>
+          <text x="38" y="275" text-anchor="end">0t</text><text x="38" y="211" text-anchor="end">25t</text><text x="38" y="147" text-anchor="end">50t</text><text x="38" y="20" text-anchor="end">100t</text>
+          <text x="214" y="312" text-anchor="middle" font-weight="700">Annual turnover</text>
+        </g>
+        <g id="u2-dot"><circle r="13" fill="#ffcd03" stroke="#212121" stroke-width="2.5"/><circle r="4" fill="#212121"/></g>
+      </svg>
+    </div>
+
+    <div class="wrap" style="display:grid;gap:14px">
+      <h3>Am I a small producer or a large producer?</h3>
+      <p>The line can be fine, but it makes a big difference! Depending on whether you are small or large affects the actions you are required to take, so it's important to know where you sit, and what steps you need to take once you are seated!</p>
+    </div>
+    <div class="sizes">
+      <div class="size small"><span class="tag">Small producer</span>
+        <dl><dt>Who</dt><dd>Annual turnover of £1m–£2m and handle over 25 tonnes of packaging, or turnover over £2m but handle 25 to 50 tonnes of packaging.</dd>
+        <dt>Report by</dt><dd>On or before 1 April each year, starting in 2025 (for packaging handled in 2024).</dd></dl></div>
+      <div class="size large"><span class="tag">Large producer</span>
+        <dl><dt>Who</dt><dd>Annual turnover of over £2m and handle more than 50 tonnes of packaging.</dd>
+        <dt>Report by</dt><dd>On or before 1 October each year, for 1 January to 30 June of that year; and on or before 1 April each year, for 1 July to 31 December of the previous year.</dd></dl></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="u2-cal-h">
+    <div class="cal">
+      <div style="display:grid;gap:8px">
+        <h3 id="u2-cal-h">Your reporting year at a glance</h3>
+        <p style="color:#d6e0e4;font-size:15px">Which months of packaging data are due, and when.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Show deadlines for" data-js-only>
+        <button type="button" data-f="all" aria-pressed="true">Both</button>
+        <button type="button" data-f="small" aria-pressed="false">Small producer</button>
+        <button type="button" data-f="large" aria-pressed="false">Large producer</button>
+      </div>
+      <div class="gantt" aria-hidden="true">
+        <span></span><span class="y">Year 1</span><span class="y y2">Year 2</span>
+        <span></span>
+        <span class="m">J</span><span class="m">F</span><span class="m">M</span><span class="m">A</span><span class="m">M</span><span class="m">J</span><span class="m">J</span><span class="m">A</span><span class="m">S</span><span class="m">O</span><span class="m">N</span><span class="m">D</span><span class="m">J</span><span class="m">F</span><span class="m">M</span><span class="m">A</span>
+        <span class="rl" data-row="small">Small</span>
+        <span class="bar data" data-row="small" style="grid-column:2 / span 12">Packaging handled Jan–Dec</span>
+        <span style="grid-column:14 / span 2" data-row="small"></span>
+        <span class="due" data-row="small" style="grid-column:17"><i title="1 April"></i></span>
+        <span class="rl" data-row="large">Large</span>
+        <span class="bar data l1" data-row="large" style="grid-column:2 / span 6">Jan–Jun</span>
+        <span style="grid-column:8 / span 2" data-row="large"></span>
+        <span class="due" data-row="large" style="grid-column:11"><i title="1 October"></i></span>
+        <span class="rl" data-row="large"></span>
+        <span style="grid-column:2 / span 6" data-row="large"></span>
+        <span class="bar data" data-row="large" style="grid-column:8 / span 6">Jul–Dec</span>
+        <span style="grid-column:14 / span 3" data-row="large"></span>
+        <span class="due" data-row="large" style="grid-column:17"><i title="1 April"></i></span>
+      </div>
+      <ul class="dues">
+        <li data-row="small"><b>1 April</b>Small producers report the packaging they handled in the previous calendar year.</li>
+        <li data-row="large"><b>1 October</b>Large producers report 1 January to 30 June of that year.</li>
+        <li data-row="large"><b>1 April</b>Large producers report 1 July to 31 December of the previous year.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="expert" aria-labelledby="u2-wp-h">
+    <div class="paper">
+      <div>
+        <p class="eyebrow">For the experts</p>
+        <h2 id="u2-wp-h">Want to learn even more?</h2>
+        <p style="margin-top:12px">Request our in-depth whitepaper on EPR to learn all you need to know on the subject, including:</p>
+        <ul><li>Modulated fees</li><li>EPR timeline</li><li>How much will EPR cost</li></ul>
+        <a class="btn" href="#evx-contact" data-enquiry="Hi, I'd like to request your in-depth whitepaper on UK EPR.">Request the whitepaper <svg class="icon" aria-hidden="true"><use href="#u2-arrow"/></svg></a>
+      </div>
+      <div class="ph" role="img" aria-label="Photo to be sourced"><svg aria-hidden="true" class="icon"><use href="#u2-cam"/></svg><b>Photo to be sourced</b><span>The whitepaper cover, or a close-up of someone reading the report.</span></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="u2-help-h">
+    <header class="wrap">
+      <p class="eyebrow">Where we come in</p>
+      <h2 id="u2-help-h">Where we come in</h2>
+      <p class="lead">Okay, now you have the basic information... How about we tell you about our ways of supporting businesses with EPR? We have tailored packages designed to provide support at each tier:</p>
+      <p class="tiers"><span>Small producers</span><span>Large producers</span><span>Multinational businesses</span></p>
+    </header>
+    <ol class="path">
+      <li class="svc"><div class="ph" role="img" aria-label="Photo to be sourced"><svg aria-hidden="true" class="icon"><use href="#u2-cam"/></svg><b>Photo to be sourced</b><span>Consultant talking a client through their obligations.</span></div>
+        <div class="body"><span class="step">Step 1</span><h3>Obligation Assessment</h3><p>Find out exactly what applies to your business.</p><a class="more" href="https://www.ecoveritas.com/services/obligation-assessment">Find out more →</a></div></li>
+      <li class="svc"><div class="ph" role="img" aria-label="Photo to be sourced"><svg aria-hidden="true" class="icon"><use href="#u2-cam"/></svg><b>Photo to be sourced</b><span>Packaging being weighed or measured on site.</span></div>
+        <div class="body"><span class="step">Step 2</span><h3>Data Collection</h3><p>Gather the packaging data your reports depend on.</p><a class="more" href="https://www.ecoveritas.com/services/data-collection">Find out more →</a></div></li>
+      <li class="svc"><div class="ph" role="img" aria-label="Photo to be sourced"><svg aria-hidden="true" class="icon"><use href="#u2-cam"/></svg><b>Photo to be sourced</b><span>Analyst working through packaging data on screen.</span></div>
+        <div class="body"><span class="step">Step 3</span><h3>Data Calculation</h3><p>Turn that data into accurate, audit-ready figures.</p><a class="more" href="https://www.ecoveritas.com/services/data-calculation">Find out more →</a></div></li>
+    </ol>
+  </section>
+
+  <section class="bleed trust" aria-labelledby="u2-trust-h">
+    <div class="wrapx"><h2 id="u2-trust-h">Trusted by industry leaders:</h2></div>
+    {{LOGOS}}
+  </section>
+
+</div>
+
+<script>
+/* UK EPR explainer: lifecycle/equation highlight, producer-size checker, deadline filter. */
+(function () {
+  var root = document.getElementById('ukx'); if (!root) return;
+  root.classList.add('is-js');
+  var fmt = function (n) { return n.toLocaleString('en-GB'); };
+
+  /* Equation buttons highlight lifecycle stages */
+  var eqb = root.querySelectorAll('.eq button'), stages = root.querySelectorAll('#u2-stages .stage');
+  [].forEach.call(eqb, function (b) { b.addEventListener('click', function () {
+    var on = b.getAttribute('aria-pressed') !== 'true';
+    [].forEach.call(eqb, function (x) { x.setAttribute('aria-pressed', 'false'); }); b.setAttribute('aria-pressed', on);
+    [].forEach.call(stages, function (s) { s.classList.toggle('hl', on && s.getAttribute('data-s') === b.getAttribute('data-s')); });
+  }); });
+
+  /* Producer-size checker */
+  var t = root.querySelector('#u2-t'), w = root.querySelector('#u2-w'), dot = root.querySelector('#u2-dot'), v = root.querySelector('#u2-verdict');
+  var TEXT = {
+    none: ['Not obligated by these two tests', 'EPR applies when turnover is over £1 million and you handle over 25 tonnes of packaging. You are below at least one of those. If you are close to either line, or growing, it is worth checking with us.'],
+    small: ['Small producer', 'Report on or before 1 April each year, for the packaging you handled in the previous year.'],
+    large: ['Large producer', 'Report twice a year: on or before 1 October (1 January to 30 June) and on or before 1 April (1 July to 31 December of the previous year).']
+  };
+  function zone(tv, wv) { if (!(tv > 1 && wv > 25)) return 'none'; if (tv > 2 && wv > 50) return 'large'; return 'small'; }
+  function check() {
+    var tv = +t.value, wv = +w.value, z = zone(tv, wv);
+    root.querySelector('#u2-t-out').textContent = tv >= 5 ? '£5m+' : '£' + tv.toFixed(1).replace('.0', '') + 'm';
+    root.querySelector('#u2-w-out').textContent = (wv >= 100 ? '100+' : wv) + ' tonnes';
+    t.setAttribute('aria-valuetext', root.querySelector('#u2-t-out').textContent); w.setAttribute('aria-valuetext', root.querySelector('#u2-w-out').textContent);
+    dot.setAttribute('transform', 'translate(' + (44 + tv / 5 * 340) + ',' + (272 - wv / 100 * 256) + ')');
+    v.setAttribute('data-z', z);
+    v.innerHTML = '<b>' + TEXT[z][0] + '</b><p>' + TEXT[z][1] + '</p><a class="btn" href="#evx-contact" data-enquiry="Hi, I think we may be a ' + (z === 'none' ? 'business close to the EPR thresholds' : TEXT[z][0].toLowerCase()) + ' under UK EPR and would like some advice.">' + (z === 'none' ? 'Check with us' : 'Get help with your reporting') + '</a>';
+  }
+  t.addEventListener('input', check); w.addEventListener('input', check); check();
+
+  /* Deadline filter */
+  var fb = root.querySelectorAll('.cal .filters button'), rows = root.querySelectorAll('.cal [data-row]');
+  [].forEach.call(fb, function (b) { b.addEventListener('click', function () {
+    var f = b.getAttribute('data-f');
+    [].forEach.call(fb, function (x) { x.setAttribute('aria-pressed', x === b); });
+    [].forEach.call(rows, function (r) { r.classList.toggle('dim', f !== 'all' && r.getAttribute('data-row') !== f); });
+  }); });
+})();
+</script>

@@ -19,6 +19,8 @@ const PAGES = [
     expect: { '#pdoc': 1, '#pd-steps .step': 4, '#pdoc .level': 2, '#pd-checker': 1, '#pdoc details': 6, '#evx-contact': 1, 'a[data-enquiry]': 5, 'main script': 2 } },
   { name: 'Homepage concept (draft)', id: 11227, slug: 'home-concept-2026', expectPublic: 404, noindex: true, root: '#home2', h1: 2,   // 2 = visible hero H1 + the template hero, hidden on this concept page
     expect: { '#home2': 1, '#pathways': 1, '#home2 .bento li': 5, '#home2 video': 1, '#home2 .logo-gallery': 1, '#evx-contact': 1, 'main script': 2 } },
+  { name: 'UK EPR explainer v2 (draft)', id: 11248, slug: 'uk-epr-explainer-v2', expectPublic: 404, noindex: true, root: '#ukx',
+    expect: { '#ukx': 1, '#ukx .level': 3, '#u2-check': 1, '#u2-stages .stage': 5, '#ukx .gantt': 1, '#ukx .ph': 5, '#ukx .logo-gallery': 1, '#evx-contact': 1, 'main script': 2 } },
 ];
 
 let failed = 0;
