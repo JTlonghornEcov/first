@@ -5,7 +5,7 @@ import { launch } from './lib.mjs';
 import fs from 'node:fs';
 const ALLOW_LIVE = false;   // new posts are created disabled; publishing is done by a person in the CMS
 const P = JSON.parse(fs.readFileSync(process.argv[2]));
-const NEWS = { sectionId: 18, typeId: 1 };   // "All news" (newsList), entry type "Template - General"
+const NEWS = { sectionId: P.sectionId || 18, typeId: P.typeId || 1 };   // default: "All news"; P can target another section (e.g. 14/31 = All compliance, Product)   // "All news" (newsList), entry type "Template - General"
 const link = (value, label) => ({ type: 'url', url: { value }, label, target: '' });
 let n = 0; const uid = () => `new${++n}`;
 const list = (type, items, fn) => { const l = { sortOrder: [], entries: {} }; for (const it of items) { const u = uid(); l.sortOrder.push(u); l.entries[u] = { type, enabled: true, ...fn(it) }; } return l; };
@@ -21,7 +21,7 @@ const block = b => {
 };
 const pb = list('', P.blocks, b => ({ type: b.type, ...block(b) }));
 const payload = { ...NEWS, title: P.title, slug: P.slug, enabled: false, enabledForSite: false,
-  fields: { heroIntroduction: P.heroIntroduction, heroImage: [P.heroImage], featuredImage: [P.featuredImage], excerpt: P.excerpt,
+  fields: { ...(P.heroTitle ? { heroTitle: P.heroTitle } : {}), ...(P.productMotif ? { productMotif: P.productMotif } : {}), heroIntroduction: P.heroIntroduction, heroImage: [P.heroImage], featuredImage: [P.featuredImage], excerpt: P.excerpt,
     pageBuilder: pb, ctaPicker: [], seo: { titleRaw: { 1: P.seoTitle }, description: P.seoDescription, ...(P.robots ? { advanced: { robots: P.robots } } : {}) } } };   // HTML-method bodies stay noindex until approved
 if (process.env.ENTRY_ID) payload.entryId = process.env.ENTRY_ID;
 if (!ALLOW_LIVE && (payload.enabled !== false || payload.enabledForSite !== false)) throw new Error('must be disabled');

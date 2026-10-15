@@ -1,0 +1,18 @@
+{
+ "sectionId": 14, "typeId": 31,
+ "title": "PPWR Supplier Declaration of Conformity (draft for copy review)",
+ "slug": "ppwr-supplier-declaration-of-conformity",
+ "heroTitle": "PPWR Declarations of Conformity for packaging suppliers",
+ "heroIntroduction": "<p>Your customers need a Declaration of Conformity for the packaging they place on the EU market, and they're asking you for the data behind it. Share your packaging information with Ecoveritas once. We produce your declaration, keep the supporting evidence on file, and handle your customers' requests for you.</p>",
+ "heroImage": 11211,
+ "featuredImage": 11211,
+ "productMotif": "globe",
+ "excerpt": "Share your packaging data with Ecoveritas once. We produce your PPWR Declaration of Conformity, keep the evidence on file and handle your customers' requests.",
+ "seoTitle": "PPWR Declarations of Conformity for Packaging Suppliers",
+ "seoDescription": "Share your packaging data once. Ecoveritas produces your PPWR Declaration of Conformity, holds the evidence and handles your customers' requests.",
+ "robots": ["noindex", "nofollow"],
+ "blocks": [
+  { "type": "general_content", "file": "payloads/ppwr-supplier-doc/page.html", "spacing": "medium" },
+  { "type": "callToAction", "content": "<h2 id=\"evx-contact\">Stop answering the same questionnaire twice</h2><p>Share your packaging data with Ecoveritas and we'll produce your Declaration of Conformity, free. Want independent proof your packaging complies? Ask us about lab validation.</p>" }
+ ]
+}

@@ -15,6 +15,8 @@ const PAGES = [
     expect: { '.evx': 1, '#svc-finder': 1, '#svc-hub .card': 9, '#svc-hub [role=tab]': 5, '#svc-hub [role=tabpanel]': 5, '[data-count]': 6, '#evx-contact': 1, 'a[data-enquiry]': 9, 'main script': 2 } },
   { name: 'US EPR eco-modulation post (LIVE)', id: 11093, slug: 'articles/us-packaging-epr-eco-modulation-three-states-three-very-different-approaches', expectPublic: 200, noindex: false, root: '#usepr',
     expect: { '#usepr': 1, '#usepr .glance a': 3, '#usepr .step': 4, '#us-srim': 1, '#us-orcalc': 1, '#us-ready': 1, '#evx-contact': 1, 'a[data-enquiry]': 2, 'main script': 2 } },
+  { name: 'PPWR supplier DoC (draft)', id: 11200, slug: 'compliance/ppwr-supplier-declaration-of-conformity', expectPublic: 404, noindex: true, root: '#pdoc',
+    expect: { '#pdoc': 1, '#pd-steps .step': 4, '#pdoc .level': 2, '#pd-checker': 1, '#pdoc details': 6, '#evx-contact': 1, 'a[data-enquiry]': 5, 'main script': 2 } },
 ];
 
 let failed = 0;
