@@ -110,7 +110,8 @@
 #usepr .bonus .badge { display:grid; place-items:center; width:48px; height:48px; border-radius:12px; background:var(--yellow); font-size:26px; font-weight:700; }
 #usepr .bonus .amt { margin-top:auto; padding-top:14px; border-top:1px solid var(--line); font-size:14px; color:var(--muted); }
 #usepr .bonus .amt b { display:block; font-size:26px; color:var(--ink); letter-spacing:-.01em; }
-#usepr .tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; align-items:end; height:92px; margin-top:4px; }
+#usepr .tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; align-items:end; margin-top:auto; padding-top:8px; }
+#usepr .bonus .tiers + .amt { margin-top:0; }
 #usepr .tiers div { display:flex; flex-direction:column; justify-content:flex-end; text-align:center; font-size:12px; color:var(--muted); }
 #usepr .tiers i { display:block; border-radius:4px 4px 0 0; background:var(--yellow); margin-bottom:4px; }
 #usepr .tiers b { font-size:14px; color:var(--ink); }
@@ -146,6 +147,16 @@
 #usepr .check input { width:20px; height:20px; accent-color:var(--teal); flex:none; }
 #usepr .meter { height:10px; border-radius:5px; background:var(--line); overflow:hidden; }
 #usepr .meter i { display:block; height:100%; width:0; background:var(--teal); transition:width .3s ease; }
+
+/* Author */
+#usepr .author { display:flex; flex-wrap:wrap; align-items:center; gap:18px 24px; padding:clamp(20px,3vw,28px); border-radius:var(--r); border:1px solid var(--line); background:#fff; max-width:820px; }
+#usepr .author img { width:88px; height:88px; border-radius:50%; object-fit:cover; flex:none; box-shadow:0 0 0 4px var(--yellow); }
+#usepr .author .who { flex:1 1 200px; }
+#usepr .author .who span { display:block; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+#usepr .author .who b { display:block; margin-top:4px; font-size:22px; line-height:1.2; }
+#usepr .author .li { display:inline-flex; align-items:center; gap:10px; padding:12px 20px; border-radius:2px; background:#0a66c2; color:#fff; font-weight:700; text-decoration:none; }
+#usepr .author .li:hover { background:#004182; }
+#usepr .author .li svg { width:20px; height:20px; fill:currentColor; }
 
 @media (max-width:767px) {
   #usepr .found { grid-template-columns:1fr; justify-items:stretch; }
@@ -299,6 +310,7 @@
         <p class="amt">Up to<b>$500,000</b></p></li>
       <li class="bonus"><span class="badge" aria-hidden="true">C</span><h3>Bonus C: reuse and refill</h3>
         <p>Uses the same tiers for comparative LCAs showing impact reductions from moving from single-use plastic to reusable or refillable formats.</p>
+        <div class="tiers" aria-hidden="true"><div><b>$40k</b><i style="height:56px"></i>10–40%</div><div><b>$45k</b><i style="height:63px"></i>40–70%</div><div><b>$50k</b><i style="height:70px"></i>70%+</div></div>
         <p class="amt">Per SKU or batch<b>Same tiers as B</b></p></li>
     </ul>
     <p class="callout"><svg class="icon" aria-hidden="true"><use href="#u-info"/></svg><span>Producers can claim <strong>Bonus A or B, not both</strong>. The first submissions for Bonus B and C were due by <strong>31 May 2026</strong>.</span></p>
@@ -368,6 +380,15 @@
       <a class="btn" href="#evx-contact" data-enquiry="Hi, I'd like help building our packaging data for US EPR (California, Colorado and Oregon).">Get help with your data <span aria-hidden="true">→</span></a>
     </div>
   </section>
+
+
+  <aside class="author" aria-label="About the author">
+    <img src="https://www.ecoveritas.com/assets/general/harry-fell.jpg" alt="Harry Fell" width="88" height="88" loading="lazy">
+    <p class="who"><span>Written by</span><b>Harry Fell</b></p>
+    <a class="li" href="https://www.linkedin.com/in/harry-fell-9942b727b/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+      Follow on LinkedIn<span class="sr"> (opens in a new tab)</span></a>
+  </aside>
 
 </div>
 
