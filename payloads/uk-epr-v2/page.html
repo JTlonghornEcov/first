@@ -159,6 +159,15 @@ html, body { overflow-x:clip; }
 @media (min-width:1024px) { #ukx .trust .wrapx { padding:0 32px; } }
 
 @media (prefers-reduced-motion:reduce) { #ukx *, #ukx *::before, #ukx *::after { transition:none !important; } }
+#ukx .x { color:var(--teal); font-weight:600; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; }
+#ukx .x:hover { text-decoration-thickness:2px; }
+#ukx .deeper { display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; font-size:14px; }
+#ukx .deeper span { font-weight:700; color:var(--muted); margin-right:2px; }
+#ukx .deeper a { display:inline-flex; align-items:center; gap:6px; padding:7px 12px; border-radius:99px; background:var(--teal-2); color:var(--teal); font-weight:700; text-decoration:none; transition:background .15s ease; }
+#ukx .deeper a::after { content:"→"; }
+#ukx .deeper a:hover { background:#d2e7ec; }
+#ukx .cal .deeper span { color:var(--mist); }
+#ukx .cal .deeper a { background:var(--slate-2); color:#fff; }
 #evx-contact { scroll-margin-top:96px; }
 </style>
 
@@ -193,7 +202,7 @@ html, body { overflow-x:clip; }
       <p class="eyebrow">The basics</p>
       <h2 id="u2-what-h">What is Extended Producer Responsibility?</h2>
       <p class="lead">EPR for packaging is new UK legislation that requires producers to take responsibility for and pay the total cost of dealing with their packaging from when it is placed onto the market to the end of its life.</p>
-      <p>If you are obligated under EPR, you are responsible for collecting and reporting data for all your obligated packaging placed onto the UK market.</p>
+      <p>If you are obligated under EPR, you are responsible for <a class="x" href="https://www.ecoveritas.com/services/data-collection">collecting</a> and <a class="x" href="https://www.ecoveritas.com/services/registration-and-reporting">reporting data</a> for all your obligated packaging placed onto the UK market.</p>
     </header>
 
     <figure class="cycle">
@@ -217,10 +226,11 @@ html, body { overflow-x:clip; }
         <span class="op" aria-hidden="true">=</span>
         <span class="res">Your EPR cost<small>for household packaging</small></span>
       </div>
-      <p class="cap">Household packaging producers are responsible for the entire cost of recycling the packaging they place on the market, including the cost of collection, treatment and recycling, minus the value received for the recycled material.</p>
+      <p class="cap">Household packaging producers are responsible for the <a class="x" href="https://www.ecoveritas.com/articles/uk-packaging-epr-year-1-fees-confirmed">entire cost</a> of recycling the packaging they place on the market, including the cost of collection, treatment and recycling, minus the value received for the recycled material.</p>
     </figure>
-    <p class="wrap"><span class="since">Builds on the Packaging Waste Regulations, in place since 1997</span></p>
+    <p class="wrap"><span class="since">Builds on the Packaging Waste Regulations, in place since 1997: the regime behind <a class="x" href="https://www.ecoveritas.com/request-free-prn-audit">PRNs</a></span></p>
     <p class="wrap">The new regulations build on the existing Packaging Waste Regulations, and it is hoped that their implementation will reduce the environmental impact of packaging.</p>
+    <p class="deeper wrap"><span>Go deeper:</span><a href="https://www.ecoveritas.com/articles/how-to-understand-the-complex-framework-of-united-kingdom-extended-producer-responsibility-part-1">The UK EPR framework explained</a><a href="https://www.ecoveritas.com/articles/is-epr-a-tax">Is EPR a tax?</a><a href="https://www.ecoveritas.com/articles/uk-packaging-epr-year-1-fees-confirmed">Year 1 fees confirmed</a></p>
   </section>
 
   <section class="sec" id="informed" aria-labelledby="u2-aff-h">
@@ -237,7 +247,7 @@ html, body { overflow-x:clip; }
       <div class="test"><span class="big">£1m+</span><h3>Does your business turn over more than £1 million?</h3></div>
       <div class="test"><span class="big">25t+</span><h3>Does your business handle more than 25 tonnes of packaging?</h3></div>
     </div>
-    <p class="both">If the answer is yes to both of these questions, you will be required to comply.</p>
+    <p class="both">If the answer is yes to both of these questions, you will be required to comply. Not sure? An <a class="x" href="https://www.ecoveritas.com/services/obligation-assessment">obligation assessment</a> confirms exactly what applies to you.</p>
 
     <div class="checker" data-js-only id="u2-check">
       <div>
@@ -283,13 +293,14 @@ html, body { overflow-x:clip; }
       <p>The line can be fine, but it makes a big difference! Depending on whether you are small or large affects the actions you are required to take, so it's important to know where you sit, and what steps you need to take once you are seated!</p>
     </div>
     <div class="sizes">
-      <div class="size small"><span class="tag">Small producer</span>
+      <div class="size small"><span class="tag">Small producer</span><a class="x" href="https://www.ecoveritas.com/compliance/small-producer-compliance-scheme" style="font-size:14px">Small Producer Compliance Scheme →</a>
         <dl><dt>Who</dt><dd>Annual turnover of £1m–£2m and handle over 25 tonnes of packaging, or turnover over £2m but handle 25 to 50 tonnes of packaging.</dd>
         <dt>Report by</dt><dd>On or before 1 April each year, starting in 2025 (for packaging handled in 2024).</dd></dl></div>
       <div class="size large"><span class="tag">Large producer</span>
         <dl><dt>Who</dt><dd>Annual turnover of over £2m and handle more than 50 tonnes of packaging.</dd>
         <dt>Report by</dt><dd>On or before 1 October each year, for 1 January to 30 June of that year; and on or before 1 April each year, for 1 July to 31 December of the previous year.</dd></dl></div>
     </div>
+    <p class="deeper"><span>Go deeper:</span><a href="https://www.ecoveritas.com/articles/how-to-understand-the-complex-framework-of-united-kingdom-extended-producer-responsibility-part-1">Am I a producer of packaging?</a><a href="https://www.ecoveritas.com/compliance/small-producer-compliance-scheme">Small Producer Compliance Scheme</a><a href="https://www.ecoveritas.com/services/obligation-assessment">Obligation Assessment</a></p>
   </section>
 
   <section class="sec" aria-labelledby="u2-cal-h">
@@ -326,6 +337,7 @@ html, body { overflow-x:clip; }
         <li data-row="large"><b>1 October</b>Large producers report 1 January to 30 June of that year.</li>
         <li data-row="large"><b>1 April</b>Large producers report 1 July to 31 December of the previous year.</li>
       </ul>
+      <p class="deeper"><span>Go deeper:</span><a href="https://www.ecoveritas.com/services/registration-and-reporting">Registration and Reporting</a><a href="https://www.ecoveritas.com/articles/reporting-nation-of-sale-data-for-the-united-kingdom-under-the-producer-responsibility-obligations-part-two-of-the-miniseries">Reporting nation of sale data</a><a href="https://www.ecoveritas.com/articles/uk-packaging-epr-in-2026-why-defaulting-data-is-costly">Why defaulting data is costly</a></p>
     </div>
   </section>
 
@@ -337,6 +349,7 @@ html, body { overflow-x:clip; }
         <p style="margin-top:12px">Request our in-depth whitepaper on EPR to learn all you need to know on the subject, including:</p>
         <ul><li>Modulated fees</li><li>EPR timeline</li><li>How much will EPR cost</li></ul>
         <a class="btn" href="#evx-contact" data-enquiry="Hi, I'd like to request your in-depth whitepaper on UK EPR.">Request the whitepaper <svg class="icon" aria-hidden="true"><use href="#u2-arrow"/></svg></a>
+        <p class="deeper" style="margin-top:18px"><span>Go deeper:</span><a href="https://www.ecoveritas.com/compliance/recyclability-assessment-methodology">Fee modulation and RAM</a><a href="https://www.ecoveritas.com/who-assesses-recyclability-under-ram">Who assesses recyclability?</a><a href="https://www.ecoveritas.com/articles/the-epr-packaging-fee-is-hitting-hard-and-the-bills-are-only-getting-bigger">What EPR is costing businesses</a></p>
       </div>
       <div class="ph" role="img" aria-label="Photo to be sourced"><svg aria-hidden="true" class="icon"><use href="#u2-cam"/></svg><b>Photo to be sourced</b><span>The whitepaper cover, or a close-up of someone reading the report.</span></div>
     </div>
@@ -353,10 +366,11 @@ html, body { overflow-x:clip; }
       <li class="svc"><div class="ph" role="img" aria-label="Photo to be sourced"><svg aria-hidden="true" class="icon"><use href="#u2-cam"/></svg><b>Photo to be sourced</b><span>Consultant talking a client through their obligations.</span></div>
         <div class="body"><span class="step">Step 1</span><h3>Obligation Assessment</h3><p>Find out exactly what applies to your business.</p><a class="more" href="https://www.ecoveritas.com/services/obligation-assessment">Find out more →</a></div></li>
       <li class="svc"><div class="ph" role="img" aria-label="Photo to be sourced"><svg aria-hidden="true" class="icon"><use href="#u2-cam"/></svg><b>Photo to be sourced</b><span>Packaging being weighed or measured on site.</span></div>
-        <div class="body"><span class="step">Step 2</span><h3>Data Collection</h3><p>Gather the packaging data your reports depend on.</p><a class="more" href="https://www.ecoveritas.com/services/data-collection">Find out more →</a></div></li>
+        <div class="body"><span class="step">Step 2</span><h3>Data Collection</h3><p>Gather the packaging data your reports depend on. <a class="x" href="https://www.ecoveritas.com/articles/uk-packaging-epr-in-2026-why-defaulting-data-is-costly">Why it matters</a>.</p><a class="more" href="https://www.ecoveritas.com/services/data-collection">Find out more →</a></div></li>
       <li class="svc"><div class="ph" role="img" aria-label="Photo to be sourced"><svg aria-hidden="true" class="icon"><use href="#u2-cam"/></svg><b>Photo to be sourced</b><span>Analyst working through packaging data on screen.</span></div>
         <div class="body"><span class="step">Step 3</span><h3>Data Calculation</h3><p>Turn that data into accurate, audit-ready figures.</p><a class="more" href="https://www.ecoveritas.com/services/data-calculation">Find out more →</a></div></li>
     </ol>
+    <p class="deeper"><span>Go deeper:</span><a href="https://www.ecoveritas.com/managed-services-vs-software-vs-compliance-scheme">Managed service, software or scheme?</a><a href="https://www.ecoveritas.com/questions-to-ask-any-epr-provider">Questions to ask any EPR provider</a><a href="https://www.ecoveritas.com/services/registration-and-reporting">Registration and Reporting</a></p>
   </section>
 
   <section class="bleed trust" aria-labelledby="u2-trust-h">
@@ -401,6 +415,9 @@ html, body { overflow-x:clip; }
 
   /* Producer-size checker */
   var t = root.querySelector('#u2-t'), w = root.querySelector('#u2-w'), dot = root.querySelector('#u2-dot'), v = root.querySelector('#u2-verdict');
+  var MORE = { none: ['https://www.ecoveritas.com/services/obligation-assessment', 'About obligation assessments'],
+    small: ['https://www.ecoveritas.com/compliance/small-producer-compliance-scheme', 'Small Producer Compliance Scheme'],
+    large: ['https://www.ecoveritas.com/services/registration-and-reporting', 'Registration and Reporting'] };
   var TEXT = {
     none: ['Not obligated by these two tests', 'EPR applies when turnover is over £1 million and you handle over 25 tonnes of packaging. You are below at least one of those. If you are close to either line, or growing, it is worth checking with us.'],
     small: ['Small producer', 'Report on or before 1 April each year, for the packaging you handled in the previous year.'],
@@ -414,7 +431,7 @@ html, body { overflow-x:clip; }
     t.setAttribute('aria-valuetext', root.querySelector('#u2-t-out').textContent); w.setAttribute('aria-valuetext', root.querySelector('#u2-w-out').textContent);
     dot.setAttribute('transform', 'translate(' + (44 + tv / 5 * 340) + ',' + (272 - wv / 100 * 256) + ')');
     v.setAttribute('data-z', z);
-    v.innerHTML = '<b>' + TEXT[z][0] + '</b><p>' + TEXT[z][1] + '</p><a class="btn" href="#evx-contact" data-enquiry="Hi, I think we may be a ' + (z === 'none' ? 'business close to the EPR thresholds' : TEXT[z][0].toLowerCase()) + ' under UK EPR and would like some advice.">' + (z === 'none' ? 'Check with us' : 'Get help with your reporting') + '</a>';
+    v.innerHTML = '<b>' + TEXT[z][0] + '</b><p>' + TEXT[z][1] + '</p><a class="btn" href="#evx-contact" data-enquiry="Hi, I think we may be a ' + (z === 'none' ? 'business close to the EPR thresholds' : TEXT[z][0].toLowerCase()) + ' under UK EPR and would like some advice.">' + (z === 'none' ? 'Check with us' : 'Get help with your reporting') + '</a> <a class="x" style="margin-left:12px;font-size:15px" href="' + MORE[z][0] + '">' + MORE[z][1] + ' →</a>';
   }
   t.addEventListener('input', check); w.addEventListener('input', check); check();
 
