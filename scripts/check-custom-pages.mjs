@@ -22,7 +22,7 @@ const PAGES = [
   { name: 'UK EPR explainer v2 (draft)', id: 11248, slug: 'uk-epr-explainer-v2', expectPublic: 404, noindex: true, root: '#ukx',
     expect: { '#ukx': 1, '#ukx .level': 3, '#u2-check': 1, '#u2-stages .stage': 5, '#ukx .gantt': 1, '#ukx .ph': 5, '#ukx .logo-gallery': 1, '#evx-contact': 1, 'main script': 2 } },
   { name: 'Testimonials concept (draft)', id: 11306, slug: 'testimonials-concept', expectPublic: 404, noindex: true, root: '#tst',
-    expect: { '#tst': 1, '#case-studies': 1, '#testimonials': 1, '#ts-wall .card': 13, '#tst .case': 2, '#tst .line li': 6, '#evx-contact': 1, 'main script': 2 } },
+    expect: { '#tst': 1, '#case-studies': 1, '#testimonials': 1, '#ts-wall .card': 13, '#tst .case': 2, '#evx-contact': 1, 'main script': 2 } },
 ];
 
 let failed = 0;

@@ -6,6 +6,7 @@ const T = JSON.parse(fs.readFileSync('payloads/testimonials-concept/testimonials
 const A = 'https://www.ecoveritas.com/assets/general/';
 const SECTORS = { retail: 'Retail', food: 'Food & grocery', pharma: 'Pharmaceuticals', horticulture: 'Horticulture' };
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const NEWLOOK_LOCKUP = process.env.NEWLOOK_LOCKUP || '';   // asset URL of the New Look x Ecoveritas lock-up, once uploaded
 const count = k => T.filter(t => t.sector === k).length;
 
 const cards = T.map(t => {
@@ -19,9 +20,6 @@ const cards = T.map(t => {
       </li>`;
 }).join('');
 
-const since = T.filter(t => t.since).map(t => ({ y: t.since, org: t.org, href: `#t-${t.id}` }))
-  .concat([{ y: 2010, org: 'New Look', href: '#cs-new-look' }]).sort((a, b) => a.y - b.y);
-const timeline = since.map(s => `<li><a href="${s.href}"><span class="yr">${s.y}</span><span class="org">${esc(s.org)}</span></a></li>`).join('');
 const chips = [`<button type="button" data-f="all" aria-pressed="true">All <span>${T.length}</span></button>`]
   .concat(Object.entries(SECTORS).map(([k, v]) => `<button type="button" data-f="${k}" aria-pressed="false">${v} <span>${count(k)}</span></button>`)).join('');
 
@@ -79,23 +77,6 @@ const html = `<style>
 #tst .case .facts dt { font-size:22px; font-weight:700; line-height:1.1; color:var(--ink); }
 #tst .case .facts dd { margin-top:4px; font-size:13px; line-height:1.4; color:var(--muted); }
 #tst .case .read { margin-top:auto; align-self:flex-start; display:inline-flex; align-items:center; gap:8px; font-weight:700; border-bottom:2px solid var(--yellow); padding-bottom:2px; }
-
-/* Years together */
-#tst .years { padding:clamp(22px,3.4vw,36px); border-radius:var(--r); background:var(--grey); display:grid; gap:18px; }
-#tst .years h3 { font-size:20px; }
-#tst .line { position:relative; display:grid; grid-template-columns:repeat(${since.length},minmax(0,1fr)); gap:8px; }
-#tst .line::before { content:""; position:absolute; left:0; right:0; top:15px; height:3px; border-radius:2px; background:linear-gradient(90deg,var(--teal),var(--yellow)); }
-#tst .line a { position:relative; display:flex; flex-direction:column; align-items:flex-start; gap:6px; padding-top:38px; text-decoration:none; color:var(--ink); }
-#tst .line a::before { content:""; position:absolute; top:6px; left:0; width:21px; height:21px; border-radius:50%; background:#fff; border:3px solid var(--teal); transition:transform .2s ease, background .2s ease; }
-#tst .line a:hover::before { transform:scale(1.2); background:var(--yellow); }
-#tst .line .yr { font-size:clamp(20px,2.2vw,28px); font-weight:700; line-height:1; }
-#tst .line .org { font-size:14px; font-weight:700; color:var(--muted); line-height:1.3; }
-@media (max-width:767px) {
-  #tst .line { grid-template-columns:1fr; gap:4px; padding-left:6px; }
-  #tst .line::before { left:15px; right:auto; top:8px; bottom:8px; width:3px; height:auto; background:linear-gradient(180deg,var(--teal),var(--yellow)); }
-  #tst .line a { flex-direction:row; align-items:baseline; gap:12px; padding:8px 0 8px 40px; }
-  #tst .line a::before { top:9px; left:0; }
-}
 
 /* Testimonial wall */
 #tst .filters { display:flex; flex-wrap:wrap; gap:8px; }
@@ -161,7 +142,7 @@ const html = `<style>
         </div>
       </a>
       <a class="case" id="cs-new-look" href="https://www.ecoveritas.com/case-studies/new-look">
-        <div class="media"><div class="ph" role="img" aria-label="Photo to be sourced"><svg class="icon" aria-hidden="true" style="width:34px;height:34px;margin:0 auto;color:#006374"><use href="#ts-cam"/></svg><b>Photo to be sourced</b><span>New Look store or product packaging.</span></div></div>
+        <div class="media">${NEWLOOK_LOCKUP ? `<img src="${NEWLOOK_LOCKUP}" alt="New Look and Ecoveritas" width="736" height="414" loading="lazy">` : `<div class="ph" role="img" aria-label="Photo to be sourced"><svg class="icon" aria-hidden="true" style="width:34px;height:34px;margin:0 auto;color:#006374"><use href="#ts-cam"/></svg><b>Photo to be sourced</b><span>New Look store or product packaging.</span></div>`}</div>
         <div class="body">
           <span class="kicker">Fashion retail · Packaging, WEEE & batteries</span>
           <h3>New Look: making packaging compliance fashionable</h3>
@@ -172,11 +153,6 @@ const html = `<style>
       </a>
     </div>
   </section>
-
-  <figure class="years">
-    <h3>Relationships measured in decades</h3>
-    <ol class="line">${timeline}</ol>
-  </figure>
 
   <section class="sec" id="testimonials" aria-labelledby="ts-t-h">
     <header class="head">
@@ -214,4 +190,4 @@ const html = `<style>
 ` + fs.readFileSync('payloads/shared/enquiry-prefill.html', 'utf8');
 
 fs.writeFileSync('payloads/testimonials-concept/page.html', html);
-console.log('page.html', html.length, 'bytes |', T.length, 'testimonials |', since.length, 'timeline points');
+console.log('page.html', html.length, 'bytes |', T.length, 'testimonials');
