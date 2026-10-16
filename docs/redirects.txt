@@ -1,0 +1,3 @@
+# Redirects to verify on every prompt (checked by scripts/check-redirects.sh via a .claude hook).
+# One per line: <old path> <expected destination path>. Remove a line once it has been confirmed for a while.
+/services/ppwr-compliance-design /services/ppwr-compliance-service
