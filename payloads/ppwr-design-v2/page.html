@@ -1,0 +1,294 @@
+<style>
+/* PPWR compliance service page body, restyled in the shared design language. Scoped to #ppx. Copy is unchanged from the
+   previous version; the image-based step cards, comparison table and option cards are now real HTML. Anchors kept:
+   #ev-how, #ev-why, #ev-ppwr-vs-epr, #ev-options, #ev-faq (the contact block below carries #ev-book). */
+html, body { overflow-x:clip; }
+#ppx { --ink:#212121; --body:#333c45; --muted:#55656d; --slate:#2f444e; --slate-2:#3d5662; --slate-3:#4d6875; --teal:#006374; --teal-2:#e3f0f3;
+  --yellow:#ffcd03; --yellow-2:#fff6cc; --grey:#f6f7f7; --line:#dfe5e7; --mist:#aac5d1; --r:16px;
+  color:var(--ink); display:grid; gap:clamp(64px,9vw,112px); font-size:16px; line-height:1.6; }
+#ppx *, #ppx *::before, #ppx *::after { box-sizing:border-box; }
+#ppx > * { min-width:0; }
+#ppx :is(h2,h3,h4,p,ul,ol,li,figure,dl,dd,dt,table) { margin:0; padding:0; border:0; font-family:inherit; }
+#ppx :is(ul,ol) { list-style:none; }
+#ppx h2 { font-size:clamp(28px,3.6vw,42px); line-height:1.12; font-weight:700; letter-spacing:-.01em; color:var(--ink); }
+#ppx h3 { font-size:20px; line-height:1.25; font-weight:700; color:var(--ink); }
+#ppx p { color:var(--body); }
+#ppx .eyebrow { display:inline-flex; align-items:center; gap:10px; margin:0 0 12px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+#ppx .eyebrow::before { content:""; width:28px; height:4px; border-radius:2px; background:var(--yellow); }
+#ppx .head { display:grid; gap:14px; max-width:780px; }
+#ppx .lead { font-size:clamp(17px,1.7vw,20px); line-height:1.55; }
+#ppx .sec { display:grid; gap:clamp(24px,3.4vw,40px); scroll-margin-top:110px; }
+#ppx .icon { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+#ppx :is(a,summary):focus-visible { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+
+/* In force notice */
+#ppx .notice { display:flex; gap:14px; align-items:flex-start; padding:18px 22px; border-radius:12px; background:var(--yellow-2); border-left:5px solid var(--yellow); }
+#ppx .notice .icon { color:var(--ink); margin-top:2px; }
+#ppx .notice p { color:var(--ink); }
+
+/* What PPWR asks of you */
+#ppx .asks { display:grid; gap:clamp(20px,3vw,32px); }
+@media (min-width:1024px) { #ppx .asks { grid-template-columns:minmax(0,7fr) minmax(0,5fr); align-items:stretch; } }
+#ppx .asks ol { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); gap:12px; margin-top:22px; }
+#ppx .asks li { display:grid; grid-template-columns:auto minmax(0,1fr); gap:14px; padding:20px; border-radius:var(--r); border:1px solid var(--line); background:#fff; }
+#ppx .asks .n { display:grid; place-items:center; width:40px; height:40px; border-radius:50%; background:var(--teal-2); color:var(--teal); font-weight:700; }
+#ppx .asks b { display:block; font-size:17px; line-height:1.3; margin-bottom:6px; }
+#ppx .asks li span.d { display:block; font-size:15px; line-height:1.55; color:var(--muted); }
+#ppx .big { display:flex; flex-direction:column; justify-content:flex-end; gap:20px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--slate); color:#fff; }
+#ppx .big p { font-size:clamp(22px,2.4vw,30px); line-height:1.3; font-weight:700; color:#fff; letter-spacing:-.01em; }
+#ppx .big em { font-style:normal; color:var(--yellow); }
+#ppx .big a { align-self:flex-start; display:inline-flex; align-items:center; gap:10px; padding:13px 20px; border-radius:2px; background:var(--yellow); color:var(--ink); font-weight:700; text-decoration:none; }
+
+/* Six steps */
+#ppx .grey { padding:clamp(28px,4vw,48px); border-radius:var(--r); background:var(--grey); }
+#ppx .rail { display:flex; flex-wrap:wrap; gap:8px; }
+#ppx .rail a { display:inline-flex; align-items:center; gap:8px; padding:7px 14px 7px 7px; border-radius:99px; background:#fff; border:1px solid var(--line); color:var(--ink); font-weight:700; font-size:14px; text-decoration:none; transition:border-color .15s ease; }
+#ppx .rail a:hover { border-color:var(--slate); }
+#ppx .rail a span { display:grid; place-items:center; width:26px; height:26px; border-radius:50%; background:var(--slate); color:var(--yellow); font-size:12px; }
+#ppx .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr)); gap:16px; counter-reset:s; }
+#ppx .step { display:flex; flex-direction:column; gap:12px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); scroll-margin-top:110px; }
+#ppx .step:target { box-shadow:0 0 0 4px var(--yellow); border-color:var(--ink); }
+#ppx .step .top { display:flex; align-items:center; justify-content:space-between; }
+#ppx .step .num { font-size:34px; font-weight:700; line-height:1; color:var(--teal); font-variant-numeric:tabular-nums; }
+#ppx .step .ic { display:grid; place-items:center; width:52px; height:52px; border-radius:50%; background:var(--slate); color:#fff; }
+#ppx .step .ic .icon { width:26px; height:26px; }
+#ppx .step .ic .tick { stroke:var(--yellow); }
+#ppx .step p { font-size:15px; line-height:1.55; }
+#ppx .rcv { margin-top:auto; padding-top:14px; border-top:1px solid var(--line); }
+#ppx .rcv b { display:block; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+#ppx .rcv li { display:flex; gap:10px; font-size:14.5px; line-height:1.45; color:var(--ink); }
+#ppx .rcv li + li { margin-top:6px; }
+#ppx .rcv li::before { content:""; flex:none; width:18px; height:18px; margin-top:1px; border-radius:50%; background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 12 4 4 8-8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat; }
+
+/* Why Ecoveritas */
+#ppx .why { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr)); gap:14px; }
+#ppx .why li { display:flex; flex-direction:column; gap:10px; padding:22px; border-radius:var(--r); background:var(--grey); }
+#ppx .why .ic { display:grid; place-items:center; width:44px; height:44px; border-radius:12px; background:#fff; color:var(--teal); }
+#ppx .why h3 { font-size:18px; }
+#ppx .why p { font-size:15px; color:var(--muted); }
+
+/* EPR vs PPWR table */
+#ppx .vs { display:grid; gap:clamp(20px,3vw,40px); }
+@media (min-width:1024px) { #ppx .vs { grid-template-columns:minmax(0,4fr) minmax(0,8fr); align-items:start; } }
+#ppx .tw { overflow-x:auto; border-radius:var(--r); border:1px solid var(--line); }
+#ppx table { width:100%; border-collapse:collapse; font-size:15px; min-width:520px; }
+#ppx th, #ppx td { padding:14px 18px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line); line-height:1.45; }
+#ppx thead th { background:var(--slate); color:#fff; font-size:14px; letter-spacing:.04em; }
+#ppx thead th:last-child { background:var(--teal); }
+#ppx tbody th { font-weight:700; color:var(--ink); width:28%; background:#fff; }
+#ppx tbody td { color:var(--body); background:#fff; }
+#ppx tbody td:last-child { background:var(--teal-2); color:var(--ink); font-weight:600; }
+#ppx tbody tr:last-child > * { border-bottom:0; }
+
+/* Options */
+#ppx .opts { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); gap:16px; }
+#ppx .opt { display:flex; flex-direction:column; gap:12px; padding:26px; border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+#ppx .opt.mid { background:var(--slate); border-color:var(--slate); }
+#ppx .opt.mid :is(h3,p) { color:#fff; } #ppx .opt.mid p { color:#d6e0e4; }
+#ppx .opt .tier { display:flex; gap:5px; }
+#ppx .opt .tier i { width:28px; height:6px; border-radius:3px; background:var(--line); }
+#ppx .opt[data-t="1"] .tier i:nth-child(-n+1), #ppx .opt[data-t="2"] .tier i:nth-child(-n+2), #ppx .opt[data-t="3"] .tier i { background:var(--teal); }
+#ppx .opt.mid .tier i { background:var(--slate-3); } #ppx .opt.mid[data-t="2"] .tier i:nth-child(-n+2) { background:var(--yellow); }
+#ppx .opt .lbl { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); }
+#ppx .opt.mid .lbl { color:var(--yellow); }
+#ppx .opt h3 { font-size:24px; }
+#ppx .who { margin-top:6px; }
+#ppx .who table { min-width:560px; }
+#ppx .who thead th { text-align:center; } #ppx .who thead th:first-child { text-align:left; }
+#ppx .who tbody td { text-align:center; font-weight:700; background:#fff; color:var(--ink); }
+#ppx .who tbody td:last-child { background:#fff; }
+#ppx .who .we { display:inline-block; padding:3px 12px; border-radius:99px; background:var(--slate); color:#fff; font-size:13px; }
+#ppx .who .you { display:inline-block; padding:3px 12px; border-radius:99px; background:var(--grey); border:1px solid var(--line); color:var(--ink); font-size:13px; }
+#ppx .who .no { color:var(--muted); font-weight:400; }
+#ppx .who tfoot td { padding:14px 18px; background:var(--yellow-2); font-weight:700; color:var(--ink); text-align:left; }
+
+/* FAQ */
+#ppx .faq { display:grid; gap:10px; max-width:920px; }
+#ppx details { border-radius:12px; background:var(--grey); }
+#ppx summary { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:18px 20px; cursor:pointer; font-weight:700; font-size:17px; list-style:none; color:var(--ink); }
+#ppx summary::-webkit-details-marker { display:none; }
+#ppx summary::after { content:"+"; flex:none; display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:#fff; font-size:20px; line-height:1; transition:transform .2s ease; }
+#ppx details[open] summary::after { transform:rotate(45deg); }
+#ppx details > div { padding:0 20px 20px; display:grid; gap:12px; }
+#ppx details p { color:var(--muted); }
+#ppx .tests { display:grid; gap:8px; }
+#ppx .tests li { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 12px; padding:12px 14px; border-radius:10px; background:#fff; font-size:14.5px; line-height:1.45; color:var(--body); }
+#ppx .tests li b { color:var(--ink); }
+#ppx .tests li span.t { font-size:13px; font-weight:700; color:var(--teal); white-space:nowrap; }
+@media (max-width:560px) { #ppx .tests li { grid-template-columns:1fr; } }
+@media (max-width:640px) {
+  #ppx table, #ppx tbody, #ppx tfoot, #ppx tr, #ppx th, #ppx td { display:block; min-width:0; width:auto; }
+  #ppx table { min-width:0 !important; }
+  #ppx thead { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+  #ppx .tw { overflow:visible; border:0; border-radius:0; }
+  #ppx tbody tr { margin-bottom:10px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff; }
+  #ppx tbody th { width:auto; padding:12px 14px 6px; border:0; font-size:15px; }
+  #ppx tbody td { display:flex; justify-content:space-between; gap:12px; padding:8px 14px; border:0; border-top:1px solid var(--line); text-align:left; }
+  #ppx tbody td::before { content:attr(data-l); flex:none; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); padding-top:2px; }
+  #ppx .who tbody td { text-align:right; }
+  #ppx .who tfoot td { border-radius:12px; }
+}
+@media (prefers-reduced-motion:reduce) { #ppx *, #ppx *::before, #ppx *::after { transition:none !important; } }
+#ev-book { scroll-margin-top:96px; }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="px-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h0"/></symbol>
+  <symbol id="px-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="px-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/><path class="tick" d="m7.8 10.6 1.9 1.9 3.6-3.8"/></symbol>
+  <symbol id="px-rep" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path class="tick" d="m15.5 17 1.6 1.6 3-3.2"/></symbol>
+  <symbol id="px-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
+  <symbol id="px-reg" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M8.5 10h7M8.5 14h4"/><path class="tick" d="m13 17 1.6 1.6 3-3.2"/></symbol>
+  <symbol id="px-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 12h6M9 16h3"/><path class="tick" d="m13.5 17 1.6 1.6 3-3.2"/></symbol>
+  <symbol id="px-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4.5 18.5A1.8 1.8 0 0 0 6 21h12a1.8 1.8 0 0 0 1.5-2.5L14 9V3"/><path d="M7 15h10"/></symbol>
+  <symbol id="px-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
+  <symbol id="px-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+  <symbol id="px-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+  <symbol id="px-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12 18 6"/></symbol>
+</svg>
+
+<div id="ppx">
+
+  <p class="notice"><svg class="icon" aria-hidden="true"><use href="#px-info"/></svg><span><strong>Already in force:</strong> since 12 August 2026, producers not established in the EU must appoint an authorised representative in each Member State where they make packaging available (Article 45(3)). If you sell into the EU from the UK, the US or elsewhere, we start this in parallel with your assessment.</span></p>
+
+  <section class="sec" aria-labelledby="px-asks-h">
+    <div class="asks">
+      <div>
+        <p class="eyebrow">The regulation</p>
+        <h2 id="px-asks-h">What PPWR asks of you</h2>
+        <ol>
+          <li><span class="n" aria-hidden="true">1</span><div><b>Proof that each pack meets the rules</b><span class="d">A technical file and a Declaration of Conformity, signed by you, for every distinct pack you place on the EU market.</span></div></li>
+          <li><span class="n" aria-hidden="true">2</span><div><b>Evidence from your suppliers</b><span class="d">Recycled content, substances of concern such as PFAS and heavy metals, minimisation and marking, each backed by documents.</span></div></li>
+          <li><span class="n" aria-hidden="true">3</span><div><b>Someone accountable inside the EU</b><span class="d">An authorised representative in each Member State, if your business is established outside the Union.</span></div></li>
+          <li><span class="n" aria-hidden="true">4</span><div><b>A plan for what comes next</b><span class="d">Harmonised labelling, then the 2030 design rules on recyclability grades, recycled content and minimisation.</span></div></li>
+        </ol>
+      </div>
+      <div class="big">
+        <p>We take all of it off your desk, from the first question to <em>a declaration ready to sign</em>, and keep it current when your packaging changes.</p>
+        <a href="#ev-book">Book a PPWR assessment <svg class="icon" aria-hidden="true"><use href="#px-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec grey" id="ev-how" aria-labelledby="px-how-h">
+    <header class="head">
+      <p class="eyebrow">How it works</p>
+      <h2 id="px-how-h">Six steps, one programme</h2>
+      <p class="lead">Each step hands the next one what it needs. You can start with the assessment alone and add the rest once you know your scope.</p>
+    </header>
+    <nav class="rail" aria-label="The six steps">
+      <a href="#px-s1"><span>01</span>Assessment</a><a href="#px-s2"><span>02</span>Representative</a><a href="#px-s3"><span>03</span>Supplier data</a><a href="#px-s4"><span>04</span>Evidence review</a><a href="#px-s5"><span>05</span>Technical file and DoC</a><a href="#px-s6"><span>06</span>Gaps and testing</a>
+    </nav>
+    <ol class="steps">
+      <li class="step" id="px-s1"><div class="top"><span class="num">01</span><span class="ic"><svg class="icon" aria-hidden="true"><use href="#px-search"/></svg></span></div>
+        <h3>Assessment and scoping</h3><p>We confirm which of your packs PPWR covers, which requirements apply to them and from when. About two markets a week.</p>
+        <div class="rcv"><b>You receive</b><ul><li>Packs and requirements in scope</li><li>Supplier template for the data each pack needs</li><li>Compliance cost forecast, before you commit</li></ul></div></li>
+      <li class="step" id="px-s2"><div class="top"><span class="num">02</span><span class="ic"><svg class="icon" aria-hidden="true"><use href="#px-rep"/></svg></span></div>
+        <h3>Authorised representative</h3><p>If you are established outside the EU, we appoint and administer your representative in each Member State: mandate, set-up, liaison and records.</p>
+        <div class="rcv"><b>You receive</b><ul><li>One point of contact across all markets</li><li>A route to EPR registration, which needs the representative first</li></ul></div></li>
+      <li class="step" id="px-s3"><div class="top"><span class="num">03</span><span class="ic"><svg class="icon" aria-hidden="true"><use href="#px-mail"/></svg></span></div>
+        <h3>Supplier data campaign</h3><p>A campaign in your name, with a template that catches errors as suppliers type. We start from the data you already hold, so nothing is asked for twice.</p>
+        <div class="rcv"><b>You receive</b><ul><li>Evidence collected and structured</li><li>Progress reporting during the campaign</li></ul></div></li>
+      <li class="step" id="px-s4"><div class="top"><span class="num">04</span><span class="ic"><svg class="icon" aria-hidden="true"><use href="#px-reg"/></svg></span></div>
+        <h3>Evidence review and pack register</h3><p>Every response is read, queried where something is missing and validated. We group your SKUs into distinct packs under a written rule you approve.</p>
+        <div class="rcv"><b>You receive</b><ul><li>Validated evidence per pack</li><li>Your packaging type register, which sets how many declarations you need</li></ul></div></li>
+      <li class="step" id="px-s5"><div class="top"><span class="num">05</span><span class="ic"><svg class="icon" aria-hidden="true"><use href="#px-doc"/></svg></span></div>
+        <h3>Technical file and Declaration of Conformity</h3><p>Each pack is reviewed against the requirements, its technical file built and its declaration checked before it reaches you. Issued in waves, by category or market.</p>
+        <div class="rcv"><b>You receive</b><ul><li>One declaration per distinct pack, ready to sign</li><li>Revisions when a specification changes</li></ul></div></li>
+      <li class="step" id="px-s6"><div class="top"><span class="num">06</span><span class="ic"><svg class="icon" aria-hidden="true"><use href="#px-flask"/></svg></span></div>
+        <h3>Gap report and testing</h3><p>What could not be evidenced is set out with where to look and your options: laboratory testing, a change of pack or supplier.</p>
+        <div class="rcv"><b>You receive</b><ul><li>A prioritised list of what is missing</li><li>Tests coordinated with accredited laboratories and results linked to the technical file</li></ul></div></li>
+    </ol>
+  </section>
+
+  <section class="sec" id="ev-why" aria-labelledby="px-why-h">
+    <header class="head">
+      <p class="eyebrow">Why us</p>
+      <h2 id="px-why-h">Why Ecoveritas</h2>
+      <p class="lead">Packaging compliance is what we do. We already run EPR registrations and reporting for producers across Europe, the Americas and beyond, so PPWR is not a separate project for us: it builds on the same packaging data, the same suppliers and the same team.</p>
+    </header>
+    <ul class="why">
+      <li><span class="ic"><svg class="icon" aria-hidden="true"><use href="#px-star"/></svg></span><h3>Specialists, not generalists</h3><p>EPR, packaging data and recyclability assessment are our daily work. Our UK recyclability methodology is accepted by the Environment Agency.</p></li>
+      <li><span class="ic"><svg class="icon" aria-hidden="true"><use href="#px-layers"/></svg></span><h3>One packaging inventory</h3><p>Built once, used for both regimes. Your suppliers are only asked for what is new.</p></li>
+      <li><span class="ic"><svg class="icon" aria-hidden="true"><use href="#px-pin"/></svg></span><h3>The authorised representative</h3><p>Required by PPWR, and needed before EPR registration can go ahead. We set it up once for both.</p></li>
+      <li><span class="ic"><svg class="icon" aria-hidden="true"><use href="#px-radar"/></svg></span><h3>Regulatory monitoring</h3><p>Tariffs, thresholds and requirements tracked market by market, so you hear about changes when they happen.</p></li>
+    </ul>
+  </section>
+
+  <section class="sec" id="ev-ppwr-vs-epr" aria-labelledby="px-vs-h">
+    <div class="vs">
+      <header class="head">
+        <p class="eyebrow">EPR and PPWR</p>
+        <h2 id="px-vs-h">Two regimes, one programme</h2>
+        <p class="lead">EPR funds recycling and is declared market by market. PPWR decides whether a pack can be sold in the EU at all. Different rules, same data: that is why we run them together.</p>
+      </header>
+      <div class="tw">
+        <table>
+          <caption class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Comparison of EPR and PPWR</caption>
+          <thead><tr><th scope="col"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Topic</span></th><th scope="col">EPR</th><th scope="col">PPWR</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Scope</th><td data-l="EPR">National, one scheme per country</td><td data-l="PPWR">European, one regulation</td></tr>
+            <tr><th scope="row">What it does</th><td data-l="EPR">Funds collection and recycling</td><td data-l="PPWR">Sets the rules a pack must meet to stay on the market</td></tr>
+            <tr><th scope="row">Unit of work</th><td data-l="EPR">The declaration, on each market's calendar</td><td data-l="PPWR">The distinct pack</td></tr>
+            <tr><th scope="row">Multiplies by market</th><td data-l="EPR">Yes</td><td data-l="PPWR">No. One declaration is valid in every market</td></tr>
+            <tr><th scope="row">Registration</th><td data-l="EPR">The producer registers in each market</td><td data-l="PPWR">Nothing to register</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec grey" id="ev-options" aria-labelledby="px-opt-h">
+    <header class="head">
+      <p class="eyebrow">Service options</p>
+      <h2 id="px-opt-h">You choose how much we run</h2>
+      <p class="lead">The regulatory scope is the same in every option. What changes is who does the work. You keep your data and your supplier relationships in all three.</p>
+    </header>
+    <div class="opts">
+      <article class="opt" data-t="1"><span class="tier" aria-hidden="true"><i></i><i></i><i></i></span><span class="lbl">We scope and prepare</span><h3>Essential</h3><p>You run supplier collection, registrations and reporting. We scope the programme and prepare your Declarations of Conformity.</p></article>
+      <article class="opt mid" data-t="2"><span class="tier" aria-hidden="true"><i></i><i></i><i></i></span><span class="lbl">We run the programme</span><h3>Supported</h3><p>We run the supplier campaign, the declarations, registrations and reporting. You keep the data and the supplier relationships.</p></article>
+      <article class="opt" data-t="3"><span class="tier" aria-hidden="true"><i></i><i></i><i></i></span><span class="lbl">We run it and keep it current</span><h3>Managed</h3><p>Everything in Supported, plus your compliance calendar, liaison with schemes and authorities, and regulatory monitoring.</p></article>
+    </div>
+    <div class="tw who">
+      <table>
+        <caption style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Who does the work in each option</caption>
+        <thead><tr><th scope="col">Who does the work</th><th scope="col">Essential</th><th scope="col">Supported</th><th scope="col">Managed</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Scoping the programme</th><td data-l="Essential"><span class="we">Ecoveritas</span></td><td data-l="Supported"><span class="we">Ecoveritas</span></td><td data-l="Managed"><span class="we">Ecoveritas</span></td></tr>
+          <tr><th scope="row">Declarations of Conformity</th><td data-l="Essential"><span class="we">Ecoveritas</span></td><td data-l="Supported"><span class="we">Ecoveritas</span></td><td data-l="Managed"><span class="we">Ecoveritas</span></td></tr>
+          <tr><th scope="row">Supplier campaign</th><td data-l="Essential"><span class="you">You</span></td><td data-l="Supported"><span class="we">Ecoveritas</span></td><td data-l="Managed"><span class="we">Ecoveritas</span></td></tr>
+          <tr><th scope="row">Registrations and reporting</th><td data-l="Essential"><span class="you">You</span></td><td data-l="Supported"><span class="we">Ecoveritas</span></td><td data-l="Managed"><span class="we">Ecoveritas</span></td></tr>
+          <tr><th scope="row">Compliance calendar and liaison with schemes and authorities</th><td data-l="Essential"><span class="no">Not included</span></td><td data-l="Supported"><span class="no">Not included</span></td><td data-l="Managed"><span class="we">Ecoveritas</span></td></tr>
+          <tr><th scope="row">Regulatory monitoring</th><td data-l="Essential"><span class="no">Not included</span></td><td data-l="Supported"><span class="no">Not included</span></td><td data-l="Managed"><span class="we">Ecoveritas</span></td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="4">You keep your data and your supplier relationships in all three.</td></tr></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec" id="ev-faq" aria-labelledby="px-faq-h">
+    <header class="head">
+      <p class="eyebrow">FAQs</p>
+      <h2 id="px-faq-h">Questions we are asked</h2>
+    </header>
+    <div class="faq">
+      <details><summary>Does PPWR apply to a UK or US business selling into the EU?</summary><div><p>Yes, if you make packaging or packaged goods available on the EU market. Since 12 August 2026 you also need an authorised representative in each Member State where you sell, under Article 45(3).</p></div></details>
+      <details><summary>Do I need a Declaration of Conformity for every SKU?</summary><div><p>No. The declaration is issued per distinct pack. SKUs that share components, materials and weights share one declaration, which names all of them.</p></div></details>
+      <details><summary>Is one declaration valid in every EU country?</summary><div><p>Yes. PPWR is a regulation that applies directly across the Union, so one declaration covers every Member State. EPR, by contrast, is registered and declared country by country.</p></div></details>
+      <details><summary>Our suppliers already answered an EPR survey. Will they be asked again?</summary><div><p>Only for what is new. Components, materials and weights you already hold are reused. PPWR adds recycled content, substances of concern, design for recycling, minimisation and marking, with evidence behind each.</p></div></details>
+      <details><summary>Who signs the Declarations of Conformity?</summary><div><p>You do. Responsibility for compliance does not transfer, so the signature stays with your business. We prepare each declaration and check that the evidence supports it before it reaches you.</p></div></details>
+      <details><summary>Do we keep ownership of our data and our supplier relationships?</summary><div><p>Yes, in every option. We supply the capacity to run the programme, not the ownership. You also keep the key decisions: the rule for grouping packs, which packs go in each wave, whether to test and any redesign.</p></div></details>
+      <details><summary>Does reviewing supplier documents prove what is in a pack?</summary><div><p>No. Reviewing documents confirms that the evidence is complete and supports a declaration; it does not verify the presence or absence of substances. Where supplier evidence falls short, we coordinate laboratory testing.</p></div></details>
+      <details><summary>Do you carry out laboratory testing?</summary><div><p>We coordinate it with accredited UK laboratories, only where supplier evidence is insufficient. We start with low-cost PFAS screening and run the targeted analysis only where the screening justifies it. Laboratory costs are passed through at cost, with no margin; our fee for coordinating samples is shown separately.</p>
+        <ul class="tests">
+          <li><span><b>Heavy metals:</b> lead, cadmium, hexavalent chromium and mercury; sum ≤ 100 mg/kg.</span><span class="t">14 to 16 working days</span></li>
+          <li><span><b>Total fluorine:</b> PFAS screening on food-contact packaging.</span><span class="t">14 to 16 working days</span></li>
+          <li><span><b>140 PFAS:</b> only where screening returns 50 ppm or more.</span><span class="t">14 to 16 working days</span></li>
+        </ul></div></details>
+      <details><summary>Are scheme, registration and representative fees included in your price?</summary><div><p>No. Scheme fees, registration charges and the authorised representative's own fees are paid by you directly to the relevant body. They never sit inside our invoice, and we estimate them for you in the assessment.</p></div></details>
+      <details><summary>What about labelling and the 2030 design rules?</summary><div><p>We prepare a short, practical roadmap for 2026 to 2030: what applies to you from the labelling and 2030 design requirements, in what order it arrives, and what to capture in your first supplier campaign so the same pack is not revisited.</p></div></details>
+      <details><summary>Can we contract only part of the service?</summary><div><p>Yes. The assessment can be contracted on its own, and it is the advisable first step because it sets the scope and cost of everything after it.</p></div></details>
+    </div>
+  </section>
+
+</div>
