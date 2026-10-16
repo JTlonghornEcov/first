@@ -1,0 +1,308 @@
+<style>
+/* EPR Fee Audit page body (entry 10865), restyled in the shared design language. Scoped to #fax. The CMS hero carries the
+   H1, intro and buttons; copy below is unchanged from the previous version, and the separate Results block is merged in.
+   Anchors kept: #ev-include, #ev-overpay, #ev-scheme, #ev-who, #ev-saving, #ev-cost, #ev-results (the contact block below
+   carries #ev-book). */
+html, body { overflow-x:clip; }
+#fax { --ink:#212121; --body:#333c45; --muted:#55656d; --slate:#2f444e; --slate-2:#3d5662; --slate-3:#4d6875; --teal:#006374; --teal-2:#e3f0f3;
+  --yellow:#ffcd03; --yellow-2:#fff6cc; --grey:#f6f7f7; --line:#dfe5e7; --mist:#c9dbe2; --r:16px;
+  color:var(--ink); display:grid; gap:clamp(64px,9vw,112px); font-size:16px; line-height:1.6; }
+#fax *, #fax *::before, #fax *::after { box-sizing:border-box; }
+#fax > * { min-width:0; }
+#fax :is(h2,h3,p,ul,ol,li) { margin:0; padding:0; border:0; font-family:inherit; }
+#fax :is(ul,ol) { list-style:none; }
+#fax h2 { font-size:clamp(28px,3.6vw,42px); line-height:1.12; font-weight:700; letter-spacing:-.01em; color:var(--ink); }
+#fax h3 { font-size:19px; line-height:1.25; font-weight:700; color:var(--ink); }
+#fax p { color:var(--body); }
+#fax a { text-decoration:none; }
+#fax .eyebrow { display:inline-flex; align-items:center; gap:10px; margin:0 0 12px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+#fax .eyebrow::before { content:""; width:28px; height:4px; border-radius:2px; background:var(--yellow); }
+#fax .lead { font-size:clamp(17px,1.7vw,20px); line-height:1.55; }
+#fax .sec { display:grid; gap:clamp(24px,3.4vw,40px); scroll-margin-top:110px; }
+#fax .head { display:grid; gap:14px; }
+@media (min-width:1024px) { #fax .head.split { grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:48px; align-items:end; } }
+#fax .icon { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+#fax .btn { display:inline-flex; align-items:center; gap:10px; padding:14px 22px; border-radius:2px; background:var(--yellow); color:var(--ink); font-weight:700; }
+#fax .btn:hover { background:#ffd83a; }
+#fax .chips { display:flex; flex-wrap:wrap; gap:8px; }
+#fax .chips li { display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:99px; background:#fff; border:1px solid var(--line); font-size:14px; font-weight:700; color:var(--ink); }
+#fax .chips li::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--teal); }
+#fax :is(a,summary):focus-visible { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+
+/* Intro and proof */
+#fax .intro { display:grid; gap:clamp(24px,3vw,40px); }
+@media (min-width:1024px) { #fax .intro { grid-template-columns:minmax(0,6fr) minmax(0,6fr); align-items:center; } }
+#fax .intro .lead { color:var(--ink); }
+#fax .upd { display:inline-flex; align-items:center; gap:8px; margin-top:18px; font-size:14px; color:var(--muted); }
+#fax .upd .icon { width:18px; height:18px; }
+#fax .proof { display:grid; gap:12px; }
+#fax .proof li { display:grid; grid-template-columns:auto minmax(0,1fr); gap:18px; align-items:center; padding:20px 24px; border-radius:var(--r); background:var(--slate); color:#fff; }
+#fax .proof li.hl { background:var(--teal); }
+#fax .proof b { font-size:clamp(30px,3.4vw,40px); line-height:1; font-weight:700; color:var(--yellow); min-width:4.4ch; letter-spacing:-.01em; }
+#fax .proof span { font-size:15px; line-height:1.45; color:#e8eff2; }
+@media (max-width:560px) { #fax .proof li { grid-template-columns:1fr; gap:6px; padding:18px 20px; } }
+
+/* What it includes */
+#fax .parts { display:grid; gap:20px; }
+@media (min-width:768px) { #fax .parts { grid-template-columns:1fr 1fr; } }
+#fax .part { display:grid; gap:12px; align-content:start; }
+#fax .ptag { display:flex; align-items:center; gap:12px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); }
+#fax .ptag::after { content:""; flex:1; height:3px; border-radius:2px; background:var(--teal); }
+#fax .part.p2 .ptag { color:var(--ink); }
+#fax .part.p2 .ptag::after { background:var(--yellow); }
+#fax .part ul { display:grid; gap:12px; }
+@media (min-width:1024px) { #fax .part ul { grid-template-columns:1fr 1fr; } }
+#fax .inc { display:flex; flex-direction:column; gap:12px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+#fax .inc .top { display:flex; align-items:center; justify-content:space-between; }
+#fax .inc .num { font-size:30px; font-weight:700; line-height:1; color:var(--teal); font-variant-numeric:tabular-nums; }
+#fax .p2 .inc .num { color:var(--ink); }
+#fax .inc .ic { display:grid; place-items:center; width:48px; height:48px; border-radius:50%; background:var(--slate); color:#fff; }
+#fax .p2 .inc .ic { background:var(--yellow); color:var(--ink); }
+#fax .inc p { font-size:15px; line-height:1.55; }
+#fax .rag { display:flex; gap:6px; margin-top:auto; padding-top:6px; }
+#fax .rag i { flex:1; height:8px; border-radius:4px; }
+#fax .rag .r { background:#c8102e; } #fax .rag .a { background:#f2a900; } #fax .rag .g { background:#2e7d32; }
+
+/* Where producers overpay */
+#fax .grey { padding:clamp(24px,4vw,48px); border-radius:var(--r); background:var(--grey); }
+#fax .over { display:grid; gap:clamp(20px,3vw,32px); }
+@media (min-width:1024px) { #fax .over { grid-template-columns:minmax(0,7fr) minmax(0,5fr); align-items:stretch; } }
+#fax .leaks { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr)); gap:12px; margin-top:22px; }
+#fax .leaks li { display:grid; grid-template-columns:auto minmax(0,1fr); gap:14px; align-items:start; padding:18px 20px; border-radius:14px; background:#fff; border:1px solid var(--line); color:var(--ink); font-size:15.5px; line-height:1.5; }
+#fax .leaks .n { position:relative; display:grid; place-items:center; width:42px; height:42px; border-radius:50%; background:var(--teal-2); color:var(--teal); }
+#fax .leaks .n b { position:absolute; top:-4px; right:-6px; display:grid; place-items:center; width:20px; height:20px; border-radius:50%; background:var(--slate); color:var(--yellow); font-size:11px; line-height:1; }
+#fax .loop { display:flex; flex-direction:column; justify-content:space-between; gap:24px; padding:clamp(24px,3.4vw,36px); border-radius:var(--r); background:var(--slate); }
+#fax .loop p { font-size:clamp(21px,2.2vw,27px); line-height:1.3; font-weight:700; color:#fff; letter-spacing:-.01em; }
+#fax .loop em { font-style:normal; color:var(--yellow); }
+#fax .years { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; align-items:end; height:120px; }
+#fax .years span { position:relative; display:flex; flex-direction:column; justify-content:flex-end; height:100%; }
+#fax .years i { display:block; border-radius:6px 6px 0 0; background:var(--yellow); height:18%; }
+#fax .years i + i { border-radius:0; background:var(--slate-3); height:60%; }
+#fax .years small { margin-top:8px; font-size:12px; font-weight:700; letter-spacing:.06em; color:var(--mist); text-align:center; }
+#fax .years span:nth-child(2) i:first-child { height:20%; } #fax .years span:nth-child(3) i:first-child { height:22%; } #fax .years span:nth-child(4) i:first-child { height:24%; }
+
+/* Independence */
+#fax .two { display:grid; gap:clamp(24px,3vw,48px); }
+@media (min-width:1024px) { #fax .two { grid-template-columns:minmax(0,7fr) minmax(0,5fr); align-items:center; } }
+#fax .two .txt { display:grid; gap:16px; align-content:start; }
+#fax .holds { position:relative; overflow:hidden; display:grid; gap:18px; padding:clamp(24px,3vw,34px); border-radius:var(--r); background:var(--slate); color:#fff; }
+#fax .holds .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+#fax .holds ul { display:grid; gap:10px; }
+#fax .holds li { display:flex; align-items:center; gap:14px; padding:14px 16px; border-radius:12px; background:var(--slate-2); font-weight:700; font-size:17px; color:#fff; }
+#fax .holds li .x { position:relative; flex:none; width:30px; height:30px; border-radius:50%; border:2px solid var(--yellow); }
+#fax .holds li .x::before, #fax .holds li .x::after { content:""; position:absolute; left:50%; top:50%; width:14px; height:2px; background:var(--yellow); transform:translate(-50%,-50%) rotate(45deg); }
+#fax .holds li .x::after { transform:translate(-50%,-50%) rotate(-45deg); }
+#fax .holds .k2 { padding-top:16px; border-top:1px solid var(--slate-3); color:#e8eff2; font-size:15.5px; }
+
+/* Who it's for */
+#fax .self { display:flex; flex-direction:column; gap:8px; padding:clamp(24px,3vw,34px); border-radius:var(--r); background:var(--teal); color:#fff; transition:transform .2s ease; }
+#fax .self:hover { transform:translateY(-3px); }
+#fax .self .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; }
+#fax .self b { font-size:clamp(26px,2.8vw,34px); line-height:1.1; color:#fff; }
+#fax .self .go { display:inline-flex; align-items:center; gap:8px; margin-top:8px; font-weight:700; color:var(--yellow); }
+#fax .link { color:var(--teal); font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+
+/* Measuring the saving */
+#fax .formula { display:grid; gap:10px; }
+@media (min-width:1024px) { #fax .formula { grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr); align-items:stretch; } }
+#fax .formula .term { display:flex; flex-direction:column; gap:8px; padding:22px; border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+#fax .formula .k { font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); }
+#fax .formula b { font-size:17px; line-height:1.35; color:var(--ink); }
+#fax .formula .res { background:var(--slate); border-color:var(--slate); }
+#fax .formula .res .k { color:var(--yellow); } #fax .formula .res b { color:#fff; }
+#fax .formula .op { display:grid; place-items:center; justify-self:center; align-self:center; width:44px; height:44px; border-radius:50%; background:var(--yellow); color:var(--ink); font-size:24px; font-weight:700; line-height:1; }
+#fax .fnote { display:flex; align-items:center; gap:10px; font-size:14.5px; color:var(--muted); }
+#fax .fnote .icon { width:18px; height:18px; color:var(--teal); }
+
+/* Cost and coverage */
+#fax .duo { display:grid; gap:16px; }
+@media (min-width:1024px) { #fax .duo { grid-template-columns:1fr 1fr; } }
+#fax .panel { display:flex; flex-direction:column; gap:16px; padding:clamp(24px,3vw,36px); border-radius:var(--r); background:var(--grey); }
+#fax .panel .ic { display:grid; place-items:center; width:48px; height:48px; border-radius:12px; background:#fff; color:var(--teal); }
+#fax .panel h2 { font-size:clamp(24px,2.6vw,32px); }
+
+/* Results */
+#fax .results { display:grid; gap:16px; }
+@media (min-width:768px) { #fax .results { grid-template-columns:1fr 1fr; } }
+#fax .result { display:flex; flex-direction:column; gap:12px; padding:clamp(24px,3vw,36px); border-radius:var(--r); background:var(--slate); color:#fff; }
+#fax .result.hl { background:var(--teal); }
+#fax .result .who { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+#fax .result .v { font-size:clamp(44px,5.6vw,68px); line-height:1; font-weight:700; letter-spacing:-.02em; color:#fff; }
+#fax .result p { color:#e8eff2; }
+#fax .bars { display:grid; gap:10px; margin-top:auto; padding-top:8px; }
+#fax .bar { display:grid; grid-template-columns:52px minmax(0,1fr) 52px; gap:12px; align-items:center; font-size:13px; font-weight:700; color:#fff; }
+#fax .bar span:last-child { text-align:right; }
+#fax .bar i { display:block; height:12px; border-radius:6px; background:#7fb4bf; }
+#fax .bar.after i { background:var(--yellow); }
+#fax .stamp { display:flex; flex-wrap:wrap; gap:8px; margin-top:auto; }
+#fax .stamp span { padding:6px 12px; border-radius:99px; border:1px solid var(--slate-3); font-size:13px; font-weight:700; color:#e8eff2; }
+#fax .res-cta { display:flex; }
+@media (max-width:767px) { #fax .btn { width:100%; justify-content:center; } }
+@media (prefers-reduced-motion:reduce) { #fax *, #fax *::before, #fax *::after { transition:none !important; } #fax .self:hover { transform:none; } }
+#ev-book { scroll-margin-top:96px; }
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="fa-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="fa-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2M8.5 11h5M11 8.5v5"/></symbol>
+  <symbol id="fa-ram" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="fa-fix" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8.5 15l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="fa-down" viewBox="0 0 24 24"><path d="M3 6l7 7 4-4 7 7"/><path d="M15 16h6v-6"/></symbol>
+  <symbol id="fa-scale" viewBox="0 0 24 24"><path d="M12 4v16M5 20h14M5 8h14M12 4l-1 0"/><path d="M5 8l-3 6a3 3 0 0 0 6 0zM19 8l-3 6a3 3 0 0 0 6 0z"/></symbol>
+  <symbol id="fa-tag" viewBox="0 0 24 24"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="8" cy="8" r="1.6"/></symbol>
+  <symbol id="fa-ship" viewBox="0 0 24 24"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></symbol>
+  <symbol id="fa-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+  <symbol id="fa-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="fa-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></symbol>
+  <symbol id="fa-price" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-8 8"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+  <symbol id="fa-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></symbol>
+</svg>
+<div id="fax">
+
+<section class="intro" aria-label="Overview">
+  <div>
+    <p class="eyebrow">Services</p>
+    <p class="lead">Most producers pay EPR fees on more packaging than they actually owe. The cause is usually the data, not the regulation: supplier default weights instead of measured ones, materials booked in the wrong category, packaging that was exported or sold B2B but never deducted. The EPR Fee Audit finds those errors, corrects them, and shows which pack changes would move you into a lower fee band.</p>
+    <p class="upd"><svg class="icon"><use href="#fa-cal"/></svg>Last updated 12 October 2026</p>
+  </div>
+  <ul class="proof" aria-label="EPR Fee Audit in numbers">
+    <li class="hl"><b>Over 80%</b><span>Lower EPR obligation for a construction equipment manufacturer, from £1.4m to £250k</span></li>
+    <li><b>£1m</b><span>Saved by a supermarket chain through product reclassification</span></li>
+    <li><b>4m+</b><span>SKUs with packaging metrics in our database, used to check your data</span></li>
+  </ul>
+</section>
+
+<section class="sec" id="ev-include" aria-labelledby="fa-include-h">
+  <div class="head split">
+    <h2 id="fa-include-h">What does the EPR Fee Audit include?</h2>
+    <p class="lead">Two things, delivered together. First, we audit your packaging data line by line against what you should be declaring. Then we act on what we find: correcting the declaration and advising on the pack changes that lower your fees from here on.</p>
+  </div>
+  <div class="parts">
+    <div class="part">
+      <p class="ptag">Part 1 · Audit</p>
+      <ul>
+        <li class="inc"><div class="top"><span class="num">01</span><span class="ic"><svg class="icon"><use href="#fa-search"/></svg></span></div><h3>Data audit</h3><p>Supplier weights, material classification, primary/secondary/shipment splits, exports and B2B deductions, checked against our database of 4m+ SKUs.</p></li>
+        <li class="inc"><div class="top"><span class="num">02</span><span class="ic"><svg class="icon"><use href="#fa-ram"/></svg></span></div><h3>RAM and modulation review</h3><p>The RAG rating of each pack under the Recyclability Assessment Methodology, and what sitting in the wrong band costs you.</p><span class="rag" aria-hidden="true"><i class="r"></i><i class="a"></i><i class="g"></i></span></li>
+      </ul>
+    </div>
+    <div class="part p2">
+      <p class="ptag">Part 2 · Reduction</p>
+      <ul>
+        <li class="inc"><div class="top"><span class="num">03</span><span class="ic"><svg class="icon"><use href="#fa-fix"/></svg></span></div><h3>Fee correction</h3><p>A corrected obligation, with the evidence behind every change, ready for submission.</p></li>
+        <li class="inc"><div class="top"><span class="num">04</span><span class="ic"><svg class="icon"><use href="#fa-down"/></svg></span></div><h3>Reduction plan</h3><p>The specific pack changes (material, weight, format) that would move packaging into a lower fee band, ranked by saving.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec grey" id="ev-overpay" aria-labelledby="fa-over-h">
+  <div class="over">
+    <div>
+      <h2 id="fa-over-h">Where do producers usually overpay?</h2>
+      <p class="lead" style="margin-top:14px">In four places, and almost always in the data rather than the rules:</p>
+      <ol class="leaks">
+        <li><span class="n" aria-hidden="true"><svg class="icon"><use href="#fa-scale"/></svg><b>1</b></span><span>Supplier default weights used instead of measured weights.</span></li>
+        <li><span class="n" aria-hidden="true"><svg class="icon"><use href="#fa-tag"/></svg><b>2</b></span><span>Materials misclassified, for example a laminate booked in the wrong polymer band.</span></li>
+        <li><span class="n" aria-hidden="true"><svg class="icon"><use href="#fa-ship"/></svg><b>3</b></span><span>Packaging exported or sold B2B that was never deducted from the obligation.</span></li>
+        <li><span class="n" aria-hidden="true"><svg class="icon"><use href="#fa-layers"/></svg><b>4</b></span><span>Primary, secondary and shipment packaging split wrongly across the return.</span></li>
+      </ol>
+    </div>
+    <div class="loop">
+      <div class="years" aria-hidden="true">
+        <span><i></i><i></i><small>YR 1</small></span><span><i></i><i></i><small>YR 2</small></span><span><i></i><i></i><small>YR 3</small></span><span><i></i><i></i><small>YR 4</small></span>
+      </div>
+      <p>Every tonne over-declared is paid for again every year, so a few percentage points of error is <em>a recurring cost, not a one-off.</em></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="ev-scheme" aria-labelledby="fa-scheme-h">
+  <div class="two">
+    <div class="txt">
+      <p class="eyebrow" style="margin:0">Independent</p>
+      <h2 id="fa-scheme-h">How is this different from a compliance scheme?</h2>
+      <p class="lead">A compliance scheme takes on your obligation and discharges it. We don't. Ecoveritas works alongside whichever scheme or direct registration you use, and makes sure the number you hand them is right.</p>
+      <p>That independence matters for this service in particular. Ecoveritas holds no PRN book, no waste contracts and no compliance scheme, so we have no commercial interest in the size of your obligation. We earn from the number being right and from it coming down.</p>
+    </div>
+    <div class="holds">
+      <p class="k">What Ecoveritas holds</p>
+      <ul>
+        <li><span class="x" aria-hidden="true"></span>No PRN book</li>
+        <li><span class="x" aria-hidden="true"></span>No waste contracts</li>
+        <li><span class="x" aria-hidden="true"></span>No compliance scheme</li>
+      </ul>
+      <p class="k2">Our only interest: the number being right, and coming down.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec grey" id="ev-who" aria-labelledby="fa-who-h">
+  <div class="two">
+    <div class="txt">
+      <h2 id="fa-who-h">Who is the EPR Fee Audit for?</h2>
+      <p class="lead">Large retailers, brands and FMCG producers with a significant packaging bill, especially those with many SKUs, many suppliers or obligations in more than one market. If your packaging is simple and your volumes are small, our self-serve reporting may be a better fit: <a class="link" href="https://www.ecoveritas.com/powerful-epr-software#entry:513@1:url">my.ecoveritas</a>.</p>
+      <ul class="chips"><li>Many SKUs</li><li>Many suppliers</li><li>More than one market</li></ul>
+    </div>
+    <a class="self" href="https://www.ecoveritas.com/powerful-epr-software#entry:513@1:url">
+      <span class="k">Simple packaging, small volumes?</span>
+      <b>my.ecoveritas</b>
+      <span class="go">Self-serve reporting <svg class="icon" aria-hidden="true"><use href="#fa-arrow"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<section class="sec" id="ev-saving" aria-labelledby="fa-saving-h">
+  <div class="head split">
+    <h2 id="fa-saving-h">How do you measure the saving?</h2>
+    <p class="lead">Against your own baseline. We take what you declared (or would have declared) before the audit, apply the corrections, and price the difference at the published fee rates for the same period. Pack-change savings are shown separately, because they depend on changes you choose to make.</p>
+  </div>
+  <ol class="formula" aria-label="How the saving is calculated">
+    <li class="term"><span class="k">Your baseline</span><b>What you declared before the audit</b></li>
+    <li class="op" aria-hidden="true">&#8722;</li>
+    <li class="term"><span class="k">Corrected obligation</span><b>Once the data is right</b></li>
+    <li class="op" aria-hidden="true">&#215;</li>
+    <li class="term"><span class="k">Published fee rates</span><b>Same period, no estimates</b></li>
+    <li class="op" aria-hidden="true">=</li>
+    <li class="term res"><span class="k">Your saving</span><b>The difference, in pounds</b></li>
+  </ol>
+  <p class="fnote"><svg class="icon" aria-hidden="true"><use href="#fa-info"/></svg>Pack-change savings are shown separately.</p>
+</section>
+
+<section class="duo" id="ev-cost" aria-label="Cost and coverage" style="scroll-margin-top:110px">
+  <div class="panel">
+    <span class="ic" aria-hidden="true"><svg class="icon"><use href="#fa-price"/></svg></span>
+    <h2>What does it cost?</h2>
+    <p>Every audit is scoped to the producer, so we don't publish a rate card. Price is driven by four things: packaging tonnage, number of markets, SKU volume and reporting frequency. We'll give you a fixed scope and price before any work starts.</p>
+    <ul class="chips"><li>Packaging tonnage</li><li>Number of markets</li><li>SKU volume</li><li>Reporting frequency</li></ul>
+  </div>
+  <div class="panel">
+    <span class="ic" aria-hidden="true"><svg class="icon"><use href="#fa-globe"/></svg></span>
+    <h2>Which regulations does it cover?</h2>
+    <p>UK packaging EPR (pEPR), including RAM modulation, plus the Plastic Packaging Tax. For producers in other markets, the same audit applies to global EPR in 80+ countries and to preparation for the EU PPWR.</p>
+    <ul class="chips"><li>UK pEPR</li><li>RAM modulation</li><li>Plastic Packaging Tax</li><li>Global EPR, 80+ countries</li><li>EU PPWR</li></ul>
+  </div>
+</section>
+
+<section class="sec" id="ev-results" aria-labelledby="fa-results-h">
+  <div class="head split">
+    <h2 id="fa-results-h">Results</h2>
+    <p class="lead">Two producers, two corrections to the data behind their EPR return.</p>
+  </div>
+  <ul class="results">
+    <li class="result hl">
+      <span class="who">Construction equipment manufacturer</span>
+      <span class="v">Over 80%</span>
+      <p>Classifying packaging correctly as household or non-household cut its EPR obligation by over 80%, from £1.4m to £250k.</p>
+      <div class="bars" aria-hidden="true"><div class="bar"><span>Before</span><i style="width:100%"></i><span>£1.4m</span></div><div class="bar after"><span>After</span><i style="width:18%"></i><span>£250k</span></div></div>
+    </li>
+    <li class="result">
+      <span class="who">Supermarket chain</span>
+      <span class="v">£1m</span>
+      <p>Reclassifying products cut its EPR fees by £1m.</p>
+    </li>
+  </ul>
+  <div class="res-cta"><a class="btn" href="#ev-book">Book an EPR Fee Audit <svg class="icon" aria-hidden="true"><use href="#fa-arrow"/></svg></a></div>
+</section>
+
+</div>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"EPR Fee Audit","description":"An independent audit of your packaging data that finds and removes the EPR fees you shouldn't be paying.","serviceType":"Packaging EPR fee audit and reduction","provider":{"@type":"Organization","name":"Ecoveritas","legalName":"Ecoveritas Limited","url":"https://www.ecoveritas.com"},"areaServed":"Worldwide","url":"https://www.ecoveritas.com/epr-fee-audit"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the EPR Fee Audit include?","acceptedAnswer":{"@type":"Answer","text":"Two things, delivered together. First, we audit your packaging data line by line against what you should be declaring. Then we act on what we find: correcting the declaration and advising on the pack changes that lower your fees from here on. Data audit: supplier weights, material classification, primary/secondary/shipment splits, exports and B2B deductions, checked against our database of 4m+ SKUs. Fee correction: a corrected obligation, with the evidence behind every change, ready for submission. RAM and modulation review: the RAG rating of each pack under the Recyclability Assessment Methodology, and what sitting in the wrong band costs you. Reduction plan: the specific pack changes (material, weight, format) that would move packaging into a lower fee band, ranked by saving."}},{"@type":"Question","name":"Where do producers usually overpay?","acceptedAnswer":{"@type":"Answer","text":"In four places, and almost always in the data rather than the rules: 1. Supplier default weights used instead of measured weights. 2. Materials misclassified, for example a laminate booked in the wrong polymer band. 3. Packaging exported or sold B2B that was never deducted from the obligation. 4. Primary, secondary and shipment packaging split wrongly across the return. Every tonne over-declared is paid for again every year, so a few percentage points of error is a recurring cost, not a one-off."}},{"@type":"Question","name":"How is this different from a compliance scheme?","acceptedAnswer":{"@type":"Answer","text":"A compliance scheme takes on your obligation and discharges it. We don't. Ecoveritas works alongside whichever scheme or direct registration you use, and makes sure the number you hand them is right. That independence matters for this service in particular. Ecoveritas holds no PRN book, no waste contracts and no compliance scheme, so we have no commercial interest in the size of your obligation. We earn from the number being right and from it coming down."}},{"@type":"Question","name":"Who is the EPR Fee Audit for?","acceptedAnswer":{"@type":"Answer","text":"Large retailers, brands and FMCG producers with a significant packaging bill, especially those with many SKUs, many suppliers or obligations in more than one market. If your packaging is simple and your volumes are small, our self-serve reporting may be a better fit."}},{"@type":"Question","name":"How do you measure the saving?","acceptedAnswer":{"@type":"Answer","text":"Against your own baseline. We take what you declared (or would have declared) before the audit, apply the corrections, and price the difference at the published fee rates for the same period. Pack-change savings are shown separately, because they depend on changes you choose to make."}},{"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"Every audit is scoped to the producer, so we don't publish a rate card. Price is driven by four things: packaging tonnage, number of markets, SKU volume and reporting frequency. We'll give you a fixed scope and price before any work starts."}},{"@type":"Question","name":"Which regulations does it cover?","acceptedAnswer":{"@type":"Answer","text":"UK packaging EPR (pEPR), including RAM modulation, plus the Plastic Packaging Tax. For producers in other markets, the same audit applies to global EPR in 80+ countries and to preparation for the EU PPWR."}}]}</script>
