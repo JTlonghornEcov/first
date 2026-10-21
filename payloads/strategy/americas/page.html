@@ -103,6 +103,7 @@ html, body { overflow-x:clip; }
 .evc .tool .flow i { font-style:normal; color:var(--teal); font-weight:700; }
 .evc .tool .flow span.end { background:var(--yellow); border-color:var(--yellow); }
 .evc .tool .note { font-size:14px; color:var(--muted); }
+@media (max-width:560px) { .evc .tool .flow { flex-direction:column; align-items:flex-start; } .evc .tool .flow i { transform:rotate(90deg); margin-left:14px; } }
 
 /* Callout (e.g. "not listed?") */
 .evc .callout { display:grid; gap:16px; padding:clamp(24px,3vw,36px); border-radius:var(--r); background:var(--yellow-2); border-left:6px solid var(--yellow); }

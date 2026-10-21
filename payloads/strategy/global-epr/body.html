@@ -1,0 +1,131 @@
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="c-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
+  <symbol id="c-doc" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8.5 15l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="c-pay" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/></symbol>
+  <symbol id="c-data" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></symbol>
+  <symbol id="c-hand" viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></symbol>
+  <symbol id="c-tax" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></symbol>
+</svg>
+<style>
+.evc .regs { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr)); }
+.evc .reg { position:relative; overflow:hidden; display:flex; flex-direction:column; gap:10px; min-height:220px; padding:24px; border-radius:var(--r); background:var(--slate); color:#fff; transition:transform .15s ease; }
+.evc .reg:hover { transform:translateY(-3px); }
+.evc .reg .k { font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .reg b { font-size:24px; line-height:1.15; color:#fff; }
+.evc .reg p { font-size:15px; color:#e8eff2; }
+.evc .reg .arrow { margin-top:auto; color:var(--yellow); }
+.evc .reg::after { content:""; position:absolute; right:-40px; bottom:-40px; width:140px; height:140px; border-radius:50%; border:18px solid rgba(255,255,255,.06); }
+.evc .reg.r2 { background:var(--teal); } .evc .reg.r3 { background:var(--slate-2); } .evc .reg.r4 { background:#244a55; }
+.evc .matrix { display:grid; gap:clamp(20px,3vw,40px); }
+@media (min-width:1024px) { .evc .matrix { grid-template-columns:minmax(0,5fr) minmax(0,7fr); align-items:start; } }
+.evc .mock { display:grid; gap:0; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#fff; font-size:14px; }
+.evc .mock div { display:grid; grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr)); }
+.evc .mock span { padding:10px 12px; border-bottom:1px solid var(--line); }
+.evc .mock div:first-child span { background:var(--slate); color:#fff; font-weight:700; font-size:12.5px; letter-spacing:.04em; }
+.evc .mock div:last-child span { border-bottom:0; }
+.evc .mock i { display:inline-block; width:12px; height:12px; border-radius:50%; vertical-align:-1px; }
+.evc .mock .y { background:var(--teal); } .evc .mock .p { background:var(--yellow); } .evc .mock .n { background:var(--line); }
+.evc .legend { display:flex; flex-wrap:wrap; gap:6px 16px; font-size:13px; color:var(--muted); }
+.evc .legend i { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; }
+@media (max-width:560px) { .evc .mock { font-size:12.5px; } .evc .mock span { padding:8px 6px; overflow-wrap:anywhere; } .evc .mock div:first-child span { font-size:10.5px; letter-spacing:0; } }
+</style>
+<div class="evc" id="c-global">
+
+<section class="sec" aria-labelledby="c-gl-why-h">
+  <div class="two">
+    <div class="stack">
+      <p class="eyebrow" style="margin:0">One team, every market</p>
+      <h2 id="c-gl-why-h">Different rules in every country. One team to run them.</h2>
+      <p class="lead">Many different international compliance programmes exist, each placing different obligations on producers, and making sure you comply in every country where you operate is one of the biggest challenges multi-market businesses face.</p>
+      <p>Our compliance consultants work with your team to assess your obligations by country quickly, then take registration and reporting off your hands.</p>
+    </div>
+    <ul class="proof" aria-label="Ecoveritas in numbers">
+      <li class="hl"><b>80+</b><span>Countries covered by our EPR regulation matrix</span></li>
+      <li><b>25+ years</b><span>Running compliance for brands, retailers and manufacturers</span></li>
+    </ul>
+  </div>
+  <ol class="steps" aria-label="How we run multi-market compliance">
+    <li><h3>Assess, country by country</h3><p>We establish where you have liability, and for which products and materials.</p></li>
+    <li><h3>Register and report</h3><p>Scheme registrations, memberships and submissions, on each country's calendar.</p></li>
+    <li><h3>Pay the right fees</h3><p>We manage your compliance scheme fees, so administration stops being your problem.</p></li>
+  </ol>
+</section>
+
+<section class="sec" aria-labelledby="c-gl-regions-h">
+  <div class="head split">
+    <h2 id="c-gl-regions-h">Where do you sell?</h2>
+    <p class="lead">Each region has its own page with the schemes, deadlines and markets we support. Start with the one that matters most to you.</p>
+  </div>
+  <div class="regs">
+    <a class="reg" href="https://www.ecoveritas.com/compliance/europe"><span class="k">27 EU markets + PPWR</span><b>Europe</b><p>National packaging, WEEE and battery schemes, with PPWR on top.</p><span class="arrow">Explore Europe</span></a>
+    <a class="reg r2" href="https://www.ecoveritas.com/compliance/americas"><span class="k">State by state</span><b>Americas</b><p>US state laws, Canadian provinces and Latin American frameworks.</p><span class="arrow">Explore the Americas</span></a>
+    <a class="reg r3" href="https://www.ecoveritas.com/compliance/asia-australia"><span class="k">Covenant and beyond</span><b>Asia &amp; Australia</b><p>The Australian Packaging Covenant, New Zealand and wider Asia.</p><span class="arrow">Explore Asia &amp; Australia</span></a>
+    <a class="reg r4" href="https://www.ecoveritas.com/compliance/africa-middle-east"><span class="k">Mandatory and emerging</span><b>Africa &amp; Middle East</b><p>South Africa, Kenya, Israel and the Gulf.</p><span class="arrow">Explore Africa &amp; Middle East</span></a>
+  </div>
+</section>
+
+<section class="sec panel" id="c-gl-matrix" aria-labelledby="c-gl-matrix-h">
+  <div class="matrix">
+    <div class="stack">
+      <p class="eyebrow" style="margin:0">EPR regulation matrix</p>
+      <h2 id="c-gl-matrix-h">See where you have liability, across 80+ countries.</h2>
+      <p>To help packaging manufacturers, brands and retailers understand their obligations, we've built a detailed global EPR regulation matrix. It covers 80+ countries and gives instant access to EPR legislation, recycling labelling, voluntary schemes and more that could affect your business.</p>
+      <ul class="ticks">
+        <li>Establish quickly which countries you have liability in</li>
+        <li>Updated quarterly, with new countries added continually</li>
+        <li>Backed by webinar and newsletter updates</li>
+      </ul>
+      <div class="btns"><a class="btn" href="#evx-contact" data-enquiry="We'd like a tailored EPR regulation matrix. We sell into these countries: ">Request your tailored matrix <span aria-hidden="true">&#8594;</span></a></div>
+    </div>
+    <div class="tool" aria-label="Planned tool: multi-market coverage check">
+      <span class="badge">Lead tool · to be built</span>
+      <h3>Select the countries you sell into</h3>
+      <div class="flow" aria-hidden="true"><span>Pick your countries</span><i>&#8594;</i><span>Instant summary of what applies</span><i>&#8594;</i><span class="end">Email for the full tailored matrix</span></div>
+      <div class="mock" aria-hidden="true">
+        <div><span>Country</span><span>Packaging</span><span>WEEE</span><span>Batteries</span></div>
+        <div><span>Germany</span><span><i class="y"></i></span><span><i class="y"></i></span><span><i class="y"></i></span></div>
+        <div><span>France</span><span><i class="y"></i></span><span><i class="y"></i></span><span><i class="y"></i></span></div>
+        <div><span>Canada (BC)</span><span><i class="y"></i></span><span><i class="p"></i></span><span><i class="p"></i></span></div>
+        <div><span>Australia</span><span><i class="y"></i></span><span><i class="p"></i></span><span><i class="n"></i></span></div>
+      </div>
+      <p class="legend" aria-hidden="true"><span><i class="y" style="background:var(--teal)"></i>Obligation</span><span><i style="background:var(--yellow)"></i>Partial or regional</span><span><i style="background:var(--line)"></i>None yet</span></p>
+      <p class="note">Concept placeholder with illustrative rows, not real data. The review ranks this as the third most valuable tool on the site: it targets the core multi-market visitor.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="c-gl-svc-h">
+  <div class="head split">
+    <h2 id="c-gl-svc-h">Global EPR services</h2>
+    <p class="lead">Our compliance consultants help your business save time and money, and run a stronger compliance programme.</p>
+  </div>
+  <div class="grid" style="--min:280px">
+    <article class="card">
+      <span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-data"/></svg></span>
+      <h3>Global EPR research and data management</h3>
+      <p>Robust, reliable reporting that minimises errors and administration costs.</p>
+      <ul class="ticks" style="font-size:15px">
+        <li>Accurate, tailored packaging EPR calculations</li>
+        <li>Registration with each overseeing authority</li>
+        <li>Annual, quarterly or monthly submissions to each scheme</li>
+        <li>Legislation research for importers and exporters</li>
+      </ul>
+      <a class="arrow" style="margin-top:auto" href="https://www.ecoveritas.com/services/data-collection-calculation-reporting">Data Collection, Calculation &amp; Reporting</a>
+    </article>
+    <article class="card">
+      <span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-hand"/></svg></span>
+      <h3>Voluntary commitment reporting</h3>
+      <p>Where formal EPR is still emerging, or you want to strengthen your sustainability credentials, we handle the data and submissions for voluntary schemes.</p>
+      <ul class="chips"><li>UK Plastic Pact</li><li>Ellen MacArthur Foundation</li><li>Greenpeace survey</li><li>APCO PREP reports</li></ul>
+      <a class="arrow" style="margin-top:auto" href="#evx-contact" data-enquiry="We'd like help reporting to a voluntary scheme: ">Talk to us about voluntary schemes</a>
+    </article>
+    <article class="card">
+      <span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-tax"/></svg></span>
+      <h3>Plastic Packaging Tax data</h3>
+      <p>Liability calculations and the data behind your returns, for UK manufacturers and importers of plastic packaging.</p>
+      <a class="arrow" style="margin-top:auto" href="https://www.ecoveritas.com/compliance/plastic-packaging-tax">Plastic Packaging Tax</a>
+    </article>
+  </div>
+</section>
+
+</div>
