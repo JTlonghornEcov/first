@@ -1,14 +1,17 @@
 // Makes a private preview link for a concept page (disabled entry) and runs QA on it: overflow at five widths,
 // a single H1, in-page anchors, hero buttons, text contrast (WCAG AA) and script errors. Screenshots go to
 // screenshots/strategy-<slug>-<width>.png. Prints the preview URL last (never commit it).
-// Usage: node tools/strategy/check.mjs <slug>
+// Usage: node tools/strategy/check.mjs <slug>   (or URL=<preview url> node tools/strategy/check.mjs <name> for any page)
 import fs from 'node:fs';
 import { launch } from '../../scripts/lib.mjs';
 const slug = process.argv[2];
-const P = JSON.parse(fs.readFileSync(`payloads/strategy/${slug}/page.json`, 'utf8'));
+const P = process.env.URL ? null : JSON.parse(fs.readFileSync(`payloads/strategy/${slug}/page.json`, 'utf8'));
 const { browser, page } = await launch({ write: /actions\/preview\/create-token/, log: false });
-await page.goto(`https://www.ecoveritas.com/admin/entries/x/${P.entryId}`, { waitUntil: 'networkidle' });
-const url = await page.evaluate(async (u) => Craft.cp.$primaryForm.data('elementEditor').getTokenizedPreviewUrl(u, 'x-craft-preview', true), `https://www.ecoveritas.com/concept-${slug}`);
+let url = process.env.URL;
+if (!url) {
+  await page.goto(`https://www.ecoveritas.com/admin/entries/x/${P.entryId}`, { waitUntil: 'networkidle' });
+  url = await page.evaluate(async (u) => Craft.cp.$primaryForm.data('elementEditor').getTokenizedPreviewUrl(u, 'x-craft-preview', true), `https://www.ecoveritas.com/concept-${slug}`);
+}
 const errors = []; page.on('pageerror', e => errors.push(e.message));
 for (const w of [1440, 1024, 768, 375, 320]) {
   await page.setViewportSize({ width: w, height: 900 });

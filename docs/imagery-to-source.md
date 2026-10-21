@@ -11,3 +11,4 @@
 9. UK EPR explainer v2, Data Calculation card (analyst working on packaging data on screen): https://www.ecoveritas.com/admin/entries/x/11248
 10. Testimonials concept, New Look case study card (New Look store or packaging): https://www.ecoveritas.com/admin/entries/x/11306
 11. New Look logo file (SVG or transparent PNG) for the New Look × Ecoveritas lock-up: https://www.ecoveritas.com/case-studies/new-look
+12. Technology page (was my.ecoveritas), hero image: currently borrows the Data Analytics/Ecoview graphic, needs a general technology image (people using software, data on screen): https://www.ecoveritas.com/powerful-epr-software
