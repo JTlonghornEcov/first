@@ -1,0 +1,94 @@
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="c-tag" viewBox="0 0 24 24"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="8" cy="8" r="1.6"/></symbol>
+  <symbol id="c-bin" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></symbol>
+  <symbol id="c-sort" viewBox="0 0 24 24"><path d="M7 4v16M3 16l4 4 4-4M17 20V4M13 8l4-4 4 4"/></symbol>
+  <symbol id="c-cycle" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></symbol>
+  <symbol id="c-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></symbol>
+  <symbol id="c-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
+  <symbol id="c-box" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></symbol>
+</svg>
+<style>
+.evc .rag { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr)); }
+.evc .rag article { position:relative; display:flex; flex-direction:column; gap:10px; padding:26px 24px 24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); overflow:hidden; }
+.evc .rag article::before { content:""; position:absolute; inset:0 0 auto 0; height:8px; }
+.evc .rag .r::before { background:#c8102e; } .evc .rag .a::before { background:#f2a900; } .evc .rag .g::before { background:#2e7d32; }
+.evc .rag .dot { display:flex; align-items:center; gap:10px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.evc .rag .dot::before { content:""; width:14px; height:14px; border-radius:50%; }
+.evc .rag .r .dot { color:#a50d26; } .evc .rag .r .dot::before { background:#c8102e; }
+.evc .rag .a .dot { color:#7a5500; } .evc .rag .a .dot::before { background:#f2a900; }
+.evc .rag .g .dot { color:#1f5c23; } .evc .rag .g .dot::before { background:#2e7d32; }
+.evc .rag .fee { margin-top:auto; display:flex; align-items:center; gap:8px; font-size:14px; font-weight:700; color:var(--ink); }
+.evc .rag .fee i { display:flex; gap:3px; } .evc .rag .fee i span { width:14px; height:14px; border-radius:3px; background:var(--line); }
+.evc .rag .r .fee i span { background:#c8102e; } .evc .rag .a .fee i span:nth-child(-n+2) { background:#f2a900; } .evc .rag .g .fee i span:first-child { background:#2e7d32; }
+.evc .pipe { display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr)); counter-reset:p; }
+.evc .pipe li { position:relative; display:flex; flex-direction:column; gap:8px; padding:20px; border-radius:var(--r); background:#fff; counter-increment:p; }
+.evc .pipe .ic { display:grid; place-items:center; width:44px; height:44px; border-radius:50%; background:var(--slate); color:var(--yellow); }
+.evc .pipe b { font-size:17px; } .evc .pipe b::before { content:counter(p) ". "; color:var(--teal); }
+.evc .pipe p { font-size:14.5px; }
+</style>
+<div class="evc" id="c-ram">
+
+<section class="sec" aria-labelledby="c-ram-who-h">
+  <div class="two">
+    <div class="stack">
+      <p class="eyebrow" style="margin:0">Who it applies to</p>
+      <h2 id="c-ram-who-h">Large producers of household packaging, one component at a time.</h2>
+      <p class="lead">Only large producers who supply household packaging are obliged to assess it using the RAM, and every individual packaging component must be assessed separately.</p>
+      <p>The rating decides your fee. Since 2026, assessed packaging attracts varying EPR fees, known as modulated fees: red packaging attracts the highest costs and green the lowest.</p>
+    </div>
+    <div class="dark">
+      <span class="k">Why it matters</span>
+      <p class="big">Red costs more. <em>Every year it stays red.</em></p>
+      <p>A pack rated red pays the highest fee for as long as it's on the market, so the rating is worth getting right, and worth improving.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="c-ram-ratings" aria-labelledby="c-ram-ratings-h">
+  <div class="head split">
+    <h2 id="c-ram-ratings-h">What does the output mean?</h2>
+    <p class="lead">The RAM gives each kind of packaging a rating of red, amber or green.</p>
+  </div>
+  <div class="rag">
+    <article class="r"><span class="dot">Red</span><p>Packaging with elements that make it difficult to recycle at scale.</p><span class="fee"><i aria-hidden="true"><span></span><span></span><span></span></i>Highest fee</span></article>
+    <article class="a"><span class="dot">Amber</span><p>Some difficulties in being widely recycled, such as limited collection and sortation, needing specialist infrastructure to reprocess, or an output limited in use or quality.</p><span class="fee"><i aria-hidden="true"><span></span><span></span><span></span></i>Middle fee</span></article>
+    <article class="g"><span class="dot">Green</span><p>Widely recyclable in the current UK infrastructure.</p><span class="fee"><i aria-hidden="true"><span></span><span></span><span></span></i>Lowest fee</span></article>
+  </div>
+</section>
+
+<section class="sec" id="c-ram-help" aria-labelledby="c-ram-help-h">
+  <div class="next">
+    <div class="stack">
+      <span class="k">How we help</span>
+      <h2 id="c-ram-help-h">Know your ratings. Then move packs out of red.</h2>
+      <p>The EPR Fee Audit includes a RAM and modulation review: the rating of each pack, and what sitting in the wrong band costs you. Packaging Optimisation then redesigns packs for better RAM performance, lower costs and lower fees.</p>
+    </div>
+    <div class="btns">
+      <a class="btn" href="https://www.ecoveritas.com/epr-fee-audit">EPR Fee Audit <span aria-hidden="true">&#8594;</span></a>
+      <a class="btn ghost" style="color:#fff" href="https://www.ecoveritas.com/services/packaging-optimisation">Packaging Optimisation</a>
+    </div>
+  </div>
+  <div class="tool" aria-label="Planned tool: red packaging cost estimator">
+    <span class="badge">Lead tool · to be built</span>
+    <h3>What could red packaging cost you?</h3>
+    <div class="flow" aria-hidden="true"><span>Tonnage by material</span><i>&#215;</i><span>RAG rating</span><i>&#8594;</i><span>Indicative fee difference</span><i>&#8594;</i><span class="end">Get this checked properly (Fee Audit)</span></div>
+    <p class="note">Concept placeholder. Turns the "red costs more" worry into a number, then into an enquiry.</p>
+  </div>
+</section>
+
+<section class="sec panel" aria-labelledby="c-ram-stages-h">
+  <div class="head split">
+    <h2 id="c-ram-stages-h">What is involved in the RAM?</h2>
+    <p class="lead">Five stages of assessment, for every component.</p>
+  </div>
+  <ol class="pipe">
+    <li><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-tag"/></svg></span><b>Classifying</b><p>What material type is used? Which packaging unit are you assessing?</p></li>
+    <li><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-bin"/></svg></span><b>Collection</b><p>How widely is the material collected by local authorities?</p></li>
+    <li><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-sort"/></svg></span><b>Sorting</b><p>Can the packaging be sorted at scale?</p></li>
+    <li><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-cycle"/></svg></span><b>Reprocessing</b><p>Can the packaging be reprocessed easily and without harm?</p></li>
+    <li><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-drop"/></svg></span><b>Application</b><p>Are there any contaminants that would affect the process or output?</p></li>
+  </ol>
+  <p class="muted">Going deeper: <a class="x" href="https://www.ecoveritas.com/who-assesses-recyclability-under-ram">Who assesses recyclability under RAM?</a> and <a class="x" href="https://www.ecoveritas.com/articles/all-about-recyclability-assessment-methodology-ram">All about RAM</a>.</p>
+</section>
+
+</div>

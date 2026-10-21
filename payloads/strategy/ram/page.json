@@ -1,0 +1,21 @@
+{
+  "name": "RAM",
+  "live": "https://www.ecoveritas.com/compliance/recyclability-assessment-methodology",
+  "canonical": "https://www.ecoveritas.com/compliance/recyclability-assessment-methodology",
+  "heroTitle": "Recyclability Assessment Methodology (RAM)",
+  "heroIntro": "<p>Liable producers must assess their obligated household packaging using the Recyclability Assessment Methodology (RAM). Every pack gets a red, amber or green rating, and red packaging now costs the most in EPR fees.</p>",
+  "heroImage": 1780,
+  "buttons": [
+    [
+      "#c-ram-help",
+      "Get your RAM ratings checked"
+    ],
+    [
+      "#c-ram-ratings",
+      "What the ratings mean"
+    ]
+  ],
+  "ctaTitle": "Need help with the Recyclability Assessment Methodology?",
+  "ctaText": "Tell us about your household packaging. We'll check your RAM ratings and show you what moving packs out of red would save.",
+  "entryId": 11596
+}
