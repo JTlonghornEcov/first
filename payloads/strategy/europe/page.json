@@ -20,5 +20,7 @@
   "includes": {
     "MAP": "payloads/europe-map/page.html"
   },
-  "entryId": 11409
+  "entryId": 11409,
+  "seoTitle": "EPR & PPWR Compliance in Europe",
+  "seoDescription": "National packaging, WEEE and battery EPR in every EU market, with PPWR on top. Explore the map, see what applies in each country, and plan both layers with one team."
 }
