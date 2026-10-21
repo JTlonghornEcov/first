@@ -1,0 +1,301 @@
+<style>
+/* Shared design language for the strategic-review concept pages. Scoped to .evc (the root of each page body).
+   Inlined into every page by tools/strategy/save.mjs. */
+html, body { overflow-x:clip; }
+.evc { --ink:#212121; --body:#333c45; --muted:#55656d; --slate:#2f444e; --slate-2:#3d5662; --slate-3:#4d6875; --teal:#006374; --teal-2:#e3f0f3;
+  --yellow:#ffcd03; --yellow-2:#fff6cc; --grey:#f6f7f7; --line:#dfe5e7; --mist:#c9dbe2; --r:16px;
+  color:var(--ink); display:grid; gap:clamp(64px,9vw,112px); font-size:16px; line-height:1.6; }
+.evc *, .evc *::before, .evc *::after { box-sizing:border-box; }
+.evc > * { min-width:0; }
+.evc :is(h2,h3,h4,p,ul,ol,li,dl,dt,dd,figure) { margin:0; padding:0; border:0; font-family:inherit; }
+.evc :is(ul,ol) { list-style:none; }
+.evc.evc li { margin:0; }   /* beats the site's list-item margins (doubled class for specificity) */
+.evc h2 { font-size:clamp(28px,3.6vw,42px); line-height:1.12; font-weight:700; letter-spacing:-.01em; color:var(--ink); }
+.evc h3 { font-size:19px; line-height:1.25; font-weight:700; color:var(--ink); }
+.evc p { color:var(--body); }
+.evc a { text-decoration:none; }
+.evc .sec { display:grid; gap:clamp(24px,3.4vw,40px); scroll-margin-top:110px; }
+.evc .eyebrow { display:inline-flex; align-items:center; gap:10px; margin:0 0 12px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.evc .eyebrow::before { content:""; width:28px; height:4px; border-radius:2px; background:var(--yellow); }
+.evc .head { display:grid; gap:14px; max-width:820px; }
+.evc .head.split { max-width:none; }
+@media (min-width:1024px) { .evc .head.split { grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:48px; align-items:end; } }
+.evc .lead { font-size:clamp(17px,1.7vw,20px); line-height:1.55; }
+.evc .muted { color:var(--muted); }
+.evc .icon { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+.evc :is(a,summary,button):focus-visible { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+.evc .x { color:var(--teal); font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+
+/* Buttons */
+.evc .btns { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+.evc .btn { display:inline-flex; align-items:center; gap:10px; padding:14px 22px; border-radius:2px; background:var(--yellow); color:var(--ink); font-weight:700; line-height:1.2; }
+.evc .btn:hover { background:#ffd83a; }
+.evc .btn.ghost { background:transparent; box-shadow:inset 0 0 0 2px currentColor; }
+.evc .btn.ghost:hover { background:rgba(0,0,0,.04); }
+.evc .on-dark .btn.ghost { color:#fff; }
+.evc .arrow { display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--teal); }
+.evc .arrow::after { content:"\2192"; transition:transform .15s ease; }
+.evc a:hover .arrow::after, .evc a.arrow:hover::after { transform:translateX(3px); }
+@media (max-width:560px) { .evc .btns .btn { width:100%; justify-content:center; } }
+
+/* Grids and cards */
+.evc .grid { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(min(var(--min,260px),100%),1fr)); }
+.evc .card { display:flex; flex-direction:column; gap:10px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+.evc .card.grey { background:var(--grey); border-color:var(--grey); }
+.evc .card p { font-size:15.5px; }
+.evc .card .ic { display:grid; place-items:center; width:46px; height:46px; border-radius:12px; background:var(--teal-2); color:var(--teal); }
+.evc a.card { color:inherit; transition:border-color .15s ease, transform .15s ease; }
+.evc a.card:hover { border-color:var(--slate); transform:translateY(-2px); }
+.evc a.card .arrow { margin-top:auto; padding-top:6px; }
+.evc .num { font-size:30px; font-weight:700; line-height:1; color:var(--teal); font-variant-numeric:tabular-nums; }
+.evc .panel { padding:clamp(24px,4vw,48px); border-radius:var(--r); background:var(--grey); }
+.evc .two { display:grid; gap:clamp(24px,3vw,48px); }
+@media (min-width:1024px) { .evc .two { grid-template-columns:minmax(0,7fr) minmax(0,5fr); align-items:center; } .evc .two.even { grid-template-columns:1fr 1fr; } .evc .two.top { align-items:start; } }
+.evc .stack { display:grid; gap:16px; align-content:start; }
+
+/* Slate statement / dark cards */
+.evc .dark { display:flex; flex-direction:column; gap:18px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--slate); color:#fff; }
+.evc .dark.teal { background:var(--teal); }
+.evc .dark :is(h2,h3,b,strong) { color:#fff; }
+.evc .dark p { color:#e8eff2; }
+.evc .dark .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .dark em { font-style:normal; color:var(--yellow); }
+.evc .dark .big { font-size:clamp(22px,2.4vw,30px); line-height:1.3; font-weight:700; color:#fff; letter-spacing:-.01em; }
+
+/* Proof strip */
+.evc .proof { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); }
+.evc .proof li { display:grid; gap:6px; align-content:start; padding:22px 24px; border-radius:var(--r); background:var(--slate); }
+.evc .proof li.hl { background:var(--teal); }
+.evc .proof b { font-size:clamp(30px,3.4vw,42px); line-height:1; font-weight:700; color:var(--yellow); letter-spacing:-.01em; }
+.evc .proof span { font-size:15px; line-height:1.45; color:#e8eff2; }
+
+/* Chips */
+.evc .chips { display:flex; flex-wrap:wrap; gap:8px; }
+.evc .chips li, .evc .chip { display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:99px; background:#fff; border:1px solid var(--line); font-size:14px; font-weight:700; color:var(--ink); }
+.evc .chips li::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--teal); }
+
+/* Numbered steps */
+.evc .steps { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr)); counter-reset:st; }
+.evc .steps > li { position:relative; display:flex; flex-direction:column; gap:10px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); counter-increment:st; }
+.evc .steps > li::before { content:counter(st,decimal-leading-zero); font-size:30px; font-weight:700; line-height:1; color:var(--teal); font-variant-numeric:tabular-nums; }
+.evc .steps p { font-size:15.5px; }
+
+/* Ticks list */
+.evc .ticks { display:grid; gap:10px; }
+.evc .ticks li { display:flex; gap:12px; align-items:flex-start; }
+.evc .ticks li::before { content:""; flex:none; width:20px; height:20px; margin-top:3px; border-radius:50%; background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 12 4 4 8-8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat; }
+.evc .dark .ticks li::before { background-color:var(--yellow); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 12 4 4 8-8' fill='none' stroke='%23212121' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+
+/* Router: "which describes you?" link rows */
+.evc .router { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); }
+.evc .router a { display:grid; grid-template-columns:auto minmax(0,1fr); gap:6px 16px; align-items:start; padding:22px; border-radius:var(--r); background:#fff; border:1px solid var(--line); color:var(--ink); transition:border-color .15s ease, box-shadow .15s ease; }
+.evc .router a:hover { border-color:var(--slate); box-shadow:0 8px 24px rgba(47,68,78,.12); }
+.evc .router .ic { grid-row:span 3; display:grid; place-items:center; width:46px; height:46px; border-radius:50%; background:var(--slate); color:var(--yellow); }
+.evc .router b { font-size:17.5px; line-height:1.3; }
+.evc .router span.d { font-size:15px; color:var(--muted); line-height:1.5; }
+.evc .router .arrow { font-size:15px; }
+
+/* Lead tool placeholder (concept only: the tool itself is still to be built) */
+.evc .tool { position:relative; display:grid; gap:18px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:repeating-linear-gradient(135deg,#fff 0 14px,#fbfcfc 14px 28px); border:2px dashed var(--slate-3); }
+.evc .tool .badge { justify-self:start; display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:99px; background:var(--slate); color:var(--yellow); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.evc .tool h3 { font-size:clamp(22px,2.4vw,28px); }
+.evc .tool .flow { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.evc .tool .flow span { padding:10px 14px; border-radius:10px; background:#fff; border:1px solid var(--line); font-size:14.5px; font-weight:700; color:var(--ink); }
+.evc .tool .flow i { font-style:normal; color:var(--teal); font-weight:700; }
+.evc .tool .flow span.end { background:var(--yellow); border-color:var(--yellow); }
+.evc .tool .note { font-size:14px; color:var(--muted); }
+@media (max-width:560px) { .evc .tool .flow { flex-direction:column; align-items:flex-start; } .evc .tool .flow i { transform:rotate(90deg); margin-left:14px; } }
+
+/* Callout (e.g. "not listed?") */
+.evc .callout { display:grid; gap:16px; padding:clamp(24px,3vw,36px); border-radius:var(--r); background:var(--yellow-2); border-left:6px solid var(--yellow); }
+@media (min-width:1024px) { .evc .callout { grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:32px; } }
+.evc .callout p.big { font-size:clamp(20px,2.2vw,26px); line-height:1.3; font-weight:700; color:var(--ink); }
+
+/* Tabs-free market list */
+.evc .markets { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); }
+.evc .market { display:flex; flex-direction:column; gap:10px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+.evc .market .top { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 12px; }
+.evc .market .tag { padding:4px 10px; border-radius:99px; background:var(--teal-2); color:var(--teal); font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
+.evc .market .tag.soon { background:var(--grey); color:var(--muted); }
+.evc .market p { font-size:15.5px; }
+.evc .market a { margin-top:auto; }
+.evc .market dl { display:grid; gap:10px; }
+.evc .market dt { font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); }
+.evc .market dd { font-size:15px; color:var(--body); }
+.evc .market h3 { font-size:22px; }
+.evc .market .sub { font-size:15px; color:var(--muted); margin-top:-4px; }
+
+/* FAQ */
+.evc .faq { display:grid; gap:10px; max-width:920px; }
+.evc details { border-radius:12px; background:var(--grey); }
+.evc summary { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:18px 20px; cursor:pointer; font-weight:700; font-size:17px; list-style:none; color:var(--ink); }
+.evc summary::-webkit-details-marker { display:none; }
+.evc summary::after { content:"+"; flex:none; display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:#fff; font-size:20px; line-height:1; transition:transform .2s ease; }
+.evc details[open] summary::after { transform:rotate(45deg); }
+.evc details > div { padding:0 20px 20px; display:grid; gap:10px; }
+
+/* Next step band */
+.evc .next { display:grid; gap:18px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--slate); }
+@media (min-width:1024px) { .evc .next { grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:40px; } }
+.evc .next h2, .evc .next h3 { color:#fff; }
+.evc .next p { color:#e8eff2; }
+.evc .next .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+
+/* Other regions strip and further reading */
+.evc .regions { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+.evc .regions a { padding:9px 16px; border-radius:99px; border:1px solid var(--line); color:var(--ink); font-weight:700; font-size:14.5px; }
+.evc .regions a:hover { border-color:var(--slate); }
+.evc .reading { display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; }
+
+/* Form intro just above the contact block */
+.evc .formintro { display:grid; gap:12px; max-width:820px; }
+
+@media (prefers-reduced-motion:reduce) { .evc *, .evc *::before, .evc *::after { transition:none !important; } .evc a.card:hover { transform:none; } }
+#evx-contact { scroll-margin-top:96px; }
+
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="c-pound" viewBox="0 0 24 24"><path d="M16 6.5A4 4 0 0 0 9 9v9M7 13h6M6 18h11"/></symbol>
+  <symbol id="c-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="c-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"/><path d="M5 19l8-8"/></symbol>
+  <symbol id="c-data" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></symbol>
+  <symbol id="c-scale" viewBox="0 0 24 24"><path d="M12 4v16M6 20h12M5 8h14"/><path d="M5 8l-3 6a3 3 0 0 0 6 0zM19 8l-3 6a3 3 0 0 0 6 0z"/></symbol>
+</svg>
+<style>
+.evc .offer { display:grid; gap:clamp(20px,3vw,40px); padding:clamp(24px,4vw,48px); border-radius:var(--r); background:var(--slate); scroll-margin-top:110px; }
+@media (min-width:1024px) { .evc .offer { grid-template-columns:minmax(0,6fr) minmax(0,5fr); align-items:center; } }
+.evc .offer .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .offer h2 { color:#fff; }
+.evc .offer p { color:#e8eff2; }
+.evc .offer .why { display:inline-flex; align-items:center; gap:10px; padding:8px 14px; border-radius:99px; background:var(--slate-2); color:#fff; font-size:14px; font-weight:700; }
+.evc .offer .why b { color:var(--yellow); }
+.evc .offer ol { display:grid; gap:10px; counter-reset:o; }
+.evc .offer ol li { display:grid; grid-template-columns:auto minmax(0,1fr); gap:2px 14px; padding:16px 18px; border-radius:12px; background:var(--slate-2); counter-increment:o; }
+.evc .offer ol li::before { content:counter(o,decimal-leading-zero); grid-row:span 2; font-size:22px; font-weight:700; color:var(--yellow); line-height:1.1; }
+.evc .offer ol b { color:#fff; font-size:16.5px; }
+.evc .offer ol span { color:#e8eff2; font-size:15px; }
+.evc .pd { display:grid; gap:12px; }
+@media (min-width:768px) { .evc .pd { grid-template-columns:1fr 1fr; } }
+.evc .pd > div { display:grid; gap:8px; align-content:start; padding:24px; border-radius:var(--r); }
+.evc .pd .k { font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.evc .pd .prob { background:var(--grey); } .evc .pd .prob .k { color:var(--muted); }
+.evc .pd .res { background:var(--yellow-2); } .evc .pd .res .k { color:var(--ink); }
+.evc .duo2 { display:grid; gap:12px; align-items:stretch; }
+@media (min-width:1024px) { .evc .duo2 { grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); } }
+.evc .duo2 .side { display:flex; flex-direction:column; gap:12px; padding:28px; border-radius:var(--r); }
+.evc .duo2 .side.e { background:var(--teal); } .evc .duo2 .side.v { background:var(--slate); }
+.evc .duo2 .side :is(h3,p,li) { color:#fff; } .evc .duo2 .side p { color:#e8eff2; }
+.evc .duo2 .side .k { font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .duo2 .side .ic { display:grid; place-items:center; width:52px; height:52px; border-radius:50%; background:rgba(255,255,255,.12); color:#fff; }
+.evc .duo2 .plus { display:grid; place-items:center; justify-self:center; align-self:center; width:56px; height:56px; border-radius:50%; background:var(--yellow); color:var(--ink); font-size:30px; font-weight:700; line-height:1; }
+.evc .duo2 .side ul { display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; }
+.evc .duo2 .side ul li { padding:5px 11px; border-radius:99px; background:rgba(255,255,255,.12); font-size:13.5px; font-weight:700; }
+.evc .indep { display:flex; gap:14px; align-items:center; padding:18px 22px; border-radius:12px; background:var(--grey); }
+.evc .indep .icon { color:var(--teal); }
+</style>
+<div class="evc" id="c-veolia">
+
+<section class="offer" id="c-ve-offer" aria-labelledby="c-ve-offer-h">
+  <div class="stack">
+    <span class="k">For producers working with Veolia</span>
+    <h2 id="c-ve-offer-h">Check your PRN data. Free.</h2>
+    <p>Get a full, independent review of your packaging data, so you only buy the PRNs you actually owe and only pay the EPR fees you should.</p>
+    <p><span class="why">Why now: <b>PRN prices have risen 3–4x</b></span></p>
+    <div class="btns"><a class="btn" href="#evx-contact" data-enquiry="PRN audit. Our annual turnover is about: . We handle about  SKUs.">Apply for a free audit <span aria-hidden="true">&#8594;</span></a></div>
+  </div>
+  <ol aria-label="How the free audit works">
+    <li><b>Apply</b><span>Submit a short application using the form below.</span></li>
+    <li><b>We review your data</b><span>Packaging categorisation, weights and material classifications. We confirm how many PRNs you need, and that your EPR fee is accurate.</span></li>
+    <li><b>No upfront cost</b><span>Selected producers get their audit at no cost, with nothing to pay upfront.</span></li>
+  </ol>
+</section>
+
+<section class="sec" aria-labelledby="c-ve-proof-h">
+  <div class="head split">
+    <h2 id="c-ve-proof-h">What a proper look at the data finds</h2>
+    <p class="lead">Two producers, two corrections to the data behind their EPR return.</p>
+  </div>
+  <ul class="proof">
+    <li class="hl"><b>£1.4m &#8594; £250k</b><span>A construction equipment manufacturer cut its EPR obligation by over 80%, by classifying packaging correctly as household or non-household.</span></li>
+    <li><b>£1m</b><span>Saved by a supermarket chain through product reclassification.</span></li>
+  </ul>
+  <p class="muted">Already paying EPR fees and want the full picture? The <a class="x" href="https://www.ecoveritas.com/epr-fee-audit">EPR Fee Audit</a> corrects your declaration and shows which pack changes lower your fees from here on.</p>
+</section>
+
+<section class="sec" aria-labelledby="c-ve-problem-h">
+  <div class="head"><h2 id="c-ve-problem-h">Most producers are leaving value on the table, and don't know it.</h2></div>
+  <div class="pd">
+    <div class="prob"><span class="k">The data problem</span><p>Packaging data is complex. Supply chains span multiple suppliers, weights are difficult to validate and the data feeding into compliance submissions is rarely as complete or as strategically reviewed as it could be.</p></div>
+    <div class="res"><span class="k">The result</span><p>A compliance position that is filed but not optimised. Costs accepted rather than challenged. Sustainability opportunities missed. And a data position that nobody has truly interrogated on your behalf.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="c-ve-how" aria-labelledby="c-ve-how-h">
+  <div class="head split">
+    <h2 id="c-ve-how-h">Two specialists working together. More insight. More confidence.</h2>
+    <p class="lead">Getting more from your compliance starts with having the right people working on your data, with the right expertise and the right focus.</p>
+  </div>
+  <div class="duo2">
+    <div class="side e">
+      <span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-data"/></svg></span>
+      <span class="k">Ecoveritas</span>
+      <h3>Data you can trust</h3>
+      <p>Ecoveritas handles the full upstream data journey: collection, supplier engagement, weight validation and impartial reporting. Structurally independent, with no compliance agenda.</p>
+      <ul aria-label="What Ecoveritas does"><li>Collection</li><li>Supplier engagement</li><li>Weight validation</li><li>Impartial reporting</li></ul>
+    </div>
+    <span class="plus" aria-hidden="true">+</span>
+    <div class="side v">
+      <span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-scale"/></svg></span>
+      <span class="k">Veolia</span>
+      <h3>Compliance expertise applied</h3>
+      <p>Veolia applies their specialist regulatory and compliance expertise on top. When two specialists bring their combined skills to your data, the quality of analysis improves. More is found. More is challenged.</p>
+      <ul aria-label="What Veolia does"><li>Regulatory expertise</li><li>Compliance analysis</li><li>Challenge</li></ul>
+    </div>
+  </div>
+  <p class="indep"><svg class="icon" aria-hidden="true"><use href="#c-eye"/></svg><span>Because both organisations work independently, producers can be confident the analysis is entirely on their side, with no other agenda in the room.</span></p>
+</section>
+
+<section class="sec" aria-labelledby="c-ve-gain-h">
+  <div class="head split">
+    <h2 id="c-ve-gain-h">What you gain</h2>
+    <p class="lead">Producers working with the alliance get something the market has not offered before in this way.</p>
+  </div>
+  <div class="grid" style="--min:250px">
+    <div class="card grey"><span class="ic" aria-hidden="true" style="background:#fff"><svg class="icon"><use href="#c-pound"/></svg></span><h3>Real cost reduction</h3><p>More complete, rigorously challenged data means you pay exactly what you should.</p></div>
+    <div class="card grey"><span class="ic" aria-hidden="true" style="background:#fff"><svg class="icon"><use href="#c-eye"/></svg></span><h3>Actionable insight</h3><p>Across your full packaging position, not just what's been filed.</p></div>
+    <div class="card grey"><span class="ic" aria-hidden="true" style="background:#fff"><svg class="icon"><use href="#c-leaf"/></svg></span><h3>Measurable sustainability</h3><p>Improvements you can demonstrate, report and build strategy around.</p></div>
+  </div>
+  <div class="tool" aria-label="Planned tool: EPR fee overpayment estimator teaser">
+    <span class="badge">Lead tool · to be built</span>
+    <h3>How much could you be overpaying?</h3>
+    <div class="flow" aria-hidden="true"><span>Annual packaging tonnage</span><i>&#8594;</i><span>Main materials</span><i>&#8594;</i><span>Supplier default weights?</span><i>&#8594;</i><span class="end">Indicative overpayment range</span></div>
+    <p class="note">Concept placeholder: a short teaser of the overpayment estimator, which lives in full on the EPR Fee Audit page. The review ranks it as the most valuable tool on the site.</p>
+  </div>
+</section>
+
+</div>
+
+<script>
+/* Enquiry prefill: links with data-enquiry="…" jump to #evx-contact (normal anchor behaviour) and pre-fill the
+   enquiry box with that message. Never overwrites text the visitor typed. Without JS the links still jump.
+   The form is looked up on click because the contact block is rendered after this script. */
+(function () {
+  var lastAuto = '';
+  function enquiryBox() {
+    var target = document.getElementById('evx-contact');
+    var section = target && target.closest('section');
+    return section && section.querySelector('form textarea');
+  }
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('a[data-enquiry]');
+    var box = link && enquiryBox();
+    if (!box) return;
+    if (box.value.trim() === '' || box.value === lastAuto) {
+      box.value = lastAuto = link.getAttribute('data-enquiry');
+      box.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    // let the anchor scroll first, then put the cursor at the end of the message
+    setTimeout(function () { try { box.focus({ preventScroll: true }); box.setSelectionRange(box.value.length, box.value.length); } catch (err) {} }, 400);
+  });
+})();
+</script>

@@ -8,6 +8,7 @@ html, body { overflow-x:clip; }
 .evc > * { min-width:0; }
 .evc :is(h2,h3,h4,p,ul,ol,li,dl,dt,dd,figure) { margin:0; padding:0; border:0; font-family:inherit; }
 .evc :is(ul,ol) { list-style:none; }
+.evc.evc li { margin:0; }   /* beats the site's list-item margins (doubled class for specificity) */
 .evc h2 { font-size:clamp(28px,3.6vw,42px); line-height:1.12; font-weight:700; letter-spacing:-.01em; color:var(--ink); }
 .evc h3 { font-size:19px; line-height:1.25; font-weight:700; color:var(--ink); }
 .evc p { color:var(--body); }

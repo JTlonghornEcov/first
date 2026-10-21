@@ -1,0 +1,120 @@
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="c-pound" viewBox="0 0 24 24"><path d="M16 6.5A4 4 0 0 0 9 9v9M7 13h6M6 18h11"/></symbol>
+  <symbol id="c-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="c-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"/><path d="M5 19l8-8"/></symbol>
+  <symbol id="c-data" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></symbol>
+  <symbol id="c-scale" viewBox="0 0 24 24"><path d="M12 4v16M6 20h12M5 8h14"/><path d="M5 8l-3 6a3 3 0 0 0 6 0zM19 8l-3 6a3 3 0 0 0 6 0z"/></symbol>
+</svg>
+<style>
+.evc .offer { display:grid; gap:clamp(20px,3vw,40px); padding:clamp(24px,4vw,48px); border-radius:var(--r); background:var(--slate); scroll-margin-top:110px; }
+@media (min-width:1024px) { .evc .offer { grid-template-columns:minmax(0,6fr) minmax(0,5fr); align-items:center; } }
+.evc .offer .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .offer h2 { color:#fff; }
+.evc .offer p { color:#e8eff2; }
+.evc .offer .why { display:inline-flex; align-items:center; gap:10px; padding:8px 14px; border-radius:99px; background:var(--slate-2); color:#fff; font-size:14px; font-weight:700; }
+.evc .offer .why b { color:var(--yellow); }
+.evc .offer ol { display:grid; gap:10px; counter-reset:o; }
+.evc .offer ol li { display:grid; grid-template-columns:auto minmax(0,1fr); gap:2px 14px; padding:16px 18px; border-radius:12px; background:var(--slate-2); counter-increment:o; }
+.evc .offer ol li::before { content:counter(o,decimal-leading-zero); grid-row:span 2; font-size:22px; font-weight:700; color:var(--yellow); line-height:1.1; }
+.evc .offer ol b { color:#fff; font-size:16.5px; }
+.evc .offer ol span { color:#e8eff2; font-size:15px; }
+.evc .pd { display:grid; gap:12px; }
+@media (min-width:768px) { .evc .pd { grid-template-columns:1fr 1fr; } }
+.evc .pd > div { display:grid; gap:8px; align-content:start; padding:24px; border-radius:var(--r); }
+.evc .pd .k { font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.evc .pd .prob { background:var(--grey); } .evc .pd .prob .k { color:var(--muted); }
+.evc .pd .res { background:var(--yellow-2); } .evc .pd .res .k { color:var(--ink); }
+.evc .duo2 { display:grid; gap:12px; align-items:stretch; }
+@media (min-width:1024px) { .evc .duo2 { grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); } }
+.evc .duo2 .side { display:flex; flex-direction:column; gap:12px; padding:28px; border-radius:var(--r); }
+.evc .duo2 .side.e { background:var(--teal); } .evc .duo2 .side.v { background:var(--slate); }
+.evc .duo2 .side :is(h3,p,li) { color:#fff; } .evc .duo2 .side p { color:#e8eff2; }
+.evc .duo2 .side .k { font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .duo2 .side .ic { display:grid; place-items:center; width:52px; height:52px; border-radius:50%; background:rgba(255,255,255,.12); color:#fff; }
+.evc .duo2 .plus { display:grid; place-items:center; justify-self:center; align-self:center; width:56px; height:56px; border-radius:50%; background:var(--yellow); color:var(--ink); font-size:30px; font-weight:700; line-height:1; }
+.evc .duo2 .side ul { display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; }
+.evc .duo2 .side ul li { padding:5px 11px; border-radius:99px; background:rgba(255,255,255,.12); font-size:13.5px; font-weight:700; }
+.evc .indep { display:flex; gap:14px; align-items:center; padding:18px 22px; border-radius:12px; background:var(--grey); }
+.evc .indep .icon { color:var(--teal); }
+</style>
+<div class="evc" id="c-veolia">
+
+<section class="offer" id="c-ve-offer" aria-labelledby="c-ve-offer-h">
+  <div class="stack">
+    <span class="k">For producers working with Veolia</span>
+    <h2 id="c-ve-offer-h">Check your PRN data. Free.</h2>
+    <p>Get a full, independent review of your packaging data, so you only buy the PRNs you actually owe and only pay the EPR fees you should.</p>
+    <p><span class="why">Why now: <b>PRN prices have risen 3–4x</b></span></p>
+    <div class="btns"><a class="btn" href="#evx-contact" data-enquiry="PRN audit. Our annual turnover is about: . We handle about  SKUs.">Apply for a free audit <span aria-hidden="true">&#8594;</span></a></div>
+  </div>
+  <ol aria-label="How the free audit works">
+    <li><b>Apply</b><span>Submit a short application using the form below.</span></li>
+    <li><b>We review your data</b><span>Packaging categorisation, weights and material classifications. We confirm how many PRNs you need, and that your EPR fee is accurate.</span></li>
+    <li><b>No upfront cost</b><span>Selected producers get their audit at no cost, with nothing to pay upfront.</span></li>
+  </ol>
+</section>
+
+<section class="sec" aria-labelledby="c-ve-proof-h">
+  <div class="head split">
+    <h2 id="c-ve-proof-h">What a proper look at the data finds</h2>
+    <p class="lead">Two producers, two corrections to the data behind their EPR return.</p>
+  </div>
+  <ul class="proof">
+    <li class="hl"><b>£1.4m &#8594; £250k</b><span>A construction equipment manufacturer cut its EPR obligation by over 80%, by classifying packaging correctly as household or non-household.</span></li>
+    <li><b>£1m</b><span>Saved by a supermarket chain through product reclassification.</span></li>
+  </ul>
+  <p class="muted">Already paying EPR fees and want the full picture? The <a class="x" href="https://www.ecoveritas.com/epr-fee-audit">EPR Fee Audit</a> corrects your declaration and shows which pack changes lower your fees from here on.</p>
+</section>
+
+<section class="sec" aria-labelledby="c-ve-problem-h">
+  <div class="head"><h2 id="c-ve-problem-h">Most producers are leaving value on the table, and don't know it.</h2></div>
+  <div class="pd">
+    <div class="prob"><span class="k">The data problem</span><p>Packaging data is complex. Supply chains span multiple suppliers, weights are difficult to validate and the data feeding into compliance submissions is rarely as complete or as strategically reviewed as it could be.</p></div>
+    <div class="res"><span class="k">The result</span><p>A compliance position that is filed but not optimised. Costs accepted rather than challenged. Sustainability opportunities missed. And a data position that nobody has truly interrogated on your behalf.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="c-ve-how" aria-labelledby="c-ve-how-h">
+  <div class="head split">
+    <h2 id="c-ve-how-h">Two specialists working together. More insight. More confidence.</h2>
+    <p class="lead">Getting more from your compliance starts with having the right people working on your data, with the right expertise and the right focus.</p>
+  </div>
+  <div class="duo2">
+    <div class="side e">
+      <span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-data"/></svg></span>
+      <span class="k">Ecoveritas</span>
+      <h3>Data you can trust</h3>
+      <p>Ecoveritas handles the full upstream data journey: collection, supplier engagement, weight validation and impartial reporting. Structurally independent, with no compliance agenda.</p>
+      <ul aria-label="What Ecoveritas does"><li>Collection</li><li>Supplier engagement</li><li>Weight validation</li><li>Impartial reporting</li></ul>
+    </div>
+    <span class="plus" aria-hidden="true">+</span>
+    <div class="side v">
+      <span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-scale"/></svg></span>
+      <span class="k">Veolia</span>
+      <h3>Compliance expertise applied</h3>
+      <p>Veolia applies their specialist regulatory and compliance expertise on top. When two specialists bring their combined skills to your data, the quality of analysis improves. More is found. More is challenged.</p>
+      <ul aria-label="What Veolia does"><li>Regulatory expertise</li><li>Compliance analysis</li><li>Challenge</li></ul>
+    </div>
+  </div>
+  <p class="indep"><svg class="icon" aria-hidden="true"><use href="#c-eye"/></svg><span>Because both organisations work independently, producers can be confident the analysis is entirely on their side, with no other agenda in the room.</span></p>
+</section>
+
+<section class="sec" aria-labelledby="c-ve-gain-h">
+  <div class="head split">
+    <h2 id="c-ve-gain-h">What you gain</h2>
+    <p class="lead">Producers working with the alliance get something the market has not offered before in this way.</p>
+  </div>
+  <div class="grid" style="--min:250px">
+    <div class="card grey"><span class="ic" aria-hidden="true" style="background:#fff"><svg class="icon"><use href="#c-pound"/></svg></span><h3>Real cost reduction</h3><p>More complete, rigorously challenged data means you pay exactly what you should.</p></div>
+    <div class="card grey"><span class="ic" aria-hidden="true" style="background:#fff"><svg class="icon"><use href="#c-eye"/></svg></span><h3>Actionable insight</h3><p>Across your full packaging position, not just what's been filed.</p></div>
+    <div class="card grey"><span class="ic" aria-hidden="true" style="background:#fff"><svg class="icon"><use href="#c-leaf"/></svg></span><h3>Measurable sustainability</h3><p>Improvements you can demonstrate, report and build strategy around.</p></div>
+  </div>
+  <div class="tool" aria-label="Planned tool: EPR fee overpayment estimator teaser">
+    <span class="badge">Lead tool · to be built</span>
+    <h3>How much could you be overpaying?</h3>
+    <div class="flow" aria-hidden="true"><span>Annual packaging tonnage</span><i>&#8594;</i><span>Main materials</span><i>&#8594;</i><span>Supplier default weights?</span><i>&#8594;</i><span class="end">Indicative overpayment range</span></div>
+    <p class="note">Concept placeholder: a short teaser of the overpayment estimator, which lives in full on the EPR Fee Audit page. The review ranks it as the most valuable tool on the site.</p>
+  </div>
+</section>
+
+</div>

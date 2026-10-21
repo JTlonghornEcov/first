@@ -1,0 +1,21 @@
+{
+  "name": "Veolia x Ecoveritas",
+  "live": "https://www.ecoveritas.com/veolia-ecoveritas",
+  "canonical": "https://www.ecoveritas.com/veolia-ecoveritas",
+  "heroTitle": "Veolia x Ecoveritas",
+  "heroIntro": "<h2>Independent expertise. Delivered as one.</h2><p>Packaging compliance has always required two things done well: the depth of insight to understand your data position, and the expertise to act on it. This alliance brings both together.</p>",
+  "heroImage": 8886,
+  "buttons": [
+    [
+      "#c-ve-offer",
+      "Get your free PRN audit"
+    ],
+    [
+      "#c-ve-how",
+      "How it works"
+    ]
+  ],
+  "ctaTitle": "Pay exactly what you should. Know exactly where you stand.",
+  "ctaText": "Apply for your free PRN audit. So we can assess your application, please include your annual turnover (a rough bracket is fine) and the number of SKUs you handle.",
+  "entryId": 11522
+}
