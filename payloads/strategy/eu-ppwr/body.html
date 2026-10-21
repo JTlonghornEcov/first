@@ -1,0 +1,159 @@
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="c-cycle" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-14 5.3M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></symbol>
+  <symbol id="c-box" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></symbol>
+  <symbol id="c-tag" viewBox="0 0 24 24"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="8" cy="8" r="1.6"/></symbol>
+  <symbol id="c-refill" viewBox="0 0 24 24"><path d="M8 3h8M9 3v3l-3 4v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V10l-3-4V3"/><path d="M6 14h12"/></symbol>
+  <symbol id="c-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/><path d="M7.5 14h9"/></symbol>
+  <symbol id="c-pound" viewBox="0 0 24 24"><path d="M16 6.5A4 4 0 0 0 9 9v9M7 13h6M6 18h11"/></symbol>
+  <symbol id="c-fact" viewBox="0 0 24 24"><path d="M3 21V10l6 4V10l6 4V5h6v16z"/></symbol>
+  <symbol id="c-ship" viewBox="0 0 24 24"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></symbol>
+  <symbol id="c-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
+  <symbol id="c-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.5 11h11L21 8H6.5"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></symbol>
+</svg>
+<style>
+.evc .regs6 { display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr)); }
+.evc .regs6 li { display:flex; align-items:center; gap:12px; padding:16px; border-radius:12px; background:var(--grey); font-weight:700; color:var(--ink); }
+.evc .regs6 .icon { color:var(--teal); }
+.evc .roles { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); }
+.evc .roles li { display:flex; flex-direction:column; gap:8px; padding:22px; border-radius:var(--r); border:1px solid var(--line); background:#fff; }
+.evc .roles .ic { display:grid; place-items:center; width:46px; height:46px; border-radius:50%; background:var(--slate); color:var(--yellow); }
+.evc .roles p { font-size:15px; }
+/* Timeline */
+.evc .tl { position:relative; display:grid; gap:0; }
+.evc .tl li { position:relative; display:grid; gap:4px; padding:0 0 22px 34px; }
+.evc .tl li::before { content:""; position:absolute; left:7px; top:6px; bottom:-6px; width:3px; background:var(--teal); }
+.evc .tl li:last-child::before { display:none; }
+.evc .tl li::after { content:""; position:absolute; left:0; top:4px; width:17px; height:17px; border-radius:50%; background:#fff; border:3px solid var(--teal); }
+.evc .tl li.now::after { background:var(--yellow); border-color:var(--ink); }
+.evc .tl time { font-size:14px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--teal); }
+.evc .tl b { font-size:18px; color:var(--ink); }
+.evc .tl p { font-size:15px; }
+.evc .tl .badge-now { justify-self:start; padding:3px 10px; border-radius:99px; background:var(--yellow); font-size:12px; font-weight:700; color:var(--ink); }
+@media (min-width:1024px) {
+  .evc .tl { grid-template-columns:repeat(7,minmax(0,1fr)); padding-top:30px; }
+  .evc .tl li { padding:30px 14px 0 0; align-content:start; }
+  .evc .tl li::before { left:0; right:0; top:7px; bottom:auto; width:auto; height:3px; }
+  .evc .tl li:last-child::before { display:block; right:50%; }
+  .evc .tl li::after { left:0; top:0; }
+}
+.evc .plan { display:grid; gap:12px; }
+@media (min-width:768px) { .evc .plan { grid-template-columns:1fr 1fr; } }
+.evc .plan > div { display:grid; gap:12px; align-content:start; padding:26px; border-radius:var(--r); }
+.evc .plan .now2 { background:var(--slate); } .evc .plan .now2 :is(h3,li) { color:#fff; }
+.evc .plan .later { background:var(--grey); }
+.evc .plan .k { font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .plan .later .k { color:var(--teal); }
+/* Comparison table */
+.evc.evc .tw { overflow-x:auto; border-radius:var(--r); border:1px solid var(--line); }
+.evc.evc table { width:100%; border-collapse:collapse; font-size:15px; margin:0; }
+.evc.evc th, .evc.evc td { padding:14px 18px; text-align:left; vertical-align:top; border:0; border-bottom:1px solid var(--line); line-height:1.45; }
+.evc.evc thead th { background:var(--slate); color:#fff; font-size:14px; letter-spacing:.04em; }
+.evc.evc thead th:last-child { background:var(--teal); }
+.evc.evc tbody th { font-weight:700; color:var(--ink); width:28%; background:#fff; }
+.evc.evc tbody td { color:var(--body); background:#fff; }
+.evc.evc tbody td:last-child { background:var(--teal-2); color:var(--ink); font-weight:600; }
+.evc.evc tbody tr:last-child > * { border-bottom:0; }
+@media (max-width:640px) {
+  .evc.evc table, .evc.evc tbody, .evc.evc tr, .evc.evc th, .evc.evc td { display:block; width:auto; }
+  .evc.evc thead { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+  .evc.evc .tw { overflow:visible; border:0; border-radius:0; }
+  .evc.evc tbody tr { margin-bottom:10px; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .evc.evc tbody th { width:auto; padding:12px 14px 6px; }
+  .evc.evc tbody td { display:flex; justify-content:space-between; gap:12px; padding:8px 14px; border-top:1px solid var(--line); border-bottom:0; }
+  .evc.evc tbody td::before { content:attr(data-l); flex:none; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); padding-top:2px; }
+}
+</style>
+<div class="evc" id="c-ppwr">
+
+<section class="sec" aria-labelledby="c-pp-what-h">
+  <div class="head split">
+    <div class="stack" style="gap:0"><p class="eyebrow">What PPWR is</p><h2 id="c-pp-what-h">Harmonised rules for packaging placed on the EU market.</h2></div>
+    <p class="lead">PPWR replaces the previous Packaging Directive. As a regulation, it applies directly and in the same way in every member state.</p>
+  </div>
+  <ul class="regs6" aria-label="PPWR regulates">
+    <li><svg class="icon" aria-hidden="true"><use href="#c-cycle"/></svg>Recyclability</li>
+    <li><svg class="icon" aria-hidden="true"><use href="#c-box"/></svg>Packaging design</li>
+    <li><svg class="icon" aria-hidden="true"><use href="#c-tag"/></svg>Labelling</li>
+    <li><svg class="icon" aria-hidden="true"><use href="#c-refill"/></svg>Reuse and refill systems</li>
+    <li><svg class="icon" aria-hidden="true"><use href="#c-flask"/></svg>Substances of concern</li>
+    <li><svg class="icon" aria-hidden="true"><use href="#c-pound"/></svg>Extended Producer Responsibility</li>
+  </ul>
+</section>
+
+<section class="sec" id="c-pp-who" aria-labelledby="c-pp-who-h">
+  <div class="head split">
+    <h2 id="c-pp-who-h">Who does it apply to?</h2>
+    <p class="lead">If your business places packaging on the EU market, PPWR may apply.</p>
+  </div>
+  <ul class="roles">
+    <li><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-fact"/></svg></span><h3>Manufacturers</h3><p>Produce packaging or commission packaging under their brand.</p></li>
+    <li><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-ship"/></svg></span><h3>Importers</h3><p>Bring packaged goods into the EU market.</p></li>
+    <li><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-star"/></svg></span><h3>Brand owners</h3><p>Sell products under their own name or trademark.</p></li>
+    <li><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-cart"/></svg></span><h3>Distributors and e-commerce sellers</h3><p>Place packaged goods on the EU market.</p></li>
+  </ul>
+  <div class="tool" aria-label="Planned tool: does PPWR apply to you">
+    <span class="badge">Lead tool · to be built</span>
+    <h3>Does PPWR apply to you?</h3>
+    <div class="flow" aria-hidden="true"><span>Pick your role</span><i>&#8594;</i><span>Where your packaging goes</span><i>&#8594;</i><span class="end">Book a PPWR assessment, pre-filled</span></div>
+    <p class="note">Concept placeholder. The role cards above become a quick check that drops straight into the assessment form.</p>
+  </div>
+</section>
+
+<section class="sec panel" aria-labelledby="c-pp-tl-h">
+  <div class="head split">
+    <h2 id="c-pp-tl-h">Key milestones</h2>
+    <p class="lead">PPWR applies now, and its biggest design requirements land in 2030. Your packaging plans need dates attached.</p>
+  </div>
+  <ol class="tl">
+    <li class="now"><time>August 2026</time><span class="badge-now">Applies now</span><b>PPWR applies</b><p>PFAS banned in food contact packaging.</p></li>
+    <li><time>August 2027</time><b>Producer registers</b><p>Member states establish EPR registers.</p></li>
+    <li><time>August 2028</time><b>Packaging labelling</b><p>Harmonised material composition labels.</p></li>
+    <li><time>August 2029</time><b>Reusable QR codes</b><p>Reusable packaging must include QR codes.</p></li>
+    <li><time>January 2030</time><b>Core requirements begin</b><p>Recyclability grades, recycled content, reuse targets, SUP bans, packaging minimisation.</p></li>
+    <li><time>January 2035</time><b>Recyclability at scale</b><p>Packaging must be recyclable within waste systems.</p></li>
+    <li><time>January 2038</time><b>Minimum recyclability standard</b><p>Packaging must achieve at least 80% recyclability (Grade B).</p></li>
+  </ol>
+  <div class="plan">
+    <div class="now2"><span class="k">Act now</span><h3>Before anything else</h3><ul class="ticks"><li>Identify whether PPWR applies to your organisation</li><li>Map your packaging portfolio (types, SKUs, materials)</li><li>Prepare for conformity assessment requirements</li><li>Review substances of concern (PFAS, heavy metals)</li></ul></div>
+    <div class="later"><span class="k">Start planning</span><h3>For design and supply chains</h3><ul class="ticks"><li>Recyclability performance requirements</li><li>Recycled content targets</li><li>Packaging minimisation rules</li><li>Harmonised EU labelling</li></ul></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="c-pp-vs-h">
+  <div class="two top">
+    <div class="stack">
+      <p class="eyebrow" style="margin:0">EPR and PPWR</p>
+      <h2 id="c-pp-vs-h">Two regimes, one programme</h2>
+      <p class="lead">EPR funds recycling and is declared market by market. PPWR decides whether a pack can be sold in the EU at all. Different rules, same data: that is why we run them together.</p>
+    </div>
+    <div class="tw">
+      <table>
+        <caption style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Comparison of EPR and PPWR</caption>
+        <thead><tr><th scope="col"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Topic</span></th><th scope="col">EPR</th><th scope="col">PPWR</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Scope</th><td data-l="EPR">National, one scheme per country</td><td data-l="PPWR">European, one regulation</td></tr>
+          <tr><th scope="row">What it does</th><td data-l="EPR">Funds collection and recycling</td><td data-l="PPWR">Sets the rules a pack must meet to stay on the market</td></tr>
+          <tr><th scope="row">Unit of work</th><td data-l="EPR">The declaration, on each market's calendar</td><td data-l="PPWR">The distinct pack</td></tr>
+          <tr><th scope="row">Multiplies by market</th><td data-l="EPR">Yes</td><td data-l="PPWR">No. One declaration is valid in every market</td></tr>
+          <tr><th scope="row">Registration</th><td data-l="EPR">The producer registers in each market</td><td data-l="PPWR">Nothing to register</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="c-pp-help-h">
+  <div class="next">
+    <div class="stack">
+      <span class="k">How Ecoveritas helps</span>
+      <h2 id="c-pp-help-h">Start with a PPWR assessment.</h2>
+      <p>We look at your supply chain, the packaging you handle and your role in placing it on the EU market, then brief you on exactly what applies and what to do next. From there, our PPWR Compliance Service takes you all the way to Declarations of Conformity ready to sign.</p>
+    </div>
+    <div class="btns">
+      <a class="btn" href="#evx-contact" data-enquiry="We'd like to book a PPWR assessment. ">Book a PPWR assessment <span aria-hidden="true">&#8594;</span></a>
+      <a class="btn ghost" style="color:#fff" href="https://www.ecoveritas.com/services/ppwr-compliance-service">See the full service</a>
+    </div>
+  </div>
+</section>
+
+</div>
