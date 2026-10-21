@@ -1,0 +1,21 @@
+{
+  "name": "Asia & Australia",
+  "live": "https://www.ecoveritas.com/compliance/asia-australia",
+  "canonical": "https://www.ecoveritas.com/compliance/asia-australia",
+  "heroTitle": "Packaging compliance in Asia & Australia",
+  "heroIntro": "<p>Asia and Australia sit at two different points on the same curve, some of the most established producer responsibility systems in the world next to some of the newest. Ecoveritas already supports businesses trading into Australia and New Zealand today, and we're building out our coverage across the wider region as it develops.</p>",
+  "heroImage": 9428,
+  "buttons": [
+    [
+      "#evx-contact",
+      "Tell us where you trade"
+    ],
+    [
+      "#c-as-markets",
+      "Select your market"
+    ]
+  ],
+  "ctaTitle": "Trading into Asia or Australia?",
+  "ctaText": "Talk to a team that's already there. Tell us where you trade and we'll show you exactly how we can help.",
+  "entryId": 11438
+}
