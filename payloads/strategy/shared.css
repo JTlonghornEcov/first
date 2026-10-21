@@ -111,7 +111,7 @@ html, body { overflow-x:clip; }
 /* Tabs-free market list */
 .evc .markets { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); }
 .evc .market { display:flex; flex-direction:column; gap:10px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); }
-.evc .market .top { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.evc .market .top { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 12px; }
 .evc .market .tag { padding:4px 10px; border-radius:99px; background:var(--teal-2); color:var(--teal); font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
 .evc .market .tag.soon { background:var(--grey); color:var(--muted); }
 .evc .market p { font-size:15.5px; }
