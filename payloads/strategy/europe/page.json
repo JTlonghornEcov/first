@@ -1,0 +1,24 @@
+{
+  "name": "Europe",
+  "live": "https://www.ecoveritas.com/compliance/europe",
+  "canonical": "https://www.ecoveritas.com/compliance/europe",
+  "heroTitle": "Packaging compliance in Europe",
+  "heroIntro": "<p>Europe has the most established EPR landscape in the world, and it's about to get more demanding. Between national packaging, WEEE and battery schemes in individual member states and the incoming EU wide Packaging and Packaging Waste Regulation, Ecoveritas already helps businesses stay ahead on both fronts.</p>",
+  "heroImage": 9389,
+  "buttons": [
+    [
+      "#evx-map",
+      "Find your market"
+    ],
+    [
+      "#evx-contact",
+      "Talk to our EU team"
+    ]
+  ],
+  "ctaTitle": "Selling into Europe? Let's plan for PPWR and beyond, together.",
+  "ctaText": "Tell us which markets you sell into. We'll come back with a clear plan for your EU-wide and country-specific obligations.",
+  "includes": {
+    "MAP": "payloads/europe-map/page.html"
+  },
+  "entryId": 11409
+}
