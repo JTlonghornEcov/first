@@ -1,0 +1,132 @@
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="c-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
+  <symbol id="c-data" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></symbol>
+  <symbol id="c-down" viewBox="0 0 24 24"><path d="M3 6l7 7 4-4 7 7"/><path d="M15 16h6v-6"/></symbol>
+  <symbol id="c-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h7"/></symbol>
+</svg>
+<style>
+.evc .qs { display:grid; gap:12px; }
+@media (min-width:768px) { .evc .qs { grid-template-columns:1fr auto 1fr; align-items:stretch; } }
+.evc .q { display:flex; gap:16px; align-items:center; padding:22px 24px; border-radius:var(--r); background:var(--slate); }
+.evc .q b { font-size:clamp(28px,3vw,38px); line-height:1; color:var(--yellow); white-space:nowrap; }
+.evc .q span { color:#fff; font-weight:700; font-size:17px; line-height:1.35; }
+.evc .qs .and { display:grid; place-items:center; justify-self:center; align-self:center; width:52px; height:52px; border-radius:50%; background:var(--yellow); color:var(--ink); font-weight:700; }
+.evc .verdict { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); }
+.evc .v { display:flex; flex-direction:column; gap:12px; padding:24px; border-radius:var(--r); border:1px solid var(--line); background:#fff; }
+.evc .v .tag { align-self:flex-start; padding:5px 12px; border-radius:99px; font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+.evc .v.none .tag { background:var(--grey); color:var(--muted); }
+.evc .v.small .tag { background:var(--teal-2); color:var(--teal); }
+.evc .v.large .tag { background:var(--slate); color:var(--yellow); }
+.evc .v h3 { font-size:21px; }
+.evc .v .rule { display:grid; gap:6px; padding:14px; border-radius:10px; background:var(--grey); font-size:14.5px; color:var(--ink); }
+.evc .v .rule b { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+.evc .v .arrow { margin-top:auto; }
+.evc .paying { display:grid; gap:clamp(20px,3vw,40px); padding:clamp(24px,4vw,48px); border-radius:var(--r); background:var(--teal); }
+@media (min-width:1024px) { .evc .paying { grid-template-columns:minmax(0,6fr) minmax(0,5fr); align-items:center; } }
+.evc .paying .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .paying h2 { color:#fff; } .evc .paying p { color:#e8eff2; }
+.evc .paying .proof li { background:rgba(0,0,0,.18); }
+.evc .wp { display:grid; gap:20px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--grey); }
+@media (min-width:1024px) { .evc .wp { grid-template-columns:auto minmax(0,1fr) minmax(0,1fr); align-items:center; gap:36px; } }
+.evc .cover { display:grid; place-items:end start; width:150px; height:200px; padding:16px; border-radius:6px; background:linear-gradient(160deg,var(--slate) 0 60%,var(--teal) 60%); color:#fff; font-weight:700; font-size:16px; line-height:1.2; box-shadow:0 14px 30px rgba(47,68,78,.25); transform:rotate(-3deg); }
+.evc .cover small { display:block; color:var(--yellow); font-size:11px; letter-spacing:.1em; margin-bottom:6px; }
+</style>
+<div class="evc" id="c-uk">
+
+<section class="sec" id="c-uk-check" aria-labelledby="c-uk-check-h">
+  <div class="head split">
+    <div class="stack" style="gap:0"><p class="eyebrow">Am I affected?</p><h2 id="c-uk-check-h">Two questions decide it.</h2></div>
+    <p class="lead">If the answer is yes to both, you will be required to comply. Then the same two numbers decide whether you're a small or a large producer, which changes what you have to do.</p>
+  </div>
+  <div class="qs">
+    <div class="q"><b>£1m+</b><span>Does your business turn over more than £1 million?</span></div>
+    <span class="and" aria-hidden="true">AND</span>
+    <div class="q"><b>25t+</b><span>Does your business handle more than 25 tonnes of packaging?</span></div>
+  </div>
+  <div class="verdict">
+    <article class="v none">
+      <span class="tag">Not obligated</span>
+      <h3>No to either question</h3>
+      <p>You don't need to comply with packaging EPR today. Keep an eye on your turnover and tonnage, as both thresholds are checked each year.</p>
+      <a class="arrow" href="#evx-contact" data-enquiry="We think we're under the UK EPR thresholds and would like to confirm. ">Check you're right</a>
+    </article>
+    <article class="v small">
+      <span class="tag">Small producer</span>
+      <h3>Turnover £1m–£2m and over 25 tonnes</h3>
+      <p>Or turnover over £2m, handling 25 to 50 tonnes of packaging.</p>
+      <div class="rule"><b>Report</b>On or before 1 April each year, for the previous calendar year.</div>
+      <a class="arrow" href="https://www.ecoveritas.com/compliance/small-producer-compliance-scheme">Small Producer Compliance Scheme</a>
+    </article>
+    <article class="v large">
+      <span class="tag">Large producer</span>
+      <h3>Turnover over £2m and over 50 tonnes</h3>
+      <p>Large producers report twice a year and pay EPR fees on household packaging.</p>
+      <div class="rule"><b>Report</b>By 1 October, for January to June. By 1 April, for July to December of the previous year.</div>
+      <a class="arrow" href="https://www.ecoveritas.com/services/obligation-assessment">Book an obligation assessment</a>
+    </article>
+  </div>
+  <div class="tool" aria-label="Planned tool: UK obligation checker">
+    <span class="badge">Lead tool · to be built</span>
+    <h3>The 60-second obligation checker</h3>
+    <div class="flow" aria-hidden="true"><span>Turnover</span><i>&#8594;</i><span>Packaging tonnage</span><i>&#8594;</i><span>Household packaging?</span><i>&#8594;</i><span class="end">Not obligated, small or large, plus your next step</span></div>
+    <p class="note">Concept placeholder. Replaces the static graphics above with an interactive check that ends in a tailored call to action: Obligation Assessment, a data service or the Fee Audit.</p>
+  </div>
+</section>
+
+<section class="paying" aria-labelledby="c-uk-pay-h">
+  <div class="stack">
+    <span class="k">Already paying EPR fees?</span>
+    <h2 id="c-uk-pay-h">Most producers pay on more packaging than they owe.</h2>
+    <p>The cause is usually the data, not the regulation: supplier default weights, materials in the wrong category, packaging exported or sold B2B but never deducted. The EPR Fee Audit finds those errors, corrects them, and shows which pack changes would move you into a lower fee band.</p>
+    <div class="btns"><a class="btn" href="https://www.ecoveritas.com/epr-fee-audit">See the EPR Fee Audit <span aria-hidden="true">&#8594;</span></a></div>
+  </div>
+  <ul class="proof">
+    <li><b>Over 80%</b><span>Lower EPR obligation for a construction equipment manufacturer, from £1.4m to £250k</span></li>
+    <li><b>£1m</b><span>Saved by a supermarket chain through product reclassification</span></li>
+  </ul>
+</section>
+
+<section class="sec" aria-labelledby="c-uk-what-h">
+  <div class="two">
+    <div class="stack">
+      <p class="eyebrow" style="margin:0">EPR in brief</p>
+      <h2 id="c-uk-what-h">What is Extended Producer Responsibility?</h2>
+      <p class="lead">EPR for packaging is UK legislation that makes producers responsible for, and pay the total cost of, dealing with their packaging from when it is placed onto the market to the end of its life.</p>
+      <p>If you're obligated, you collect and report data for all your obligated packaging placed on the UK market. The rules build on the Packaging Waste Regulations, in place since 1997, and household packaging producers now pay the full cost of collecting, treating and recycling the packaging they place on the market.</p>
+    </div>
+    <div class="dark">
+      <span class="k">The detail lives in our guide</span>
+      <p class="big">Modulated fees, the EPR timeline and what EPR will cost you.</p>
+      <div class="btns"><a class="btn" href="#c-uk-wp">Get the whitepaper <span aria-hidden="true">&#8594;</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="c-uk-svc-h">
+  <div class="head split">
+    <h2 id="c-uk-svc-h">Where we come in</h2>
+    <p class="lead">From small producers to large producers and multinationals, we have support designed for each tier.</p>
+  </div>
+  <div class="grid" style="--min:250px">
+    <a class="card" href="https://www.ecoveritas.com/services/obligation-assessment"><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-search"/></svg></span><h3>Obligation Assessment</h3><p>Identify exactly which regulations apply to your business and what to do, with a structured roadmap from the start.</p><span class="arrow">Find out more</span></a>
+    <a class="card" href="https://www.ecoveritas.com/services/data-collection-calculation-reporting"><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-data"/></svg></span><h3>Data Collection, Calculation &amp; Reporting</h3><p>We gather, validate and calculate your packaging data and handle supplier engagement, for audit-ready submissions.</p><span class="arrow">Find out more</span></a>
+    <a class="card" href="https://www.ecoveritas.com/epr-fee-audit"><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-down"/></svg></span><h3>EPR Fee Audit</h3><p>Already paying? We find and remove the EPR fees you shouldn't be paying.</p><span class="arrow">Find out more</span></a>
+  </div>
+</section>
+
+<section class="wp" id="c-uk-wp" aria-labelledby="c-uk-wp-h" style="scroll-margin-top:110px">
+  <div class="cover" aria-hidden="true"><span><small>WHITEPAPER</small>UK packaging EPR</span></div>
+  <div class="stack">
+    <h2 id="c-uk-wp-h" style="font-size:clamp(24px,2.6vw,32px)">Want to learn even more?</h2>
+    <p>Our in-depth whitepaper covers all you need to know about EPR, including:</p>
+    <ul class="ticks"><li>Modulated fees</li><li>The EPR timeline</li><li>How much EPR will cost</li></ul>
+  </div>
+  <div class="tool" style="background:#fff" aria-label="Planned: gated whitepaper download">
+    <span class="badge">Gated download · to be built</span>
+    <div class="flow" aria-hidden="true"><span>Work email</span><i>&#8594;</i><span class="end">Instant PDF</span></div>
+    <p class="note">For now the button below pre-fills the enquiry form.</p>
+    <div class="btns"><a class="btn" href="#evx-contact" data-enquiry="Please send me the UK EPR whitepaper. ">Request the whitepaper <span aria-hidden="true">&#8594;</span></a></div>
+  </div>
+</section>
+
+</div>
