@@ -4,3 +4,4 @@ state.json
 screenshots/
 tools/map/node_modules/
 tools/us-epr/out/
+.seed/

@@ -32,3 +32,14 @@
 | Always, last | Apply the draft and check `<page>` live | (none: tracked as a note) |
 
 Grouping across pages (e.g. one person sourcing images for several pages) is done by the team in the planner.
+
+## Getting tasks into the planner
+
+The planner keeps pages and tasks in its shared database (collections `pages` and `tasks`, one document each).
+After a build:
+1. Add or update the page in `payloads/planner/pages.json` and any extra follow-ups in `payloads/planner/extra-tasks.json`.
+2. `node tools/planner/seed.mjs .seed` writes one JSON file per document plus batches of at most 50 writes.
+3. Claude sends the batches with the ArtifactData tool to https://claude.ai/artifact/X859E3yBB59CRoaBynYy8Z.
+   Task ids are stable ("c-" + page + title), so only new tasks are added: before writing, read the existing
+   task ids and skip any that already exist, so the team's assignments, deadlines, ticks and combinations are never
+   overwritten. Tasks created this way show "From the build" in the planner.
