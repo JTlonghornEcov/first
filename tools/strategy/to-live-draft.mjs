@@ -21,7 +21,11 @@ if (!P.seoTitle) throw new Error('page.json needs seoTitle and seoDescription fo
 
 const { browser, page } = await launch({ write: /actions\/elements\/save-draft/ });
 await page.goto(`https://www.ecoveritas.com/admin/entries/x/${entry}?draftId=${DRAFT}`, { waitUntil: 'networkidle' });
-const res = await page.evaluate(async ({ entry, DRAFT, html, P, keep }) => {
+const hasButtons = await page.evaluate(() => !!document.querySelector('[data-attribute="heroButtons"]'));
+// Entry types without a hero-buttons field (e.g. 'All compliance' pages) get the hero actions as a button row at the top of the body.
+const bodyHtml = hasButtons || !(P.buttons || []).length ? html : html.replace(/(<div class="evc"[^>]*>)/, `$1\n<div class="btns" style="margin-bottom:calc(-1 * clamp(32px,5vw,64px))">${P.buttons.map(([h, l], i) => `<a class="btn${i ? ' ghost' : ''}" href="${h}">${l}${i ? '' : ' <span aria-hidden="true">&#8594;</span>'}</a>`).join('')}</div>`);
+if (bodyHtml !== html) fs.writeFileSync(`${dir}/live.html`, bodyHtml);
+const res = await page.evaluate(async ({ entry, DRAFT, html, P, keep, hasButtons }) => {
   const ed = Craft.cp.$primaryForm.data('elementEditor');
   if (String(ed.settings.draftId) !== DRAFT || String(ed.settings.canonicalId) !== entry) return { error: 'wrong draft' };
   const fd = new FormData(Craft.cp.$primaryForm[0]);
@@ -35,11 +39,11 @@ const res = await page.evaluate(async ({ entry, DRAFT, html, P, keep }) => {
   const ids = (P.buttons || []).map(() => crypto.randomUUID());
   const heroButtons = { sortOrder: ids, entries: Object.fromEntries((P.buttons || []).map(([value, label], i) => ['uid:' + ids[i], { type: 'heroButtonItem', enabled: '1', fields: { heroButtonUrl: { type: 'url', url: { value }, label, target: '' }, heroButtonStyle: i ? 'transparent' : 'default' } }])) };
   const data = { elementId: entry, draftId: DRAFT, siteId: '1', draftName: `${P.name}: strategic review redesign`,
-    modifiedDeltaNames: ['fields[heroTitle]', 'fields[heroIntroduction]', 'fields[heroImage]', 'fields[heroButtons]', 'fields[pageBuilder]', 'fields[ctaPicker]', 'fields[seo]'],
-    fields: { heroTitle: P.heroTitle, heroIntroduction: P.heroIntro, heroImage: P.heroImage ? [String(P.heroImage)] : [], heroButtons, pageBuilder: { sortOrder: order, entries }, ctaPicker: [],
+    modifiedDeltaNames: ['fields[heroTitle]', 'fields[heroIntroduction]', 'fields[heroImage]', ...(hasButtons ? ['fields[heroButtons]'] : []), 'fields[pageBuilder]', 'fields[ctaPicker]', 'fields[seo]'],
+    fields: { heroTitle: P.heroTitle, heroIntroduction: P.heroIntro, heroImage: P.heroImage ? [String(P.heroImage)] : [], ...(hasButtons ? { heroButtons } : {}), pageBuilder: { sortOrder: order, entries }, ctaPicker: [],
       seo: { titleRaw: { 1: P.seoTitle }, description: P.seoDescription } } };
-  try { const r = await Craft.sendActionRequest('POST', 'elements/save-draft', { data }); return { ok: r.data.message, live: cur.map(u => u.slice(0, 8)).join(','), kept, blocks: order.length }; }
+  try { const r = await Craft.sendActionRequest('POST', 'elements/save-draft', { data }); return { ok: r.data.message, heroButtons: hasButtons, live: cur.map(u => u.slice(0, 8)).join(','), kept, blocks: order.length }; }
   catch (e) { return { error: e.message, data: JSON.stringify(e.response?.data).slice(0, 800) }; }
-}, { entry, DRAFT, html, P, keep });
+}, { entry, DRAFT, html: bodyHtml, P, keep, hasButtons });
 console.log(JSON.stringify(res));
 await browser.close();
