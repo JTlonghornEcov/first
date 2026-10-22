@@ -25,5 +25,8 @@
   "seoDescription": "National packaging, WEEE and battery EPR in every EU market, with PPWR on top. Explore the map, see what applies in each country, and plan both layers with one team.",
   "checks": [
     "the DRS start dates added for Hungary (Jan 2024), Poland (Oct 2025) and Slovakia (Jan 2022), and the Danish scheme name (Dansk Retursystem)"
-  ]
+  ],
+  "eyebrow": "Compliance",
+  "heroButtons": false,
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/9389/european-flags-fly-before-modern-building-facade-2026-09-24-08-13-53-utc.webp"
 }

@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Website project plan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -200,7 +201,18 @@ button,input,textarea,select{font:inherit;color:inherit}
 .combine-bar .primary:disabled{opacity:.5;cursor:default}
 .task.picked{border-color:var(--atlantic);box-shadow:0 0 0 2px var(--atlantic) inset}
 .confirming{background:var(--late)!important;border-color:var(--late)!important;color:#fff!important;text-decoration:none!important;padding:2px 8px!important;border-radius:6px}
+.part.signoff{border-style:solid}
+.part.signoff.locked{opacity:.55;cursor:not-allowed;border-style:dashed}
+.part.signoff[aria-pressed="true"]{background:var(--yellow);border-color:var(--yellow);color:var(--deep)}
+.part.signoff[aria-pressed="true"] > .box{background:var(--deep);border-color:var(--deep)}
+.part.signoff[aria-pressed="true"] > .box::after{border-color:var(--yellow)}
+.tag.signoff-tag{background:var(--yellow);border-color:var(--yellow);color:var(--deep)}
+.ready-tag{color:var(--atlantic);font-weight:700}
+.warn{color:var(--late);font-weight:600}
 .pageurl{color:var(--atlantic);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.review-on{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;background:var(--yellow);color:var(--deep);font-weight:700;text-decoration:none}
+.review-on:hover{filter:brightness(1.05)}
+.review-off{display:inline-flex;align-items:center;padding:2px 10px;border-radius:999px;border:1px dashed var(--line-strong);color:var(--muted);font-weight:600}
 </style>
 
 <div id="app"></div>
@@ -210,30 +222,39 @@ button,input,textarea,select{font:inherit;color:inherit}
   var PART_KEYS = ["layout","imagery","copy"];
   var PART_SHORT = {layout:"Layout",imagery:"Imagery",copy:"Copy"};
   var PEOPLE = ["James","Matias","Viviana"];
-  var PAGE_FILTERS = [["all","All"],["progress","In progress"],["todo","Not started"],["done","Complete"]];
+  var PAGE_FILTERS = [["all","All"],["progress","In progress"],["ready","Ready for sign-off"],["todo","Not started"],["done","Complete"]];
   var MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
   // Pages and tasks live in the artifact's shared database (collections "pages" and "tasks"), one document each.
   var state = {pages:[], tasks:[]};
   var loaded = {pages:false, tasks:false};
   function blankDraft(){return {editing:null,combine:[],title:"",assignee:"",due:"",on:{pages:[],parts:[]},off:{pages:[],parts:[]}};}
-  var ui = {tab:"pages", filter:"all", open:{}, who:"all", show:"open", draft:blankDraft(), month:"", picking:false, picked:{}, confirm:""};
+  var ui = {tab:"pages", filter:"all", open:{}, who:"all", show:"open", pillar:"all", draft:blankDraft(), month:"", picking:false, picked:{}, confirm:""};
   var mode = "pending", db = null, inflight = 0, lastErr = "", deferred = false, confirmTimer = null;
 
   try{
     var v = JSON.parse(sessionStorage.getItem('wpp-ui')||"null");
-    if(v){ ["tab","filter","open","who","show","month"].forEach(function(k){ if(v[k]!==undefined) ui[k]=v[k]; }); if(v.draft && v.draft.on){ ui.draft=v.draft; if(!ui.draft.combine) ui.draft.combine=[]; } }
+    if(v){ ["tab","filter","open","who","show","pillar","month"].forEach(function(k){ if(v[k]!==undefined) ui[k]=v[k]; }); if(v.draft && v.draft.on){ ui.draft=v.draft; if(!ui.draft.combine) ui.draft.combine=[]; } }
   }catch(e){}
 
   /* ---------- helpers ---------- */
   function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
   function pageById(id){for(var i=0;i<state.pages.length;i++) if(state.pages[i].id===id) return state.pages[i]; return null;}
   function taskById(id){for(var i=0;i<state.tasks.length;i++) if(state.tasks[i].id===id) return state.tasks[i]; return null;}
+  function isSignoff(t){return t.kind==="signoff";}
   function tasksFor(pid, part){return state.tasks.filter(function(t){return (t.pages||[]).indexOf(pid)>=0 && (!part || (t.parts||[]).indexOf(part)>=0);});}
   function partDone(p, part){var ts=tasksFor(p.id,part); return ts.length ? ts.every(function(t){return t.done;}) : !!p[part];}
   function done(p){return PARTS.filter(function(k){return partDone(p,k[0]);}).length;}
-  function pct(p){return Math.round(done(p)/3*100);}
-  function status(p){var d=done(p);return d===3?"done":d===0?"todo":"progress";}
+  // Sign-off is its own stage: it opens once layout, imagery and copy are all done, and the page is complete when it's ticked.
+  function live(t){ if(!isSignoff(t)) return true; var p=pageById((t.pages||[])[0]); return !!(p && pillarsDone(p)); }
+  function signoffId(pid){return "signoff-"+pid;}
+  function signoffTask(p){return taskById(signoffId(p.id));}
+  function pillarsDone(p){return done(p)===3;}
+  function signedOff(p){var t=signoffTask(p); return pillarsDone(p) && !!(t && t.done);}
+  function stages(p){return done(p)+(signedOff(p)?1:0);}
+  function pct(p){return Math.round(stages(p)/4*100);}
+  function status(p){ if(signedOff(p)) return "done"; if(pillarsDone(p)) return "ready"; return done(p)===0?"todo":"progress"; }
+  function missingPillars(p){return PARTS.filter(function(k){return !partDone(p,k[0]);}).map(function(k){return PART_SHORT[k[0]].toLowerCase();});}
   function av(name){var n=(name||"").toLowerCase(); return '<span class="av '+(n||"none")+'" title="'+esc(name||"Unassigned")+'">'+(name?name[0]:"?")+'</span>';}
   function pad(n){return String(n).padStart(2,"0");}
   function iso(d){return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());}
@@ -271,9 +292,8 @@ button,input,textarea,select{font:inherit;color:inherit}
     if(/imag|photo|picture|visual|graphic|icon/.test(t)) parts.push("imagery");
     if(/\bcopy|writ|wording|content|text/.test(t)) parts.push("copy");
     if(/layout|structure|wirefram|build|design|block/.test(t)) parts.push("layout");
-    if(!parts.length && /review|sign[\s-]*off|approv|check/.test(t)) parts = PART_KEYS.slice();
     parts.sort(function(a,b){return PART_KEYS.indexOf(a)-PART_KEYS.indexOf(b);});
-    return {pages:pages, parts:parts};
+    return {pages:pages, parts:parts, approval:/approv|sign[\s-]*off/.test(t)};
   }
   function sel(d){
     var det = detect(d.title);
@@ -322,24 +342,32 @@ button,input,textarea,select{font:inherit;color:inherit}
     var a = document.activeElement;
     return a && document.getElementById('app').contains(a) && (a.tagName==="TEXTAREA" || (a.tagName==="INPUT" && a.type!=="date"));
   }
-  function liveRender(){ if(editingText()){ deferred = true; return; } rerender(); }
+  var soRequested = {};
+  function ensureSignoff(p){
+    var id = signoffId(p.id); if(taskById(id) || soRequested[id] || ro()) return;
+    soRequested[id] = true;
+    var nt = {id:id, kind:"signoff", title:"Review and sign off "+p.name, assignee:"", parts:[], pages:[p.id], due:"", done:false, created:Date.now(), source:"team"};
+    state.tasks.push(nt); setDoc("tasks/"+id, clean(nt));
+  }
+  function ensureSignoffs(){ if(mode!=="live") return; state.pages.forEach(function(p){ if(pillarsDone(p)) ensureSignoff(p); }); }
+  function liveRender(){ ensureSignoffs(); if(editingText()){ deferred = true; return; } rerender(); }
   document.addEventListener('focusout', function(){ setTimeout(function(){ if(deferred && !editingText()){ deferred=false; rerender(); } }, 0); });
 
   function render(){
     var pages = state.pages;
-    var ticks = pages.reduce(function(a,p){return a+done(p);},0);
-    var overall = pages.length ? Math.round(ticks/(pages.length*3)*100) : 0;
-    var c = {done:0,progress:0,todo:0};
+    var ticks = pages.reduce(function(a,p){return a+stages(p);},0);
+    var overall = pages.length ? Math.round(ticks/(pages.length*4)*100) : 0;
+    var c = {done:0,progress:0,ready:0,todo:0};
     pages.forEach(function(p){c[status(p)]++;});
-    var openTasks = state.tasks.filter(function(t){return !t.done;}).length;
+    var openTasks = state.tasks.filter(function(t){return !t.done && live(t);}).length;
     var next = pages.filter(function(p){return p.goLive && p.goLive>=today() && status(p)!=="done";}).sort(function(a,b){return a.goLive<b.goLive?-1:1;})[0];
     document.body.classList.toggle('ro', ro());
 
     var h = '<header class="band"><div class="wrap">';
-    h += '<div class="hero"><div><h1>Website project plan</h1><p>Every page on the site, when it goes live, and whether its layout, imagery and copy are done. Tasks take their deadline from their pages’ go-live dates and tick those pages off when they’re complete.</p></div>';
-    h += '<div class="overall"><div class="num">'+overall+'%</div><div class="lbl">'+ticks+' of '+(pages.length*3)+' page parts done</div></div></div>';
+    h += '<div class="hero"><div><h1>Website project plan</h1><p>Every page on the site and when it goes live. Each page needs its layout, imagery and copy done, then a final sign-off. Tasks take their deadline from their pages’ go-live dates and tick those stages off when they’re complete.</p></div>';
+    h += '<div class="overall"><div class="num">'+overall+'%</div><div class="lbl">'+ticks+' of '+(pages.length*4)+' page stages done</div></div></div>';
     h += '<div class="meter" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+overall+'"><span style="width:'+overall+'%"></span></div>';
-    h += '<div class="counts"><div><b>'+c.done+'</b><span>pages complete</span></div><div><b>'+c.progress+'</b><span>in progress</span></div><div><b>'+c.todo+'</b><span>not started</span></div><div><b>'+openTasks+'</b><span>open tasks</span></div>';
+    h += '<div class="counts"><div><b>'+c.done+'</b><span>pages complete</span></div><div><b>'+c.progress+'</b><span>in progress</span></div><div><b>'+c.ready+'</b><span>ready for sign-off</span></div><div><b>'+c.todo+'</b><span>not started</span></div><div><b>'+openTasks+'</b><span>open tasks</span></div>';
     if(next) h += '<div><span>Next go-live: </span><b style="font-size:15px">'+esc(next.name)+', '+fmtDate(next.goLive)+'</b></div>';
     h += '</div>';
     h += '<div class="tabs" role="tablist">';
@@ -367,7 +395,7 @@ button,input,textarea,select{font:inherit;color:inherit}
     h += toolbar(f+'</div>');
     var shown = pages.filter(function(p){return ui.filter==="all"||status(p)===ui.filter;}).slice().sort(byDate);
     if(ui.filter==="all"){
-      var todo = shown.filter(function(p){return status(p)!=="done";});
+      var todo = shown.filter(function(p){return status(p)!=="done";}).sort(function(a,b){ var ra=status(a)==="ready"?0:1, rb=status(b)==="ready"?0:1; return ra-rb || byDate(a,b); });
       var fin = shown.filter(function(p){return status(p)==="done";});
       h += '<h2 class="group-title">Still to do, soonest go-live first</h2>' + pageList(todo, pages.length?'Nothing left to do. Every page is complete.':'No pages yet. Add your first one below.');
       h += '<h2 class="group-title">Complete</h2>' + pageList(fin, 'No pages complete yet.');
@@ -384,15 +412,22 @@ button,input,textarea,select{font:inherit;color:inherit}
     if(!items.length) return '<div class="empty">'+esc(emptyMsg)+'</div>';
     var r0 = ro();
     return '<div class="list">'+items.map(function(p){
-      var st = status(p), cls = st==="done"?" done":st==="progress"?" prog":"";
-      var linked = tasksFor(p.id);
+      var st = status(p), cls = st==="done"?" done":(st==="progress"||st==="ready")?" prog":"";
+      var linked = tasksFor(p.id).filter(function(t){return !isSignoff(t);});
       var r = '<article class="row'+cls+(ui.open[p.id]?' open':'')+'" data-id="'+esc(p.id)+'" id="page-'+esc(p.id)+'">';
       r += '<div class="row-main"><div class="name">';
       r += '<input data-field="name" value="'+esc(p.name)+'" aria-label="Page name" '+(r0?'readonly':'')+'>';
       r += '<div class="meta"><input data-field="section" value="'+esc(p.section||"")+'" placeholder="Section" aria-label="Section" list="secs" '+(r0?'readonly':'')+'>';
       r += '<label class="golive">Go-live <input type="date" data-field="goLive" value="'+esc(p.goLive||"")+'" aria-label="Go-live date for '+esc(p.name)+'" '+(r0?'readonly':'')+'></label>';
       if(pageLate(p)) r += '<span class="late-tag">Go-live date passed</span>';
+      if(st==="ready") r += '<span class="ready-tag">Ready for sign-off</span>';
       if(p.url && /^https:\/\//.test(p.url)) r += '<a class="pageurl" href="'+esc(p.url)+'" target="_blank" rel="noopener">Live page</a>';
+      // The review copy (a Claude artifact) opens only once the page has tasks for all three pillars: layout, imagery and copy.
+      if(p.reviewUrl && /^https:\/\/claude\.ai\//.test(p.reviewUrl)){
+        var noTasks = PARTS.filter(function(k){return !tasksFor(p.id,k[0]).length;}).map(function(k){return PART_SHORT[k[0]].toLowerCase();});
+        r += noTasks.length ? '<span class="review-off" title="Add a task for '+esc(noTasks.join(', '))+' first">Review copy: needs '+esc(noTasks.join(', '))+' tasks</span>'
+          : '<a class="review-on" href="'+esc(p.reviewUrl)+'" target="_blank" rel="noopener">Review copy</a>';
+      }
       r += '<button class="link" data-act="toggle-open" aria-expanded="'+!!ui.open[p.id]+'">'+(linked.length?linked.length+(linked.length===1?' task':' tasks'):'No tasks')+(p.notes?', notes':'')+'</button></div></div>';
       r += '<div class="parts">';
       PARTS.forEach(function(k){
@@ -402,6 +437,10 @@ button,input,textarea,select{font:inherit;color:inherit}
         r += '<div class="pcol"><button class="part'+(auto?' auto':'')+'" data-part="'+k[0]+'" aria-pressed="'+on+'" title="'+esc(tip)+'" '+((r0||auto)?'aria-disabled="true"':'')+'><span class="box" aria-hidden="true"></span>'+k[1]+'</button>';
         r += '<div class="who">'+openPeople.map(av).join('')+'</div></div>';
       });
+      var so = signoffTask(p), ready = pillarsDone(p), son = signedOff(p);
+      var stip = ready ? (son?'Signed off'+(so&&so.assignee?' by '+so.assignee:''):'Ready: tick when the page is signed off') : 'Opens once '+missingPillars(p).join(', ')+' '+(missingPillars(p).length>1?'are':'is')+' done';
+      r += '<div class="pcol"><button class="part signoff'+(ready?'':' locked')+'" data-act="signoff" aria-pressed="'+son+'" title="'+esc(stip)+'" '+((r0||!ready)?'aria-disabled="true"':'')+'><span class="box" aria-hidden="true"></span>Sign-off</button>';
+      r += '<div class="who">'+(ready && !son && so ? av(so.assignee) : '')+'</div></div>';
       r += '</div><div class="pct" aria-label="'+pct(p)+' percent complete">'+pct(p)+'%</div></div>';
       r += '<div class="extra">';
       if(linked.length){
@@ -425,11 +464,16 @@ button,input,textarea,select{font:inherit;color:inherit}
     PEOPLE.forEach(function(n){ f += '<button data-who="'+n+'" aria-pressed="'+(ui.who===n)+'">'+av(n)+n+'</button>'; });
     f += '<button data-who="" aria-pressed="'+(ui.who==="")+'">Unassigned</button></div>';
     f += '<div class="seg" role="group" aria-label="Task status"><button data-show="open" aria-pressed="'+(ui.show==="open")+'">Open</button><button data-show="done" aria-pressed="'+(ui.show==="done")+'">Done</button><button data-show="all" aria-pressed="'+(ui.show==="all")+'">All</button></div>';
+    f += '<div class="seg" role="group" aria-label="Pillar"><button data-pillar="all" aria-pressed="'+(ui.pillar==="all")+'">All pillars</button>';
+    PARTS.forEach(function(k){ var n = state.tasks.filter(function(t){return !t.done && (t.parts||[]).indexOf(k[0])>=0;}).length; f += '<button data-pillar="'+k[0]+'" aria-pressed="'+(ui.pillar===k[0])+'">'+k[1]+' ('+n+')</button>'; });
+    var nso = state.tasks.filter(function(t){var p=isSignoff(t)&&pageById((t.pages||[])[0]); return p && pillarsDone(p) && !t.done;}).length;
+    f += '<button data-pillar="signoff" aria-pressed="'+(ui.pillar==="signoff")+'">Sign-off ('+nso+')</button>';
+    f += '</div>';
     if(!r0) f += '<div class="seg"><button data-act="pick-mode" aria-pressed="'+ui.picking+'">Combine tasks</button></div>';
     h += toolbar('<div style="display:flex;gap:10px;flex-wrap:wrap">'+f+'</div>');
     h += '<div class="people">';
     PEOPLE.forEach(function(n){
-      var mine = state.tasks.filter(function(t){return t.assignee===n;});
+      var mine = state.tasks.filter(function(t){return t.assignee===n && live(t);});
       var open = mine.filter(function(t){return !t.done;}).length;
       var late = mine.filter(function(t){var d=taskDue(t).date; return !t.done && d && d<today();}).length;
       h += '<div class="person">'+av(n)+'<span>'+n+'</span><b>'+open+'</b><span class="hint">open of '+mine.length+(late?', <span class="late">'+late+' overdue</span>':'')+'</span></div>';
@@ -444,6 +488,9 @@ button,input,textarea,select{font:inherit;color:inherit}
       if(ui.who!=="all" && (t.assignee||"")!==ui.who) return false;
       if(ui.show==="open" && t.done) return false;
       if(ui.show==="done" && !t.done) return false;
+      if(isSignoff(t)){ var sp=pageById((t.pages||[])[0]); if(!sp || !pillarsDone(sp)) return false; if(ui.pillar!=="all" && ui.pillar!=="signoff") return false; }
+      else if(ui.pillar==="signoff") return false;
+      else if(ui.pillar!=="all" && (t.parts||[]).indexOf(ui.pillar)<0) return false;
       return true;
     }).sort(function(a,b){
       if(a.done!==b.done) return a.done?1:-1;
@@ -459,11 +506,12 @@ button,input,textarea,select{font:inherit;color:inherit}
   function taskCard(t){
     var r0 = ro(), du = taskDue(t), late = !t.done && du.date && du.date < today();
     var pageNames = (t.pages||[]).map(pageById).filter(Boolean).map(function(p){return '<button class="tag pg" data-goto="'+esc(p.id)+'" title="Open this page">'+esc(p.name)+'</button>';}).join('');
-    var picked = ui.picking && ui.picked[t.id];
+    var so = isSignoff(t), picked = ui.picking && ui.picked[t.id] && !so;
     var r = '<article class="task'+(t.done?' done':'')+(picked?' picked':'')+'" data-tid="'+esc(t.id)+'">';
-    if(ui.picking && !r0) r += '<button class="pick" data-act="pick" role="checkbox" aria-checked="'+!!picked+'" aria-label="Select “'+esc(t.title)+'” to combine"><span class="box"></span></button>';
+    if(ui.picking && !r0 && !so) r += '<button class="pick" data-act="pick" role="checkbox" aria-checked="'+!!picked+'" aria-label="Select “'+esc(t.title)+'” to combine"><span class="box"></span></button>';
     else r += '<button class="tick" data-act="task-done" role="checkbox" aria-checked="'+!!t.done+'" aria-label="Mark “'+esc(t.title)+'” done" '+(r0?'disabled':'')+'><span class="box"></span></button>';
     r += '<div><div class="ttitle">'+esc(t.title)+'</div><div class="tmeta">';
+    if(so) r += '<span class="tag signoff-tag">Sign-off</span>';
     r += (t.parts||[]).map(function(p){return '<span class="tag part-tag">'+(PART_SHORT[p]||esc(p))+'</span>';}).join('');
     r += pageNames || '<span>No pages linked</span>';
     if(t.source==="claude") r += '<span class="tag auto-tag" title="Created by Claude from the page build">From the build</span>';
@@ -474,7 +522,7 @@ button,input,textarea,select{font:inherit;color:inherit}
     else r += '<span>No deadline yet: set a go-live date on its pages</span>';
     r += '</div></div><div class="tside">';
     r += '<select data-act="assign" aria-label="Assignee" '+(r0?'disabled':'')+'><option value="">Unassigned</option>'+PEOPLE.map(function(n){return '<option'+(t.assignee===n?' selected':'')+'>'+n+'</option>';}).join('')+'</select>';
-    r += '<div class="tedit"><button class="link" data-act="task-edit">Edit</button>'+confirmBtn("task:"+t.id,"link","Delete","task-delete")+'</div>';
+    if(!so) r += '<div class="tedit"><button class="link" data-act="task-edit">Edit</button>'+confirmBtn("task:"+t.id,"link","Delete","task-delete")+'</div>';
     return r + '</div></article>';
   }
 
@@ -513,7 +561,7 @@ button,input,textarea,select{font:inherit;color:inherit}
       var ids = state.pages.filter(function(p){return (p.section||"Other")===b.dataset.sec;}).map(function(p){return p.id;});
       b.textContent = ids.every(function(id){return s.pages.indexOf(id)>=0;}) ? 'Clear' : 'Select all';
     });
-    document.getElementById('allparts').textContent = s.parts.length===3 ? 'Clear' : 'All three (full review and sign-off)';
+    document.getElementById('allparts').textContent = s.parts.length===3 ? 'Clear' : 'Select all three';
     document.getElementById('pagecount').textContent = 'Pages it covers ('+s.pages.length+' selected)';
     var det = s.det, msg = [];
     if(det.pages.length) msg.push('Linked from the title: '+det.pages.map(function(id){return pageById(id).name;}).join(', '));
@@ -527,14 +575,17 @@ button,input,textarea,select{font:inherit;color:inherit}
         ? '<div class="duebox">'+esc(fmtDate(du.date))+', when '+esc(du.from.join(' and '))+' go'+(du.from.length>1?'':'es')+' live</div>'
         : '<input class="field" id="draft-due" style="width:100%" type="date" data-draft="due" value="'+esc(d.due)+'" title="Used only until one of its pages has a go-live date">';
     }
-    var ok = s.parts.length && s.pages.length;
+    var ok = s.parts.length && s.pages.length && !det.approval;
     var btn = document.getElementById('savetask'); btn.disabled = !ok; btn.style.opacity = ok?'':'.5';
-    document.getElementById('chint').textContent = ok
+    var hint = document.getElementById('chint'); hint.classList.toggle('warn', !!det.approval);
+    hint.textContent = det.approval
+      ? 'Tasks here are for doing the work (find imagery, write copy, build the layout). Approval is its own step: a sign-off task appears for each page once its layout, imagery and copy are done.'
+      : ok
       ? 'When this is ticked done, '+s.parts.map(function(p){return PART_SHORT[p].toLowerCase();}).join(', ')+' will count as done on '+s.pages.length+' page'+(s.pages.length>1?'s':'')+' (once any other tasks on them are done too).'
       : 'Name the pages in the title or pick them below, and choose what it completes.';
   }
   function autoTitle(s){
-    var verb = s.parts.length===3 ? 'Review and sign off' : s.parts.length===1 ? {layout:'Do the structure for',imagery:'Find imagery for',copy:'Write copy for'}[s.parts[0]] : 'Complete '+s.parts.map(function(p){return PART_SHORT[p].toLowerCase();}).join(' and ')+' for';
+    var verb = s.parts.length===3 ? 'Build the layout, imagery and copy for' : s.parts.length===1 ? {layout:'Do the structure for',imagery:'Find imagery for',copy:'Write copy for'}[s.parts[0]] : 'Complete '+s.parts.map(function(p){return PART_SHORT[p].toLowerCase();}).join(' and ')+' for';
     var names = s.pages.map(pageById).filter(Boolean).map(function(p){return p.name;});
     return verb+' '+(names.length>4 ? names.slice(0,3).join(', ')+' and '+(names.length-3)+' more' : names.join(', '));
   }
@@ -548,8 +599,8 @@ button,input,textarea,select{font:inherit;color:inherit}
     function add(date, html){ (byDay[date]=byDay[date]||[]).push(html); }
     state.pages.forEach(function(p){
       if(!p.goLive) return;
-      var st=status(p), open=tasksFor(p.id).filter(function(x){return !x.done;}).length;
-      var cls = pageLate(p)?' late':st==="done"?' done':st==="progress"?' prog':'';
+      var st=status(p), open=tasksFor(p.id).filter(function(x){return !x.done && !isSignoff(x);}).length;
+      var cls = pageLate(p)?' late':st==="done"?' done':(st==="progress"||st==="ready")?' prog':'';
       add(p.goLive, '<button class="ev'+cls+'" data-goto="'+esc(p.id)+'" title="'+esc(p.name+' goes live, '+pct(p)+'% done'+(open?', '+open+' open tasks':''))+'">'+esc(p.name)+' <small>'+pct(p)+'%</small></button>');
     });
     state.tasks.forEach(function(x){
@@ -575,7 +626,7 @@ button,input,textarea,select{font:inherit;color:inherit}
   /* ---------- events ---------- */
   function findPage(el){var row=el.closest('.row');return row?pageById(row.dataset.id):null;}
   function findTask(el){var n=el.closest('[data-tid]'); return n?taskById(n.dataset.tid):null;}
-  function keepUi(){try{sessionStorage.setItem('wpp-ui',JSON.stringify({tab:ui.tab,filter:ui.filter,open:ui.open,who:ui.who,show:ui.show,draft:ui.draft,month:ui.month,y:window.scrollY}));}catch(e){}}
+  function keepUi(){try{sessionStorage.setItem('wpp-ui',JSON.stringify({tab:ui.tab,filter:ui.filter,open:ui.open,who:ui.who,show:ui.show,pillar:ui.pillar,draft:ui.draft,month:ui.month,y:window.scrollY}));}catch(e){}}
   function rerender(){var y=window.scrollY; render(); window.scrollTo(0,y); keepUi(); syncComposer();}
   function openComposer(){ render(); syncComposer(); keepUi(); var c=document.getElementById('composer'); if(c) c.scrollIntoView({block:"start"}); }
   // Destructive buttons ask for a second click instead of a dialog (the viewer blocks confirm()).
@@ -597,6 +648,7 @@ button,input,textarea,select{font:inherit;color:inherit}
     if(t.dataset.filter){ ui.filter=t.dataset.filter; rerender(); return; }
     if(t.dataset.who!==undefined){ ui.who=t.dataset.who; rerender(); return; }
     if(t.dataset.show){ ui.show=t.dataset.show; rerender(); return; }
+    if(t.dataset.pillar){ ui.pillar=t.dataset.pillar; rerender(); return; }
     if(t.dataset.cal!==undefined){
       var n=new Date(), cur = ui.month || (n.getFullYear()+"-"+pad(n.getMonth()+1));
       if(t.dataset.cal==="0") ui.month=""; else { var dd=new Date(+cur.slice(0,4), +cur.slice(5,7)-1+(+t.dataset.cal), 1); ui.month=dd.getFullYear()+"-"+pad(dd.getMonth()+1); }
@@ -620,7 +672,7 @@ button,input,textarea,select{font:inherit;color:inherit}
     if(act==="pick-cancel"){ ui.picking=false; ui.picked={}; rerender(); return; }
     if(act==="pick"){ var tp=findTask(t); if(tp){ ui.picked[tp.id]=!ui.picked[tp.id]; rerender(); } return; }
     if(act==="pick-combine"){
-      var chosen = Object.keys(ui.picked).filter(function(id){return ui.picked[id];}).map(taskById).filter(Boolean);
+      var chosen = Object.keys(ui.picked).filter(function(id){return ui.picked[id];}).map(taskById).filter(function(x){return x && !isSignoff(x);});
       if(chosen.length<2) return;
       var nd = blankDraft();
       nd.combine = chosen.map(function(x){return x.id;});
@@ -652,11 +704,18 @@ button,input,textarea,select{font:inherit;color:inherit}
       }
       ui.draft = blankDraft(); rerender(); return;
     }
-    if(act==="task-done" && !ro()){ var tk=findTask(t); if(tk){ tk.done=!tk.done; updateDoc("tasks/"+tk.id, {done:tk.done, doneAt:tk.done?Date.now():null}); rerender(); } return; }
+    if(act==="task-done" && !ro()){ var tk=findTask(t); if(tk && isSignoff(tk)){ var tp2=pageById((tk.pages||[])[0]); if(!tp2 || !pillarsDone(tp2)) return; } if(tk){ tk.done=!tk.done; updateDoc("tasks/"+tk.id, {done:tk.done, doneAt:tk.done?Date.now():null}); rerender(); } return; }
     if(act==="task-edit"){ var te=findTask(t); if(te){ ui.draft=draftFromTask(te); openComposer(); } return; }
     if(act==="task-delete" && !ro()){ var td=findTask(t); if(td && confirmed("task:"+td.id)){ state.tasks=state.tasks.filter(function(x){return x!==td;}); deleteDoc("tasks/"+td.id); rerender(); } return; }
 
     var p = findPage(t); if(!p) return;
+    if(act==="signoff"){
+      if(ro() || !pillarsDone(p)) return;
+      var sot = signoffTask(p);
+      if(!sot){ ensureSignoff(p); sot = signoffTask(p); }
+      if(sot){ sot.done=!sot.done; updateDoc("tasks/"+sot.id, {done:sot.done, doneAt:sot.done?Date.now():null}); rerender(); }
+      return;
+    }
     if(t.dataset.part){
       if(ro()) return;
       if(tasksFor(p.id,t.dataset.part).length){ ui.tab="tasks"; ui.who="all"; ui.show="all"; keepUi(); render(); syncComposer(); window.scrollTo(0,0); return; }
@@ -668,6 +727,7 @@ button,input,textarea,select{font:inherit;color:inherit}
       if(!confirmed("page:"+p.id)) return;
       state.pages=state.pages.filter(function(x){return x!==p;});
       state.tasks.forEach(function(tk){ if((tk.pages||[]).indexOf(p.id)>=0){ tk.pages=tk.pages.filter(function(id){return id!==p.id;}); updateDoc("tasks/"+tk.id, {pages:tk.pages}); } });
+      var sod = signoffTask(p); if(sod){ state.tasks=state.tasks.filter(function(x){return x!==sod;}); deleteDoc("tasks/"+sod.id); }
       deleteDoc("pages/"+p.id); delete ui.open[p.id]; rerender();
     }
   });
@@ -734,3 +794,5 @@ button,input,textarea,select{font:inherit;color:inherit}
   } else { mode="offline"; render(); }
 })();
 </script>
+
+</body></html>
