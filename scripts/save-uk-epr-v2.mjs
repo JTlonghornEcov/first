@@ -13,7 +13,7 @@ const payload = {
   fields: {
     heroTitle: 'Extended Producer Responsibility',
     heroIntroduction: "<p>Whether you're new to EPR, a seasoned pro, or somewhere in between, Ecoveritas is here to help. From understanding the basics of what EPR means for your business, to ensuring full compliance with timely submissions—and even supporting the most advanced needs like developing methodologies and collecting complex packaging data—we guide you every step of the way.</p>",
-    heroImage: [11211],   // 'Image to be sourced' placeholder
+    heroImage: [11747],   // produce going into a plastic bag in a shop (sourced Oct 2026)
     heroButtons: { sortOrder: ['new1', 'new2'], entries: {
       new1: { type: 'heroButtonItem', enabled: true, fields: { heroButtonUrl: link('#informed', 'Am I affected?'), heroButtonStyle: 'default' } },
       new2: { type: 'heroButtonItem', enabled: true, fields: { heroButtonUrl: link('#evx-contact', 'Contact us'), heroButtonStyle: 'transparent' } } } },
