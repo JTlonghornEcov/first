@@ -122,7 +122,7 @@
     "name": "Data Analytics",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/data-analytics",
-    "notes": "Not built yet."
+    "notes": "Concept: entry 11829 (disabled). Clickable Ecoview demo with sample data, no JavaScript."
   },
   {
     "id": "waste-management",
@@ -143,14 +143,14 @@
     "name": "PPWR Compliance Service",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/ppwr-compliance-service",
-    "notes": "Restyle is live. Hero image (asset 11745) in draft 4017, waiting to be applied. The review asks for a trim (move the EPR vs PPWR table and technical FAQs out)."
+    "notes": "Restyle is live. Hero image in draft 4017, waiting to be applied. Trimmed concept: entry 11849 (disabled)."
   },
   {
     "id": "epr-fee-audit",
     "name": "EPR Fee Audit",
     "section": "Services",
     "url": "https://www.ecoveritas.com/epr-fee-audit",
-    "notes": "Restyle is live (draft 3934). Hero image (asset 11746) in draft 4018, waiting to be applied. The review asks for an overpayment estimator."
+    "notes": "Restyle is live (draft 3934). Hero image in draft 4018, waiting to be applied. New concept with an overpayment risk check: entry 11839 (disabled)."
   },
   {
     "id": "technology",

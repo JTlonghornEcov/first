@@ -1,0 +1,25 @@
+{
+  "name": "PPWR Compliance Service",
+  "planner": "PPWR Compliance Service",
+  "live": "https://www.ecoveritas.com/services/ppwr-compliance-service",
+  "canonical": "https://www.ecoveritas.com/services/ppwr-compliance-service",
+  "eyebrow": "Services",
+  "heroTitle": "PPWR compliance, handled end to end.",
+  "heroIntro": "<p>From finding out which of your packs are in scope to Declarations of Conformity ready for you to sign. One team, one programme, valid in every EU market. Start with an assessment and get a compliance cost forecast before you commit to anything else.</p>",
+  "heroImage": 11745,
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/ppwr-compliance-service-hero-container-port.jpg",
+  "buttons": [
+    [
+      "#evx-contact",
+      "Book a PPWR assessment"
+    ],
+    [
+      "#c-pp-how",
+      "See how it works"
+    ]
+  ],
+  "ctaTitle": "Book a PPWR assessment.",
+  "ctaText": "Tell us which EU markets you sell into and roughly how many packs you have. You'll get your scope and a compliance cost forecast before you commit to anything.",
+  "imagery": [],
+  "entryId": 11849
+}

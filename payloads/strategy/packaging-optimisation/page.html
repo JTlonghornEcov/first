@@ -57,7 +57,7 @@ html, body { overflow-x:clip; }
 .evc .dark { display:flex; flex-direction:column; gap:18px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--slate); color:#fff; }
 .evc .dark.teal { background:var(--teal); }
 .evc .dark :is(h2,h3,b,strong) { color:#fff; }
-.evc .dark p { color:#e8eff2; }
+.evc .dark p, .evc .dark li { color:#e8eff2; }
 .evc .dark .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
 .evc .dark em { font-style:normal; color:var(--yellow); }
 .evc .dark .big { font-size:clamp(22px,2.4vw,30px); line-height:1.3; font-weight:700; color:#fff; letter-spacing:-.01em; }
@@ -153,6 +153,41 @@ html, body { overflow-x:clip; }
 @media (prefers-reduced-motion:reduce) { .evc *, .evc *::before, .evc *::after { transition:none !important; } .evc a.card:hover { transform:none; } }
 #evx-contact { scroll-margin-top:96px; }
 
+/* Photo placeholder (concept only: a task to source the image goes in the planner). Swap for .ph.photo + <img> once supplied. */
+.evc .ph { display:grid; place-content:center; justify-items:center; gap:8px; min-height:240px; padding:24px; border-radius:var(--r); border:2px dashed var(--mist); background:repeating-linear-gradient(135deg,#fff 0 14px,#f3f7f8 14px 28px); text-align:center; }
+.evc .ph .icon { width:36px; height:36px; color:var(--teal); }
+.evc .ph b { font-size:16px; color:var(--ink); }
+.evc .ph span { font-size:14px; line-height:1.45; color:var(--muted); max-width:40ch; }
+.evc .ph.wide { aspect-ratio:21/8; }
+.evc .ph.tall { min-height:360px; height:100%; }
+@media (max-width:640px) { .evc .ph.wide { aspect-ratio:auto; } }
+.evc .ph.photo { padding:0; border:0; overflow:hidden; background:var(--slate); }
+.evc .ph.photo img { display:block; width:100%; height:100%; object-fit:cover; }
+
+/* Question-and-answer checker: radio buttons, result panels switched with :has(). No JavaScript.
+   Each page adds its own rules for which result shows. */
+.evc .chk { display:grid; gap:24px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--grey); }
+@media (min-width:1024px) { .evc .chk { grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:40px; align-items:start; } }
+.evc .chk fieldset { margin:0; padding:0; border:0; min-width:0; display:grid; gap:12px; }
+.evc .chk fieldset + fieldset { margin-top:24px; }
+.evc .chk legend { padding:0; margin:0 0 12px; font-size:18px; font-weight:700; line-height:1.35; color:var(--ink); }
+.evc .chk legend span { display:block; margin-top:4px; font-size:15px; font-weight:400; color:var(--muted); }
+.evc .chk .opts { display:flex; flex-wrap:wrap; gap:10px; }
+.evc .chk label { position:relative; display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:99px; background:#fff; border:2px solid var(--line); font-weight:700; font-size:15.5px; color:var(--ink); cursor:pointer; }
+.evc .chk label:hover { border-color:var(--slate-3); }
+.evc .chk input { position:absolute; opacity:0; width:1px; height:1px; margin:0; }
+.evc .chk label::before { content:""; flex:none; width:18px; height:18px; border-radius:50%; border:2px solid var(--slate-3); background:#fff; }
+.evc .chk label:has(input:checked) { border-color:var(--slate); background:var(--slate); color:#fff; }
+.evc .chk label:has(input:checked)::before { border-color:var(--yellow); background:var(--yellow); box-shadow:inset 0 0 0 3px var(--slate); }
+.evc .chk label:has(input:focus-visible) { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+.evc .chk .res { display:grid; gap:14px; padding:clamp(22px,3vw,32px); border-radius:var(--r); background:var(--slate); color:#fff; }
+.evc .chk .res > div { display:none; gap:14px; }
+.evc .chk .res > .r0 { display:grid; }
+.evc .chk .res .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .chk .res b.big { font-size:clamp(21px,2.2vw,26px); line-height:1.3; color:#fff; }
+.evc .chk .res p { color:#e8eff2; font-size:15.5px; }
+.evc .chk .res .btn { justify-self:start; }
+
 </style>
 <div class="evc" id="c-po">
 
@@ -176,6 +211,7 @@ html, body { overflow-x:clip; }
   <div class="head">
     <h2 id="c-po-gain-h">What optimisation can do for you</h2>
   </div>
+  <div class="ph wide" role="img" aria-label="Photo to be sourced: Side by side: an oversized box with void fill next to a right-sized pack holding the same product."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Photo to be sourced</b><span>Side by side: an oversized box with void fill next to a right-sized pack holding the same product.</span></div>
   <div class="grid">
     <div class="card"><h3>Lower costs</h3><p>Less material, less wasted space, lower shipping and warehousing costs.</p></div>
     <div class="card"><h3>Better recyclability</h3><p>Packaging that scores better under the RAM and other recyclability assessments.</p></div>

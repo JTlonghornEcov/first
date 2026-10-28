@@ -1,6 +1,7 @@
 // Tests a CSS-only (no JavaScript) interactive block on a concept page: clicks each answer combination given and
 // reports which result panel is visible. Also confirms the page has no script inside the page body.
-// Usage: node tools/strategy/check-css-tool.mjs <slug> '<json: [[["#labelFor1","#labelFor2"], ".expected-result"], ...]>'
+// Panels are found with RES (default '.evc .res > div'), e.g. RES='.evc .demo .view' for a tabbed view.
+// Usage: node tools/strategy/check-css-tool.mjs <slug> '<json: [[["#input1","#input2"], ".result" or ".result1,.result2"], ...]>'
 import fs from 'node:fs';
 import { launch } from '../../scripts/lib.mjs';
 const [slug, spec] = process.argv.slice(2);
@@ -14,8 +15,9 @@ let ok = true;
 for (const [clicks, expected] of cases) {
   await page.goto(url, { waitUntil: 'networkidle' });
   for (const c of clicks) await page.click(`label:has(${c})`);
-  const shown = await page.evaluate(() => [...document.querySelectorAll('.evc .res > div')].filter(d => getComputedStyle(d).display !== 'none').map(d => d.className));
-  const pass = shown.length === 1 && shown[0] === expected.slice(1);
+  const shown = await page.evaluate((sel) => [...document.querySelectorAll(sel)].filter(d => getComputedStyle(d).display !== 'none').map(d => d.className.split(' ').pop()), process.env.RES || '.evc .res > div');
+  const want = expected.split(",").map(s => s.trim().slice(1)).sort().join(",");
+  const pass = [...shown].sort().join(",") === want;
   ok &&= pass; console.log(pass ? 'PASS' : 'FAIL', clicks.join(' + ') || '(none)', '→', shown.join(','));
 }
 console.log('scripts in .evc:', await page.evaluate(() => document.querySelectorAll('.evc script').length));

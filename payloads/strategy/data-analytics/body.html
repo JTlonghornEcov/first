@@ -1,0 +1,146 @@
+<style>
+/* Ecoview demo: three views switched with radio buttons and :has(). Sample data. No JavaScript. */
+.evc .demo { display:grid; gap:20px; padding:clamp(20px,3vw,36px); border-radius:var(--r); background:var(--grey); }
+.evc .demo .tabs { display:flex; flex-wrap:wrap; gap:8px; }
+.evc .demo .tabs label { position:relative; padding:11px 18px; border-radius:99px; background:#fff; border:2px solid var(--line); font-weight:700; font-size:15px; color:var(--ink); cursor:pointer; }
+.evc .demo .tabs label:hover { border-color:var(--slate-3); }
+.evc .demo .tabs input { position:absolute; opacity:0; width:1px; height:1px; margin:0; }
+.evc .demo .tabs label:has(input:checked) { background:var(--slate); border-color:var(--slate); color:#fff; }
+.evc .demo .tabs label:has(input:focus-visible) { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+.evc .demo .view { display:none; gap:18px; padding:clamp(20px,3vw,32px); border-radius:12px; background:#fff; border:1px solid var(--line); }
+.evc .demo:has(#c-da-v1:checked) .v1, .evc .demo:has(#c-da-v2:checked) .v2, .evc .demo:has(#c-da-v3:checked) .v3 { display:grid; }
+.evc .demo .view h3 { font-size:clamp(19px,2vw,23px); }
+.evc .demo .view .q { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); }
+.evc .demo .bars { display:grid; gap:10px; }
+.evc .demo .bars li { display:grid; grid-template-columns:minmax(96px,150px) minmax(0,1fr) 64px; gap:12px; align-items:center; font-size:15px; }
+.evc .demo .bars .l { color:var(--ink); font-weight:700; }
+.evc .demo .bars .v { text-align:right; font-variant-numeric:tabular-nums; color:var(--ink); font-weight:700; }
+.evc .demo .bars .t { position:relative; height:22px; border-radius:0 4px 4px 0; background:linear-gradient(90deg,var(--line) 0 1px,transparent 1px); }
+.evc .demo .bars .t i { position:absolute; inset:0 auto 0 0; width:var(--w); border-radius:0 4px 4px 0; background:var(--teal); }
+/* year on year: diverging from a centre line, rises in slate, falls in teal, signs shown in the value */
+.evc .demo .bars.div .t { background:linear-gradient(90deg,transparent calc(50% - .5px),#8a9aa1 calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px)); }
+.evc .demo .bars.div .t i { left:50%; width:calc(var(--w) / 2); background:var(--slate-3); }
+.evc .demo .bars.div .dn .t i { left:auto; right:50%; border-radius:4px 0 0 4px; background:var(--teal); }
+.evc .demo .tag { display:inline-block; margin-left:8px; padding:2px 8px; border-radius:99px; background:#fde7ea; color:#8f0b22; font-size:12.5px; font-weight:700; white-space:nowrap; }
+.evc .demo .note { font-size:14px; color:var(--muted); }
+.evc .demo .foot { display:flex; flex-wrap:wrap; gap:12px 24px; align-items:center; justify-content:space-between; }
+@media (max-width:560px) { .evc .demo .bars li { grid-template-columns:1fr 64px; } .evc .demo .bars .t { grid-column:1 / -1; grid-row:2; } }
+</style>
+<div class="evc" id="c-da">
+
+<section class="sec" aria-labelledby="c-da-why-h">
+  <div class="two">
+    <div class="stack">
+      <p class="eyebrow" style="margin:0">The challenge</p>
+      <h2 id="c-da-why-h">The answers are in your data. Getting them out is the hard part.</h2>
+      <p class="lead">Supplier, component and regulatory data rarely sit in one place. So the true cost of EPR, the swings from one year to the next and the suppliers driving your risk stay hidden in spreadsheets.</p>
+    </div>
+    <div class="dark">
+      <span class="k">Questions Ecoview answers in seconds</span>
+      <ul class="ticks">
+        <li><span>Which materials drive our EPR bill?</span></li>
+        <li><span>What changed since last year, and why?</span></li>
+        <li><span>Which suppliers and SKUs carry the most risk?</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="c-da-demo" aria-labelledby="c-da-demo-h">
+  <div class="head split">
+    <h2 id="c-da-demo-h">See what insight looks like</h2>
+    <p class="lead">Three of the views clients use most, shown with sample data for a fictional retailer. Pick a question.</p>
+  </div>
+  <div class="demo">
+    <div class="tabs" role="radiogroup" aria-label="Choose a view">
+      <label><input type="radio" name="c-da-view" id="c-da-v1" checked>Cost by material</label>
+      <label><input type="radio" name="c-da-view" id="c-da-v2">Year on year</label>
+      <label><input type="radio" name="c-da-view" id="c-da-v3">Supplier hotspots</label>
+    </div>
+    <div class="view v1">
+      <span class="q">Which materials drive our EPR bill?</span>
+      <h3>EPR fees by material, this year (£k)</h3>
+      <ul class="bars" aria-label="EPR fees by material, sample data">
+        <li><span class="l">Plastic</span><span class="t"><i style="--w:100%"></i></span><span class="v">£412k</span></li>
+        <li><span class="l">Paper &amp; card</span><span class="t"><i style="--w:65%"></i></span><span class="v">£268k</span></li>
+        <li><span class="l">Glass</span><span class="t"><i style="--w:37%"></i></span><span class="v">£151k</span></li>
+        <li><span class="l">Aluminium</span><span class="t"><i style="--w:16%"></i></span><span class="v">£64k</span></li>
+        <li><span class="l">Steel</span><span class="t"><i style="--w:9%"></i></span><span class="v">£38k</span></li>
+        <li><span class="l">Wood</span><span class="t"><i style="--w:3%"></i></span><span class="v">£12k</span></li>
+      </ul>
+      <p class="note">Plastic is 43% of the bill. In Ecoview you'd click through to the components and SKUs behind it.</p>
+    </div>
+    <div class="view v2">
+      <span class="q">What changed since last year?</span>
+      <h3>Change in tonnage by material, last year to this year</h3>
+      <ul class="bars div" aria-label="Change in tonnage by material, sample data">
+        <li><span class="l">Glass</span><span class="t"><i style="--w:100%"></i></span><span class="v">+11%</span></li>
+        <li><span class="l">Plastic</span><span class="t"><i style="--w:55%"></i></span><span class="v">+6%</span></li>
+        <li class="dn"><span class="l">Aluminium</span><span class="t"><i style="--w:18%"></i></span><span class="v">−2%</span></li>
+        <li class="dn"><span class="l">Paper &amp; card</span><span class="t"><i style="--w:36%"></i></span><span class="v">−4%</span></li>
+      </ul>
+      <p class="note">The glass rise traces back to one new product range. Ecoview flags swings like this so you can check them before they reach your return.</p>
+    </div>
+    <div class="view v3">
+      <span class="q">Which suppliers carry the most risk?</span>
+      <h3>Share of EPR fees by supplier, with red-rated packs</h3>
+      <ul class="bars" aria-label="Share of EPR fees by supplier, sample data">
+        <li><span class="l">Supplier A <span class="tag">62% red</span></span><span class="t"><i style="--w:100%"></i></span><span class="v">38%</span></li>
+        <li><span class="l">Supplier B <span class="tag">18% red</span></span><span class="t"><i style="--w:55%"></i></span><span class="v">21%</span></li>
+        <li><span class="l">Supplier C</span><span class="t"><i style="--w:37%"></i></span><span class="v">14%</span></li>
+        <li><span class="l">Others (41)</span><span class="t"><i style="--w:71%"></i></span><span class="v">27%</span></li>
+      </ul>
+      <p class="note">One supplier drives over a third of the bill, and most of its packs are rated red under the RAM. That's where a pack change pays back first.</p>
+    </div>
+    <div class="foot">
+      <p class="note">Sample data for illustration only.</p>
+      <a class="btn" href="#evx-contact">Book a walkthrough with your data <span aria-hidden="true">&#8594;</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="c-da-get-h">
+  <div class="two top">
+    <div class="stack">
+      <h2 id="c-da-get-h">What you'll receive</h2>
+      <ul class="ticks">
+        <li><span><b>Compliance and risk report.</b> Your compliance status, risks and gaps across the portfolio.</span></li>
+        <li><span><b>Environmental scorecards.</b> Carbon footprint, recyclability and plastic use, from your product data.</span></li>
+        <li><span><b>Scenario modelling.</b> Alternative materials or formats compared on cost and impact.</span></li>
+        <li><span><b>An action plan.</b> Where to focus first to cut cost and risk.</span></li>
+        <li><span><b>Dashboards and exports.</b> For internal tracking or ESG reporting, exported to Excel, PowerPoint or PDF.</span></li>
+      </ul>
+    </div>
+    <div class="ph tall" role="img" aria-label="Image to be sourced: a screenshot of a real Ecoview dashboard, with client names and figures anonymised."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 13l3-3 3 2 4-4"/></svg><b>Image to be sourced</b><span>A screenshot of a real Ecoview dashboard, with client names and figures anonymised.</span></div>
+  </div>
+</section>
+
+<section class="sec panel" aria-labelledby="c-da-how-h">
+  <div class="head split">
+    <h2 id="c-da-how-h">How it works</h2>
+    <p class="lead">Built on the data we already collect and calculate for your compliance.</p>
+  </div>
+  <ol class="steps">
+    <li><h3>Analyse</h3><p>We check your packaging data in Ecoview for compliance gaps, anomalies and risks.</p></li>
+    <li><h3>Measure impact</h3><p>Footprint, recyclability and plastic use, for a full picture of performance.</p></li>
+    <li><h3>Model options</h3><p>Scenario modelling compares alternative packs on cost, materials and impact.</p></li>
+    <li><h3>Recommend</h3><p>Reports, dashboards and clear actions your teams can take.</p></li>
+  </ol>
+</section>
+
+<section class="sec" aria-labelledby="c-da-next-h">
+  <div class="two even">
+    <div class="ph" role="img" aria-label="Photo to be sourced: a finance or procurement team discussing a packaging dashboard on a large screen."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Photo to be sourced</b><span>A finance or procurement team discussing a packaging dashboard on a large screen.</span></div>
+    <div class="next" style="height:100%">
+      <div class="stack">
+        <span class="k">Next step in your journey</span>
+        <h2 id="c-da-next-h">Then turn insight into savings.</h2>
+        <p>Packaging Optimisation redesigns the packs your data flags, for lower costs, better RAM ratings and lower fees.</p>
+      </div>
+      <div class="btns"><a class="btn" href="https://www.ecoveritas.com/services/packaging-optimisation">Packaging Optimisation <span aria-hidden="true">&#8594;</span></a></div>
+    </div>
+  </div>
+  <p class="muted">Earlier steps: <a class="x" href="https://www.ecoveritas.com/services/obligation-assessment">Obligation Assessment</a> and <a class="x" href="https://www.ecoveritas.com/services/data-collection-calculation-reporting">Data Collection, Calculation &amp; Reporting</a>. More on the platforms: <a class="x" href="https://www.ecoveritas.com/powerful-epr-software">our technology</a>.</p>
+</section>
+
+</div>

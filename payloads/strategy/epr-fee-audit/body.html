@@ -1,0 +1,132 @@
+<style>
+/* Overpayment risk check: which result shows. Base styles are .chk in shared.css. No JavaScript. */
+.evc #c-fa-chk:has([name="c-fa-q1"]:checked):has([name="c-fa-q2"]:checked):has([name="c-fa-q3"]:checked) .res .r0,
+.evc #c-fa-chk:has(#c-fa-q1-s:checked) .res .r0 { display:none; }
+.evc #c-fa-chk:has(#c-fa-q1-s:checked) .res .r-small { display:grid; }
+.evc #c-fa-chk:has(#c-fa-q1-m:checked, #c-fa-q1-l:checked):has([name="c-fa-q3"]:checked):has(#c-fa-q2-def:checked) .res .r-high,
+.evc #c-fa-chk:has(#c-fa-q1-m:checked, #c-fa-q1-l:checked):has([name="c-fa-q3"]:checked):has(#c-fa-q2-some:checked) .res .r-med,
+.evc #c-fa-chk:has(#c-fa-q1-m:checked, #c-fa-q1-l:checked):has([name="c-fa-q3"]:checked):has(#c-fa-q2-meas:checked) .res .r-low,
+.evc #c-fa-chk:has(#c-fa-q1-m:checked, #c-fa-q1-l:checked):has([name="c-fa-q2"]:checked):has(#c-fa-q3-y:checked) .res .r-ded { display:grid; }
+.evc #c-fa-chk:has(#c-fa-q1-s:checked) :is(.q2,.q3) { opacity:.45; }
+.evc #c-fa-chk .res .r-ded { padding-top:14px; border-top:1px solid var(--slate-3); }
+.evc .risk { display:inline-flex; align-items:center; gap:8px; }
+.evc .risk i { display:flex; gap:3px; } .evc .risk i span { width:14px; height:14px; border-radius:3px; background:var(--slate-3); }
+.evc .r-high .risk i span, .evc .r-med .risk i span:nth-child(-n+2), .evc .r-low .risk i span:first-child { background:var(--yellow); }
+.evc .over { display:grid; gap:10px; counter-reset:o; }
+.evc .over li { display:flex; gap:14px; align-items:flex-start; padding:18px 20px; border-radius:12px; background:#fff; border:1px solid var(--line); counter-increment:o; }
+.evc .over li::before { content:counter(o); flex:none; display:grid; place-items:center; width:32px; height:32px; border-radius:50%; background:var(--slate); color:var(--yellow); font-weight:700; }
+.evc .formula { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.evc .formula span { padding:10px 14px; border-radius:10px; background:#fff; border:1px solid var(--line); font-weight:700; font-size:15px; }
+.evc .formula span.end { background:var(--yellow); border-color:var(--yellow); }
+.evc .formula i { font-style:normal; font-weight:700; color:var(--teal); }
+</style>
+<div class="evc" id="c-fa">
+
+<section class="sec" aria-label="Results">
+  <ul class="proof" aria-label="Results from EPR Fee Audits">
+    <li class="hl"><b>Over 80%</b><span>Lower EPR obligation for a construction equipment manufacturer, from £1.4m to £250k, by classifying packaging correctly as household or non-household</span></li>
+    <li><b>£1m</b><span>Saved by a supermarket chain through product reclassification</span></li>
+    <li><b>4m+</b><span>SKUs with packaging metrics in our database, used to check your data</span></li>
+  </ul>
+</section>
+
+<section class="sec" id="c-fa-est" aria-labelledby="c-fa-est-h">
+  <div class="head split">
+    <h2 id="c-fa-est-h">Are you likely to be overpaying?</h2>
+    <p class="lead">Three questions for a first view of your risk. The audit gives you the real number.</p>
+  </div>
+  <div class="chk" id="c-fa-chk">
+    <div>
+      <fieldset class="q1">
+        <legend>How much packaging do you place on the UK market a year?</legend>
+        <div class="opts">
+          <label><input type="radio" name="c-fa-q1" id="c-fa-q1-s">Under 50 tonnes</label>
+          <label><input type="radio" name="c-fa-q1" id="c-fa-q1-m">50 to 1,000 tonnes</label>
+          <label><input type="radio" name="c-fa-q1" id="c-fa-q1-l">Over 1,000 tonnes</label>
+        </div>
+      </fieldset>
+      <fieldset class="q2">
+        <legend>Are your weights from suppliers' defaults or estimates?<span>Rather than packaging that's been measured.</span></legend>
+        <div class="opts">
+          <label><input type="radio" name="c-fa-q2" id="c-fa-q2-def">Mostly</label>
+          <label><input type="radio" name="c-fa-q2" id="c-fa-q2-some">Some of them</label>
+          <label><input type="radio" name="c-fa-q2" id="c-fa-q2-meas">No, we measure</label>
+        </div>
+      </fieldset>
+      <fieldset class="q3">
+        <legend>Do you export, or sell packaged goods to other businesses?</legend>
+        <div class="opts">
+          <label><input type="radio" name="c-fa-q3" id="c-fa-q3-y">Yes</label>
+          <label><input type="radio" name="c-fa-q3" id="c-fa-q3-n">No</label>
+        </div>
+      </fieldset>
+    </div>
+    <div class="res" aria-live="polite">
+      <div class="r0"><span class="k">Your risk</span><b class="big">Answer the questions to see your overpayment risk.</b></div>
+      <div class="r-small"><span class="k">Your result</span><b class="big">You may not pay EPR fees at all.</b><p>Small producers (under 50 tonnes, or under £2m turnover) report their data but don't pay waste management fees. Our self-serve platform may be all you need.</p><a class="btn" href="https://www.ecoveritas.com/powerful-epr-software">See my.ecoveritas <span aria-hidden="true">&#8594;</span></a></div>
+      <div class="r-high"><span class="k">Your risk</span><b class="big risk"><i aria-hidden="true"><span></span><span></span><span></span></i>High</b><p>Supplier default weights are the most common cause of overpayment we find. Measured weights are usually lower, and every tonne over-declared is paid for again every year.</p><a class="btn" href="#evx-contact">Book an audit to get the real number <span aria-hidden="true">&#8594;</span></a></div>
+      <div class="r-med"><span class="k">Your risk</span><b class="big risk"><i aria-hidden="true"><span></span><span></span><span></span></i>Medium</b><p>Part-measured data still leaves room for error, especially where the estimated lines are your biggest packs. We check every line against our database of 4m+ SKUs.</p><a class="btn" href="#evx-contact">Book an audit to get the real number <span aria-hidden="true">&#8594;</span></a></div>
+      <div class="r-low"><span class="k">Your risk</span><b class="big risk"><i aria-hidden="true"><span></span><span></span><span></span></i>Lower</b><p>Measured weights remove the biggest source of error. Misclassified materials and wrong packaging splits can still add to your bill, and a RAM review shows which packs could move to a lower fee band.</p><a class="btn" href="#evx-contact">Check the rest of my data <span aria-hidden="true">&#8594;</span></a></div>
+      <div class="r-ded"><p><b style="color:#fff">Plus: check your deductions.</b> Packaging that's exported or sold to other businesses is often never deducted from the obligation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="c-fa-over-h">
+  <div class="two top">
+    <div class="stack">
+      <h2 id="c-fa-over-h">Where producers usually overpay</h2>
+      <p class="lead">In four places, and almost always in the data rather than the rules.</p>
+      <ol class="over">
+        <li><span>Supplier default weights used instead of measured weights.</span></li>
+        <li><span>Materials misclassified, for example a laminate booked in the wrong polymer band.</span></li>
+        <li><span>Packaging exported or sold B2B that was never deducted from the obligation.</span></li>
+        <li><span>Primary, secondary and shipment packaging split wrongly across the return.</span></li>
+      </ol>
+      <p>Every tonne over-declared is paid for again every year, so a few percentage points of error is a recurring cost, not a one-off.</p>
+    </div>
+    <div class="ph tall" role="img" aria-label="Photo to be sourced: someone weighing a packaging item and checking it against a specification sheet."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Photo to be sourced</b><span>Someone weighing a packaging item and checking it against a specification sheet.</span></div>
+  </div>
+</section>
+
+<section class="sec panel" aria-labelledby="c-fa-inc-h">
+  <div class="head split">
+    <h2 id="c-fa-inc-h">What the audit includes</h2>
+    <p class="lead">We audit your data line by line, then act on what we find.</p>
+  </div>
+  <ol class="steps">
+    <li><h3>Data audit</h3><p>Supplier weights, material classification, packaging splits, exports and B2B deductions, checked against our database.</p></li>
+    <li><h3>RAM and modulation review</h3><p>The rating of each pack under the RAM, and what sitting in the wrong band costs you.</p></li>
+    <li><h3>Fee correction</h3><p>A corrected obligation, with the evidence behind every change, ready for submission.</p></li>
+    <li><h3>Reduction plan</h3><p>The pack changes that would move packaging into a lower fee band, ranked by saving.</p></li>
+  </ol>
+  <div class="stack">
+    <h3>How we measure the saving</h3>
+    <div class="formula" aria-label="Your baseline minus your corrected obligation, priced at published fee rates, equals your saving"><span>Your baseline</span><i>−</i><span>Corrected obligation</span><i>×</i><span>Published fee rates</span><i>=</i><span class="end">Your saving</span></div>
+    <p class="muted">Priced at the published rates for the same period. Pack-change savings are shown separately, because they depend on changes you choose to make.</p>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="c-fa-ind-h">
+  <div class="two">
+    <div class="ph" role="img" aria-label="Photo to be sourced: an analyst presenting a corrected EPR report to a client team."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Photo to be sourced</b><span>An analyst presenting a corrected EPR report to a client team.</span></div>
+    <div class="dark">
+      <span class="k">Independent</span>
+      <h2 id="c-fa-ind-h">No PRN book. No waste contracts. No compliance scheme.</h2>
+      <p>We work alongside whichever scheme or direct registration you use. We have no commercial interest in the size of your obligation: <em>we earn from the number being right, and from it coming down.</em></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="c-fa-fit-h">
+  <div class="head">
+    <h2 id="c-fa-fit-h">Is it right for you?</h2>
+  </div>
+  <div class="grid">
+    <div class="card"><h3>Who it's for</h3><p>Large retailers, brands and FMCG producers with a significant packaging bill, especially with many SKUs, many suppliers or more than one market. Small volumes? <a class="x" href="https://www.ecoveritas.com/powerful-epr-software">my.ecoveritas</a> may suit you better.</p></div>
+    <div class="card"><h3>What it costs</h3><p>Scoped to you, from your packaging tonnage, number of markets, SKU volume and reporting frequency. You get a fixed scope and price before any work starts.</p></div>
+    <div class="card"><h3>What it covers</h3><p>UK packaging EPR including RAM modulation, and Plastic Packaging Tax. The same audit applies to EPR in 80+ countries and to preparing for the EU PPWR.</p></div>
+  </div>
+</section>
+
+</div>

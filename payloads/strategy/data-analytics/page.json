@@ -1,0 +1,24 @@
+{
+  "name": "Data Analytics",
+  "live": "https://www.ecoveritas.com/services/data-analytics",
+  "canonical": "https://www.ecoveritas.com/services/data-analytics",
+  "eyebrow": "Services",
+  "heroTitle": "Data Analytics",
+  "heroIntro": "<p>Your packaging data already knows where your EPR fees come from, what changed this year and which suppliers carry the risk. Ecoview shows you, at component and supplier level, so finance, procurement and sustainability teams can act on it.</p>",
+  "heroImage": 6156,
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/6156/Data-Analytics-Ecoview.webp",
+  "buttons": [
+    [
+      "#c-da-demo",
+      "See it with sample data"
+    ],
+    [
+      "#evx-contact",
+      "Book a walkthrough"
+    ]
+  ],
+  "ctaTitle": "See this with your own data.",
+  "ctaText": "Book a walkthrough of Ecoview. We'll show you what it would reveal in your packaging data: where your fees come from, what's changed and where to act first.",
+  "imagery": [],
+  "entryId": 11829
+}
