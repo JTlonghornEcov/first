@@ -83,11 +83,6 @@
     "heroPlaceholder": "A supplier and a buyer reviewing a signed document or a packaging specification.",
     "live": "not live yet (new page)"
   },
-  "contact": {
-    "name": "Contact",
-    "live": "https://www.ecoveritas.com/contact-us",
-    "heroPlaceholder": "The team at work in the Manchester office, or a friendly specialist on a call."
-  },
   "services": {
     "name": "Services overview",
     "live": "https://www.ecoveritas.com/services",
