@@ -1,0 +1,23 @@
+{
+  "name": "Packaging Optimisation",
+  "live": "https://www.ecoveritas.com/services/packaging-optimisation",
+  "canonical": "https://www.ecoveritas.com/services/packaging-optimisation",
+  "eyebrow": "Services",
+  "heroTitle": "Packaging Optimisation",
+  "heroIntro": "<p>Your packaging drives material costs, shipping costs, recyclability scores and, increasingly, what you owe under EPR. We look at all of it together, so the changes you make actually move the needle.</p>",
+  "heroImage": null,
+  "buttons": [
+    [
+      "#evx-contact",
+      "Get in touch"
+    ],
+    [
+      "https://www.ecoveritas.com/compliance/recyclability-assessment-methodology",
+      "Learn about the RAM"
+    ]
+  ],
+  "ctaTitle": "Think your packaging could be doing more for you?",
+  "ctaText": "Tell us what you're using now. We'll show you exactly where the opportunity is.",
+  "imagery": [],
+  "entryId": 11801
+}

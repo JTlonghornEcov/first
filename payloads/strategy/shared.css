@@ -56,7 +56,7 @@ html, body { overflow-x:clip; }
 .evc .dark { display:flex; flex-direction:column; gap:18px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--slate); color:#fff; }
 .evc .dark.teal { background:var(--teal); }
 .evc .dark :is(h2,h3,b,strong) { color:#fff; }
-.evc .dark p { color:#e8eff2; }
+.evc .dark p, .evc .dark li { color:#e8eff2; }
 .evc .dark .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
 .evc .dark em { font-style:normal; color:var(--yellow); }
 .evc .dark .big { font-size:clamp(22px,2.4vw,30px); line-height:1.3; font-weight:700; color:#fff; letter-spacing:-.01em; }

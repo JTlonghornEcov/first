@@ -10,6 +10,9 @@
    - About 75% commercial, 25% educational. Reference detail belongs in guides and articles, linked from the page.
    - One clear offer per page, proof near the claim, hero button that converts, form with a heading and an outcome.
    - Lead tools are marked as placeholders ("Lead tool · to be built") until they are built.
+   - No JavaScript (agreed 28 Oct, after EXP flagged injected JS as a security risk). Interactive parts are HTML and
+     CSS only (radio buttons plus `:has()`, `<details>`); `tools/strategy/save.mjs` refuses scripts, inline event
+     handlers and `javascript:` links. Test them with `node tools/strategy/check-css-tool.mjs`.
    - Disabled concept page first; live pages change only through a draft that a person applies.
 3. **Tasks.** The build produces the tasks the page still needs (see below). Claude adds them to the planner,
    each linked to its page and to the part it completes.
@@ -35,6 +38,9 @@
 | No images needed | Approve the imagery of `<page>` | Imagery |
 | `checks` in page.json (facts to confirm) | Policy team: confirm `<fact>` on `<page>` | Copy |
 | Always, last | Apply the draft and check `<page>` live | (none: tracked as a note) |
+
+Since the team added the sign-off step, the generic "Review and approve the layout" / "Review the copy" tasks are not
+added: sign-off covers them. Only the specific follow-ups (tools, imagery, policy checks, fixes) go in.
 
 Grouping across pages (e.g. one person sourcing images for several pages) is done by the team in the planner.
 

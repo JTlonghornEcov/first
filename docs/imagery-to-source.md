@@ -16,7 +16,8 @@ Updated 23 Oct 2026. Live-site audit: `node tools/audit/imagery.mjs` (lists page
 4. UK EPR explainer v2, Data Calculation card (analyst working on packaging data on screen): https://www.ecoveritas.com/admin/entries/x/11248
 5. Testimonials concept, New Look case study card (New Look store or packaging): https://www.ecoveritas.com/admin/entries/x/11306
 6. New Look logo file (SVG or transparent PNG) for the New Look × Ecoveritas lock-up: https://www.ecoveritas.com/case-studies/new-look
-7. Technology page, hero (currently borrows the Data Analytics / Ecoview graphic): https://www.ecoveritas.com/powerful-epr-software
+7. Data Collection, Calculation & Reporting concept, hero (borrows an Obligation Assessment graphic; packaging being weighed or data being checked): https://www.ecoveritas.com/admin/entries/x/11781
+8. Technology page, hero (currently borrows the Data Analytics / Ecoview graphic): https://www.ecoveritas.com/powerful-epr-software
 
 ## Live pages with a blank hero image panel (audit, 23 Oct)
 - https://www.ecoveritas.com/services/ppwr-compliance-service (fixed in draft 4017)

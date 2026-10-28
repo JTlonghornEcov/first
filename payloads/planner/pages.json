@@ -94,7 +94,7 @@
     "name": "Plastic Packaging Tax",
     "section": "Compliance",
     "url": "https://www.ecoveritas.com/compliance/plastic-packaging-tax",
-    "notes": "Not built yet. Next in the queue."
+    "notes": "Concept: entry 11761 (disabled). Short page with a two-question liability check (HTML and CSS only, no JavaScript)."
   },
   {
     "id": "veolia",
@@ -108,14 +108,14 @@
     "name": "Obligation Assessment",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/obligation-assessment",
-    "notes": "Not built yet."
+    "notes": "Concept: entry 11771 (disabled)."
   },
   {
     "id": "data-collection",
     "name": "Data Collection, Calculation & Reporting",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/data-collection-calculation-reporting",
-    "notes": "Not built yet."
+    "notes": "Concept: entry 11781 (disabled). SKU figure aligned to 4m+ and Oxford-only weighing removed."
   },
   {
     "id": "data-analytics",
@@ -129,14 +129,14 @@
     "name": "Waste Management",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/waste-management",
-    "notes": "Not built yet."
+    "notes": "Concept: entry 11791 (disabled). Names Veolia as the partner."
   },
   {
     "id": "packaging-optimisation",
     "name": "Packaging Optimisation",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/packaging-optimisation",
-    "notes": "Not built yet."
+    "notes": "Concept: entry 11801 (disabled). Links to the Fee Audit; case result still to supply."
   },
   {
     "id": "ppwr-service",

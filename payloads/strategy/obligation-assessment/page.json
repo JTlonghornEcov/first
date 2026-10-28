@@ -1,0 +1,24 @@
+{
+  "name": "Obligation Assessment",
+  "live": "https://www.ecoveritas.com/services/obligation-assessment",
+  "canonical": "https://www.ecoveritas.com/services/obligation-assessment",
+  "eyebrow": "Services",
+  "heroTitle": "Obligation Assessment",
+  "heroIntro": "<p>Packaging, WEEE, batteries, textiles: every market has its own rules, fees and deadlines. We map exactly which apply to you, country by country, and give you a phased plan for where to start.</p>",
+  "heroImage": 4972,
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/4972/Obligation-Assessment-Hero-4.webp",
+  "buttons": [
+    [
+      "#evx-contact",
+      "Book an obligation assessment"
+    ],
+    [
+      "#c-oa-how",
+      "How it works"
+    ]
+  ],
+  "ctaTitle": "Tell us your markets. We'll map what applies.",
+  "ctaText": "Share where you sell and what you sell. We'll come back with which regulations apply in each market, what they ask of you, and where to start.",
+  "imagery": [],
+  "entryId": 11771
+}

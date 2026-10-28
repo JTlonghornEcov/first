@@ -292,5 +292,19 @@
       "imagery"
     ],
     "note": "Full list in docs/imagery-to-source.md."
+  },
+  {
+    "page": "Packaging Optimisation",
+    "title": "Supply one before-and-after case result for Packaging Optimisation (pack weight or EPR fee saved)",
+    "parts": [
+      "copy"
+    ],
+    "note": "Fills the placeholder on the concept page (entry 11801). Named or anonymised client."
+  },
+  {
+    "page": "Plastic Packaging Tax",
+    "title": "Fix the end Contact Us button on the live Plastic Packaging Tax page (it goes to Careers)",
+    "parts": [],
+    "note": "Quick fix from the review while the concept is reviewed. The concept itself ends in the contact form."
   }
 ]
