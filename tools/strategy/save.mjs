@@ -1,6 +1,7 @@
 // Builds and saves one strategic-review concept page as a disabled, noindexed test entry.
 // Reads payloads/strategy/<slug>/page.json (hero, CTA, canonical) and body.html, inlines payloads/strategy/shared.css
-// and the enquiry pre-fill script, and saves via entries/save-entry. The entry id is written back to page.json so
+// and saves via entries/save-entry. No JavaScript: the build refuses script tags, inline event handlers and
+// javascript: links (EXP flagged injected JS as a security risk), so interactive parts must be HTML and CSS only. The entry id is written back to page.json so
 // later runs update the same entry.
 // Usage: node tools/strategy/save.mjs <slug>
 import fs from 'node:fs';
@@ -11,7 +12,8 @@ const P = JSON.parse(fs.readFileSync(`${dir}/page.json`, 'utf8'));
 let body = fs.readFileSync(`${dir}/body.html`, 'utf8');
 for (const [k, f] of Object.entries(P.includes || {})) body = body.replace(`{{${k}}}`, fs.readFileSync(f, 'utf8'));
 if (/\{\{[A-Z_]+\}\}/.test(body)) throw new Error('unfilled placeholder in body.html');
-const html = `<style>\n${fs.readFileSync('payloads/strategy/shared.css', 'utf8')}\n${P.css || ''}</style>\n${body}\n${fs.readFileSync('payloads/shared/enquiry-prefill.html', 'utf8')}`;
+const html = `<style>\n${fs.readFileSync('payloads/strategy/shared.css', 'utf8')}\n${P.css || ''}</style>\n${body}`;
+if (/<script|\son[a-z]+\s*=|javascript:/i.test(html)) throw new Error('no JavaScript allowed: found a script tag, event handler or javascript: link');
 fs.writeFileSync(`${dir}/page.html`, html);
 if ((html.match(/<h1[\s>]/g) || []).length) throw new Error('body must not contain an H1 (the CMS hero carries it)');
 

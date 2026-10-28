@@ -1,0 +1,135 @@
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="c-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 21h14M6 7h12M6 7l-3 7a3 3 0 0 0 6 0zM18 7l-3 7a3 3 0 0 0 6 0z"/></symbol>
+  <symbol id="c-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="c-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+  <symbol id="c-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></symbol>
+</svg>
+<style>
+/* Liability check: plain radio buttons, results shown with CSS (:has). No JavaScript. */
+.evc .chk { display:grid; gap:24px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--grey); }
+@media (min-width:1024px) { .evc .chk { grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:40px; align-items:start; } }
+.evc .chk fieldset { margin:0; padding:0; border:0; min-width:0; display:grid; gap:12px; }
+.evc .chk fieldset + fieldset { margin-top:24px; }
+.evc .chk legend { padding:0; margin:0 0 12px; font-size:18px; font-weight:700; line-height:1.35; color:var(--ink); }
+.evc .chk legend span { display:block; margin-top:4px; font-size:15px; font-weight:400; color:var(--muted); }
+.evc .chk .opts { display:flex; flex-wrap:wrap; gap:10px; }
+.evc .chk label { position:relative; display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:99px; background:#fff; border:2px solid var(--line); font-weight:700; font-size:15.5px; color:var(--ink); cursor:pointer; }
+.evc .chk label:hover { border-color:var(--slate-3); }
+.evc .chk input { position:absolute; opacity:0; width:1px; height:1px; margin:0; }
+.evc .chk label::before { content:""; flex:none; width:18px; height:18px; border-radius:50%; border:2px solid var(--slate-3); background:#fff; }
+.evc .chk label:has(input:checked) { border-color:var(--slate); background:var(--slate); color:#fff; }
+.evc .chk label:has(input:checked)::before { border-color:var(--yellow); background:var(--yellow); box-shadow:inset 0 0 0 3px var(--slate); }
+.evc .chk label:has(input:focus-visible) { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+.evc .chk .res { display:grid; gap:14px; padding:clamp(22px,3vw,32px); border-radius:var(--r); background:var(--slate); color:#fff; }
+.evc .chk .res > div { display:none; gap:14px; }
+.evc .chk .res .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .chk .res b.big { font-size:clamp(21px,2.2vw,26px); line-height:1.3; color:#fff; }
+.evc .chk .res p { color:#e8eff2; font-size:15.5px; }
+.evc .chk .res .btn { justify-self:start; }
+/* which result shows */
+.evc .chk .res .r0 { display:grid; }
+.evc .chk:has(#c-ppt-q1-no:checked) .res .r0,
+.evc .chk:has(#c-ppt-q1-unsure:checked) .res .r0,
+.evc .chk:has(#c-ppt-q1-yes:checked):has([name="c-ppt-q2"]:checked) .res .r0 { display:none; }
+.evc .chk:has(#c-ppt-q1-yes:checked):not(:has([name="c-ppt-q2"]:checked)) .res .r0 .k::after { content:" · one more answer"; }
+.evc .chk:has(#c-ppt-q1-no:checked) .res .r-below,
+.evc .chk:has(#c-ppt-q1-unsure:checked) .res .r-unsure,
+.evc .chk:has(#c-ppt-q1-yes:checked):has(#c-ppt-q2-all:checked) .res .r-nil,
+.evc .chk:has(#c-ppt-q1-yes:checked):has(#c-ppt-q2-some:checked) .res .r-liable,
+.evc .chk:has(#c-ppt-q1-yes:checked):has(#c-ppt-q2-none:checked) .res .r-liable { display:grid; }
+/* question 2 only matters above the threshold */
+.evc .chk:has(#c-ppt-q1-no:checked) .q2, .evc .chk:has(#c-ppt-q1-unsure:checked) .q2 { opacity:.45; }
+.evc .facts { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr)); }
+.evc .facts li { display:grid; gap:8px; align-content:start; padding:22px 24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+.evc .facts .ic { display:grid; place-items:center; width:42px; height:42px; border-radius:12px; background:var(--teal-2); color:var(--teal); }
+.evc .facts b { font-size:17px; line-height:1.3; }
+.evc .facts p { font-size:15px; }
+</style>
+<div class="evc" id="c-ppt">
+
+<section class="sec" aria-labelledby="c-ppt-who-h">
+  <div class="two">
+    <div class="stack">
+      <p class="eyebrow" style="margin:0">Who pays</p>
+      <h2 id="c-ppt-who-h">UK manufacturers and importers of plastic packaging.</h2>
+      <p class="lead">If you make or import 10 tonnes or more of finished plastic packaging in 12 months, you must register with HMRC and file a return every quarter. Tax is due on every component with less than 30% recycled plastic.</p>
+      <p>Where several UK businesses work on the same packaging, the one that makes the last substantial modification before it's filled is liable. For imports, it's the business the packaging is brought in for.</p>
+    </div>
+    <div class="dark">
+      <span class="k">The rate</span>
+      <p class="big">£228.82 <em>per tonne</em></p>
+      <p>From 1 April 2026. The rate rises every April, so every tonne you can't evidence as 30% recycled costs a little more each year.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="c-ppt-check" aria-labelledby="c-ppt-check-h">
+  <div class="head split">
+    <h2 id="c-ppt-check-h">Are you liable? Two questions.</h2>
+    <p class="lead">A quick first view of where you stand. We'll confirm it properly with your data.</p>
+  </div>
+  <div class="chk">
+    <div>
+      <fieldset class="q1">
+        <legend>Do you make or import 10 tonnes or more of plastic packaging a year?<span>Count the last 12 months, or the next 30 days if you're growing.</span></legend>
+        <div class="opts">
+          <label><input type="radio" name="c-ppt-q1" id="c-ppt-q1-yes">Yes</label>
+          <label><input type="radio" name="c-ppt-q1" id="c-ppt-q1-no">No</label>
+          <label><input type="radio" name="c-ppt-q1" id="c-ppt-q1-unsure">Not sure</label>
+        </div>
+      </fieldset>
+      <fieldset class="q2">
+        <legend>How much of it contains at least 30% recycled plastic?<span>By component: each bottle, tray, film or lid counts on its own.</span></legend>
+        <div class="opts">
+          <label><input type="radio" name="c-ppt-q2" id="c-ppt-q2-all">All of it</label>
+          <label><input type="radio" name="c-ppt-q2" id="c-ppt-q2-some">Some of it</label>
+          <label><input type="radio" name="c-ppt-q2" id="c-ppt-q2-none">None, or I don't know</label>
+        </div>
+      </fieldset>
+    </div>
+    <div class="res" aria-live="polite">
+      <div class="r0"><span class="k">Your result</span><b class="big">Answer the questions to see where you stand.</b></div>
+      <div class="r-below"><span class="k">Your result</span><b class="big">Below the threshold, for now.</b><p>You don't need to register yet. But the 10 tonnes is a rolling 12 months, so keep records: if you cross it, you'll have to register and prove your figures.</p><a class="btn" href="#evx-contact">Check my tonnage with you <span aria-hidden="true">&#8594;</span></a></div>
+      <div class="r-unsure"><span class="k">Your result</span><b class="big">Let's measure it.</b><p>Most businesses that aren't sure are close to the line. We'll weigh up your plastic packaging, component by component, and tell you whether you need to register.</p><a class="btn" href="#evx-contact">Work out my tonnage <span aria-hidden="true">&#8594;</span></a></div>
+      <div class="r-nil"><span class="k">Your result</span><b class="big">Register, but you may owe nothing.</b><p>You still need to register and file every quarter, even with a nil liability. And you need evidence that each component really is 30% recycled. We'll build that evidence with your suppliers.</p><a class="btn" href="#evx-contact">Get my evidence in order <span aria-hidden="true">&#8594;</span></a></div>
+      <div class="r-liable"><span class="k">Your result</span><b class="big">You're very likely liable.</b><p>You need to register, file a return every quarter and pay tax on each component under 30% recycled. We'll calculate exactly what you owe and hand you returns-ready figures every quarter.</p><a class="btn" href="#evx-contact">Calculate what I owe <span aria-hidden="true">&#8594;</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="c-ppt-help-h">
+  <div class="head split">
+    <h2 id="c-ppt-help-h">What we do for you</h2>
+    <p class="lead">We take the data off your hands, so the return becomes a number you can trust, not a quarterly scramble.</p>
+  </div>
+  <div class="grid" style="--min:230px">
+    <div class="card"><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-scale"/></svg></span><h3>Liability calculation</h3><p>Every plastic component weighed or measured, and checked against the 30% threshold and the exemptions.</p></div>
+    <div class="card"><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-cal"/></svg></span><h3>Quarterly return figures</h3><p>Returns-ready figures for every quarter, in the format HMRC asks for, well ahead of the deadline.</p></div>
+    <div class="card"><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-file"/></svg></span><h3>Supplier evidence</h3><p>We collect recycled-content evidence from your suppliers and keep the audit trail HMRC expects you to hold for six years.</p></div>
+    <div class="card"><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-chart"/></svg></span><h3>Exposure by supplier</h3><p>See which suppliers drive your tax bill in Ecoview, and where switching to recycled content pays for itself.</p></div>
+  </div>
+  <ul class="proof" aria-label="Ecoveritas in numbers">
+    <li class="hl"><b>4m+</b><span>SKUs in our packaging database, used to check and complete your data</span></li>
+    <li><b>25+ years</b><span>Running packaging data and compliance for brands, retailers and manufacturers</span></li>
+    <li><b>Independent</b><span>We don't trade PRNs or run a compliance scheme, so our only job is getting your numbers right</span></li>
+  </ul>
+</section>
+
+<section class="sec panel" aria-labelledby="c-ppt-facts-h">
+  <div class="head">
+    <h2 id="c-ppt-facts-h">The essentials</h2>
+  </div>
+  <ul class="facts">
+    <li><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-cal"/></svg></span><b>Quarterly returns</b><p>Due, with any tax, by the last working day of the month after each quarter. Nil returns are still required.</p></li>
+    <li><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-file"/></svg></span><b>Six years of records</b><p>Keep them for every accounting period, and keep records below the threshold too, in case you cross it.</p></li>
+    <li><span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-scale"/></svg></span><b>Some packaging is exempt</b><p>Including immediate packaging for licensed human medicines and transport packaging for imported goods.</p></li>
+  </ul>
+  <div class="tool" aria-label="Planned guide: the complete Plastic Packaging Tax guide">
+    <span class="badge">Guide · to be built</span>
+    <h3>The complete Plastic Packaging Tax guide</h3>
+    <p class="note">Concept placeholder. The detail moved off this page goes into a linked article: what each return asks for, the "last substantial modification" rules with examples, and all four exemption categories and how they count towards the threshold.</p>
+  </div>
+</section>
+
+
+</div>

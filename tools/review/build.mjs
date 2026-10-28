@@ -76,7 +76,7 @@ ${body}
 </div></main>
 <section class="rv-contact" aria-labelledby="evx-contact"><div class="rv-in">
   <div><h2 id="evx-contact">${esc(P.ctaTitle)}</h2><p>${esc(P.ctaText)}</p></div>
-  <form class="rv-form" onsubmit="event.preventDefault()" aria-label="Enquiry form (switched off in the review copy)">
+  <form class="rv-form" aria-label="Enquiry form (switched off in the review copy)">
     <div class="rv-row"><input id="rv-email" placeholder="Email Address *" aria-label="Email address"><input id="rv-company" placeholder="Company" aria-label="Company"></div>
     <div class="rv-row"><input id="rv-first" placeholder="First name" aria-label="First name"><input id="rv-last" placeholder="Last name" aria-label="Last name"></div>
     <textarea id="rv-enquiry" placeholder="Give us a description of what we can help with!" aria-label="Enquiry"></textarea>
