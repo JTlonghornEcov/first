@@ -1,0 +1,21 @@
+{
+  "name": "Sectors overview",
+  "live": "new page (suggested address /industries)",
+  "eyebrow": "",
+  "heroTitle": "Packaging compliance for your sector",
+  "heroIntro": "<p>Every sector packs, ships and sells differently, so EPR hits each one differently. We've run packaging data for retailers, manufacturers, builders' merchants, pharmaceutical firms and growers. Find yours below.</p>",
+  "buttons": [
+    [
+      "#c-se-list",
+      "Find your sector"
+    ],
+    [
+      "#evx-contact",
+      "Talk to our team"
+    ]
+  ],
+  "heroImageUrl": "",
+  "ctaTitle": "Tell us about your business.",
+  "ctaText": "Tell us your sector, where you sell and roughly how much packaging you handle. We'll come back with what applies and how others in your sector handle it.",
+  "heroPlaceholder": "A warehouse with mixed product packaging, or a montage across sectors."
+}

@@ -1,0 +1,302 @@
+<title>Sectors overview page review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Review copy of an Ecoveritas page. Single light theme: it reproduces the live site, which has no dark mode. */
+:root { --rv-slate:#2f444e; --rv-ink:#212121; --rv-yellow:#ffcd03; --rv-white:#ffffff; --rv-mist:#c9dbe2; --rv-line:#dfe5e7; color-scheme:light; }
+body { margin:0; background:var(--rv-white); color:var(--rv-ink); font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; font-size:16px; line-height:1.6; }
+body::before { content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--rv-ink); }
+.rv-bar { position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:var(--rv-ink); color:var(--rv-white); font-size:13.5px; }
+.rv-bar .rv-in { display:flex; flex-wrap:wrap; gap:6px 18px; align-items:center; justify-content:space-between; padding-block:10px; }
+.rv-bar b { color:var(--rv-yellow); letter-spacing:.06em; text-transform:uppercase; font-size:12.5px; }
+.rv-bar span { color:#d7dee1; }
+.rv-in { max-width:1280px; margin:0 auto; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px)); box-sizing:border-box; }
+@media (min-width:1024px) { .rv-in { padding-left:max(80px,env(safe-area-inset-left,0px)); padding-right:max(80px,env(safe-area-inset-right,0px)); } }
+.rv-hero { background:var(--rv-slate); color:var(--rv-white); }
+.rv-hero .rv-in { display:grid; gap:32px; padding-block:48px 56px; }
+@media (min-width:1024px) { .rv-hero .rv-in { grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:clamp(32px,6vw,96px); align-items:center; padding-block:72px; } }
+.rv-eyebrow { display:block; color:var(--rv-yellow); font-weight:700; font-size:15px; margin:0 0 10px; }
+.rv-hero h1 { margin:0 0 14px; font-size:clamp(32px,4.2vw,48px); line-height:1.1; font-weight:700; text-wrap:balance; }
+.rv-intro { color:#e8eff2; font-size:15.5px; } .rv-intro p { margin:0 0 10px; } .rv-intro h2 { font-size:26px; line-height:1.2; margin:0 0 10px; color:var(--rv-white); }
+.rv-btns { display:flex; flex-wrap:wrap; gap:16px 28px; align-items:center; margin-top:28px; }
+.rv-btn { display:inline-flex; align-items:center; gap:12px; padding:13px 18px; background:var(--rv-yellow); color:var(--rv-ink); font-weight:700; font-size:15px; text-decoration:none; }
+.rv-btn svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2.2; }
+.rv-btn.rv-ghost { background:none; color:var(--rv-white); padding:13px 0; }
+.rv-img { position:relative; aspect-ratio:632/520; max-width:100%; background:#3d5662; }
+.rv-img img { width:100%; height:100%; object-fit:cover; display:block; }
+.rv-ph { position:absolute; inset:0; display:grid; place-content:center; gap:8px; padding:24px; text-align:center; border:2px dashed var(--rv-mist); background:rgba(47,68,78,.86); color:var(--rv-white); }
+.rv-ph b { font-size:17px; } .rv-ph span { font-size:14px; color:#d7dee1; max-width:40ch; margin:0 auto; }
+.rv-main .rv-in { padding-block:clamp(48px,7vw,96px); }
+.rv-contact { background:var(--rv-slate); color:var(--rv-white); }
+.rv-contact .rv-in { display:grid; gap:32px; padding-block:64px; }
+@media (min-width:1024px) { .rv-contact .rv-in { grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:clamp(32px,6vw,96px); align-items:start; padding-block:96px; } }
+.rv-contact h2 { margin:0 0 14px; font-size:clamp(30px,3.6vw,44px); line-height:1.12; color:var(--rv-white); text-wrap:balance; scroll-margin-top:72px; }
+.rv-contact p { margin:0; color:#e8eff2; }
+.rv-form { display:grid; gap:12px; padding:26px; background:#f6f7f7; color:var(--rv-ink); }
+.rv-form .rv-row { display:grid; gap:12px; } @media (min-width:640px) { .rv-form .rv-row { grid-template-columns:1fr 1fr; } }
+.rv-form input, .rv-form textarea, .rv-form select { font:inherit; width:100%; box-sizing:border-box; padding:14px 16px; border:2px solid #cfd6d9; background:var(--rv-white); color:var(--rv-ink); }
+.rv-form textarea { min-height:140px; resize:vertical; }
+.rv-form button { font:inherit; font-weight:700; padding:14px; border:0; background:var(--rv-yellow); color:var(--rv-ink); opacity:.6; cursor:not-allowed; }
+.rv-form small { color:#55656d; }
+.rv-foot { background:var(--rv-white); border-top:1px solid var(--rv-line); color:#55656d; font-size:14px; }
+.rv-foot .rv-in { padding-block:28px; }
+a:focus-visible, button:focus-visible { outline:3px solid var(--rv-yellow); outline-offset:3px; }
+</style>
+<div class="rv-bar" role="note"><div class="rv-in"><b>Review copy</b><span>Sectors overview · built 28 October 2026 · not the live site; the form is switched off</span><span>Live page: new page (suggested address /industries)</span></div></div>
+<header class="rv-hero"><div class="rv-in">
+  <div><span class="rv-eyebrow"></span><h1>Packaging compliance for your sector</h1><div class="rv-intro"><p>Every sector packs, ships and sells differently, so EPR hits each one differently. We've run packaging data for retailers, manufacturers, builders' merchants, pharmaceutical firms and growers. Find yours below.</p></div><div class="rv-btns"><a class="rv-btn" href="#c-se-list">Find your sector<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="rv-btn rv-ghost" href="#evx-contact">Talk to our team<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+  <div class="rv-img"><div class="rv-ph"><b>Hero image to be sourced</b><span>A warehouse with mixed product packaging, or a montage across sectors.</span></div></div>
+</div></header>
+<main class="rv-main"><div class="rv-in">
+
+                <style>
+/* Shared design language for the strategic-review concept pages. Scoped to .evc (the root of each page body).
+   Inlined into every page by tools/strategy/save.mjs. */
+html, body { overflow-x:clip; }
+.evc { --ink:#212121; --body:#333c45; --muted:#55656d; --slate:#2f444e; --slate-2:#3d5662; --slate-3:#4d6875; --teal:#006374; --teal-2:#e3f0f3;
+  --yellow:#ffcd03; --yellow-2:#fff6cc; --grey:#f6f7f7; --line:#dfe5e7; --mist:#c9dbe2; --r:16px;
+  color:var(--ink); display:grid; gap:clamp(64px,9vw,112px); font-size:16px; line-height:1.6; }
+.evc *, .evc *::before, .evc *::after { box-sizing:border-box; }
+.evc > * { min-width:0; }
+.evc :is(h2,h3,h4,p,ul,ol,li,dl,dt,dd,figure) { margin:0; padding:0; border:0; font-family:inherit; }
+.evc :is(ul,ol) { list-style:none; }
+.evc.evc li { margin:0; }   /* beats the site's list-item margins (doubled class for specificity) */
+.evc h2 { font-size:clamp(28px,3.6vw,42px); line-height:1.12; font-weight:700; letter-spacing:-.01em; color:var(--ink); }
+.evc h3 { font-size:19px; line-height:1.25; font-weight:700; color:var(--ink); }
+.evc p { color:var(--body); }
+.evc a { text-decoration:none; }
+.evc .sec { display:grid; gap:clamp(24px,3.4vw,40px); scroll-margin-top:110px; }
+.evc .eyebrow { display:inline-flex; align-items:center; gap:10px; margin:0 0 12px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.evc .eyebrow::before { content:""; width:28px; height:4px; border-radius:2px; background:var(--yellow); }
+.evc .head { display:grid; gap:14px; max-width:820px; }
+.evc .head.split { max-width:none; }
+@media (min-width:1024px) { .evc .head.split { grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:48px; align-items:end; } }
+.evc .lead { font-size:clamp(17px,1.7vw,20px); line-height:1.55; }
+.evc .muted { color:var(--muted); }
+.evc .icon { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+.evc :is(a,summary,button):focus-visible { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+.evc .x { color:var(--teal); font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+
+/* Buttons */
+.evc .btns { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+.evc .btn { display:inline-flex; align-items:center; gap:10px; padding:14px 22px; border-radius:2px; background:var(--yellow); color:var(--ink); font-weight:700; line-height:1.2; }
+.evc .btn:hover { background:#ffd83a; }
+.evc .btn.ghost { background:transparent; box-shadow:inset 0 0 0 2px currentColor; }
+.evc .btn.ghost:hover { background:rgba(0,0,0,.04); }
+.evc .on-dark .btn.ghost { color:#fff; }
+.evc .arrow { display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--teal); }
+.evc .arrow::after { content:"\2192"; transition:transform .15s ease; }
+.evc a:hover .arrow::after, .evc a.arrow:hover::after { transform:translateX(3px); }
+@media (max-width:560px) { .evc .btns .btn { width:100%; justify-content:center; } }
+
+/* Grids and cards */
+.evc .grid { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(min(var(--min,260px),100%),1fr)); }
+.evc .card { display:flex; flex-direction:column; gap:10px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+.evc .card.grey { background:var(--grey); border-color:var(--grey); }
+.evc .card p { font-size:15.5px; }
+.evc .card .ic { display:grid; place-items:center; width:46px; height:46px; border-radius:12px; background:var(--teal-2); color:var(--teal); }
+.evc a.card { color:inherit; transition:border-color .15s ease, transform .15s ease; }
+.evc a.card:hover { border-color:var(--slate); transform:translateY(-2px); }
+.evc a.card .arrow { margin-top:auto; padding-top:6px; }
+.evc .num { font-size:30px; font-weight:700; line-height:1; color:var(--teal); font-variant-numeric:tabular-nums; }
+.evc .panel { padding:clamp(24px,4vw,48px); border-radius:var(--r); background:var(--grey); }
+.evc .two { display:grid; gap:clamp(24px,3vw,48px); }
+@media (min-width:1024px) { .evc .two { grid-template-columns:minmax(0,7fr) minmax(0,5fr); align-items:center; } .evc .two.even { grid-template-columns:1fr 1fr; } .evc .two.top { align-items:start; } }
+.evc .stack { display:grid; gap:16px; align-content:start; }
+
+/* Slate statement / dark cards */
+.evc .dark { display:flex; flex-direction:column; gap:18px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--slate); color:#fff; }
+.evc .dark.teal { background:var(--teal); }
+.evc .dark :is(h2,h3,b,strong) { color:#fff; }
+.evc .dark p, .evc .dark li { color:#e8eff2; }
+.evc .dark .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .dark em { font-style:normal; color:var(--yellow); }
+.evc .dark .big { font-size:clamp(22px,2.4vw,30px); line-height:1.3; font-weight:700; color:#fff; letter-spacing:-.01em; }
+
+/* Proof strip */
+.evc .proof { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); }
+.evc .proof li { display:grid; gap:6px; align-content:start; padding:22px 24px; border-radius:var(--r); background:var(--slate); }
+.evc .proof li.hl { background:var(--teal); }
+.evc .proof b { font-size:clamp(30px,3.4vw,42px); line-height:1; font-weight:700; color:var(--yellow); letter-spacing:-.01em; }
+.evc .proof span { font-size:15px; line-height:1.45; color:#e8eff2; }
+
+/* Chips */
+.evc .chips { display:flex; flex-wrap:wrap; gap:8px; }
+.evc .chips li, .evc .chip { display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:99px; background:#fff; border:1px solid var(--line); font-size:14px; font-weight:700; color:var(--ink); }
+.evc .chips li::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--teal); }
+
+/* Numbered steps */
+.evc .steps { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr)); counter-reset:st; }
+.evc .steps > li { position:relative; display:flex; flex-direction:column; gap:10px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); counter-increment:st; }
+.evc .steps > li::before { content:counter(st,decimal-leading-zero); font-size:30px; font-weight:700; line-height:1; color:var(--teal); font-variant-numeric:tabular-nums; }
+.evc .steps p { font-size:15.5px; }
+
+/* Ticks list */
+.evc .ticks { display:grid; gap:10px; }
+.evc .ticks li { display:flex; gap:12px; align-items:flex-start; }
+.evc .ticks li::before { content:""; flex:none; width:20px; height:20px; margin-top:3px; border-radius:50%; background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 12 4 4 8-8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat; }
+.evc .dark .ticks li::before { background-color:var(--yellow); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 12 4 4 8-8' fill='none' stroke='%23212121' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+
+/* Router: "which describes you?" link rows */
+.evc .router { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); }
+.evc .router a { display:grid; grid-template-columns:auto minmax(0,1fr); gap:6px 16px; align-items:start; padding:22px; border-radius:var(--r); background:#fff; border:1px solid var(--line); color:var(--ink); transition:border-color .15s ease, box-shadow .15s ease; }
+.evc .router a:hover { border-color:var(--slate); box-shadow:0 8px 24px rgba(47,68,78,.12); }
+.evc .router .ic { grid-row:span 3; display:grid; place-items:center; width:46px; height:46px; border-radius:50%; background:var(--slate); color:var(--yellow); }
+.evc .router b { font-size:17.5px; line-height:1.3; }
+.evc .router span.d { font-size:15px; color:var(--muted); line-height:1.5; }
+.evc .router .arrow { font-size:15px; }
+
+/* Lead tool placeholder (concept only: the tool itself is still to be built) */
+.evc .tool { position:relative; display:grid; gap:18px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:repeating-linear-gradient(135deg,#fff 0 14px,#fbfcfc 14px 28px); border:2px dashed var(--slate-3); }
+.evc .tool .badge { justify-self:start; display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:99px; background:var(--slate); color:var(--yellow); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.evc .tool h3 { font-size:clamp(22px,2.4vw,28px); }
+.evc .tool .flow { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.evc .tool .flow span { padding:10px 14px; border-radius:10px; background:#fff; border:1px solid var(--line); font-size:14.5px; font-weight:700; color:var(--ink); }
+.evc .tool .flow i { font-style:normal; color:var(--teal); font-weight:700; }
+.evc .tool .flow span.end { background:var(--yellow); border-color:var(--yellow); }
+.evc .tool .note { font-size:14px; color:var(--muted); }
+@media (max-width:560px) { .evc .tool .flow { flex-direction:column; align-items:flex-start; } .evc .tool .flow i { transform:rotate(90deg); margin-left:14px; } }
+
+/* Callout (e.g. "not listed?") */
+.evc .callout { display:grid; gap:16px; padding:clamp(24px,3vw,36px); border-radius:var(--r); background:var(--yellow-2); border-left:6px solid var(--yellow); }
+@media (min-width:1024px) { .evc .callout { grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:32px; } }
+.evc .callout p.big { font-size:clamp(20px,2.2vw,26px); line-height:1.3; font-weight:700; color:var(--ink); }
+
+/* Tabs-free market list */
+.evc .markets { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); }
+.evc .market { display:flex; flex-direction:column; gap:10px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+.evc .market .top { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 12px; }
+.evc .market .tag { padding:4px 10px; border-radius:99px; background:var(--teal-2); color:var(--teal); font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
+.evc .market .tag.soon { background:var(--grey); color:var(--muted); }
+.evc .market p { font-size:15.5px; }
+.evc .market a { margin-top:auto; }
+.evc .market dl { display:grid; gap:10px; }
+.evc .market dt { font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); }
+.evc .market dd { font-size:15px; color:var(--body); }
+.evc .market h3 { font-size:22px; }
+.evc .market .sub { font-size:15px; color:var(--muted); margin-top:-4px; }
+
+/* FAQ */
+.evc .faq { display:grid; gap:10px; max-width:920px; }
+.evc details { border-radius:12px; background:var(--grey); }
+.evc summary { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:18px 20px; cursor:pointer; font-weight:700; font-size:17px; list-style:none; color:var(--ink); }
+.evc summary::-webkit-details-marker { display:none; }
+.evc summary::after { content:"+"; flex:none; display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:#fff; font-size:20px; line-height:1; transition:transform .2s ease; }
+.evc details[open] summary::after { transform:rotate(45deg); }
+.evc details > div { padding:0 20px 20px; display:grid; gap:10px; }
+
+/* Next step band */
+.evc .next { display:grid; gap:18px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--slate); }
+@media (min-width:1024px) { .evc .next { grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:40px; } }
+.evc .next h2, .evc .next h3 { color:#fff; }
+.evc .next p { color:#e8eff2; }
+.evc .next .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+
+/* Other regions strip and further reading */
+.evc .regions { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+.evc .regions a { padding:9px 16px; border-radius:99px; border:1px solid var(--line); color:var(--ink); font-weight:700; font-size:14.5px; }
+.evc .regions a:hover { border-color:var(--slate); }
+.evc .reading { display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; }
+
+/* Form intro just above the contact block */
+.evc .formintro { display:grid; gap:12px; max-width:820px; }
+
+@media (prefers-reduced-motion:reduce) { .evc *, .evc *::before, .evc *::after { transition:none !important; } .evc a.card:hover { transform:none; } }
+#evx-contact { scroll-margin-top:96px; }
+
+/* Photo placeholder (concept only: a task to source the image goes in the planner). Swap for .ph.photo + <img> once supplied. */
+.evc .ph { display:grid; place-content:center; justify-items:center; gap:8px; min-height:240px; padding:24px; border-radius:var(--r); border:2px dashed var(--mist); background:repeating-linear-gradient(135deg,#fff 0 14px,#f3f7f8 14px 28px); text-align:center; }
+.evc .ph .icon { width:36px; height:36px; color:var(--teal); }
+.evc .ph b { font-size:16px; color:var(--ink); }
+.evc .ph span { font-size:14px; line-height:1.45; color:var(--muted); max-width:40ch; }
+.evc .ph.wide { aspect-ratio:21/8; }
+.evc .ph.tall { min-height:360px; height:100%; }
+@media (max-width:640px) { .evc .ph.wide { aspect-ratio:auto; } }
+.evc .ph.photo { padding:0; border:0; overflow:hidden; background:var(--slate); }
+.evc .ph.photo img { display:block; width:100%; height:100%; object-fit:cover; }
+
+/* Question-and-answer checker: radio buttons, result panels switched with :has(). No JavaScript.
+   Each page adds its own rules for which result shows. */
+.evc .chk { display:grid; gap:24px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--grey); }
+@media (min-width:1024px) { .evc .chk { grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:40px; align-items:start; } }
+.evc .chk fieldset { margin:0; padding:0; border:0; min-width:0; display:grid; gap:12px; }
+.evc .chk fieldset + fieldset { margin-top:24px; }
+.evc .chk legend { padding:0; margin:0 0 12px; font-size:18px; font-weight:700; line-height:1.35; color:var(--ink); }
+.evc .chk legend span { display:block; margin-top:4px; font-size:15px; font-weight:400; color:var(--muted); }
+.evc .chk .opts { display:flex; flex-wrap:wrap; gap:10px; }
+.evc .chk label { position:relative; display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:99px; background:#fff; border:2px solid var(--line); font-weight:700; font-size:15.5px; color:var(--ink); cursor:pointer; }
+.evc .chk label:hover { border-color:var(--slate-3); }
+.evc .chk input { position:absolute; opacity:0; width:1px; height:1px; margin:0; }
+.evc .chk label::before { content:""; flex:none; width:18px; height:18px; border-radius:50%; border:2px solid var(--slate-3); background:#fff; }
+.evc .chk label:has(input:checked) { border-color:var(--slate); background:var(--slate); color:#fff; }
+.evc .chk label:has(input:checked)::before { border-color:var(--yellow); background:var(--yellow); box-shadow:inset 0 0 0 3px var(--slate); }
+.evc .chk label:has(input:focus-visible) { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+.evc .chk .res { display:grid; gap:14px; padding:clamp(22px,3vw,32px); border-radius:var(--r); background:var(--slate); color:#fff; }
+.evc .chk .res > div { display:none; gap:14px; }
+.evc .chk .res > .r0 { display:grid; }
+.evc .chk .res .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .chk .res b.big { font-size:clamp(21px,2.2vw,26px); line-height:1.3; color:#fff; }
+.evc .chk .res p { color:#e8eff2; font-size:15.5px; }
+.evc .chk .res .btn { justify-self:start; }
+
+</style>
+<style>
+.evc .sectors { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr)); }
+.evc .sector { display:grid; grid-template-rows:auto 1fr; border-radius:var(--r); background:#fff; border:1px solid var(--line); overflow:hidden; }
+.evc .sector .ph { min-height:0; aspect-ratio:16/9; border-radius:0; border-width:0 0 2px; }
+.evc .sector .body { display:flex; flex-direction:column; gap:10px; padding:22px 24px 24px; }
+.evc .sector p { font-size:15.5px; }
+.evc .sector .lk { margin-top:auto; display:flex; flex-wrap:wrap; gap:8px 18px; padding-top:6px; }
+</style>
+<div class="evc" id="c-se">
+
+<section class="sec" id="c-se-list" aria-labelledby="c-se-list-h">
+  <div class="head split">
+    <h2 id="c-se-list-h">Find your sector</h2>
+    <p class="lead">What EPR looks like in your world, and how we help.</p>
+  </div>
+  <div class="sectors">
+    <article class="sector"><div class="ph" role="img" aria-label="Photo to be sourced: A retail store or fashion packaging: garment bags, mailers or labelled product packaging."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg><b>Photo to be sourced</b><span>A retail store or fashion packaging: garment bags, mailers or labelled product packaging.</span></div><div class="body"><h3>Retail and fashion</h3><p>Thousands of SKUs, many suppliers and a mix of own-brand and imported goods. The hard part is getting accurate packaging data for every line.</p><div class="lk"><a class="arrow" href="https://www.ecoveritas.com/case-studies/new-look">New Look case study</a></div></div></article>
+    <article class="sector"><div class="ph" role="img" aria-label="Photo to be sourced: Food and drink packaging on a production or packing line."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg><b>Photo to be sourced</b><span>Food and drink packaging on a production or packing line.</span></div><div class="body"><h3>Food and drink</h3><p>High volumes of household packaging, so modulated fees and recyclability ratings hit hardest. Drinks producers also face deposit return schemes.</p><div class="lk"><a class="arrow" href="https://www.ecoveritas.com/articles/rolling-out-the-deposit-return-scheme">Rolling out the Deposit Return Scheme</a></div></div></article>
+    <article class="sector"><div class="ph" role="img" aria-label="Photo to be sourced: Building materials on pallets in a builders' merchant yard."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg><b>Photo to be sourced</b><span>Building materials on pallets in a builders' merchant yard.</span></div><div class="body"><h3>Building trade and construction</h3><p>Heavy transit packaging such as pallets, wraps and bulk bags, where classifying packaging correctly as household or non-household changes the bill.</p><div class="lk"><a class="arrow" href="https://www.ecoveritas.com/industries/epr-building-trade">EPR for the building trade</a> <a class="arrow" href="https://www.ecoveritas.com/case-studies/case-study-heidelberg-materials-uk">Heidelberg Materials UK case study</a></div></div></article>
+    <article class="sector"><div class="ph" role="img" aria-label="Photo to be sourced: Pharmaceutical packaging: blister packs or cartons on a packing line."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg><b>Photo to be sourced</b><span>Pharmaceutical packaging: blister packs or cartons on a packing line.</span></div><div class="body"><h3>Pharmaceuticals and healthcare</h3><p>Packaging across many markets, and specific rules such as the Plastic Packaging Tax exemption for immediate packaging of licensed human medicines.</p><div class="lk"><a class="arrow" href="https://www.ecoveritas.com/compliance/plastic-packaging-tax">Plastic Packaging Tax</a></div></div></article>
+    <article class="sector"><div class="ph" role="img" aria-label="Photo to be sourced: Electrical goods or toys in retail packaging."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg><b>Photo to be sourced</b><span>Electrical goods or toys in retail packaging.</span></div><div class="body"><h3>Electricals, batteries and toys</h3><p>Packaging is only the start: the same product can also bring WEEE and battery obligations, often in several countries at once.</p><div class="lk"><a class="arrow" href="https://www.ecoveritas.com/articles/the-electronic-toy-on-your-shelf-could-be-triggering-five-separate-compliance-obligations">One toy, five obligations</a></div></div></article>
+    <article class="sector"><div class="ph" role="img" aria-label="Photo to be sourced: Plants in plastic pots and trays at a nursery or garden centre."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg><b>Photo to be sourced</b><span>Plants in plastic pots and trays at a nursery or garden centre.</span></div><div class="body"><h3>Horticulture</h3><p>Plastic pots, trays and transit packaging, where both EPR and the Plastic Packaging Tax can apply.</p><div class="lk"><a class="arrow" href="#evx-contact">Talk to us about horticulture</a></div></div></article>
+  </div>
+</section>
+
+<section class="sec" aria-label="Sector not listed">
+  <div class="callout">
+    <p class="big">Don't see your sector? The rules depend on your packaging, not your industry label.</p>
+    <a class="btn" href="#evx-contact">Ask us what applies <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<section class="sec panel" aria-labelledby="c-se-how-h">
+  <div class="head split">
+    <h2 id="c-se-how-h">Whatever your sector, the same three questions</h2>
+    <p class="lead">Every engagement starts by answering them.</p>
+  </div>
+  <ol class="steps">
+    <li><h3>What applies to you?</h3><p>Which rules, in which markets, from when. <a class="x" href="https://www.ecoveritas.com/services/obligation-assessment">Obligation Assessment</a></p></li>
+    <li><h3>Is your data right?</h3><p>Measured weights, correct materials and splits. <a class="x" href="https://www.ecoveritas.com/services/data-collection-calculation-reporting">Data Collection &amp; Reporting</a></p></li>
+    <li><h3>Are you paying the right amount?</h3><p>Errors found, corrected and kept out. <a class="x" href="https://www.ecoveritas.com/epr-fee-audit">EPR Fee Audit</a></p></li>
+  </ol>
+</section>
+
+</div>
+            
+</div></main>
+<section class="rv-contact" aria-labelledby="evx-contact"><div class="rv-in">
+  <div><h2 id="evx-contact">Tell us about your business.</h2><p>Tell us your sector, where you sell and roughly how much packaging you handle. We'll come back with what applies and how others in your sector handle it.</p></div>
+  <form class="rv-form" aria-label="Enquiry form (switched off in the review copy)">
+    <div class="rv-row"><input id="rv-email" placeholder="Email Address *" aria-label="Email address"><input id="rv-company" placeholder="Company" aria-label="Company"></div>
+    <div class="rv-row"><input id="rv-first" placeholder="First name" aria-label="First name"><input id="rv-last" placeholder="Last name" aria-label="Last name"></div>
+    <textarea id="rv-enquiry" placeholder="Give us a description of what we can help with!" aria-label="Enquiry"></textarea>
+    <select id="rv-heard" aria-label="How did you first hear about us?"><option>How did you first hear about us?</option></select>
+    <button type="submit" disabled>Submit your enquiry</button>
+    <small>Review copy: this form doesn't send anything.</small>
+  </form>
+</div></section>
+<footer class="rv-foot"><div class="rv-in">Review copy of the Sectors overview page, built from the CMS version. Leave comments on anything that needs changing.</div></footer>

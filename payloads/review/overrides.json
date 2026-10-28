@@ -82,5 +82,25 @@
     "name": "PPWR Supplier Declaration of Conformity",
     "heroPlaceholder": "A supplier and a buyer reviewing a signed document or a packaging specification.",
     "live": "not live yet (new page)"
+  },
+  "contact": {
+    "name": "Contact",
+    "live": "https://www.ecoveritas.com/contact-us",
+    "heroPlaceholder": "The team at work in the Manchester office, or a friendly specialist on a call."
+  },
+  "services": {
+    "name": "Services overview",
+    "live": "https://www.ecoveritas.com/services",
+    "heroPlaceholder": "An Ecoveritas specialist working through packaging data with a client."
+  },
+  "sectors": {
+    "name": "Sectors overview",
+    "live": "new page (suggested address /industries)",
+    "heroPlaceholder": "A warehouse with mixed product packaging, or a montage across sectors."
+  },
+  "resources": {
+    "name": "Blog / resources hub",
+    "live": "https://www.ecoveritas.com/insights",
+    "heroPlaceholder": "Someone reading a report or guide at a desk."
   }
 }

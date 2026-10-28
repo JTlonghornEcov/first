@@ -1,0 +1,64 @@
+<style>
+.evc .jrny { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); counter-reset:j; }
+.evc .jrny li { display:grid; gap:8px; align-content:start; padding:22px; border-radius:var(--r); background:#fff; border:1px solid var(--line); counter-increment:j; }
+.evc .jrny li::before { content:"Stage " counter(j); font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); }
+.evc .jrny p { font-size:15px; }
+.evc .jrny a { margin-top:4px; }
+</style>
+<div class="evc" id="c-sv">
+
+<section class="sec" id="c-sv-find" aria-labelledby="c-sv-find-h">
+  <div class="head split">
+    <h2 id="c-sv-find-h">Where are you starting from?</h2>
+    <p class="lead">Pick the one that sounds most like you.</p>
+  </div>
+  <div class="router">
+    <a href="https://www.ecoveritas.com/services/obligation-assessment"><span class="ic" aria-hidden="true">?</span><b>"We don't know what applies to us."</b><span class="d">Obligation Assessment maps every rule in every market you sell into.</span><span class="arrow">Obligation Assessment</span></a>
+    <a href="https://www.ecoveritas.com/services/data-collection-calculation-reporting"><span class="ic" aria-hidden="true">✓</span><b>"We need our reporting handled."</b><span class="d">We collect, calculate and submit your data, audit-ready.</span><span class="arrow">Data Collection, Calculation &amp; Reporting</span></a>
+    <a href="https://www.ecoveritas.com/epr-fee-audit"><span class="ic" aria-hidden="true">£</span><b>"We think we're paying too much."</b><span class="d">An EPR Fee Audit finds the errors behind your bill and corrects them.</span><span class="arrow">EPR Fee Audit</span></a>
+    <a href="https://www.ecoveritas.com/services/ppwr-compliance-service"><span class="ic" aria-hidden="true">€</span><b>"We sell into the EU."</b><span class="d">PPWR compliance, from scoping to declarations ready to sign.</span><span class="arrow">PPWR Compliance Service</span></a>
+    <a href="https://www.ecoveritas.com/services/data-analytics"><span class="ic" aria-hidden="true">▤</span><b>"We want to understand our data."</b><span class="d">Ecoview shows where your fees come from and where to act.</span><span class="arrow">Data Analytics</span></a>
+    <a href="https://www.ecoveritas.com/services/packaging-optimisation"><span class="ic" aria-hidden="true">◇</span><b>"We want better packaging."</b><span class="d">Lower material, shipping and EPR costs, and better RAM ratings.</span><span class="arrow">Packaging Optimisation</span></a>
+    <a href="https://www.ecoveritas.com/services/waste-management"><span class="ic" aria-hidden="true">♻</span><b>"We need our waste dealt with."</b><span class="d">Collection, sorting and recycling with Veolia, joined up with your reporting.</span><span class="arrow">Waste Management</span></a>
+    <a href="https://www.ecoveritas.com/powerful-epr-software"><span class="ic" aria-hidden="true">↗</span><b>"We're small and want to do it ourselves."</b><span class="d">my.ecoveritas lets smaller producers report for themselves.</span><span class="arrow">my.ecoveritas</span></a>
+  </div>
+</section>
+
+<section class="sec panel" aria-labelledby="c-sv-j-h">
+  <div class="head split">
+    <h2 id="c-sv-j-h">How the services fit together</h2>
+    <p class="lead">Most clients start at one stage and add the next when they're ready.</p>
+  </div>
+  <ol class="jrny">
+    <li><h3>Understand</h3><p>Find out what applies to you, where and when.</p><a class="arrow" href="https://www.ecoveritas.com/services/obligation-assessment">Obligation Assessment</a></li>
+    <li><h3>Comply</h3><p>Collect, calculate and report your data, in every market.</p><a class="arrow" href="https://www.ecoveritas.com/services/data-collection-calculation-reporting">Data Collection &amp; Reporting</a></li>
+    <li><h3>Pay the right amount</h3><p>Check the bill, correct it, and see what's driving it.</p><a class="arrow" href="https://www.ecoveritas.com/epr-fee-audit">EPR Fee Audit</a></li>
+    <li><h3>Improve</h3><p>Redesign packs and handle waste to bring fees down for good.</p><a class="arrow" href="https://www.ecoveritas.com/services/packaging-optimisation">Packaging Optimisation</a></li>
+  </ol>
+</section>
+
+<section class="sec" aria-labelledby="c-sv-why-h">
+  <div class="two">
+    <div class="ph tall" role="img" aria-label="Photo to be sourced: An Ecoveritas specialist and a client reviewing packaging samples and data together."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Photo to be sourced</b><span>An Ecoveritas specialist and a client reviewing packaging samples and data together.</span></div>
+    <div class="stack">
+      <p class="eyebrow" style="margin:0">Why Ecoveritas</p>
+      <h2 id="c-sv-why-h">Independent, so our only job is getting your numbers right.</h2>
+      <p class="lead">We don't trade PRNs or run a compliance scheme. We work alongside whichever scheme you use and make sure what you declare, and pay, is right.</p>
+      <ul class="proof" aria-label="Ecoveritas in numbers">
+        <li class="hl"><b>4m+</b><span>SKUs in our packaging database</span></li>
+        <li><b>80+</b><span>Countries in our EPR regulation matrix</span></li>
+        <li><b>25+ years</b><span>Running packaging compliance</span></li>
+      </ul>
+      <p class="muted">See it in practice: <a class="x" href="https://www.ecoveritas.com/case-studies/new-look">New Look</a> and <a class="x" href="https://www.ecoveritas.com/case-studies/case-study-heidelberg-materials-uk">Heidelberg Materials UK</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-label="Managed service, software or compliance scheme">
+  <div class="callout">
+    <p class="big">Managed service, software or compliance scheme: which do you actually need?</p>
+    <a class="btn" href="https://www.ecoveritas.com/managed-services-vs-software-vs-compliance-scheme">Compare the options <span aria-hidden="true">&#8594;</span></a>
+  </div>
+</section>
+
+</div>

@@ -1,0 +1,26 @@
+{
+  "name": "Sectors overview",
+  "planner": "Sectors overview",
+  "live": "new page (suggested address /industries)",
+  "canonical": "https://www.ecoveritas.com/industries",
+  "eyebrow": "Sectors",
+  "heroTitle": "Packaging compliance for your sector",
+  "heroIntro": "<p>Every sector packs, ships and sells differently, so EPR hits each one differently. We've run packaging data for retailers, manufacturers, builders' merchants, pharmaceutical firms and growers. Find yours below.</p>",
+  "heroImage": null,
+  "buttons": [
+    [
+      "#c-se-list",
+      "Find your sector"
+    ],
+    [
+      "#evx-contact",
+      "Talk to our team"
+    ]
+  ],
+  "ctaTitle": "Tell us about your business.",
+  "ctaText": "Tell us your sector, where you sell and roughly how much packaging you handle. We'll come back with what applies and how others in your sector handle it.",
+  "imagery": [
+    "hero: a montage-style image or a warehouse with mixed product packaging"
+  ],
+  "entryId": 11914
+}

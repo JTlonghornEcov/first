@@ -1,0 +1,21 @@
+{
+  "name": "Contact",
+  "live": "https://www.ecoveritas.com/contact-us",
+  "eyebrow": "",
+  "heroTitle": "Get in touch",
+  "heroIntro": "<p>Tell us what you need and we'll put you straight through to the right specialist. Pick your starting point below, or send us an enquiry and we'll take it from there.</p>",
+  "buttons": [
+    [
+      "#evx-contact",
+      "Send an enquiry"
+    ],
+    [
+      "#c-ct-reach",
+      "Call, email or visit"
+    ]
+  ],
+  "heroImageUrl": "",
+  "ctaTitle": "Tell us what you need.",
+  "ctaText": "Include where you sell, roughly how much packaging you place on the market, and what you'd like help with. It means we can come back with a specific answer, not a sales call.",
+  "heroPlaceholder": "The team at work in the Manchester office, or a friendly specialist on a call."
+}

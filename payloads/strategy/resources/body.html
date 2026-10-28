@@ -1,0 +1,71 @@
+<style>
+.evc .topics { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); }
+.evc .topic { display:grid; gap:12px; align-content:start; padding:22px 24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+.evc .topic h3 { padding-bottom:10px; border-bottom:3px solid var(--yellow); }
+.evc .topic ul { display:grid; gap:10px; }
+.evc .topic a { color:var(--ink); font-weight:600; font-size:15.5px; text-decoration:underline; text-decoration-color:var(--mist); text-underline-offset:3px; }
+.evc .topic a:hover { text-decoration-color:var(--teal); }
+.evc .feat { display:grid; gap:0; border-radius:var(--r); overflow:hidden; background:var(--slate); color:#fff; }
+@media (min-width:1024px) { .evc .feat { grid-template-columns:minmax(0,6fr) minmax(0,5fr); } }
+.evc .feat .ph { border-radius:0; border:0; min-height:280px; }
+.evc .feat .body { display:flex; flex-direction:column; gap:14px; justify-content:center; padding:clamp(24px,3.4vw,40px); }
+.evc .feat .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .feat h3 { color:#fff; font-size:clamp(22px,2.4vw,28px); }
+.evc .feat p { color:#e8eff2; }
+.evc .cases { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr)); }
+.evc .cases a.card .ph { min-height:0; aspect-ratio:16/9; margin:-24px -24px 6px; border-radius:var(--r) var(--r) 0 0; border-width:0 0 2px; }
+</style>
+<div class="evc" id="c-rs">
+
+<section class="sec" id="c-rs-start" aria-labelledby="c-rs-start-h">
+  <div class="head split">
+    <h2 id="c-rs-start-h">Start with your question</h2>
+    <p class="lead">The six things we're asked most, and where to find the answer.</p>
+  </div>
+  <div class="router">
+    <a href="https://www.ecoveritas.com/compliance/uk-extended-producer-responsibility-epr"><span class="ic" aria-hidden="true">?</span><b>Does UK EPR apply to us?</b><span class="arrow">UK EPR explained</span></a>
+    <a href="https://www.ecoveritas.com/articles/uk-packaging-epr-year-1-fees-confirmed"><span class="ic" aria-hidden="true">£</span><b>What will we pay?</b><span class="arrow">Year 1 fees confirmed</span></a>
+    <a href="https://www.ecoveritas.com/articles/is-epr-a-tax"><span class="ic" aria-hidden="true">%</span><b>Is EPR a tax?</b><span class="arrow">Read the answer</span></a>
+    <a href="https://www.ecoveritas.com/compliance/recyclability-assessment-methodology"><span class="ic" aria-hidden="true">●</span><b>What do red, amber and green mean?</b><span class="arrow">The RAM explained</span></a>
+    <a href="https://www.ecoveritas.com/articles/eu-ppwr-separating-urgency-from-noise"><span class="ic" aria-hidden="true">€</span><b>What does PPWR mean for us, and when?</b><span class="arrow">Urgency vs noise</span></a>
+    <a href="https://www.ecoveritas.com/compliance/global-extended-producer-responsibility-epr"><span class="ic" aria-hidden="true">◎</span><b>We sell worldwide. Where do we start?</b><span class="arrow">Global EPR</span></a>
+  </div>
+</section>
+
+<section class="sec" aria-label="Featured">
+  <div class="feat">
+    <div class="ph" role="img" aria-label="Photo to be sourced: A US city street or a shelf of packaged goods, for the US eco-modulation article."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Photo to be sourced</b><span>A US city street or a shelf of packaged goods, for the US eco-modulation article.</span></div>
+    <div class="body">
+      <span class="k">Latest</span>
+      <h3>US packaging EPR eco-modulation: three states, three very different approaches</h3>
+      <p>California, Colorado and Oregon each adjust fees to reward better packaging, in very different ways. What that means if you sell into more than one.</p>
+      <a class="btn" href="https://www.ecoveritas.com/articles/us-packaging-epr-eco-modulation-three-states-three-very-different-approaches">Read the article <span aria-hidden="true">&#8594;</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="c-rs-top-h">
+  <div class="head">
+    <h2 id="c-rs-top-h">Browse by topic</h2>
+  </div>
+  <div class="topics">
+    <div class="topic"><h3>UK packaging EPR</h3><ul><li><a href="https://www.ecoveritas.com/articles/uk-packaging-epr-year-1-fees-confirmed">UK Packaging EPR: Year 1 fees confirmed</a></li><li><a href="https://www.ecoveritas.com/articles/uk-packaging-epr-in-2026-why-defaulting-data-is-costly">Why defaulting data is costly</a></li><li><a href="https://www.ecoveritas.com/articles/the-epr-packaging-fee-is-hitting-hard-and-the-bills-are-only-getting-bigger">The EPR packaging fee is hitting hard</a></li><li><a href="https://www.ecoveritas.com/articles/is-epr-a-tax">Is EPR a tax?</a></li></ul></div>
+    <div class="topic"><h3>Europe and PPWR</h3><ul><li><a href="https://www.ecoveritas.com/articles/eu-ppwr-separating-urgency-from-noise">EU PPWR: separating urgency from noise</a></li><li><a href="https://www.ecoveritas.com/articles/mandatory-environmental-labelling-for-packaging-across-europe-what-you-need-to-know">Mandatory environmental labelling across Europe</a></li><li><a href="https://www.ecoveritas.com/articles/unravelling-german-regulations-on-extended-producer-responsibility-epr">Unravelling German EPR regulations</a></li></ul></div>
+    <div class="topic"><h3>Global EPR</h3><ul><li><a href="https://www.ecoveritas.com/articles/us-packaging-epr-eco-modulation-three-states-three-very-different-approaches">US packaging EPR eco-modulation</a></li><li><a href="https://www.ecoveritas.com/articles/the-scope-of-epr-throughout-latin-america">The scope of EPR throughout Latin America</a></li><li><a href="https://www.ecoveritas.com/articles/looking-beyond-the-european-union-key-epr-outline-within-asia">Key EPR outline within Asia</a></li></ul></div>
+    <div class="topic"><h3>Deposit return and other obligations</h3><ul><li><a href="https://www.ecoveritas.com/articles/rolling-out-the-deposit-return-scheme">Rolling out the Deposit Return Scheme</a></li><li><a href="https://www.ecoveritas.com/articles/the-rise-of-the-deposit-return-scheme-is-the-time-now">The rise of the Deposit Return Scheme</a></li><li><a href="https://www.ecoveritas.com/articles/the-electronic-toy-on-your-shelf-could-be-triggering-five-separate-compliance-obligations">One electronic toy, five obligations</a></li></ul></div>
+  </div>
+  <p class="muted">Everything we've published: <a class="x" href="https://www.ecoveritas.com/articles">all articles</a> · <a class="x" href="https://www.ecoveritas.com/impact-reports">reports</a> · <a class="x" href="https://www.ecoveritas.com/webinars">webinars</a></p>
+</section>
+
+<section class="sec" aria-labelledby="c-rs-cs-h">
+  <div class="head split">
+    <h2 id="c-rs-cs-h">See it in practice</h2>
+    <p class="lead">How clients cut cost and effort with better packaging data.</p>
+  </div>
+  <div class="cases">
+    <a class="card" href="https://www.ecoveritas.com/case-studies/new-look"><div class="ph" role="img" aria-label="Photo to be sourced: New Look: a store front or the New Look × Ecoveritas lock-up."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Photo to be sourced</b><span>New Look: a store front or the New Look × Ecoveritas lock-up.</span></div><h3>New Look</h3><p>Packaging, WEEE and battery compliance for a fashion retailer with 462 stores, since 2010.</p><span class="arrow">Read the case study</span></a>
+    <a class="card" href="https://www.ecoveritas.com/case-studies/case-study-heidelberg-materials-uk"><div class="ph" role="img" aria-label="Photo to be sourced: Heidelberg Materials UK: building materials on site or in a yard."><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Photo to be sourced</b><span>Heidelberg Materials UK: building materials on site or in a yard.</span></div><h3>Heidelberg Materials UK</h3><p>Replacing estimates with evidence-based household and non-household classification, with a clear audit trail.</p><span class="arrow">Read the case study</span></a>
+  </div>
+</section>
+
+</div>

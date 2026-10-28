@@ -1,0 +1,26 @@
+{
+  "name": "Services overview",
+  "planner": "Services overview",
+  "live": "https://www.ecoveritas.com/services",
+  "canonical": "https://www.ecoveritas.com/services",
+  "eyebrow": "Services",
+  "heroTitle": "Packaging compliance, from first question to lower fees",
+  "heroIntro": "<p>Whether you're not sure what applies to you, need your reporting taken off your hands, or think you're paying too much, there's a service built for where you are now. Independent, data-led and run by specialists.</p>",
+  "heroImage": null,
+  "buttons": [
+    [
+      "#c-sv-find",
+      "Find the right service"
+    ],
+    [
+      "#evx-contact",
+      "Talk to our team"
+    ]
+  ],
+  "ctaTitle": "Not sure where to start?",
+  "ctaText": "Tell us where you sell and what's worrying you. We'll recommend the one service that fits, and tell you honestly if you don't need us.",
+  "imagery": [
+    "hero: an Ecoveritas specialist working through packaging data with a client"
+  ],
+  "entryId": 11904
+}

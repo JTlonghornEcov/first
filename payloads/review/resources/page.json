@@ -1,0 +1,21 @@
+{
+  "name": "Blog / resources hub",
+  "live": "https://www.ecoveritas.com/insights",
+  "eyebrow": "",
+  "heroTitle": "Clear answers on EPR, PPWR and packaging data",
+  "heroIntro": "<p>Guides, articles, case studies and reports from the team that runs packaging compliance every day. Start with the question you're asking.</p>",
+  "buttons": [
+    [
+      "#c-rs-start",
+      "Start with your question"
+    ],
+    [
+      "#evx-contact",
+      "Ask an expert"
+    ]
+  ],
+  "heroImageUrl": "",
+  "ctaTitle": "Got a question we haven't answered?",
+  "ctaText": "Ask our team. We'll point you to the answer, or give it to you.",
+  "heroPlaceholder": "Someone reading a report or guide at a desk."
+}
