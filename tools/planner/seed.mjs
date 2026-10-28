@@ -1,7 +1,7 @@
 // Writes the planner's pages and the tasks from work done so far as JSON documents, ready for ArtifactData batch writes.
-// Pages: payloads/planner/pages.json. Tasks: the scanner (tools/planner/tasks.mjs) for concept pages, plus the
-// follow-ups in payloads/planner/extra-tasks.json. Each task's doc id is stable ("c-" + slug of page and title), so
-// re-running never duplicates a task the team has already seen.
+// Pages: payloads/planner/pages.json. Tasks: the two standard tasks per concept page (tools/planner/tasks.mjs, ids
+// "std-<page>-draft" and "std-<page>-images") plus the few one-off tasks in payloads/planner/extra-tasks.json (ids
+// "c-" + slug of page and title). Ids are stable, so re-running never duplicates a task the team has already seen.
 // Usage: node tools/planner/seed.mjs <out-dir>   → <out-dir>/pages/<id>.json, <out-dir>/tasks/<id>.json, <out-dir>/writes-N.json
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -16,7 +16,7 @@ const tasks = [];
 for (const t of [...scanned, ...extra]) {
   const pageNames = t.pages || [t.page];
   const ids = pageNames.map(n => { if (!byName[n]) throw new Error('unknown page ' + n); return byName[n]; });
-  const id = 'c-' + slug(pageNames[0] + '-' + t.title).slice(0, 120);
+  const id = t.std ? `std-${ids[0]}-${t.std}` : 'c-' + slug(pageNames[0] + '-' + t.title).slice(0, 120);
   if (tasks.some(x => x.id === id)) throw new Error('duplicate task id ' + id);
   tasks.push({ id, title: t.title, parts: t.parts, pages: ids, assignee: '', due: '', done: false, created: now + tasks.length, source: 'claude', ...(t.note ? { note: t.note } : {}) });
 }

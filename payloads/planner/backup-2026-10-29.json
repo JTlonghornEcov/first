@@ -1,0 +1,1369 @@
+{
+ "tasks": {
+  "c-africa-and-middle-east-approve-the-imagery-of-africa-and-middle-east": {
+   "assignee": "Viviana",
+   "created": 1792672015107,
+   "done": false,
+   "due": "2026-10-22",
+   "dueLocked": true,
+   "pages": [
+    "africa-middle-east"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/5UW8BEM4eqsSuKuY6pHWtP",
+   "source": "claude",
+   "title": "Find imagery for Africa & Middle East"
+  },
+  "c-americas-approve-the-imagery-of-americas": {
+   "assignee": "Viviana",
+   "created": 1792672015111,
+   "done": false,
+   "due": "2026-10-22",
+   "dueLocked": true,
+   "pages": [
+    "americas"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/66joj3bDrpgQLRy2ys7QRz",
+   "source": "claude",
+   "title": "Find imagery for Americas"
+  },
+  "c-americas-build-the-lead-tool-which-states-and-provinces-do-you-sell-into-on-amer": {
+   "assignee": "",
+   "created": 1792672015110,
+   "done": false,
+   "due": "",
+   "pages": [
+    "americas"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Build the lead tool: \"Which states and provinces do you sell into?\" on Americas"
+  },
+  "c-asia-and-australia-approve-the-imagery-of-asia-and-australia": {
+   "assignee": "Viviana",
+   "created": 1792672015114,
+   "done": false,
+   "due": "2026-10-22",
+   "dueLocked": true,
+   "note": "The live page's hero panel is blank too (audit, 23 Oct), so the hero image can go live in a draft before the concept does.",
+   "pages": [
+    "asia-australia"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/AnZbDoLHF2VVBwCGSJcfcT",
+   "source": "claude",
+   "title": "Find imagery for Asia & Australia"
+  },
+  "c-data-analytics-agree-product-naming": {
+   "assignee": "",
+   "created": 1793270000009,
+   "done": false,
+   "due": "",
+   "note": "From the strategic review. The Technology page explains all three; the Data Analytics concept uses Ecoview for analytics and links to Technology.",
+   "pages": [
+    "data-analytics",
+    "technology"
+   ],
+   "parts": [],
+   "source": "claude",
+   "title": "Agree one naming convention for the platforms (Ecoview, Ecohub, my.ecoveritas) across the site"
+  },
+  "c-data-analytics-brief-claude-to-build-the-data-analytics-concept-strategic-review": {
+   "assignee": "",
+   "created": 1792672015168,
+   "done": true,
+   "doneAt": 1793270000020,
+   "due": "",
+   "note": "Built 29 Oct: entry 11829 (disabled). Includes a clickable Ecoview demo with sample data (HTML and CSS only).",
+   "pages": [
+    "data-analytics"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Brief Claude to build the Data Analytics concept (strategic review)"
+  },
+  "c-data-analytics-find-in-page-images": {
+   "assignee": "",
+   "created": 1793270000006,
+   "done": false,
+   "due": "",
+   "note": "1) Beside 'What you'll receive': a screenshot of a real Ecoview dashboard, with client names and figures anonymised. 2) Beside the next-step band: a finance or procurement team discussing a packaging dashboard on a large screen. Concept: entry 11829.",
+   "pages": [
+    "data-analytics"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/Gt22Lf6oRhVc2knXagEpKC",
+   "source": "claude",
+   "title": "Find imagery for Data Analytics (2 images)"
+  },
+  "c-data-collection-calculation-and-reporting-brief-claude-to-build-the-data-collect": {
+   "assignee": "",
+   "created": 1792672015166,
+   "done": true,
+   "doneAt": 1793190000012,
+   "due": "",
+   "note": "Built 28 Oct: entry 11781 (disabled).",
+   "pages": [
+    "data-collection"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Brief Claude to build the Data Collection, Calculation & Reporting concept (strategic review)"
+  },
+  "c-data-collection-calculation-and-reporting-find-imagery-for-data-collection-calcu": {
+   "assignee": "",
+   "created": 1793190000004,
+   "done": false,
+   "due": "",
+   "note": "The hero borrows an Obligation Assessment graphic. Suggested subject: packaging being weighed, or someone checking packaging data on screen.",
+   "pages": [
+    "data-collection"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/9yctbzwKNzXYW2i9HFXmSW",
+   "source": "claude",
+   "title": "Find imagery for Data Collection, Calculation & Reporting: a new hero"
+  },
+  "c-data-collection-calculation-and-reporting-update-the-sku-figure-on-data-collecti": {
+   "assignee": "",
+   "created": 1792672015167,
+   "done": true,
+   "doneAt": 1793190000015,
+   "due": "",
+   "note": "Done in the concept (entry 11781); goes live with it.",
+   "pages": [
+    "data-collection"
+   ],
+   "parts": [
+    "copy"
+   ],
+   "source": "claude",
+   "title": "Update the SKU figure on Data Collection, Calculation & Reporting from 3 million to 4m+"
+  },
+  "c-data-collection-find-in-page-photos": {
+   "assignee": "",
+   "created": 1793270000003,
+   "done": false,
+   "due": "",
+   "note": "Wide banner above the three stages: packaging being weighed on scales and labelled by SKU, at a measuring facility or on a client site. The hero has its own task. Concept: entry 11781.",
+   "pages": [
+    "data-collection"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/9yctbzwKNzXYW2i9HFXmSW",
+   "source": "claude",
+   "title": "Find in-page photos for Data Collection, Calculation & Reporting (1 photo)"
+  },
+  "c-epr-fee-audit-apply-the-epr-fee-audit-restyle-draft-3934-and-check-the-page-live": {
+   "assignee": "",
+   "created": 1792672015159,
+   "done": true,
+   "doneAt": 1792763340607,
+   "due": "",
+   "note": "Applied. The hero image dropped on apply; fixed in draft 4018 (its own task).",
+   "pages": [
+    "epr-fee-audit"
+   ],
+   "parts": [],
+   "source": "claude",
+   "title": "Apply the EPR Fee Audit restyle draft (3934) and check the page live"
+  },
+  "c-epr-fee-audit-apply-the-hero-image-draft-4018-on-epr-fee-audit-and-check-the-ima": {
+   "assignee": "",
+   "created": 1792763340602,
+   "done": false,
+   "due": "",
+   "note": "https://www.ecoveritas.com/admin/entries/x/10865?draftId=4018. The hero went blank after the restyle draft was applied, so check the live hero straight after applying and tell Claude.",
+   "pages": [
+    "epr-fee-audit"
+   ],
+   "parts": [],
+   "source": "claude",
+   "title": "Apply the hero image draft (4018) on EPR Fee Audit and check the image shows live"
+  },
+  "c-epr-fee-audit-apply-the-noindex-draft-3939-on-the-free-prn-audit-page": {
+   "assignee": "",
+   "created": 1792672015160,
+   "done": false,
+   "due": "",
+   "note": "Stops the PRN audit page competing with EPR Fee Audit in search.",
+   "pages": [
+    "epr-fee-audit"
+   ],
+   "parts": [],
+   "source": "claude",
+   "title": "Apply the noindex draft (3939) on the free PRN audit page"
+  },
+  "c-epr-fee-audit-brief-claude-to-build-the-epr-fee-audit-concept-strategic-review": {
+   "assignee": "",
+   "created": 1792672015162,
+   "done": true,
+   "doneAt": 1793270000021,
+   "due": "",
+   "note": "Built 29 Oct: entry 11839 (disabled). Results merged into the top proof strip.",
+   "pages": [
+    "epr-fee-audit"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Brief Claude to build the EPR Fee Audit concept (strategic review)"
+  },
+  "c-epr-fee-audit-build-the-overpayment-estimator-on-epr-fee-audit": {
+   "assignee": "",
+   "created": 1792672015163,
+   "done": true,
+   "doneAt": 1793270000022,
+   "due": "",
+   "note": "Built 29 Oct as a three-question overpayment risk check (tonnage, supplier default weights, exports/B2B), HTML and CSS only, ending in 'Book an audit to get the real number'. Showing a £ range is a separate decision task.",
+   "pages": [
+    "epr-fee-audit"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Build the overpayment estimator on EPR Fee Audit"
+  },
+  "c-epr-fee-audit-decide-pound-range": {
+   "assignee": "",
+   "created": 1793270000011,
+   "done": false,
+   "due": "",
+   "note": "The check shows High / Medium / Lower risk with no £ figures, because we don't publish typical error rates. A £ range needs the policy team to supply typical over-declaration by cause and the fee rates to use. Still no JavaScript: it would show banded ranges.",
+   "pages": [
+    "epr-fee-audit"
+   ],
+   "parts": [],
+   "source": "claude",
+   "title": "Decide whether the Fee Audit risk check should also show a £ range"
+  },
+  "c-epr-fee-audit-find-imagery-for-epr-fee-audit-new-hero": {
+   "assignee": "",
+   "created": 1792672015161,
+   "done": false,
+   "due": "",
+   "note": "Image supplied 23 Oct (reports and calculator, asset 11746) and set in draft 4018. Apply the draft to put it live: https://www.ecoveritas.com/admin/entries/x/10865?draftId=4018",
+   "pages": [
+    "epr-fee-audit"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/9Vg8YZ85nv2MS7TgD1rGmY",
+   "source": "claude",
+   "title": "Find imagery for EPR Fee Audit: new hero"
+  },
+  "c-epr-fee-audit-find-in-page-photos": {
+   "assignee": "",
+   "created": 1793270000007,
+   "done": false,
+   "due": "",
+   "note": "1) Beside 'Where producers usually overpay': someone weighing a packaging item and checking it against a specification sheet. 2) Beside the independence panel: an analyst presenting a corrected EPR report to a client team. Concept: entry 11839.",
+   "pages": [
+    "epr-fee-audit"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/9Vg8YZ85nv2MS7TgD1rGmY",
+   "source": "claude",
+   "title": "Find in-page photos for EPR Fee Audit (2 photos)"
+  },
+  "c-epr-fee-audit-policy-confirm-small-producer": {
+   "assignee": "",
+   "created": 1793270000010,
+   "done": false,
+   "due": "",
+   "pages": [
+    "epr-fee-audit"
+   ],
+   "parts": [
+    "copy"
+   ],
+   "source": "claude",
+   "title": "Policy team: confirm the small producer wording on the EPR Fee Audit risk check (under 50 tonnes or under £2m turnover: report data, no waste management fees)"
+  },
+  "c-eu-ppwr-approve-the-imagery-of-eu-ppwr": {
+   "assignee": "Viviana",
+   "created": 1792672015118,
+   "done": false,
+   "due": "2026-10-29",
+   "dueLocked": true,
+   "pages": [
+    "eu-ppwr"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/2trxt89RtKFRbmGyhRpR3Z",
+   "source": "claude",
+   "title": "Find imagery for EU PPWR"
+  },
+  "c-eu-ppwr-build-the-lead-tool-does-ppwr-apply-to-you-on-eu-ppwr": {
+   "assignee": "",
+   "created": 1792672015117,
+   "done": false,
+   "due": "",
+   "pages": [
+    "eu-ppwr"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Build the lead tool: \"Does PPWR apply to you?\" on EU PPWR"
+  },
+  "c-europe-apply-the-europe-draft-3966-in-the-cms-and-check-the-page-live": {
+   "assignee": "",
+   "created": 1792672015140,
+   "done": true,
+   "doneAt": 1792675602810,
+   "due": "",
+   "note": "https://www.ecoveritas.com/admin/entries/x/7992?draftId=3966. Tell Claude once applied so it can check the live page.",
+   "pages": [
+    "europe"
+   ],
+   "parts": [],
+   "source": "claude",
+   "title": "Apply the Europe draft (3966) in the CMS and check the page live"
+  },
+  "c-europe-approve-the-imagery-of-europe": {
+   "assignee": "",
+   "created": 1792672015121,
+   "done": true,
+   "doneAt": 1792675596936,
+   "due": "",
+   "pages": [
+    "europe"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "source": "claude",
+   "title": "Find imagery for Europe"
+  },
+  "c-europe-policy-team-confirm-the-drs-start-dates-added-for-hungary-jan-2024-poland": {
+   "assignee": "",
+   "created": 1792672015122,
+   "done": true,
+   "doneAt": 1792675589157,
+   "due": "",
+   "pages": [
+    "europe"
+   ],
+   "parts": [
+    "copy"
+   ],
+   "source": "claude",
+   "title": "Policy team: confirm the DRS start dates added for Hungary (Jan 2024), Poland (Oct 2025) and Slovakia (Jan 2022), and the Danish scheme name (Dansk Retursystem) on Europe"
+  },
+  "c-global-epr-approve-the-imagery-of-global-epr": {
+   "assignee": "",
+   "created": 1792672015126,
+   "done": false,
+   "due": "",
+   "pages": [
+    "global-epr"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/AzVgsJzW4TNdmndrCE1pgA",
+   "source": "claude",
+   "title": "Find imagery for Global EPR"
+  },
+  "c-global-epr-build-the-lead-tool-select-the-countries-you-sell-into-on-global-epr": {
+   "assignee": "",
+   "created": 1792672015125,
+   "done": false,
+   "due": "",
+   "pages": [
+    "global-epr"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Build the lead tool: \"Select the countries you sell into\" on Global EPR"
+  },
+  "c-home-decide-the-go-live-route-for-the-homepage-concept": {
+   "assignee": "",
+   "created": 1792672015152,
+   "done": false,
+   "due": "",
+   "note": "Options were discussed earlier: put the concept live via the CMS, or brief EXP.",
+   "pages": [
+    "p1"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Decide the go-live route for the homepage concept"
+  },
+  "c-live-pages-with-a-blank-hero-image-find-hero-images-for-the-11-live-pages-with-a": {
+   "assignee": "",
+   "created": 1792763340600,
+   "done": false,
+   "due": "",
+   "note": "These are live pages, so open each one to see the blank hero panel: https://www.ecoveritas.com/case-studies/new-look , https://www.ecoveritas.com/ecoview , https://www.ecoveritas.com/supplier-hub , https://www.ecoveritas.com/partner-with-us , https://www.ecoveritas.com/about-us/our-purpose , https://www.ecoveritas.com/careers/data-consultant , https://www.ecoveritas.com/dashboard , https://www.ecoveritas.com/managed-services-vs-software-vs-compliance-scheme , https://www.ecoveritas.com/questions-to-ask-any-epr-provider , https://www.ecoveritas.com/who-assesses-recyclability-under-ram , https://www.ecoveritas.com/articles/looking-beyond-the-european-union-key-epr-outline-within-asia . Send the images to Claude to place in drafts.",
+   "pages": [
+    "live-hero-fixes"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "source": "claude",
+   "title": "Find hero images for the 11 live pages with a blank hero panel"
+  },
+  "c-obligation-assessment-brief-claude-to-build-the-obligation-assessment-concept-st": {
+   "assignee": "",
+   "created": 1792672015165,
+   "done": true,
+   "doneAt": 1793190000011,
+   "due": "",
+   "note": "Built 28 Oct: entry 11771 (disabled).",
+   "pages": [
+    "obligation-assessment"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Brief Claude to build the Obligation Assessment concept (strategic review)"
+  },
+  "c-obligation-assessment-find-in-page-photos": {
+   "assignee": "",
+   "created": 1793270000002,
+   "done": false,
+   "due": "",
+   "note": "Card beside 'What you'll receive': a consultant walking a client team through a country-by-country matrix in a meeting room. Concept: entry 11771.",
+   "pages": [
+    "obligation-assessment"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/K8Y4HBDuVoSa8VGdPSYPht",
+   "source": "claude",
+   "title": "Find in-page photos for Obligation Assessment (1 photo)"
+  },
+  "c-packaging-optimisation-brief-claude-to-build-the-packaging-optimisation-concept-": {
+   "assignee": "",
+   "created": 1792672015170,
+   "done": true,
+   "doneAt": 1793190000014,
+   "due": "",
+   "note": "Built 28 Oct: entry 11801 (disabled).",
+   "pages": [
+    "packaging-optimisation"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Brief Claude to build the Packaging Optimisation concept (strategic review)"
+  },
+  "c-packaging-optimisation-find-a-hero-image-for-packaging-optimisation-the-live-her": {
+   "assignee": "",
+   "created": 1792763340605,
+   "done": false,
+   "due": "",
+   "note": "Can go live in a draft before the page is rebuilt. https://www.ecoveritas.com/services/packaging-optimisation",
+   "pages": [
+    "packaging-optimisation"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/F9pszWBcK774vfwbGvGRuZ",
+   "source": "claude",
+   "title": "Find a hero image for Packaging Optimisation (the live hero panel is blank)"
+  },
+  "c-packaging-optimisation-find-in-page-photos": {
+   "assignee": "",
+   "created": 1793270000005,
+   "done": false,
+   "due": "",
+   "note": "Wide banner under 'What optimisation can do for you': side by side, an oversized box with void fill next to a right-sized pack holding the same product. The hero has its own task. Concept: entry 11801.",
+   "pages": [
+    "packaging-optimisation"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/F9pszWBcK774vfwbGvGRuZ",
+   "source": "claude",
+   "title": "Find in-page photos for Packaging Optimisation (1 photo)"
+  },
+  "c-packaging-optimisation-supply-one-before-and-after-case-result-for-packaging-opt": {
+   "assignee": "",
+   "created": 1793190000006,
+   "done": false,
+   "due": "",
+   "note": "Fills the placeholder on the concept page (entry 11801). Named or anonymised client.",
+   "pages": [
+    "packaging-optimisation"
+   ],
+   "parts": [
+    "copy"
+   ],
+   "source": "claude",
+   "title": "Supply one before-and-after case result for Packaging Optimisation (pack weight or EPR fee saved)"
+  },
+  "c-plastic-packaging-tax-brief-claude-to-build-the-plastic-packaging-tax-concept-st": {
+   "assignee": "",
+   "created": 1792672015164,
+   "done": true,
+   "doneAt": 1793190000010,
+   "due": "",
+   "note": "Built 28 Oct: entry 11761 (disabled). No JavaScript: the liability check is plain HTML and CSS.",
+   "pages": [
+    "plastic-packaging-tax"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Brief Claude to build the Plastic Packaging Tax concept (strategic review)"
+  },
+  "c-plastic-packaging-tax-find-in-page-photos": {
+   "assignee": "",
+   "created": 1793270000001,
+   "done": false,
+   "due": "",
+   "note": "Wide banner under 'What we do for you': plastic packaging on a production or filling line (bottles, trays or film being made or filled). Concept: entry 11761. Send images to Claude to place.",
+   "pages": [
+    "plastic-packaging-tax"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/YGWkTvcCXvL4WThRMCcJdY",
+   "source": "claude",
+   "title": "Find in-page photos for Plastic Packaging Tax (1 photo)"
+  },
+  "c-plastic-packaging-tax-fix-the-end-contact-us-button-on-the-live-plastic-packagin": {
+   "assignee": "",
+   "created": 1793190000003,
+   "done": false,
+   "due": "",
+   "note": "Quick fix from the review while the concept is reviewed. The concept itself ends in the contact form.",
+   "pages": [
+    "plastic-packaging-tax"
+   ],
+   "parts": [],
+   "source": "claude",
+   "title": "Fix the end Contact Us button on the live Plastic Packaging Tax page (it goes to Careers)"
+  },
+  "c-plastic-packaging-tax-policy-team-confirm-the-2026-27-rate-of-228-82-per-tonne-f": {
+   "assignee": "",
+   "created": 1793190000002,
+   "done": false,
+   "due": "",
+   "note": "The live page still shows the 2025 rate (£223.69).",
+   "pages": [
+    "plastic-packaging-tax"
+   ],
+   "parts": [
+    "copy"
+   ],
+   "source": "claude",
+   "title": "Policy team: confirm the 2026/27 rate of £228.82 per tonne (from 1 April 2026) on Plastic Packaging Tax"
+  },
+  "c-plastic-packaging-tax-write-the-complete-plastic-packaging-tax-guide-article-the": {
+   "assignee": "",
+   "created": 1793190000001,
+   "done": false,
+   "due": "",
+   "note": "The review asks for the reference detail to move into a linked guide: what each quarterly return asks for, the 'last substantial modification' rules with examples, and the four exemption categories and how they count towards the 10-tonne threshold. The concept page shows a placeholder where the link goes.",
+   "pages": [
+    "plastic-packaging-tax"
+   ],
+   "parts": [
+    "copy"
+   ],
+   "source": "claude",
+   "title": "Write the complete Plastic Packaging Tax guide article (the detail moved off the page)"
+  },
+  "c-ppwr-compliance-service-apply-the-hero-image-draft-4017-on-ppwr-compliance-servi": {
+   "assignee": "",
+   "created": 1792763340601,
+   "done": false,
+   "due": "",
+   "note": "https://www.ecoveritas.com/admin/entries/x/10050?draftId=4017. The hero went blank after the last draft was applied, so check the live hero straight after applying and tell Claude.",
+   "pages": [
+    "ppwr-service"
+   ],
+   "parts": [],
+   "source": "claude",
+   "title": "Apply the hero image draft (4017) on PPWR Compliance Service and check the image shows live"
+  },
+  "c-ppwr-compliance-service-ask-exp-why-applying-a-draft-clears-the-hero-image": {
+   "assignee": "",
+   "created": 1792763340603,
+   "done": false,
+   "due": "",
+   "note": "Both PPWR Compliance Service (draft 3908) and EPR Fee Audit (draft 3934) lost their hero image when the draft was applied, although the image was set before. Only raise it if the hero drafts 4017/4018 lose theirs too.",
+   "pages": [
+    "ppwr-service",
+    "epr-fee-audit"
+   ],
+   "parts": [],
+   "source": "claude",
+   "title": "Ask EXP why applying a draft clears the hero image"
+  },
+  "c-ppwr-compliance-service-brief-claude-to-trim-ppwr-compliance-service-strategic-r": {
+   "assignee": "",
+   "created": 1792672015158,
+   "done": true,
+   "doneAt": 1793270000023,
+   "due": "",
+   "note": "Built 29 Oct: entry 11849 (disabled). Cost forecast promoted into the hero and CTA; FAQs cut from 11 to 5 buying questions; EPR vs PPWR table and testing detail moved out (see their tasks).",
+   "pages": [
+    "ppwr-service"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Brief Claude to trim PPWR Compliance Service (strategic review)"
+  },
+  "c-ppwr-compliance-service-find-imagery-for-ppwr-compliance-service-new-hero": {
+   "assignee": "",
+   "created": 1792672015156,
+   "done": false,
+   "due": "",
+   "note": "Image supplied 23 Oct (container port, asset 11745) and set in draft 4017. Apply the draft to put it live: https://www.ecoveritas.com/admin/entries/x/10050?draftId=4017",
+   "pages": [
+    "ppwr-service"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/65LrbExCjMDVgvLaWutKFP",
+   "source": "claude",
+   "title": "Find imagery for PPWR Compliance Service: new hero"
+  },
+  "c-ppwr-compliance-service-find-in-page-photos": {
+   "assignee": "",
+   "created": 1793270000008,
+   "done": false,
+   "due": "",
+   "note": "1) Beside 'What PPWR asks of you': packaging being inspected on a packing line, or a quality check against a specification. 2) First card under 'Why Ecoveritas': the Ecoveritas team working through packaging data with a client. Concept: entry 11849.",
+   "pages": [
+    "ppwr-service"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/65LrbExCjMDVgvLaWutKFP",
+   "source": "claude",
+   "title": "Find in-page photos for PPWR Compliance Service (2 photos)"
+  },
+  "c-ppwr-compliance-service-fix-the-redirect-from-services-ppwr-compliance-design-st": {
+   "assignee": "",
+   "created": 1792672015157,
+   "done": false,
+   "due": "",
+   "note": "Saved in the SEO plugin but not firing. Check the From path has no leading slash or domain, type 301, site set. Raise with EXP if it still fails.",
+   "pages": [
+    "ppwr-service"
+   ],
+   "parts": [],
+   "source": "claude",
+   "title": "Fix the redirect from /services/ppwr-compliance-design (still returns 404)"
+  },
+  "c-ppwr-compliance-service-move-epr-vs-ppwr-table": {
+   "assignee": "",
+   "created": 1793270000012,
+   "done": false,
+   "due": "",
+   "note": "Taken off the trimmed PPWR Compliance Service concept (entry 11849), which now links to EU PPWR for the detail. Claude can add it to the EU PPWR concept (entry 11606) when asked.",
+   "pages": [
+    "eu-ppwr",
+    "ppwr-service"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Move the EPR vs PPWR comparison table to the EU PPWR page"
+  },
+  "c-ppwr-compliance-service-write-testing-guide": {
+   "assignee": "",
+   "created": 1793270000013,
+   "done": false,
+   "due": "",
+   "note": "Moved out: does document review prove what's in a pack; laboratory testing (heavy metals sum 100 mg/kg, total fluorine PFAS screening, 140 PFAS where screening is 50 ppm or more, 14 to 16 working days, costs at cost); labelling and the 2030 design rules; data ownership.",
+   "pages": [
+    "ppwr-service"
+   ],
+   "parts": [
+    "copy"
+   ],
+   "source": "claude",
+   "title": "Write a PPWR testing and labelling guide (the technical FAQs moved off the service page)"
+  },
+  "c-ppwr-supplier-declaration-of-conformity-find-imagery-for-ppwr-supplier-declarati": {
+   "assignee": "",
+   "created": 1792672015155,
+   "done": false,
+   "due": "",
+   "note": "Suggested subject: a supplier and a buyer reviewing a signed document or packaging specification.",
+   "pages": [
+    "ppwr-supplier-doc"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/96e77yVuioav8pZxXRRVTt",
+   "source": "claude",
+   "title": "Find imagery for PPWR Supplier Declaration of Conformity: hero (and featured image)"
+  },
+  "c-ram-approve-the-imagery-of-ram": {
+   "assignee": "",
+   "created": 1792672015130,
+   "done": false,
+   "due": "",
+   "pages": [
+    "ram"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/Gtcz7t2x3iCYcTdrNjhbnS",
+   "source": "claude",
+   "title": "Find imagery for RAM"
+  },
+  "c-ram-build-the-lead-tool-what-could-red-packaging-cost-you-on-ram": {
+   "assignee": "",
+   "created": 1792672015129,
+   "done": false,
+   "due": "",
+   "pages": [
+    "ram"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Build the lead tool: \"What could red packaging cost you?\" on RAM"
+  },
+  "c-technology-apply-the-technology-draft-3955-in-the-cms-and-check-the-page-live": {
+   "assignee": "",
+   "created": 1792672015145,
+   "done": false,
+   "due": "",
+   "pages": [
+    "technology"
+   ],
+   "parts": [],
+   "source": "claude",
+   "title": "Apply the Technology draft (3955) in the CMS and check the page live"
+  },
+  "c-technology-decide-whether-technology-moves-to-technology-slug-change-plus-a-301-": {
+   "assignee": "",
+   "created": 1792672015144,
+   "done": false,
+   "due": "",
+   "pages": [
+    "technology"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Decide whether Technology moves to /technology (slug change plus a 301 from /powerful-epr-software)"
+  },
+  "c-technology-find-imagery-for-technology-a-general-technology-hero-people-using-so": {
+   "assignee": "",
+   "created": 1792672015143,
+   "done": false,
+   "due": "",
+   "note": "For now the hero borrows the Data Analytics / Ecoview graphic.",
+   "pages": [
+    "technology"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/FXsX6BnvdAJkgtexaKwDFH",
+   "source": "claude",
+   "title": "Find imagery for Technology: a general technology hero (people using software, data on screen)"
+  },
+  "c-testimonials-find-imagery-for-testimonials-new-look-store-front-or-product-packa": {
+   "assignee": "",
+   "created": 1792672015149,
+   "done": false,
+   "due": "",
+   "pages": [
+    "testimonials"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/4e7SWVEcyDTeZjhVVg7efA",
+   "source": "claude",
+   "title": "Find imagery for Testimonials: New Look store front or product packaging for the case study card"
+  },
+  "c-testimonials-send-the-new-look-logo-svg-or-transparent-png-for-the-new-look-ecov": {
+   "assignee": "James",
+   "created": 1792672015148,
+   "done": false,
+   "due": "",
+   "note": "Claude builds the lock-up and adds it to the New Look case study, testimonials and the homepage card.",
+   "pages": [
+    "testimonials",
+    "p1"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/4e7SWVEcyDTeZjhVVg7efA",
+   "source": "claude",
+   "title": "Send the New Look logo (SVG or transparent PNG) for the New Look × Ecoveritas lock-up"
+  },
+  "c-uk-epr-approve-the-imagery-of-uk-epr": {
+   "assignee": "",
+   "created": 1792672015135,
+   "done": false,
+   "due": "",
+   "pages": [
+    "uk-epr"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/BYGtF4vXDFaUFphgdpVMQS",
+   "source": "claude",
+   "title": "Find imagery for UK EPR"
+  },
+  "c-uk-epr-build-the-gated-download-on-uk-epr": {
+   "assignee": "",
+   "created": 1792672015134,
+   "done": false,
+   "due": "",
+   "pages": [
+    "uk-epr"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Build the gated download on UK EPR"
+  },
+  "c-uk-epr-build-the-lead-tool-the-60-second-obligation-checker-on-uk-epr": {
+   "assignee": "",
+   "created": 1792672015133,
+   "done": false,
+   "due": "",
+   "pages": [
+    "uk-epr"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Build the lead tool: \"The 60-second obligation checker\" on UK EPR"
+  },
+  "c-uk-epr-choose-between-the-uk-epr-concept-entry-11586-and-the-older-explainer-v2-": {
+   "assignee": "",
+   "created": 1792672015171,
+   "done": false,
+   "due": "",
+   "note": "v2 imagery: 3 of 6 photos placed 23 Oct, 3 to come (see its imagery task).",
+   "pages": [
+    "uk-epr"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Choose between the UK EPR concept (entry 11586) and the older explainer v2 (entry 11248)"
+  },
+  "c-uk-epr-find-imagery-for-uk-epr-explainer-v2-the-3-remaining-photo-slots": {
+   "assignee": "",
+   "created": 1792763340604,
+   "done": false,
+   "due": "",
+   "note": "Placed 23 Oct: hero (asset 11747), whitepaper section (11748), Obligation Assessment card (11749). Still to come (James has 3 more photos): 'Two questions decide whether EPR applies to you' section, Data Collection card, Data Calculation card. Only needed if v2 is chosen over the concept (entry 11586).",
+   "pages": [
+    "uk-epr"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/Y3FCo3AWn67MCLANPUFFxz",
+   "source": "claude",
+   "title": "Find imagery for UK EPR explainer v2: the 3 remaining photo slots"
+  },
+  "c-veolia-x-ecoveritas-approve-the-imagery-of-veolia-x-ecoveritas": {
+   "assignee": "",
+   "created": 1792672015139,
+   "done": false,
+   "due": "",
+   "pages": [
+    "veolia"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/GckZpW7JMDfh88zqQuu66J",
+   "source": "claude",
+   "title": "Find imagery for Veolia x Ecoveritas"
+  },
+  "c-veolia-x-ecoveritas-build-the-lead-tool-how-much-could-you-be-overpaying-on-veol": {
+   "assignee": "",
+   "created": 1792672015138,
+   "done": false,
+   "due": "",
+   "pages": [
+    "veolia"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Build the lead tool: \"How much could you be overpaying?\" on Veolia x Ecoveritas"
+  },
+  "c-veolia-x-ecoveritas-confirm-the-free-prn-audit-is-the-right-lead-offer-for-veoli": {
+   "assignee": "",
+   "created": 1792672015172,
+   "done": false,
+   "due": "",
+   "pages": [
+    "veolia"
+   ],
+   "parts": [
+    "copy"
+   ],
+   "source": "claude",
+   "title": "Confirm the free PRN audit is the right lead offer for Veolia x Ecoveritas"
+  },
+  "c-veolia-x-ecoveritas-decide-the-uk-compliance-menu-item-with-exp-rename-it-or-mak": {
+   "assignee": "",
+   "created": 1792672015173,
+   "done": false,
+   "due": "",
+   "pages": [
+    "veolia"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Decide the 'UK Compliance' menu item with EXP: rename it or make a small UK hub"
+  },
+  "c-waste-management-brief-claude-to-build-the-waste-management-concept-strategic-re": {
+   "assignee": "",
+   "created": 1792672015169,
+   "done": true,
+   "doneAt": 1793190000013,
+   "due": "",
+   "note": "Built 28 Oct: entry 11791 (disabled).",
+   "pages": [
+    "waste-management"
+   ],
+   "parts": [
+    "layout"
+   ],
+   "source": "claude",
+   "title": "Brief Claude to build the Waste Management concept (strategic review)"
+  },
+  "c-waste-management-find-a-hero-image-for-waste-management-the-live-hero-panel-is-b": {
+   "assignee": "",
+   "created": 1792763340606,
+   "done": false,
+   "due": "",
+   "note": "Can go live in a draft before the page is rebuilt. https://www.ecoveritas.com/services/waste-management",
+   "pages": [
+    "waste-management"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/415gH14ijg4V6n7Evu1apE",
+   "source": "claude",
+   "title": "Find a hero image for Waste Management (the live hero panel is blank)"
+  },
+  "c-waste-management-find-in-page-photos": {
+   "assignee": "",
+   "created": 1793270000004,
+   "done": false,
+   "due": "",
+   "note": "Tall photo beside the FAQs: sorted packaging waste at a recycling facility, baled cardboard or plastics ready for reprocessing (Veolia may be able to supply one). The hero has its own task. Concept: entry 11791.",
+   "pages": [
+    "waste-management"
+   ],
+   "parts": [
+    "imagery"
+   ],
+   "previewUrl": "https://claude.ai/artifact/415gH14ijg4V6n7Evu1apE",
+   "source": "claude",
+   "title": "Find in-page photos for Waste Management (1 photo)"
+  },
+  "c-waste-management-policy-team-confirm-that-veolia-is-the-waste-management-partner": {
+   "assignee": "",
+   "created": 1793190000005,
+   "done": false,
+   "due": "",
+   "note": "The review asks to name the partner and link to the Veolia alliance page. The concept (entry 11791) names Veolia throughout.",
+   "pages": [
+    "waste-management"
+   ],
+   "parts": [
+    "copy"
+   ],
+   "source": "claude",
+   "title": "Policy team: confirm that Veolia is the waste management partner named on Waste Management"
+  },
+  "signoff-europe": {
+   "assignee": "",
+   "created": 1792675615375,
+   "done": true,
+   "doneAt": 1792675617560,
+   "due": "",
+   "kind": "signoff",
+   "pages": [
+    "europe"
+   ],
+   "parts": [],
+   "source": "team",
+   "title": "Review and sign off Europe"
+  }
+ },
+ "pages": {
+  "africa-middle-east": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Africa & Middle East",
+   "notes": "Concept: entry 11457 (disabled).",
+   "order": 9,
+   "reviewUrl": "https://claude.ai/artifact/5UW8BEM4eqsSuKuY6pHWtP",
+   "section": "Regions",
+   "url": "https://www.ecoveritas.com/compliance/africa-middle-east"
+  },
+  "americas": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Americas",
+   "notes": "Concept: entry 11419 (disabled).",
+   "order": 7,
+   "reviewUrl": "https://claude.ai/artifact/66joj3bDrpgQLRy2ys7QRz",
+   "section": "Regions",
+   "url": "https://www.ecoveritas.com/compliance/americas"
+  },
+  "asia-australia": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Asia & Australia",
+   "notes": "Concept: entry 11438 (disabled).",
+   "order": 8,
+   "reviewUrl": "https://claude.ai/artifact/AnZbDoLHF2VVBwCGSJcfcT",
+   "section": "Regions",
+   "url": "https://www.ecoveritas.com/compliance/asia-australia"
+  },
+  "data-analytics": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Data Analytics",
+   "notes": "Concept: entry 11829 (disabled). Clickable Ecoview demo with sample data, no JavaScript.",
+   "order": 18,
+   "reviewUrl": "https://claude.ai/artifact/Gt22Lf6oRhVc2knXagEpKC",
+   "section": "Services",
+   "url": "https://www.ecoveritas.com/services/data-analytics"
+  },
+  "data-collection": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Data Collection, Calculation & Reporting",
+   "notes": "Concept: entry 11781 (disabled). SKU figure aligned to 4m+ and Oxford-only weighing removed.",
+   "order": 17,
+   "reviewUrl": "https://claude.ai/artifact/9yctbzwKNzXYW2i9HFXmSW",
+   "section": "Services",
+   "url": "https://www.ecoveritas.com/services/data-collection-calculation-reporting"
+  },
+  "epr-fee-audit": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "EPR Fee Audit",
+   "notes": "Restyle is live (draft 3934). Hero image in draft 4018, waiting to be applied. New concept with an overpayment risk check: entry 11839 (disabled).",
+   "order": 22,
+   "reviewUrl": "https://claude.ai/artifact/9Vg8YZ85nv2MS7TgD1rGmY",
+   "section": "Services",
+   "url": "https://www.ecoveritas.com/epr-fee-audit"
+  },
+  "eu-ppwr": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "EU PPWR",
+   "notes": "Concept: entry 11606 (disabled).",
+   "order": 13,
+   "reviewUrl": "https://claude.ai/artifact/2trxt89RtKFRbmGyhRpR3Z",
+   "section": "Compliance",
+   "url": "https://www.ecoveritas.com/compliance/eu-packaging-packaging-waste-regulation"
+  },
+  "europe": {
+   "copy": false,
+   "goLive": "2026-10-23",
+   "imagery": false,
+   "layout": true,
+   "name": "Europe",
+   "notes": "Concept: entry 11409. Live since 23 Oct (draft 3966 applied).",
+   "order": 6,
+   "reviewUrl": "https://claude.ai/artifact/9cNsJR6nqsLqcfywKtSQBo",
+   "section": "Regions",
+   "url": "https://www.ecoveritas.com/compliance/europe"
+  },
+  "global-epr": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Global EPR",
+   "notes": "Concept: entry 11494 (disabled).",
+   "order": 10,
+   "reviewUrl": "https://claude.ai/artifact/AzVgsJzW4TNdmndrCE1pgA",
+   "section": "Regions",
+   "url": "https://www.ecoveritas.com/compliance/global-extended-producer-responsibility-epr"
+  },
+  "live-hero-fixes": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Live pages with a blank hero image",
+   "notes": "From the imagery audit on 23 Oct (node tools/audit/imagery.mjs). These live pages show an empty hero image panel: New Look case study, Ecoview, Supplier Hub, Partner with us, Our Purpose, Data Consultant careers, Dashboard, Managed services vs software vs compliance scheme, Questions to ask any EPR provider, Who assesses recyclability under RAM, and the Asia EPR article. Pages already in the planner (Asia & Australia, Packaging Optimisation, Waste Management) have their own tasks.",
+   "order": 26,
+   "section": "Fixes"
+  },
+  "obligation-assessment": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Obligation Assessment",
+   "notes": "Concept: entry 11771 (disabled).",
+   "order": 16,
+   "reviewUrl": "https://claude.ai/artifact/K8Y4HBDuVoSa8VGdPSYPht",
+   "section": "Services",
+   "url": "https://www.ecoveritas.com/services/obligation-assessment"
+  },
+  "p1": {
+   "copy": false,
+   "goLive": "2026-10-30",
+   "imagery": false,
+   "layout": false,
+   "name": "Home",
+   "notes": "Concept: CMS entry 11227 (disabled). Go-live route on hold.",
+   "order": 0,
+   "section": "Core",
+   "url": "https://www.ecoveritas.com/"
+  },
+  "p2": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "About us",
+   "notes": "",
+   "order": 1,
+   "section": "Core"
+  },
+  "p3": {
+   "copy": false,
+   "goLive": "2026-10-29",
+   "imagery": false,
+   "layout": false,
+   "name": "Contact",
+   "notes": "",
+   "order": 2,
+   "section": "Core"
+  },
+  "p4": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Services overview",
+   "notes": "",
+   "order": 3,
+   "section": "Services"
+  },
+  "p5": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Sectors overview",
+   "notes": "",
+   "order": 4,
+   "section": "Sectors"
+  },
+  "p6": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Blog / resources hub",
+   "notes": "",
+   "order": 5,
+   "section": "Resources"
+  },
+  "packaging-optimisation": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Packaging Optimisation",
+   "notes": "Concept: entry 11801 (disabled). Links to the Fee Audit; case result still to supply.",
+   "order": 20,
+   "reviewUrl": "https://claude.ai/artifact/F9pszWBcK774vfwbGvGRuZ",
+   "section": "Services",
+   "url": "https://www.ecoveritas.com/services/packaging-optimisation"
+  },
+  "plastic-packaging-tax": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Plastic Packaging Tax",
+   "notes": "Concept: entry 11761 (disabled). Short page with a two-question liability check (HTML and CSS only, no JavaScript).",
+   "order": 14,
+   "reviewUrl": "https://claude.ai/artifact/YGWkTvcCXvL4WThRMCcJdY",
+   "section": "Compliance",
+   "url": "https://www.ecoveritas.com/compliance/plastic-packaging-tax"
+  },
+  "ppwr-service": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "PPWR Compliance Service",
+   "notes": "Restyle is live. Hero image in draft 4017, waiting to be applied. Trimmed concept: entry 11849 (disabled).",
+   "order": 21,
+   "reviewUrl": "https://claude.ai/artifact/65LrbExCjMDVgvLaWutKFP",
+   "section": "Services",
+   "url": "https://www.ecoveritas.com/services/ppwr-compliance-service"
+  },
+  "ppwr-supplier-doc": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "PPWR Supplier Declaration of Conformity",
+   "notes": "New page. Built as entry 11200 (disabled), copy under review.",
+   "order": 25,
+   "reviewUrl": "https://claude.ai/artifact/96e77yVuioav8pZxXRRVTt",
+   "section": "Compliance"
+  },
+  "ram": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "RAM",
+   "notes": "Concept: entry 11596 (disabled).",
+   "order": 12,
+   "reviewUrl": "https://claude.ai/artifact/Gtcz7t2x3iCYcTdrNjhbnS",
+   "section": "Compliance",
+   "url": "https://www.ecoveritas.com/compliance/recyclability-assessment-methodology"
+  },
+  "technology": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Technology",
+   "notes": "Replaces the my.ecoveritas page. Draft 3955 is ready: apply it in the CMS.",
+   "order": 23,
+   "reviewUrl": "https://claude.ai/artifact/FXsX6BnvdAJkgtexaKwDFH",
+   "section": "Services",
+   "url": "https://www.ecoveritas.com/powerful-epr-software"
+  },
+  "testimonials": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Testimonials",
+   "notes": "Concept: entry 11306 (disabled).",
+   "order": 24,
+   "reviewUrl": "https://claude.ai/artifact/4e7SWVEcyDTeZjhVVg7efA",
+   "section": "Core",
+   "url": "https://www.ecoveritas.com/testimonials"
+  },
+  "uk-epr": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "UK EPR",
+   "notes": "Concept: entry 11586 (disabled). An older explainer concept (v2, entry 11248) also exists; its hero and 2 in-page photos were placed 23 Oct, 3 photos to come.",
+   "order": 11,
+   "reviewUrl": "https://claude.ai/artifact/BYGtF4vXDFaUFphgdpVMQS",
+   "section": "Compliance",
+   "url": "https://www.ecoveritas.com/compliance/uk-extended-producer-responsibility-epr"
+  },
+  "veolia": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Veolia x Ecoveritas",
+   "notes": "Concept: entry 11522 (disabled).",
+   "order": 15,
+   "reviewUrl": "https://claude.ai/artifact/GckZpW7JMDfh88zqQuu66J",
+   "section": "Compliance",
+   "url": "https://www.ecoveritas.com/veolia-ecoveritas"
+  },
+  "waste-management": {
+   "copy": false,
+   "goLive": "",
+   "imagery": false,
+   "layout": false,
+   "name": "Waste Management",
+   "notes": "Concept: entry 11791 (disabled). Names Veolia as the partner.",
+   "order": 19,
+   "reviewUrl": "https://claude.ai/artifact/415gH14ijg4V6n7Evu1apE",
+   "section": "Services",
+   "url": "https://www.ecoveritas.com/services/waste-management"
+  }
+ }
+}

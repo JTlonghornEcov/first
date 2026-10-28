@@ -19,35 +19,27 @@
 4. **Review copy.** Once James accepts a build, Claude publishes a review copy as a Claude artifact
    (`node tools/review/build.mjs <slug>`, then publish `artifacts/review/<slug>.html`; republish the same file on later
    rebuilds so the link stays the same) and sets `reviewUrl` on that page in the planner. The planner shows the
-   Review copy button once the page has at least one layout, one imagery and one copy task. Peers comment on the
+   Review copy button once the page has at least one layout, one imagery and one copy task (the two standard tasks
+   cover all three). Peers comment on the
    review copy; Claude turns comments into fixes or tasks.
 5. **Team.** The team reviews, assigns, groups and dates the tasks, and ticks them off. A page part (layout,
    imagery, copy) counts as done when every task linked to it is done.
 
-## Which tasks a build creates
+## Which tasks a page gets
 
-`node tools/planner/tasks.mjs <slug>` lists them for a concept page in `payloads/strategy/<slug>/`.
+Every inner page has the same three steps (agreed 29 Oct, to keep the list simple):
 
-| Found in the page | Task | Part |
+| Step | Task | Completes |
 | --- | --- | --- |
-| Always | Review and approve the layout of `<page>` | Layout |
-| Always | Review the copy of `<page>` (facts, dates, tone) | Copy |
-| Each "Lead tool · to be built" / "… · to be built" block | Build the `<tool>` on `<page>` | Layout |
-| Each "Image/Photo to be sourced" placeholder | One task per page: Find imagery for `<page>`: `<slots>` | Imagery |
-| `imagery` notes in page.json (e.g. hero borrowed from another page) | Same imagery task, extra slots | Imagery |
-| No images needed | Approve the imagery of `<page>` | Imagery |
-| `checks` in page.json (facts to confirm) | Policy team: confirm `<fact>` on `<page>` | Copy |
-| Always, last | Apply the draft and check `<page>` live | (none: tracked as a note) |
+| 1 | Build the first draft of `<page>` | Layout and copy |
+| 2 | Find the images for `<page>` | Imagery |
+| 3 | Review and sign off `<page>` | Sign-off (the planner adds this once 1 and 2 are done) |
 
-Since the team added the sign-off step, the generic "Review and approve the layout" / "Review the copy" tasks are not
-added: sign-off covers them. Only the specific follow-ups (tools, imagery, policy checks, fixes) go in.
-
-Imagery tasks carry a `previewUrl`: the page's review copy, where photo placeholders show what each image is for. The
-planner shows it as a "See the page" button. CMS preview links are not used for this: they expire after about a day.
-For any entry or draft, `node tools/review/from-preview.mjs '[["<slug>", <entryId>, <draftId|null>]]'` captures the
-page from the CMS (preview tokens are stripped), then `node tools/review/build.mjs <slug>` builds the review copy.
-
-Grouping across pages (e.g. one person sourcing images for several pages) is done by the team in the planner.
+Claude ticks step 1 when it has built the page. The images task lists each photo slot in its note and links to the
+page's review copy ("See the page"). Everything else (lead tools, policy checks, drafts to apply, questions for EXP)
+goes in the page's notes on the Pages tab, not the task list. The homepage keeps its own decision task.
+`node tools/planner/tasks.mjs <slug>` prints the two tasks for a concept page in `payloads/strategy/<slug>/`.
+The task list as it was before 29 Oct is in `payloads/planner/backup-2026-10-29.json`.
 
 ## Getting tasks into the planner
 

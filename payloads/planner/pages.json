@@ -45,7 +45,7 @@
     "name": "Americas",
     "section": "Regions",
     "url": "https://www.ecoveritas.com/compliance/americas",
-    "notes": "Concept: entry 11419 (disabled).",
+    "notes": "Concept: entry 11419 (disabled).\n\nFollow-ups (moved from the task list, 29 Oct):\n- Build the lead tool: \"Which states and provinces do you sell into?\" on Americas",
     "reviewUrl": "https://claude.ai/artifact/66joj3bDrpgQLRy2ys7QRz"
   },
   {
@@ -69,7 +69,7 @@
     "name": "Global EPR",
     "section": "Regions",
     "url": "https://www.ecoveritas.com/compliance/global-extended-producer-responsibility-epr",
-    "notes": "Concept: entry 11494 (disabled).",
+    "notes": "Concept: entry 11494 (disabled).\n\nFollow-ups (moved from the task list, 29 Oct):\n- Build the lead tool: \"Select the countries you sell into\" on Global EPR",
     "reviewUrl": "https://claude.ai/artifact/AzVgsJzW4TNdmndrCE1pgA"
   },
   {
@@ -77,7 +77,7 @@
     "name": "UK EPR",
     "section": "Compliance",
     "url": "https://www.ecoveritas.com/compliance/uk-extended-producer-responsibility-epr",
-    "notes": "Concept: entry 11586 (disabled). An older explainer concept (v2, entry 11248) also exists; its hero and 2 in-page photos were placed 23 Oct, 3 photos to come.",
+    "notes": "Concept: entry 11586 (disabled). An older explainer concept (v2, entry 11248) also exists; its hero and 2 in-page photos were placed 23 Oct, 3 photos to come.\n\nFollow-ups (moved from the task list, 29 Oct):\n- Build the gated download on UK EPR\n- Build the lead tool: \"The 60-second obligation checker\" on UK EPR\n- Choose between the UK EPR concept (entry 11586) and the older explainer v2 (entry 11248)",
     "reviewUrl": "https://claude.ai/artifact/BYGtF4vXDFaUFphgdpVMQS"
   },
   {
@@ -85,7 +85,7 @@
     "name": "RAM",
     "section": "Compliance",
     "url": "https://www.ecoveritas.com/compliance/recyclability-assessment-methodology",
-    "notes": "Concept: entry 11596 (disabled).",
+    "notes": "Concept: entry 11596 (disabled).\n\nFollow-ups (moved from the task list, 29 Oct):\n- Build the lead tool: \"What could red packaging cost you?\" on RAM",
     "reviewUrl": "https://claude.ai/artifact/Gtcz7t2x3iCYcTdrNjhbnS"
   },
   {
@@ -93,7 +93,7 @@
     "name": "EU PPWR",
     "section": "Compliance",
     "url": "https://www.ecoveritas.com/compliance/eu-packaging-packaging-waste-regulation",
-    "notes": "Concept: entry 11606 (disabled).",
+    "notes": "Concept: entry 11606 (disabled).\n\nFollow-ups (moved from the task list, 29 Oct):\n- Build the lead tool: \"Does PPWR apply to you?\" on EU PPWR\n- Move the EPR vs PPWR comparison table to the EU PPWR page",
     "reviewUrl": "https://claude.ai/artifact/2trxt89RtKFRbmGyhRpR3Z"
   },
   {
@@ -101,7 +101,7 @@
     "name": "Plastic Packaging Tax",
     "section": "Compliance",
     "url": "https://www.ecoveritas.com/compliance/plastic-packaging-tax",
-    "notes": "Concept: entry 11761 (disabled). Short page with a two-question liability check (HTML and CSS only, no JavaScript).",
+    "notes": "Concept: entry 11761 (disabled). Short page with a two-question liability check (HTML and CSS only, no JavaScript).\n\nFollow-ups (moved from the task list, 29 Oct):\n- Fix the end Contact Us button on the live Plastic Packaging Tax page (it goes to Careers)\n- Policy team: confirm the 2026/27 rate of £228.82 per tonne (from 1 April 2026) on Plastic Packaging Tax\n- Write the complete Plastic Packaging Tax guide article (the detail moved off the page)",
     "reviewUrl": "https://claude.ai/artifact/YGWkTvcCXvL4WThRMCcJdY"
   },
   {
@@ -109,7 +109,7 @@
     "name": "Veolia x Ecoveritas",
     "section": "Compliance",
     "url": "https://www.ecoveritas.com/veolia-ecoveritas",
-    "notes": "Concept: entry 11522 (disabled).",
+    "notes": "Concept: entry 11522 (disabled).\n\nFollow-ups (moved from the task list, 29 Oct):\n- Build the lead tool: \"How much could you be overpaying?\" on Veolia x Ecoveritas\n- Confirm the free PRN audit is the right lead offer for Veolia x Ecoveritas\n- Decide the 'UK Compliance' menu item with EXP: rename it or make a small UK hub",
     "reviewUrl": "https://claude.ai/artifact/GckZpW7JMDfh88zqQuu66J"
   },
   {
@@ -133,7 +133,7 @@
     "name": "Data Analytics",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/data-analytics",
-    "notes": "Concept: entry 11829 (disabled). Clickable Ecoview demo with sample data, no JavaScript.",
+    "notes": "Concept: entry 11829 (disabled). Clickable Ecoview demo with sample data, no JavaScript.\n\nFollow-ups (moved from the task list, 29 Oct):\n- Agree one naming convention for the platforms (Ecoview, Ecohub, my.ecoveritas) across the site",
     "reviewUrl": "https://claude.ai/artifact/Gt22Lf6oRhVc2knXagEpKC"
   },
   {
@@ -141,7 +141,7 @@
     "name": "Waste Management",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/waste-management",
-    "notes": "Concept: entry 11791 (disabled). Names Veolia as the partner.",
+    "notes": "Concept: entry 11791 (disabled). Names Veolia as the partner.\n\nFollow-ups (moved from the task list, 29 Oct):\n- Policy team: confirm that Veolia is the waste management partner named on Waste Management",
     "reviewUrl": "https://claude.ai/artifact/415gH14ijg4V6n7Evu1apE"
   },
   {
@@ -149,7 +149,7 @@
     "name": "Packaging Optimisation",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/packaging-optimisation",
-    "notes": "Concept: entry 11801 (disabled). Links to the Fee Audit; case result still to supply.",
+    "notes": "Concept: entry 11801 (disabled). Links to the Fee Audit; case result still to supply.\n\nFollow-ups (moved from the task list, 29 Oct):\n- Supply one before-and-after case result for Packaging Optimisation (pack weight or EPR fee saved)",
     "reviewUrl": "https://claude.ai/artifact/F9pszWBcK774vfwbGvGRuZ"
   },
   {
@@ -157,7 +157,7 @@
     "name": "PPWR Compliance Service",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/ppwr-compliance-service",
-    "notes": "Restyle is live. Hero image in draft 4017, waiting to be applied. Trimmed concept: entry 11849 (disabled).",
+    "notes": "Restyle is live. Hero image in draft 4017, waiting to be applied. Trimmed concept: entry 11849 (disabled).\n\nFollow-ups (moved from the task list, 29 Oct):\n- Apply the hero image draft (4017) on PPWR Compliance Service and check the image shows live\n- Ask EXP why applying a draft clears the hero image\n- Fix the redirect from /services/ppwr-compliance-design (still returns 404)\n- Move the EPR vs PPWR comparison table to the EU PPWR page\n- Write a PPWR testing and labelling guide (the technical FAQs moved off the service page)",
     "reviewUrl": "https://claude.ai/artifact/65LrbExCjMDVgvLaWutKFP"
   },
   {
@@ -165,7 +165,7 @@
     "name": "EPR Fee Audit",
     "section": "Services",
     "url": "https://www.ecoveritas.com/epr-fee-audit",
-    "notes": "Restyle is live (draft 3934). Hero image in draft 4018, waiting to be applied. New concept with an overpayment risk check: entry 11839 (disabled).",
+    "notes": "Restyle is live (draft 3934). Hero image in draft 4018, waiting to be applied. New concept with an overpayment risk check: entry 11839 (disabled).\n\nFollow-ups (moved from the task list, 29 Oct):\n- Apply the hero image draft (4018) on EPR Fee Audit and check the image shows live\n- Apply the noindex draft (3939) on the free PRN audit page\n- Decide whether the Fee Audit risk check should also show a £ range\n- Policy team: confirm the small producer wording on the EPR Fee Audit risk check (under 50 tonnes or under £2m turnover: report data, no waste management fees)\n- Ask EXP why applying a draft clears the hero image",
     "reviewUrl": "https://claude.ai/artifact/9Vg8YZ85nv2MS7TgD1rGmY"
   },
   {
@@ -173,7 +173,7 @@
     "name": "Technology",
     "section": "Services",
     "url": "https://www.ecoveritas.com/powerful-epr-software",
-    "notes": "Replaces the my.ecoveritas page. Draft 3955 is ready: apply it in the CMS.",
+    "notes": "Replaces the my.ecoveritas page. Draft 3955 is ready: apply it in the CMS.\n\nFollow-ups (moved from the task list, 29 Oct):\n- Agree one naming convention for the platforms (Ecoview, Ecohub, my.ecoveritas) across the site\n- Apply the Technology draft (3955) in the CMS and check the page live\n- Decide whether Technology moves to /technology (slug change plus a 301 from /powerful-epr-software)",
     "reviewUrl": "https://claude.ai/artifact/FXsX6BnvdAJkgtexaKwDFH"
   },
   {
