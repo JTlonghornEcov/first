@@ -1,4 +1,4 @@
-// Lists the planner tasks for concept pages. Every inner page gets the same two tasks (agreed 29 Oct):
+// Lists the planner tasks for concept pages. Every inner page gets the same two tasks (agreed 28 Oct):
 //   "Build the first draft of <page>" (layout + copy) and "Find the images for <page>" (imagery).
 // Review and sign-off is the planner's own sign-off step, which appears once both are done.
 // Anything else (lead tools, policy checks, drafts to apply) goes in the page's notes, not the task list.

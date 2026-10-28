@@ -27,7 +27,7 @@
 
 ## Which tasks a page gets
 
-Every inner page has the same three steps (agreed 29 Oct, to keep the list simple):
+Every inner page has the same three steps (agreed 28 Oct, to keep the list simple):
 
 | Step | Task | Completes |
 | --- | --- | --- |
@@ -39,7 +39,7 @@ Claude ticks step 1 when it has built the page. The images task lists each photo
 page's review copy ("See the page"). Everything else (lead tools, policy checks, drafts to apply, questions for EXP)
 goes in the page's notes on the Pages tab, not the task list. The homepage keeps its own decision task.
 `node tools/planner/tasks.mjs <slug>` prints the two tasks for a concept page in `payloads/strategy/<slug>/`.
-The task list as it was before 29 Oct is in `payloads/planner/backup-2026-10-29.json`.
+The task list as it was before 28 Oct is in `payloads/planner/backup-2026-10-28.json`.
 
 ## Getting tasks into the planner
 

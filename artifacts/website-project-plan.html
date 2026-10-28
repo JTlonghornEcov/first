@@ -217,6 +217,11 @@ button,input,textarea,select{font:inherit;color:inherit}
 .pageurl{color:var(--atlantic);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .review-on{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;background:var(--yellow);color:var(--deep);font-weight:700;text-decoration:none}
 .review-on:hover{filter:brightness(1.05)}
+.smrow{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.smname{display:flex;flex-direction:column;min-width:0;flex:1 1 280px}
+.smname b{font-size:14.5px}
+.smname span{font-size:12.5px;color:var(--muted);overflow-wrap:anywhere}
+.smlinks{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:12.5px}
 .review-off{display:inline-flex;align-items:center;padding:2px 10px;border-radius:999px;border:1px dashed var(--line-strong);color:var(--muted);font-weight:600}
 </style>
 
@@ -231,15 +236,15 @@ button,input,textarea,select{font:inherit;color:inherit}
   var MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
   // Pages and tasks live in the artifact's shared database (collections "pages" and "tasks"), one document each.
-  var state = {pages:[], tasks:[]};
+  var state = {pages:[], tasks:[], sitemap:null};
   var loaded = {pages:false, tasks:false};
   function blankDraft(){return {editing:null,combine:[],title:"",assignee:"",due:"",on:{pages:[],parts:[]},off:{pages:[],parts:[]}};}
-  var ui = {tab:"pages", filter:"all", open:{}, who:"all", show:"open", pillar:"all", draft:blankDraft(), month:"", picking:false, picked:{}, confirm:""};
+  var ui = {tab:"pages", smFilter:"all", filter:"all", open:{}, who:"all", show:"open", pillar:"all", draft:blankDraft(), month:"", picking:false, picked:{}, confirm:""};
   var mode = "pending", db = null, inflight = 0, lastErr = "", deferred = false, confirmTimer = null;
 
   try{
     var v = JSON.parse(sessionStorage.getItem('wpp-ui')||"null");
-    if(v){ ["tab","filter","open","who","show","pillar","month"].forEach(function(k){ if(v[k]!==undefined) ui[k]=v[k]; }); if(v.draft && v.draft.on){ ui.draft=v.draft; if(!ui.draft.combine) ui.draft.combine=[]; } }
+    if(v){ ["tab","smFilter","filter","open","who","show","pillar","month"].forEach(function(k){ if(v[k]!==undefined) ui[k]=v[k]; }); if(v.draft && v.draft.on){ ui.draft=v.draft; if(!ui.draft.combine) ui.draft.combine=[]; } }
   }catch(e){}
 
   /* ---------- helpers ---------- */
@@ -379,11 +384,11 @@ button,input,textarea,select{font:inherit;color:inherit}
     if(next) h += '<div><span>Next go-live: </span><b style="font-size:15px">'+esc(next.name)+', '+fmtDate(next.goLive)+'</b></div>';
     h += '</div>';
     h += '<div class="tabs" role="tablist">';
-    [["pages","Pages ("+pages.length+")"],["tasks","Tasks ("+openTasks+" open)"],["calendar","Calendar"]].forEach(function(t){ h += '<button role="tab" data-tab="'+t[0]+'" aria-selected="'+(ui.tab===t[0])+'">'+t[1]+'</button>'; });
+    [["pages","Pages ("+pages.length+")"],["tasks","Tasks ("+openTasks+" open)"],["calendar","Calendar"],["sitemap","Site map"]].forEach(function(t){ h += '<button role="tab" data-tab="'+t[0]+'" aria-selected="'+(ui.tab===t[0])+'">'+t[1]+'</button>'; });
     h += '</div></div></header><main class="wrap">';
     if(mode==="offline") h += '<p class="notice">This plan’s pages and tasks are stored with the artifact. Open it in Claude, signed in, to see and edit them.</p>';
     else if(mode==="pending" && !(loaded.pages && loaded.tasks)) h += '<p class="notice">Loading the plan…</p>';
-    h += ui.tab==="pages" ? renderPages(c) : ui.tab==="tasks" ? renderTasks() : renderCalendar();
+    h += ui.tab==="pages" ? renderPages(c) : ui.tab==="tasks" ? renderTasks() : ui.tab==="sitemap" ? renderSitemap() : renderCalendar();
     h += '</main>';
     document.getElementById('app').innerHTML = h;
     setSave();
@@ -602,6 +607,48 @@ button,input,textarea,select{font:inherit;color:inherit}
     return verb+' '+(names.length>4 ? names.slice(0,3).join(', ')+' and '+(names.length-3)+' more' : names.join(', '));
   }
 
+  /* ---------- site map ---------- */
+  // Every live page (from the site's sitemap, stored as sitemap/live by Claude), grouped by section, with its plan
+  // entry and review copy where there is one. Pages being built that aren't on the site yet are listed at the end.
+  var SM_GROUPS = [["","Main pages"],["services","Services"],["compliance","Compliance"],["industries","Sectors"],["case-studies","Case studies"],["articles","Articles"],["impact-reports","Reports"],["about-us","About us"],["careers","Careers"]];
+  function normUrl(u){return String(u||"").replace(/[?#].*$/,"").replace(/\/+$/,"").toLowerCase();}
+  function smLinks(p, url){
+    var r = '';
+    if(p) r += '<button class="tag pg" data-goto="'+esc(p.id)+'" title="Open this page in the plan">In the plan · '+pct(p)+'%</button>';
+    if(p && p.reviewUrl && /^https:\/\/claude\.ai\//.test(p.reviewUrl)) r += '<a class="review-on" href="'+esc(p.reviewUrl)+'" target="_blank" rel="noopener">Review copy</a>';
+    if(url && /^https:\/\//.test(url)) r += '<a class="pageurl" href="'+esc(url)+'" target="_blank" rel="noopener">Live page</a>';
+    return r;
+  }
+  function renderSitemap(){
+    var sm = state.sitemap, h = '';
+    var f = '<div class="seg" role="group" aria-label="Show which pages">';
+    [["all","All pages"],["plan","In the plan"],["review","With a review copy"]].forEach(function(x){ f += '<button data-smf="'+x[0]+'" aria-pressed="'+(ui.smFilter===x[0])+'">'+x[1]+'</button>'; });
+    h += toolbar(f+'</div>');
+    if(!sm || !sm.pages){ return h + '<div class="empty">The site map hasn’t been loaded yet. Ask Claude to refresh it.</div>'; }
+    var byUrl = {}; state.pages.forEach(function(p){ if(p.url) byUrl[normUrl(p.url)] = p; });
+    var live = {}, rows = sm.pages.map(function(x){ var u = normUrl(x.url); live[u] = true; return {url:x.url, title:x.title, path:(x.url.replace(/^https?:\/\/[^\/]+/,"")||"/"), p:byUrl[u]}; });
+    function keep(r){ return ui.smFilter==="all" || (ui.smFilter==="plan" && r.p) || (ui.smFilter==="review" && r.p && r.p.reviewUrl); }
+    var inPlan = rows.filter(function(r){return r.p;}).length, withRev = rows.filter(function(r){return r.p && r.p.reviewUrl;}).length;
+    h += '<p class="hint">'+rows.length+' live pages, '+inPlan+' in the plan, '+withRev+' with a review copy. From the site map'+(sm.updated?' on '+esc(fmtDate(sm.updated)):'')+'.</p>';
+    var keys = SM_GROUPS.map(function(g){return g[0];});
+    SM_GROUPS.forEach(function(g){
+      var list = rows.filter(function(r){ var seg = r.path.split("/")[1]||""; return (keys.indexOf(seg)>=0 ? seg : "")===g[0] && keep(r); });
+      if(!list.length) return;
+      h += '<h2 class="group-title">'+esc(g[1])+' ('+list.length+')</h2><div class="list">';
+      list.forEach(function(r){
+        h += '<div class="smrow"><div class="smname"><b>'+esc(r.p ? r.p.name : (r.title || r.path))+'</b><span>'+esc(r.path)+'</span></div><div class="smlinks">'+smLinks(r.p, r.url)+'</div></div>';
+      });
+      h += '</div>';
+    });
+    var fresh = state.pages.filter(function(p){ return (!p.url || !live[normUrl(p.url)]) && p.reviewUrl && keep({p:p}); });
+    if(fresh.length){
+      h += '<h2 class="group-title">New pages, not on the site yet ('+fresh.length+')</h2><div class="list">';
+      fresh.forEach(function(p){ h += '<div class="smrow"><div class="smname"><b>'+esc(p.name)+'</b><span>'+esc(p.section||"")+'</span></div><div class="smlinks">'+smLinks(p, "")+'</div></div>'; });
+      h += '</div>';
+    }
+    return h + '<div style="height:48px"></div>';
+  }
+
   /* ---------- calendar ---------- */
   function renderCalendar(){
     var t = new Date(), m = ui.month || (t.getFullYear()+"-"+pad(t.getMonth()+1));
@@ -638,7 +685,7 @@ button,input,textarea,select{font:inherit;color:inherit}
   /* ---------- events ---------- */
   function findPage(el){var row=el.closest('.row');return row?pageById(row.dataset.id):null;}
   function findTask(el){var n=el.closest('[data-tid]'); return n?taskById(n.dataset.tid):null;}
-  function keepUi(){try{sessionStorage.setItem('wpp-ui',JSON.stringify({tab:ui.tab,filter:ui.filter,open:ui.open,who:ui.who,show:ui.show,pillar:ui.pillar,draft:ui.draft,month:ui.month,y:window.scrollY}));}catch(e){}}
+  function keepUi(){try{sessionStorage.setItem('wpp-ui',JSON.stringify({tab:ui.tab,smFilter:ui.smFilter,filter:ui.filter,open:ui.open,who:ui.who,show:ui.show,pillar:ui.pillar,draft:ui.draft,month:ui.month,y:window.scrollY}));}catch(e){}}
   function rerender(){var y=window.scrollY; render(); window.scrollTo(0,y); keepUi(); syncComposer();}
   function openComposer(){ render(); syncComposer(); keepUi(); var c=document.getElementById('composer'); if(c) c.scrollIntoView({block:"start"}); }
   // Destructive buttons ask for a second click instead of a dialog (the viewer blocks confirm()).
@@ -658,6 +705,7 @@ button,input,textarea,select{font:inherit;color:inherit}
     var d = ui.draft;
     if(t.dataset.tab){ ui.tab=t.dataset.tab; keepUi(); render(); syncComposer(); return; }
     if(t.dataset.filter){ ui.filter=t.dataset.filter; rerender(); return; }
+    if(t.dataset.smf){ ui.smFilter=t.dataset.smf; rerender(); return; }
     if(t.dataset.who!==undefined){ ui.who=t.dataset.who; rerender(); return; }
     if(t.dataset.show){ ui.show=t.dataset.show; rerender(); return; }
     if(t.dataset.pillar){ ui.pillar=t.dataset.pillar; rerender(); return; }
@@ -804,6 +852,10 @@ button,input,textarea,select{font:inherit;color:inherit}
     claudeApi.use("db").then(function(d){
       if(!d){ mode="offline"; render(); return; }
       db = d; subscribe("pages"); subscribe("tasks");
+      db.collection("sitemap").onSnapshot(function(snap){
+        var doc = snap.docs.filter(function(x){return x.id==="live";})[0];
+        state.sitemap = doc ? doc.data() : null; liveRender();
+      }, function(){});
     }).catch(function(){ mode="offline"; render(); });
   } else { mode="offline"; render(); }
 })();

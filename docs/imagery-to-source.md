@@ -19,7 +19,7 @@ Updated 23 Oct 2026. Live-site audit: `node tools/audit/imagery.mjs` (lists page
 7. Data Collection, Calculation & Reporting concept, hero (borrows an Obligation Assessment graphic; packaging being weighed or data being checked): https://www.ecoveritas.com/admin/entries/x/11781
 8. Technology page, hero (currently borrows the Data Analytics / Ecoview graphic): https://www.ecoveritas.com/powerful-epr-software
 
-## In-page photo placeholders on the concept pages (29 Oct)
+## In-page photo placeholders on the concept pages (28 Oct)
 Each has a "Find in-page photos" task in the planner. Admin links open the disabled concept entry.
 - Plastic Packaging Tax: wide banner, plastic packaging on a production or filling line: https://www.ecoveritas.com/admin/entries/x/11761
 - Obligation Assessment: consultant walking a client team through a country-by-country matrix: https://www.ecoveritas.com/admin/entries/x/11771
