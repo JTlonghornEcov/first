@@ -1,0 +1,20 @@
+{
+  "name": "Africa & Middle East",
+  "live": "https://www.ecoveritas.com/compliance/africa-middle-east",
+  "eyebrow": "",
+  "heroTitle": "Packaging compliance in Africa & the Middle East",
+  "heroIntro": "<p>EPR across Africa and the Middle East ranges from fully mandatory and well enforced to still finding its shape. Ecoveritas already manages compliance in the region's established markets, South Africa, Kenya and Israel among them, and tracks the rest closely, so you're never the last to know.</p>",
+  "buttons": [
+    [
+      "#c-af-sa",
+      "Check your South Africa registration"
+    ],
+    [
+      "#c-af-markets",
+      "Select your market"
+    ]
+  ],
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/9406/dubai-downtown-skyline-united-arab-emirates-or-ua-2026-09-22-17-32-06-utc.webp",
+  "ctaTitle": "Expanding across Africa or the Middle East?",
+  "ctaText": "Get ahead of it. Our team already manages compliance in the region's established markets, and we're watching the rest for you."
+}

@@ -1,0 +1,422 @@
+<title>PPWR Supplier Declaration of Conformity page review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Review copy of an Ecoveritas page. Single light theme: it reproduces the live site, which has no dark mode. */
+:root { --rv-slate:#2f444e; --rv-ink:#212121; --rv-yellow:#ffcd03; --rv-white:#ffffff; --rv-mist:#c9dbe2; --rv-line:#dfe5e7; color-scheme:light; }
+body { margin:0; background:var(--rv-white); color:var(--rv-ink); font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; font-size:16px; line-height:1.6; }
+body::before { content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--rv-ink); }
+.rv-bar { position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:var(--rv-ink); color:var(--rv-white); font-size:13.5px; }
+.rv-bar .rv-in { display:flex; flex-wrap:wrap; gap:6px 18px; align-items:center; justify-content:space-between; padding-block:10px; }
+.rv-bar b { color:var(--rv-yellow); letter-spacing:.06em; text-transform:uppercase; font-size:12.5px; }
+.rv-bar span { color:#d7dee1; }
+.rv-in { max-width:1280px; margin:0 auto; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px)); box-sizing:border-box; }
+@media (min-width:1024px) { .rv-in { padding-left:max(80px,env(safe-area-inset-left,0px)); padding-right:max(80px,env(safe-area-inset-right,0px)); } }
+.rv-hero { background:var(--rv-slate); color:var(--rv-white); }
+.rv-hero .rv-in { display:grid; gap:32px; padding-block:48px 56px; }
+@media (min-width:1024px) { .rv-hero .rv-in { grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:clamp(32px,6vw,96px); align-items:center; padding-block:72px; } }
+.rv-eyebrow { display:block; color:var(--rv-yellow); font-weight:700; font-size:15px; margin:0 0 10px; }
+.rv-hero h1 { margin:0 0 14px; font-size:clamp(32px,4.2vw,48px); line-height:1.1; font-weight:700; text-wrap:balance; }
+.rv-intro { color:#e8eff2; font-size:15.5px; } .rv-intro p { margin:0 0 10px; } .rv-intro h2 { font-size:26px; line-height:1.2; margin:0 0 10px; color:var(--rv-white); }
+.rv-btns { display:flex; flex-wrap:wrap; gap:16px 28px; align-items:center; margin-top:28px; }
+.rv-btn { display:inline-flex; align-items:center; gap:12px; padding:13px 18px; background:var(--rv-yellow); color:var(--rv-ink); font-weight:700; font-size:15px; text-decoration:none; }
+.rv-btn svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2.2; }
+.rv-btn.rv-ghost { background:none; color:var(--rv-white); padding:13px 0; }
+.rv-img { position:relative; aspect-ratio:632/520; max-width:100%; background:#3d5662; }
+.rv-img img { width:100%; height:100%; object-fit:cover; display:block; }
+.rv-ph { position:absolute; inset:0; display:grid; place-content:center; gap:8px; padding:24px; text-align:center; border:2px dashed var(--rv-mist); background:rgba(47,68,78,.86); color:var(--rv-white); }
+.rv-ph b { font-size:17px; } .rv-ph span { font-size:14px; color:#d7dee1; max-width:40ch; margin:0 auto; }
+.rv-main .rv-in { padding-block:clamp(48px,7vw,96px); }
+.rv-contact { background:var(--rv-slate); color:var(--rv-white); }
+.rv-contact .rv-in { display:grid; gap:32px; padding-block:64px; }
+@media (min-width:1024px) { .rv-contact .rv-in { grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:clamp(32px,6vw,96px); align-items:start; padding-block:96px; } }
+.rv-contact h2 { margin:0 0 14px; font-size:clamp(30px,3.6vw,44px); line-height:1.12; color:var(--rv-white); text-wrap:balance; scroll-margin-top:72px; }
+.rv-contact p { margin:0; color:#e8eff2; }
+.rv-form { display:grid; gap:12px; padding:26px; background:#f6f7f7; color:var(--rv-ink); }
+.rv-form .rv-row { display:grid; gap:12px; } @media (min-width:640px) { .rv-form .rv-row { grid-template-columns:1fr 1fr; } }
+.rv-form input, .rv-form textarea, .rv-form select { font:inherit; width:100%; box-sizing:border-box; padding:14px 16px; border:2px solid #cfd6d9; background:var(--rv-white); color:var(--rv-ink); }
+.rv-form textarea { min-height:140px; resize:vertical; }
+.rv-form button { font:inherit; font-weight:700; padding:14px; border:0; background:var(--rv-yellow); color:var(--rv-ink); opacity:.6; cursor:not-allowed; }
+.rv-form small { color:#55656d; }
+.rv-foot { background:var(--rv-white); border-top:1px solid var(--rv-line); color:#55656d; font-size:14px; }
+.rv-foot .rv-in { padding-block:28px; }
+a:focus-visible, button:focus-visible { outline:3px solid var(--rv-yellow); outline-offset:3px; }
+</style>
+<div class="rv-bar" role="note"><div class="rv-in"><b>Review copy</b><span>PPWR Supplier Declaration of Conformity · built 28 October 2026 · not the live site; the form is switched off</span><span>Live page: not live yet (new page)</span></div></div>
+<header class="rv-hero"><div class="rv-in">
+  <div><span class="rv-eyebrow">Compliance</span><h1>PPWR Declarations of Conformity for packaging suppliers</h1><div class="rv-intro"><p>Your customers need a Declaration of Conformity for the packaging they place on the EU market, and they're asking you for the data behind it. Share your packaging information with Ecoveritas once. We produce your declaration, keep the supporting evidence on file, and handle your customers' requests for you.</p></div></div>
+  <div class="rv-img"><img src="data:image/webp;base64,UklGRqpDAABXRUJQVlA4IJ5DAACw4wCdASp4AggCPm02l0kkIqIhIVE5AIANiWlszoLezQL//yC+gX/+qG8A//+MO6Bf/9IE+Af//ZBP/+ar//+ML9V//+RfEKgH/++UwD//EHf/1P6wL//6gL//zgL//6Zn//6Av/91LrFnzbP9XJtmftV+eHp1+1XcdvUj/Cv8x+s3uofoB1gH65dc76GP6Z+mb/w/7h8LH7fftd7Nmqd+iP9L+NPwy+ffoH9C/Kj+relv439F/avyX4yER3r/+4/2r8gvn1+i/2H+o+JPlk/QD4AvVv+A/Mz+//GL8N/c/8J+x/91/////80ybn1Avdf5t/zv7f4m/9T/m/23/f////QfiAfy/+rf9zyhf1f8n30D2BP6t/of/H7Lf9D/wv8x/tv3F92f117CH95/tvWf/dj//+8r+3gYVtdoRrK4aYOd4ZfIKnNrt6Obhl8gqbiV8XZRcNMHO8MvkFTm129HNwy+QVMJcK1ipza7ejm4ZfIKnNrt6Obhl8eTJew4ZfIKnNrt6Obhl8gqc2u3o5rhhU7L6Obhl8gqc2u3o5uGXyCpza4u7YIyJfIKnNrt6Obhl8gqc2u3o5rhh454oXFpyGmDneGXyCpza7ejm4ZExN0KO3o5uGXyCpza7ejm4ZfIKnNpfvWXhOdiyCGwFHKeWTBHNExx7pT3IIbItHYaoJdYEHazD3eHdrMP6jqnbPaiD7XWQQ1wHazD+ORhCu6KUslueC1xWh99p4m7WYfNwrOPfcDDyXvRSlktzWARSyEjkcsC6AOVFkENkYjHkvefM8l70xMlMvOPdCbQ++0iyC1ntQzi2FoW5q8i2CGuX6H32lJVZBDXjou1mH94ZNuqUmlTIZ7tZiB1jE2o1krR8v94+H+Sz1CSz1CS2zTh8zTh8zTh8zpi7XYQ2/XFc2LJ18WozZD0Buyi3SoTSvaWY1hpyGmDneGXyCpza2hB079zt19duyi3SZ6rkNMUnFpyGmAwUur5fpH73hl8goxraUgc3rBuyi3QKIv2Jf/hzvDL42cTfyQi0kUkJ25+q+tWbRkcidEx7c5tdvRxL83a3QJZqfx9s6XN+is2yWuLTjlCfTSIoKd4UbZaeEtXJLve5a0iuosqyJc3DL5AiFIi337t2UW51U+1uFl8gqc2uvwG1fP5m6gT/LlrOLrtTjigqc2u3mByMe8KvWhgIvE5AZ4fQGmDneGXygZU5tdvRzRI6toKYZJlmpAjt4YB907HBz2GnHNDVIUXgw9za7ejiYi2pMmDg8UJZJFfRKKfyDqac515a9UAME8Xi5c1wZZd9Z337aPMA60ZLuSq5k0Pq9t7tyxUKtelGx3mzbBsMZMt/yTbUc/RXvU9LPH59f40ogk6JfqC/v3c+9fyizQzz1EQlLcNsU8Id4qO5E3jlf5fsfB2qiO3z/8mkq0R0fM3qu3AlQLpP9jcMWvvDNqXUKbsJ8oxn/XRo+Pk2dv0w0txLNT+PqH32EwGQ5C+ADPHOHoNBnB0JJlJHyt0huFP63SSHpJayKvIl3z4AVykj0ZdjwU6BzUlidVeCGKfxHujpDZFLZGNzhMrP1bmMc3h/X/PXM8DKJot45yOoixuQGMAT/SxsevXLVwIJdf7FUjvDQEfkW12COMlvMNWLcdF/o25ijbnMSbLNJ7a/i+nwIv6CJrDW8DT3hV60MBF4eFsWUxIygePavRBDVb+u4L0IvlpJJQepGq8DnozIUJZJFfRGXTMF0c3Hs9eqEWTpcuk13FCcmfuwhO8Tkhdip2p8hgxosoh4zVMEaAM4O2c5K1vqUM/YmIKhUrMV6czk3o5uEN1ZaW4lmp/Hyhy0pAZachpgTDk+8Cz4JHeLpvGCByfgXm4Ze3gy1qYEvYcMbJqjNNGUfhl8gqc2u3o5uGXyBDr2yVykmWakCIxJDw9OsjALXVxpZAp4pilK2sMDB6PCBQ6oAtBPjGKOORFnQidThuPhNwLi+m6huGhkLs8YE/nAQhtxm3LilNBoRNNQiBfB3BihtDDpFjdmEuJG3lJfOHTBJ4VOy+jm4ZfIKnNrt6Obhl8gqc2uLuvEJachpg53hl8gqc2u3o5uGXyB57XX03DL5BU5tdvRzcMvkFTm129GZChLJI5uGXyCpza7ejm4ZfIKnNrtDnMI0FTm129HNwy+QVObXb0c3DL4EkmWakS+QVObXb0c3DL5BU5tdvRyawbsouGmDneGXyCpza7ejm4ZfIKmEuFaxU5tdvRzcMvkFTm129HNwy+PJkvYHOVWSX44DmrcrT+ZWtRNPaa+7smDcQ/DCcCV7ljgLD6Wa6DU96e8cBzVuVp/MrWomntNfd2TBuIfhhOBK9yxwFh9LNdBqe9PeOA5q3K0/mVrUTT2mvu7Jg3EPwwnAle5Y4Cw+lmug1PenvHAc1blafzK1qJp7TX3dkwbiH4YTgSvcscBXqs8AAA/kbV1L+LTnCYn5ztzUwZ/7Q7L7lbWALDg+ql7CpwAnceWJsNv5HWjZc0cJNoGw2/kdaNlzRwk2gbDb+R1o2XNHCTaBsNv5HWjZc0cJNoGw2/kdaNlzRwk2gbDb+R1o2XNHCTaBsNv5HWjZc0cJNoGw2/kdaNlzRwk2gbDb+R1o2XNHCTaBsNv5HWjZc0cJNoGw2/kdaNlzRwk2gbDb+R1o2XNHCTaBsNv5HWjZc0cJNoGw2/kdaNlzRwk2gbDb+R1o2XNHCTaBsNv5HWjZc0cJNoGw2/kdaNlzRwk2gbDb+R1o2XNHCTaBsNv5HWjZc0cJNoGw2/kdaNlzRwk2gbDb+R1o2XNHCTaBsNv5HWjZc0cJNoGw2/kdaNlzRwk2gbDb+R1o2XNHCTaBsNv5HWjZc0cJNoGw2/kdaNlzRwk2gbDb+R1o2XNHCTaBsNv5HWjZc0cJNoGw2/kdaNlzRwk2gbDb+R1o2XNHCTaBsNv5HWjZc0cJNoGw2/kdaNlzRwk2gbDb+R1o2XNHCTaBsNv5HWjZc0cJNoGw2/kdaNlzRwk2gbDb+R1o2XNHCTaBsNv5HWjZc0cJL/mlXVMgrg/Lt4Oe19XmY96mlFKdAWPVfIA2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhlmX0e8W+rM/qD4gZPkGPNTKWcd6rf2NsVNwfVS9hU4ATuR4URf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS/5pV1TIK4Py7eDmQhA5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SX/NKuqZBXB+XbwcyEIHP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS/5pV1TIK14b4y0m0r20mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHEOCX10OOyCegVvpGwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xLUegpQNAkBAyN8l1KIqc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLxQ/sUrizC7wIKJnK4PqpewqcAJ3I8KIv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLMuLmWnKuLxEeONYYZPur+C82E+ATmWJl0R2kguMVym+CfPR2/bJ5DpPHn8LhKZBF/BZLDVHOcLE4PNDScZi3GPm+1EJhsf5Bwa9rEkKtvJSJ/zOy5Xag/Jxe+6dF6IyjVOyE8k7lJ9P8g1VvwX9YDBe4j3G7vGd2IcgaKG2pilhll1gOuKtO43X9uzQaD6hhe8fu4dzM8DVrzNgRtoE1WOJmoedknYqLv0K45phszsuV2obqmfm9veUEEpc17cYuS6PQJ0DFMubT/mdlyu1EPv02gqhBO2EVmdp60NUC9rE8e0bG0bDlgXoYs9ewGndTC0+4IQpwR0EkLj8WzJ6lVVjL8J2/If0RfrHGAwLJ7SGSqNBKtR1pgDGj/0yh6lX0BeD9EX6xxjkTqMn7JEWYs7T50PBlH3UiOs3ZUBu7xndiP2NXD2tJ2TZrxaFuvZoy+D1NkwgnFocPonKuR6tzoBqPkS6uIJo+kh++XKr/WzMlafDJJZLDVHOcK5pkjla/J6BhT/41JfPKzZscrWV9gUyyMykcyeD9EX6xxgeayXwk9pyDNoYg0+N9kNVe8gsC9DFnsea8bSGBDpllilCIhb+8YwIT4BOZYmXMH+XtDwDZjrm54V5OBk7vkScIoOjg/RF+scZNZzpm3P2SoRT5iKGUB4V5OBk74bd+nFzLTlW8sR3k7A/7ZugeCKG06tgpi+KvZ412y7KoNEJss1MG4LzYdf07ebyBN+b/4P0RfrHGQ9B+xWdra2QiueBZ4Uembc6fAJzLEy6hNniFe9Gc5LWWHEyuPoMZ48vKG8zsuV2oiJvydggAcChUVta4LmkwJq0thAgtaRDG6YbM7LldqD4uIS1+Kqo4mYiqilGesTT7GhJrhCaxCH/M7LldqFOpt0nxCg56/vI7YCNm6IVds1CdQdHLAvQxZ7Rpj4Yp5dPBjG+Y0O9a4/uJN/gk9XR5EOnbh87ebxZVKd5bLUFIlswWoRR40Q2HlUCsQel3fn/M7LldqHYQJZA46r334O8Qm/JAqs5KaBeVbWMaKTQdAw7mTbOyVmve1ia5YTdj9W50pFVk2a5KT/t9EX6xxg77v4TxTU5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SX/NKuuAB9QUyjUJNpXtpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOJlhsnEj5SGthmDoYs915fGF0j3MwX09cekwijflqpuJHkFTDha0ZfR4UZlhWR5KAmztOgAAAAAAAAAAAAAAAAAAAAAAAAAAKg7oEydi5h5yfaP21hNGl3rLX0JljjHzrdk9FnitYPcqW6VUH0FOPj0xaHbXerg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cS1HoKTcOOoKZRqEoumybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF3dZOcn7yDzcmmVSnrWONdhqIO+i+ymusZ+UXkgQAAAAAAAAAMtGeqCSL364/PlzEn1thJNcz3hHld6uD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xLUegpNw46gplGoSc/0FEX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhlpAkk6oGCyaD6iPTPXh3qKYu0nHhyyFPa/VtAAAAASTBkiGr2Z1PCq77CFZcodU+dcg9oneTfNXQxNkayd0YKNNeQAAD9BTj47ht0QyYmKQRmt7LmAKBm2HCdqOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOEl/zSrqmQVwfl28HNMmybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF3BGHm24JTZYGiM7t95UPd5IeuajVaErz/0gZAAAAPm8la2C1Jz8uEknHjIOeOAszlDCVPPQpzmtQ48h79kvoshAMH5g9X//4dqucralgTC1mv/yFh31//9kgRae//xMMwLk3j58kf/9oyFOm7ei/pNp/5hAEUfl8mkXh2HVMz9v37AP02dNZdorKg2+QGh23VOrRWjJQEuZW5sa+4ny9GVABrP4D+fov1DfCvgl/8L12U9Dx927rhq8xRIu5Tp4rfHs/ehbhtf2WlqcR5P6apiohzWCraKPj9z6vv5rGfxLK7diQiLv5qga7TzbKJ8ibSB9+SE7WDFy4rg9qxjiUf/5sd3upYCYDcCwAABgK9Fnq1VXOlGcajQxHvYLmaJK0yu7BKcg8/BF/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZl9HvFvqzP6g+IGUgmybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF34gt46TrzyXLs/IK0WoF4FFQ0QnU68g9f/ytIG1QEAAABg1AD+aQ00CErub/4+g6r8vc83JDz3//gPlBqfgcDOS1M3cPKBaz4yf4FfJoCuqQS9iQsXqkBd2bwS7OZMhlSo5YpFvpjL3DQfQdBy91XhkPiCfSOYgEoP8R2n5Cm3uwVc/mETSYF7lJFpDWpt3+YHH/IH/xxUCrUy1HyRsc0UXfgXRZJZyYcx6JAhmVThyTzxb/OuO9SJpNV1AAuDxAx5V6KUEMX0D8ZEkeerGOqKDs74odTOZEu90DDPcbm0ENsqEMgFhHb77t0/7MTwRZ23Jlpte4yMXMfH7fxI+u3Cz4fSoL1sjZyYJPoND2nexOnXW+4feEFOx4B9xPssyRQvM4QX4RXeK4A93VUpjI3LFths0NlaVqGK853r3kOEkvbhl+P8jbUmqXR3CbVfdOwAAEBrGTMySR0B/fO3kYmMDlEWVTcidqOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOEl/zSrqmQVwfl28HNMmybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF3BLDSpnxeY/RKU0LDxzkmws5wuJ4Peib3IRKMhPibUQAAAF6v6wjtXi6do2XJhU57njDLyhsrnHrCy6giQ/BAjoYVYA8bf//pzL3jTiiwSrP6FtCSQR8PR+d25Gd/d+xXBTSxj8u7GIz2BWtss+cEJHydQ5yFdvVLkoXKu8EtAs0ZmUTlVyQrCKrVgbXco/7r8xDkzdibJ6SOAngDPZ8YYmwS+P8hkzUcyvKFDnuopdEJ3JiK6K4KSPOE54684mjT+deXw0TuMLJxwQO42+laAAAGFSzNk26w8gzdVjiREkG9aqBJNhkQx+0XikRmrCJWseamUs471W/sbYqbg+ql7CpwAncjwoi/qc634tQ/nEtR6Ck3DjqCmUahJz/QURf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWcNXa/RJXNe7HfuOezlXeeWD36v4W4QCZHwIHYiAAAAAAAAABbBjbGeJaFdgLIhCN3larNKrVsMiGP2i8UiM1YRK1jzUylnHeq39jbFTcH1UvYVOAE7keFEX9TnW/FqH84lqPQUm4cdQUyjUJOf6CiL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyzk6Oc/EtNjmdtRhwTuxL5zMA6YWY5voUBde4iFwg+cv89JOD2DjlYN75wBW6X41P6LGaZ5Nd4QBph9tJjjeo8QaFGLJIjJ3zadk9QLMwsymNW0CKjgw+j3Ec3ZRAAAdcafNzTgT9om+kWjecsZHvjwjCEmpkXEgvDVkNJ9J5zWxn8yC4Ai9C34Oq6jn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJf80q6pkFcH5dvBzTJsmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdz5GccIKYUzxc6hnBc3xLS+O/wxNg3dMGh1cJTQgQiXM+QVt4co6swCtRmVNkr5eXqZzdpOBBotFgu5alTHOOIqm73gmFbr6R93rsHwQ+6qCgfUGgF1/Xtqrd20rYfov0I9ggAX7987FMnKhLP1ZDnlCsBLFwrToSMnvx/AuLS4dKKmbF+y7Kr33JONo4Jnb40Rw1vBR6OrVU5Hqrbh8rhalEzFEsQQeY6L4tcjapZRjlBfRoox65ntxBakALj2rG3XuVtg5NqoABWyPyPARuF3GwsJZFu+qLiqBaHm9caiBJHZp27qi/+s7ByOgKu0C0Z35gmDM8mIrG96QeIoDJQVsx9Ogh9HlhuN+Nv3sFUBSi4AFbHwT/Zhaax/mcdt/LprNPPbYHptLSUGoHAsbGRywNhAHtv2hG7EwOya+dWaqOzPqGixOHlq/QLouiw2XLCZ4INhxJZwk7VIhIXfxyNHbwrnxFLnOyYK4WQR/INn3uY+PW+cahqiRAff/E0fQMDY5UmxKa2H45U9DZ7rpIkAg2nXppwKNg7cbFmsYGmBz+W6P3P490uqLepjyfWLWwqLuv8x6Gshopv245o9/TnK41aCt2ae1toZ97kP0++RlnqmC8mty8mV0cINHFy+DoKdvf8eR3Z3v3NcH/VnJS536FsaycPNs8TlAazdD33mEnMxZMs0X9t+dLvepX1VcqnlEf8/QXwY91uIsybkJD/s9rCpaKDb5YHlvnrFs+DBJvey5D4yf1iQGJ6WP/amWjvAT6LvHhk53pge0iF7a/R/T2kqyRgzFhPyCwjFZ0K+kGenh76bDbW7DJJ6Fjreec1FQyLvuxSzHq+BNbXjaXQ+WFygaMeZDskgOxg/zzPZcfznv7Ns/89KqBX2Tu60NkOn1dWSsAGwZbSbOLTCId2DBui6uSGqb7gBuM6wWiZITWwrKisREt6ymghAZ1aAtrRZ4fC2YJZHf89quQWrJwVgsNWFKjNQkQIhmzQwzol4MpheVBYld0c4cLym2py+UbRTLmemgq1Y03yYKGWTKSa6s/Dd/SiuGJxIXylhjtPsei5YSuMRzlswN2DX9a6gy+bxg21CYr7BACAT87fs24cNRdihdMo3MloHBQ/bqKWrcdeQy9HHMQVdVGoxyqpdhcNhR9gOHglL7gQgIYetBZjBZAe7DD7unZ5Nu1bf1Ugz8amwhDwjKDGntVW6QJMotHNgSv31lV60GgAmoa8buiyUBrYZ2bTQIHcHPZ8txpYSk8SU51/deGhEfEWFtBbmdlLm8Ey7ki6YQXk24rvtPYF2ve7ngAPz+RoKKoBCGMWaVe7BeX+A+9rrMM4z3q7/ND86Qxe617u4HX6K5gW5gClSVfEO9sdhxT3b4vFEMBnUnzEJjOs2r7oMiucYev7NU4fFBHp4QCxIEYQfmQYmwqDMWlM0yhwz6iBtGzk2EGUECraGIkftp3zDLnGoeHJ3zlI2xZw0bN4CmRnGX0OJa8VV60ZdlrYlRiGZj6/UCq/QsjHzaVtHS92hE/SfYmvE+ji2907VAevRuvBT852MxD+UqMfmOu3CshaygZ9+mTlkdM5w1rZabuKtT0QiKa583jnmZgkV5ZAuKtRyMs4jjtoMdttZKSi9SdQLKnZi60AHkI2TaX14pNfJMq3JbgwLYhjD88elMGNYE9ZYixYkszJ2PtLnAvKLML+S9hZ1X7uQ/OBODlkiYOME7LBCN8gMxJK4aVrE+tCWVaanks3cwYgwrRmT/5Wn3PPuPjUKhOvjnHJEyo7blW6UvFwtC7mnMwAlUVyGZJaZgoFkgoVwyuU1Sn/fhx/e3Y0ltRUe564eCUqRutlUvPTPIl1uYuL/OduVoQDR3KVI7HbGZaOq9+ciGw45dKWL6hTCZdrXR6UfOXzopFvcpyDHmplLOO9Vv7G2Km4PqpewqcAJ3I8KIv6nOt+LUP5xKZNht/I60bLmjhJf80q6pkFcH5dvBzTJsmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhd/YWXW/hkaJA3eIYsbowMtVas5Vz2OjTUrPT22gQDm3V5jjDmuDU0BOQyVpbuAMZimVhtZdi190QzHZ2Wpbz+BVMXHoXY+MHgcBcKSRpa6d28P3StUwXmWfVFH26kzPLbJiE+UNXMD0pvBRk+4AjxYOUHfW5VEd2RdmCwSZb9lepCYOh2RB9QQAcO3bQYJfworklwM/y4qe7wsZAXeMl94QQtlP+b4qlwwzqOGndt9Qj4maUUjnLvQXU5rOLxNv/8QWcxDsLHswQT9kriYg3b78NL7MptuWI6J4PtTJIk9qAar0FAAd3EN/xxooUJ6yGX4PFNVB0APYMot7xvBPucD1fw4Xgqnx6Fu/TUJyAyehZ5XWXuW9EX40HWyB9GaDmqVKogywRVxh2jthETpOx/zs9t0W6i89iyRAF0nH2Tin6Ty1CnSuxXRu+he/CWiUFm7VKpowCSiXLhGZdNObZHnUa291+WAm/C17d9F4AcIyjvcZXqsSR+DkVyJxzZYANmgOb7mjumMMzlt5yMPqLzkGXnO16Cg4zq6ybk1MIpNyG+/M6Gw71ly8CDC/mRIwaSTGT9cM0rfBWwHL0TPsEOwEB7gDNKxhbbWYWkI51tDogR/uIUjcLbNaZs3yYlBwXxfiackPdcn4F5LcANwDFhBAKYATgFOcSmE/QwPewe+Vglgl/EJV0rvFZnpz9t/pDpU79tKRgyU//vnb0RgHS/p6oxjxY2jfFw/1+uctLzeo5TG5ZZtop5QlX0fHWuH2oZ364igz/fCi4QUhSf3H4oHsxfWpOCT7aeCXcOK4x99bllb0rxl7WCepJrnQ0ZcphcyH91O9b2nQX1YmwGTZ4qu3zAn1gomXwFn7Fd93EvtPyTmbxdjmQA28CRypqgwtIV2ldGKmd1dC+8NJElMIrG8Hr8uiLPmVfE4JtEF6f3ntu52UCG4XBD+KG1d74rQ5ODn9v6gwJ0O2PoAVTNS1hGXWIkN+n8qD1RdGRUiQ+5hjscbrYStDAv41BAMHbnElix0WJV9/NH9NWg4OhBRavcO2qhE70o6bw8/Xvrbl3xE7CwhmgcqxiooPpMHG6FyC0HNxNxwsI5mOCv7dd405cxeooGtFI5Y0DvmYPEN/ruWuklUULpcfD3WQ5pYh/tqjnGW/cd2Hw5+2atWwxHiotGsLfBDWYKoqpk3xrbwqtplEyKM1Et4silI/XIn9/EfCdAawg9ZovL80p2MbhDeW7YIKJ/wI3A6zEk80crA8nRfNUqDfbwtXPY2dCWD7Y2o3bScXiBqL+YJQH0rz+vCLU12k8ubCw6F05Kanx+xSfcboApSeWG7M0pbynUAcOllPq9/CZ0qrHIj29ep+2fN0Z130a7KgpIH/zju1nggJXdlkgWnxrw/EgdjCZP/xIP5YerFSSMvZQF9imrPssjKeMoWq1UA1om9wS59mfgzATwl1EB25iCMUNdzyU9YkpUiaMuLXDtRvqz1X2XKAhZoH4jNrMvtxnmBJy3W26wKjXkN0jDPkR0PRq/Q2W22mF/KrK8lbndZil89FmafWC3kuU7cAc2Nl4KzKUtB93LuWMieDpEIQPt2N98Gs1BZ5/DwulUkLQvK9zM1Yo8VynPEx8JOLrgJl/bfescERPiAXxN2hGJjQN8iArmst5SK5cGURWLol0suPrPN9lntdg4VQ6P4AZh8pex1zSFwPXllLZctHaRKEspdry1GdqN3Toam4PqpewqcAJ3I8KIv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxxM8tHiwE8HnhPEJOf6CiL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQy0UUz9RV9QvzeQgAPLcCfDVJroI2A69v24CV1PO7FWHpwQIABnPdgHLsKDsGP4gwIJPuojAAAAAAAAAAGCE/mylrmhCrQ2ZvErnk6UaerA1NwfVS9hU4ATuR4URf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7FjnjiZ5aPFgJ4PPCeISc/0FEX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhljR01+iSig7MFnUGrOVd79UyGF2j7Ygt+YunxLsAAGI1ika2vvla0QWHYmvHfpoVJWiaBlpLGRT9ycEXo5nkxzdC3Ap4d/eZfstcpLHNVqoVcq6KhLWtIrU0v9YuCkbyP5NEewTSONNHvHNxsa3cZw+rsAe7ZmsXtnLXg0MqoETBftX/Nus310VsWAiP8sf1EHn2OWWJccqcOlmxxj5QQSjAb+JGfQbXu7Clrv+zMXKZUk0aIEUcCb0yDSjE9U8zLCmS/PuuSCB4pG8hTHhXMnLakmKl4jZ8w10dttrcToH7Rl60TWhQqOFEWN689Bziyoih2RjBC7Dp6CCHUiz3tiDbANe41T4Z6rLbVb3u+rcQQX+i3uLYMMuh5QOk7NAvtcGAy8SlwB6eJZ324X42tyq+6kOk8RTBZORq09vu1n2Td/yiZe/puwVCiIMETPllns1i0OCxhSyvntsQzoOcJrRY62mfwZruyFIi7FHy2tRRX6bwJ0MpVGn6rq+dtHdIIPFwHqeMoRHhehmy4uLG6VQV7mioCD/JQ9jzG6F53nGhA86UP+e3QiZerqfdLQ4l1xFu9l6YIuiP/kS2JJB1fbsYEB8vElf+mOSWh60G1QnImzN3jSN51gskrLdCftMtwqQTFXWdPH/Zt4U7C9bvg7kAHjXyBSEEbFVZbrKZuNsqNIIfICy0iW/UWnbOQ9Ip9ppJS8C4K5xuIXrG3BSo4cjnwkZ1Z/QH+cpNCC9fTIb+cgNmzKHkTdXVGr3ry0SxFQX6dem35OXJ7fxfX5Dx0UZD06QFFhH0X5MKfLM6dZwDGfHhq/NNrSC0xk/nUBspJ2d+FiMlAh1MflfG4T3GXe36G3G/YUIwIVTCv3HjMg1IXEq/RM52wcEhD8nceAeAcJuNhyXDdgAM/y49yLj2tBCfzZS1zQhpck94pxOam4PqpewqcAJ3I8KIv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxxM8tHiwE8HnhPEJOf6CiL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQy0brQ2vtceBlhrEVTHf4wx3WVuJ8+S1M/hy/u65gAAAAATv5KN2xK8c07o0E8o2PtqIl4AAAAAAAAABFw9qaAPkbSvELNOTkD7H9qSsvE7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJL/mlXVMgrg/Lt4OaZNk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLuyV1K6mfQk0Hxd8FMMhqHu8jpK+I8jYriunACAAAAAAAAIqfXNDOVx41BqKcJKcAijoCGnOzEXufzxDH7ReKRGasIlax5qZSzjvVb+xtipuD6qXsKnACdyPCiL+pzrfi1D+cS1HoKTcOOoKZRqEnP9BRF/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZapsmpX0lPHE3R+iJacq2Mk48kCiova6WABjR15pAhYwkimLNJIGNWE4p3Z5MG8GkZ30GIxyH81p3NvIelwu/DFVnFLTX/FZ87A0NVx2IKh0zVmAMA023uOJZSi4G/vTRQKN7mVlxZyG6QwFMqTtS3XtYYeU1MlUuQCT939ar0hET84lV72jhPjemeKj2f/ERFEbdFxesBafHTIKHohHTOh3hVVj73TtdxA/lXfx+jQWO7f/k6zJBmn9ta8uIp4w5O1jfgNxy07jTEgaJWURw5lYz7FZ/bWvLiKeMOTtY34DcYPnUKhaLXkgr73HRSf1HIQWgu49ui0oF41oW91VCqDY7lMhRfyFIUAifYzEc328TGMgrTKwXIQncqDDx/1l+oIjQQ5hiOb7eJjGQVplYPoAloexA4dkk/1UJ2OjMUTU+1yDUNzK91M5u99rBNFHRzOI4ZUgEiATdX0FZ1bhglB5hVN4acLXZ0mO8FyHszEwVdsRjo/xyOX//L2BCZetG7xxXJEHkx2H6qnhh6kRwfEMkZoxrn2Udy9xOmBLDnDcTYOhcW4JXGCxWYkIjdgWyqO2AduaJbbPGywuwWNqHJ83QWrA1H2nWKhQjT6SPuE2RcM1NROJNgkjmHciTrQgGCtF2NVGJMM5On+06xBtBMOrmBcXYtljRFqNRE9Pr5Om0PAjp6BEqvV9qMtD3r8K+lBQjnoE+nFhcQvDEUN7vlgsvsDt4dJU48CwS8cxoSnEFx8mZ+IvTl9CBRG0UbPgWo2iPFHr1IvGeli2lDLB5r5S3eqeeHD2pPJHYbSWEsysRnD5xacPR8PnpKZVYiOiAagFQ1bsttgEP0rEeLm/XQofYkEKjevzETB56YcjZO4mIXavJm44O6JzCeUvbQD7ka6jJbj50qoHYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuzY+1NH2S994Xdw/tfQURf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF3YADMe9TSilOgLH36vMx71NKKU6Asffq8zHvU0opToCx9+rzMe9TSilOgLH36vMx71NKKU6Asffq8zHvU0opToCx9+rzMe9TSilOgLIBTWPNTKWcd6rf2N6boL+pzrfi1D+cTcWIv6nOt+LUP5xNxYi/qc634tQ/nE3FiL+pzrfi1D+cTcSXg+ql7CpwAncmOBuD6qXsKnACdyY4G4PqpewqcAJ3Jjgbg+ql7CpwAncmOBuD6qXsKnACdyY4G4PqpewqcAJ3Jjdl5qZSzjvVb+xvTdBf1Odb8WofzibixF/U51vxah/OJuLEX9TnW/FqH84m4sRf1Odb8WofzibixF/U51vxah/OJuLEX9TnW/FqH84q93q4PiUS12LHPHJMqnP6VxZkXFiGWlXUc/pXFmRcWIZaVdRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhlmX0e8W+rM/qD4gZSCbJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXYN0F/U51vxah/OJTJsNv5HWjZc0cJLU2FwfEolrsWOeOF7Uc/pXFmRcWIZZSYNpMyCAzz/WYXZsfamj7Je+8Lu4f2voKIv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLMvo94t9WZ/UHxAykE2TYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuwboL+pzrfi1D+cSmTYbfyOtGy5o4SWpsLg+JRLXYsc8cL2o5/SuLMi4sQyykwbSZkEBnn+swuzY+1NH2S994Xdw/tfQURf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWUmDaTMggM8/1mF2DdBf1Odb8WofziUybDb+R1o2XNHCS1NhcHxKJa7Fjnjhe1HP6VxZkXFiGWZfR7xb6sz+oPiBlIJsmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdg3QX9TnW/FqH84lMmw2/kdaNlzRwktTYXB8SiWuxY544XtRz+lcWZFxYhllJg2kzIIDPP9Zhdmx9qaPsl77wu7h/a+goi/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMspMG0mZBAZ5/rMLsG6C/qc634tQ/nEpk2G38jrRsuaOElqbC4PiUS12LHPHC9qOf0rizIuLEMsy+j3i31Zn9QfEDKQTZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Bugv6nOt+LUP5xKZNht/I60bLmjhJamwuD4lEtdixzxwvajn9K4syLixDLKTBtJmQQGef6zC7Nj7U0fZL33hd3D+14Q9BSQWW4njld8r/+/x5qncPXNKuj01uJ45XfK//v8eap3D1zSro9NbieOV3yv/7/Hmqdw9c0q6PTW4njld8r/+/x5qncfWG5pV0emtxPHWu8+V//f481TuFQ8tHgmAje+n88Gof2JbsX3hlkx/5pV0emtxPHHhQ/sS3YvvDLKCyeWjwTARvfT+G8+V//f481TuFQ8tHgmAje+n88Gof2JbsX3hlkx/5pV0emtxPHHhQ/sS3YvvDLKCyeWjwTARvfT+G8+V//f481TuFQ8tHgmAje+n88Gof2JbsX3hlkx/5pV0emtxPHHhQ/sS3YvvDLKCyeWjwTARvfT+G8+V//f481TuFQ8tHgmAje+n88Gof2JbsX3hlkx/5pV0emtxPHHhQ/sS3YvvDLKCyeWjwTARvfT+G8+V//f481TuFQ8tHgmAje+n88Gof2JbsX3hlkx/5pV0emtxPHHhQ/sS3YvvDLKCyeWjwTARvfT+G86RAKOhruhxmAAAA=" alt=""><div class="rv-ph"><b>Hero image to be sourced</b><span>A supplier and a buyer reviewing a signed document or a packaging specification.</span></div></div>
+</div></header>
+<main class="rv-main"><div class="rv-in">
+
+                <style>
+/* PPWR Supplier Declaration of Conformity page (draft for copy review). Scoped to #pdoc; site font, brand colours.
+   Without JS all copy, steps, badges and answers are visible; JS adds the before/after toggle, the step player and the
+   assurance checker. Contact links jump to #evx-contact and pre-fill the enquiry. */
+#pdoc { --ink:#212121; --muted:#55656d; --slate:#2f444e; --slate-2:#3d5662; --slate-3:#4d6875; --teal:#0f6378; --teal-2:#e3f0f3;
+  --yellow:#ffcd03; --yellow-2:#fff6cc; --grey:#f4f6f6; --line:#dfe5e7; --mist:#aac5d1; --red:#b3261e; --r:16px;
+  color:var(--ink); display:grid; gap:clamp(56px,8vw,96px); font-size:16px; line-height:1.6; }
+#pdoc *, #pdoc *::before, #pdoc *::after { box-sizing:border-box; }
+#pdoc > * { min-width:0; }
+#pdoc :is(h2,h3,h4,p,ul,ol,li,figure,fieldset,dl,dd) { margin:0; padding:0; font-family:inherit; color:inherit; border:0; }
+#pdoc :is(ul,ol) { list-style:none; }
+#pdoc h2 { font-size:clamp(28px,3.6vw,42px); line-height:1.12; font-weight:700; letter-spacing:-.01em; }
+#pdoc h3 { font-size:20px; line-height:1.25; font-weight:700; }
+#pdoc p + p { margin-top:14px; }
+#pdoc a { color:var(--teal); }
+#pdoc .wrap { max-width:780px; }
+#pdoc .lead { font-size:clamp(17px,1.7vw,20px); line-height:1.55; }
+#pdoc .muted { color:var(--muted); }
+#pdoc .eyebrow { display:inline-flex; align-items:center; gap:10px; margin:0 0 12px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+#pdoc .eyebrow::before { content:""; width:28px; height:4px; border-radius:2px; background:var(--yellow); }
+#pdoc .sec { display:grid; gap:clamp(24px,3.4vw,40px); scroll-margin-top:110px; }
+#pdoc .sec > header { display:grid; gap:14px; }
+#pdoc .icon { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+#pdoc .sr { position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+#pdoc :is(a,button,input,summary):focus-visible { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+#pdoc:not(.is-js) [data-js-only] { display:none; }
+#pdoc .btn { display:inline-flex; align-items:center; gap:10px; padding:14px 22px; border-radius:2px; background:var(--yellow); color:var(--ink); font-weight:700; text-decoration:none; transition:background .15s ease; }
+#pdoc .btn:hover { background:#f0bf00; }
+#pdoc .btn.ghost { background:transparent; box-shadow:inset 0 0 0 2px var(--slate); }
+#pdoc .btn.ghost:hover { background:var(--grey); }
+#pdoc .review { display:inline; padding:2px 8px; border-radius:6px; background:#fde8e6; color:var(--red); font-weight:700; font-size:14px; }
+
+/* Start bar: buttons + PPWR notice */
+#pdoc .start { display:grid; gap:18px; }
+#pdoc .actions { display:flex; flex-wrap:wrap; gap:12px; }
+#pdoc .notice { display:flex; gap:14px; align-items:flex-start; padding:18px 22px; border-radius:12px; background:var(--teal-2); border-left:5px solid var(--teal); }
+#pdoc .notice .icon { color:var(--teal); margin-top:2px; }
+
+/* Questionnaire pile */
+#pdoc .split { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr)); gap:clamp(28px,5vw,64px); align-items:center; }
+#pdoc .pile { position:relative; height:340px; }
+#pdoc .q { position:absolute; width:min(300px,82%); padding:16px 18px; border-radius:12px; background:#fff; border:1px solid var(--line); box-shadow:0 10px 26px rgba(33,33,33,.10); font-size:14px; }
+#pdoc .q b { display:block; font-size:15px; }
+#pdoc .q .bar { display:block; height:7px; border-radius:4px; background:var(--grey); margin-top:9px; }
+#pdoc .q .bar:nth-of-type(2) { width:72%; } #pdoc .q .bar:nth-of-type(3) { width:48%; }
+#pdoc .q .due { position:absolute; top:14px; right:14px; padding:3px 9px; border-radius:99px; font-size:12px; font-weight:700; background:var(--yellow-2); }
+#pdoc .q:nth-child(1) { left:0; top:0; transform:rotate(-4deg); }
+#pdoc .q:nth-child(2) { right:0; top:52px; transform:rotate(3deg); }
+#pdoc .q:nth-child(3) { left:6%; top:122px; transform:rotate(-2deg); }
+#pdoc .q:nth-child(4) { right:4%; top:196px; transform:rotate(4deg); }
+#pdoc .q .due.hot { background:#fde8e6; color:var(--red); }
+#pdoc.is-js .pile .q { opacity:0; translate:0 18px; transition:opacity .5s ease, translate .5s ease; }
+#pdoc.is-js .pile.in .q { opacity:1; translate:0 0; }
+#pdoc.is-js .pile.in .q:nth-child(2) { transition-delay:.15s; } #pdoc.is-js .pile.in .q:nth-child(3) { transition-delay:.3s; } #pdoc.is-js .pile.in .q:nth-child(4) { transition-delay:.45s; }
+#pdoc .centre { margin-top:20px; padding:18px 22px; border-radius:12px; background:var(--slate); color:#fff; font-weight:700; font-size:18px; line-height:1.4; }
+
+/* Before / after */
+#pdoc .flip { border-radius:var(--r); background:var(--grey); padding:clamp(20px,3vw,32px); display:grid; gap:18px; }
+#pdoc .switch { display:inline-flex; padding:4px; border-radius:99px; background:#fff; border:1px solid var(--line); justify-self:start; }
+#pdoc .switch button { border:0; background:none; font:inherit; font-weight:700; font-size:15px; padding:10px 18px; border-radius:99px; cursor:pointer; color:var(--muted); }
+#pdoc .switch button[aria-pressed="true"] { background:var(--slate); color:#fff; }
+#pdoc .views { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr)); gap:18px; }
+#pdoc.is-js .views { grid-template-columns:1fr; }
+#pdoc .view { border-radius:12px; background:#fff; border:1px solid var(--line); padding:18px; }
+#pdoc .view h3 { font-size:17px; margin-bottom:4px; }
+#pdoc .view svg { display:block; width:100%; height:auto; margin-top:8px; }
+#pdoc .view .cap { font-size:14px; color:var(--muted); }
+#pdoc.is-js .view[hidden] { display:none; }
+
+/* Step player */
+#pdoc .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); gap:14px; counter-reset:s; }
+#pdoc .step { position:relative; display:flex; flex-direction:column; gap:10px; padding:22px; border-radius:var(--r); border:1px solid var(--line); background:#fff; transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
+#pdoc .step .n { display:grid; place-items:center; width:44px; height:44px; border-radius:50%; background:var(--teal-2); color:var(--teal); font-weight:700; font-size:18px; transition:background .25s ease, color .25s ease; }
+#pdoc .step p { font-size:15px; color:var(--muted); }
+#pdoc .step blockquote { margin:6px 0 0; padding:12px 14px; border-radius:10px; background:var(--yellow-2); font-weight:700; font-size:15px; }
+#pdoc.is-js .step.on { border-color:var(--slate); box-shadow:0 12px 28px rgba(33,33,33,.12); transform:translateY(-3px); }
+#pdoc.is-js .step.on .n { background:var(--yellow); color:var(--ink); }
+#pdoc .player { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
+#pdoc .player button { display:inline-flex; align-items:center; gap:8px; border:2px solid var(--slate); background:#fff; font:inherit; font-weight:700; font-size:15px; padding:10px 16px; border-radius:99px; cursor:pointer; }
+#pdoc .player .track { flex:1 1 160px; height:6px; border-radius:3px; background:var(--line); overflow:hidden; }
+#pdoc .player .track i { display:block; height:100%; width:25%; background:var(--teal); transition:width .4s ease; }
+
+/* Why PPWR is different */
+#pdoc .vs { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:16px; }
+#pdoc .vs > div { border-radius:var(--r); padding:24px; display:grid; grid-template-columns:minmax(0,1fr); gap:10px; align-content:start; }
+#pdoc .vs .uk { background:var(--grey); }
+#pdoc .vs .eu { background:var(--slate); color:#fff; }
+#pdoc .vs .tag { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+#pdoc .vs .eu .tag { color:var(--mist); }
+#pdoc .vs .big { font-size:24px; font-weight:700; line-height:1.2; }
+#pdoc .range { display:grid; grid-template-columns:repeat(8,1fr); gap:6px; margin-top:6px; }
+#pdoc .range i { min-width:0; aspect-ratio:1; border-radius:6px; background:var(--slate-3); display:grid; place-items:center; }
+#pdoc .uk .range i { background:#cfd9dd; }
+#pdoc .uk .range i.est { background:repeating-linear-gradient(45deg,#cfd9dd 0 4px,#e8eef0 4px 8px); }
+#pdoc .eu .range i.miss { background:var(--yellow); }
+#pdoc .eu .range i.miss::after { content:"?"; font-style:normal; font-weight:700; color:var(--ink); font-size:14px; }
+#pdoc.is-js .eu .range.hold i:not(.miss) { opacity:.35; transition:opacity .6s ease .3s; }
+#pdoc .vs .key { font-size:13px; }
+#pdoc .vs .uk .key { color:var(--muted); } #pdoc .vs .eu .key { color:var(--mist); }
+
+/* Badges */
+#pdoc .levels { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr)); gap:18px; }
+#pdoc .level { display:flex; flex-direction:column; gap:16px; padding:clamp(22px,3vw,32px); border-radius:var(--r); border:1px solid var(--line); background:#fff; }
+#pdoc .level.lab { background:var(--slate); color:#fff; border-color:var(--slate); }
+#pdoc .level .head { display:flex; align-items:center; gap:18px; }
+#pdoc .level .badge { width:96px; height:96px; flex:none; }
+#pdoc .level .price { display:inline-block; margin-top:6px; padding:4px 12px; border-radius:99px; font-size:13px; font-weight:700; background:var(--teal-2); color:var(--teal); }
+#pdoc .level.lab .price { background:var(--yellow); color:var(--ink); }
+#pdoc .level .desc { color:var(--muted); }
+#pdoc .level.lab .desc { color:#d8e3e7; }
+#pdoc .level ul { display:grid; gap:10px; margin-top:auto; padding-top:16px; border-top:1px solid var(--line); }
+#pdoc .level.lab ul { border-top-color:var(--slate-3); }
+#pdoc .level li { display:flex; gap:10px; font-size:15px; line-height:1.4; }
+#pdoc .level li::before { content:""; flex:none; width:20px; height:20px; margin-top:1px; border-radius:50%; background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 12 4 4 8-8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat; }
+#pdoc .level.lab li::before { background-color:var(--yellow); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 5v14M5 12h14' fill='none' stroke='%23212121' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E"); }
+#pdoc .level .ul-h { font-size:15px; font-weight:700; margin-top:auto; }
+#pdoc .level .ul-h + ul { margin-top:0; }
+#pdoc .level .btn { align-self:flex-start; }
+#pdoc .level.lab .btn.ghost { box-shadow:inset 0 0 0 2px #fff; color:#fff; }
+#pdoc .level.lab .btn.ghost:hover { background:var(--slate-2); }
+
+/* Checker */
+#pdoc .checker { border-radius:var(--r); background:var(--grey); padding:clamp(20px,3vw,32px); display:grid; gap:16px; }
+#pdoc .checker h3 { display:flex; gap:10px; align-items:center; }
+#pdoc .checker h3 .icon { color:var(--teal); }
+#pdoc .checks { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); gap:10px; }
+#pdoc .checks label { display:flex; gap:12px; align-items:flex-start; padding:14px; border-radius:10px; background:#fff; border:1px solid var(--line); cursor:pointer; font-weight:600; font-size:15px; line-height:1.4; transition:border-color .15s ease; }
+#pdoc .checks label:has(input:checked) { border-color:var(--teal); box-shadow:inset 0 0 0 1px var(--teal); }
+#pdoc .checks input { width:20px; height:20px; margin:1px 0 0; accent-color:var(--teal); flex:none; }
+#pdoc .verdict { display:flex; flex-wrap:wrap; gap:14px 20px; align-items:center; padding:18px 20px; border-radius:12px; background:#fff; border:1px solid var(--line); }
+#pdoc .verdict svg { width:56px; height:56px; flex:none; }
+#pdoc .verdict p { flex:1 1 240px; }
+#pdoc .verdict b { display:block; font-size:18px; }
+
+/* FAQ */
+#pdoc .faq { display:grid; gap:10px; max-width:900px; }
+#pdoc details { border-radius:12px; background:var(--grey); }
+#pdoc summary { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:18px 20px; cursor:pointer; font-weight:700; font-size:17px; list-style:none; }
+#pdoc summary::-webkit-details-marker { display:none; }
+#pdoc summary::after { content:"+"; flex:none; display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:#fff; font-size:20px; line-height:1; transition:transform .2s ease; }
+#pdoc details[open] summary::after { transform:rotate(45deg); }
+#pdoc details > div { padding:0 20px 20px; color:var(--muted); }
+
+@media (max-width:640px) {
+  #pdoc .pile { height:auto; display:grid; gap:0; padding:8px 4px; }
+  #pdoc .q, #pdoc .q:nth-child(n) { position:relative; inset:auto; width:94%; margin-top:-14px; }
+  #pdoc .q:nth-child(1) { margin-top:0; } #pdoc .q:nth-child(even) { justify-self:end; }
+  #pdoc .range { grid-template-columns:repeat(6,1fr); }
+}
+@media (prefers-reduced-motion:reduce) { #pdoc *, #pdoc *::before, #pdoc *::after { transition:none !important; } #pdoc.is-js .pile .q { opacity:1; translate:none; } }
+#evx-contact { scroll-margin-top:96px; }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="pd-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h0"></path></symbol>
+  <symbol id="pd-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></symbol>
+  <symbol id="pd-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4.5 18.5A1.8 1.8 0 0 0 6 21h12a1.8 1.8 0 0 0 1.5-2.5L14 9V3"></path><path d="M7 15h10"></path></symbol>
+  <symbol id="pd-i-play" viewBox="0 0 24 24"><path d="M7 5v14l11-7z"></path></symbol>
+  <symbol id="pd-i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"></path></symbol>
+  <symbol id="pd-i-next" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"></path></symbol>
+  <symbol id="pd-check" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6z"></path><path d="m8.5 12 2.5 2.5 4.5-5"></path></symbol>
+  <!-- Badge artwork (names are placeholders for review) -->
+  <symbol id="pd-badge-declared" viewBox="0 0 96 96"><path d="M48 4 84 18v26c0 23-15 39-36 48C27 83 12 67 12 44V18z" fill="#0f6378"></path><path d="M48 12 76 23v21c0 18-11 31-28 39-17-8-28-21-28-39V23z" fill="none" stroke="#aac5d1" stroke-width="2"></path><path d="m34 47 10 10 19-20" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path><text x="48" y="76" text-anchor="middle" font-size="9" font-weight="700" fill="#fff" font-family="inherit" letter-spacing="1">PPWR</text></symbol>
+  <symbol id="pd-badge-lab" viewBox="0 0 96 96"><circle cx="48" cy="48" r="44" fill="#ffcd03"></circle><circle cx="48" cy="48" r="36" fill="none" stroke="#212121" stroke-width="2" stroke-dasharray="3 4"></circle><path d="M42 26h12M44 26v12L33 59a3 3 0 0 0 2.7 4.5h24.6A3 3 0 0 0 63 59L52 38V26" fill="none" stroke="#212121" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M37 52h22" stroke="#212121" stroke-width="4" stroke-linecap="round"></path><text x="48" y="78" text-anchor="middle" font-size="9" font-weight="700" fill="#212121" font-family="inherit" letter-spacing="1">PPWR</text></symbol>
+</svg>
+
+<div id="pdoc" class="is-js">
+
+  <div class="start">
+    <div class="actions">
+      <a class="btn" href="#evx-contact" data-enquiry="Hi, I'm a packaging supplier and I'd like to share our packaging data so you can produce our PPWR Declaration of Conformity.">Share your packaging data <svg class="icon" aria-hidden="true"><use href="#pd-arrow"></use></svg></a>
+      <a class="btn ghost" href="#evx-contact" data-enquiry="Hi, I'm a packaging supplier and I'd like to ask about PPWR lab validation for our packaging.">Ask about lab validation</a>
+    </div>
+    <p class="notice"><svg class="icon" aria-hidden="true"><use href="#pd-info"></use></svg><span>PPWR has applied across the EU since <strong>12 August 2026</strong>. Packaging placed on the EU market needs technical documentation and a Declaration of Conformity.</span></p>
+  </div>
+
+  <section class="sec" aria-labelledby="pd-q-h">
+    <div class="split">
+      <div>
+        <p class="eyebrow">The problem</p>
+        <h2 id="pd-q-h">Every customer is asking you the same questions</h2>
+        <p style="margin-top:16px" class="lead">Under the EU Packaging and Packaging Waste Regulation (PPWR), the brands you supply can't keep selling into Europe without evidence that their packaging complies. That evidence starts with you.</p>
+        <p>So the questionnaires arrive. Each customer has its own format, its own deadline and its own follow-ups, and many are waiting on your answers before they can move. Some are holding off on any other compliance work until you send them a declaration.</p>
+        <p class="centre">That puts you at the centre of the value chain. It also means answering the same questions again and again.</p>
+      </div>
+      <div class="pile" aria-hidden="true">
+        <div class="q"><span class="due">Due Friday</span><b>Customer A</b>Supplier PPWR questionnaire v3<span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+        <div class="q"><span class="due hot">Overdue</span><b>Customer B</b>Packaging substances survey<span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+        <div class="q"><span class="due">Follow-up</span><b>Customer C</b>Recycled content declaration<span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+        <div class="q"><span class="due hot">Urgent</span><b>Customer D</b>"Can you send your DoC?"<span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="pd-how" aria-labelledby="pd-how-h">
+    <header class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2 id="pd-how-h">One submission. Every customer covered.</h2>
+      <p class="lead">We become the single point of contact between you and your customers for PPWR documentation.</p>
+    </header>
+
+    <div class="flip">
+      <div class="switch" role="group" aria-label="Compare" data-js-only="">
+        <button type="button" aria-pressed="true" data-v="before">Today</button>
+        <button type="button" aria-pressed="false" data-v="after">With Ecoveritas</button>
+      </div>
+      <div class="views">
+        <figure class="view" data-view="before">
+          <h3>Today</h3>
+          <p class="cap">Every customer sends its own questionnaire, and you answer each one.</p>
+          <svg viewBox="0 0 640 230" role="img" aria-label="Your business connected separately to six customers, each with its own request">
+            <g stroke="#b3261e" stroke-width="2" fill="none" stroke-dasharray="6 6">
+              <path d="M150 115 C 260 20, 380 30, 470 32"></path><path d="M150 115 C 260 70, 380 80, 470 78"></path><path d="M150 115 C 280 110, 380 124, 470 124"></path>
+              <path d="M150 115 C 260 160, 380 168, 470 170"></path><path d="M150 115 C 260 210, 380 214, 470 216"></path><path d="M150 115 C 300 140, 400 90, 470 78"></path>
+            </g>
+            <rect x="20" y="80" width="130" height="70" rx="12" fill="#2f444e"></rect><text x="85" y="121" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="inherit">You</text>
+            <g font-family="inherit" font-size="13" font-weight="700" fill="#212121">
+              <rect x="470" y="14" width="150" height="36" rx="8" fill="#f4f6f6" stroke="#dfe5e7"></rect><text x="545" y="37" text-anchor="middle">Customer A</text>
+              <rect x="470" y="60" width="150" height="36" rx="8" fill="#f4f6f6" stroke="#dfe5e7"></rect><text x="545" y="83" text-anchor="middle">Customer B</text>
+              <rect x="470" y="106" width="150" height="36" rx="8" fill="#f4f6f6" stroke="#dfe5e7"></rect><text x="545" y="129" text-anchor="middle">Customer C</text>
+              <rect x="470" y="152" width="150" height="36" rx="8" fill="#f4f6f6" stroke="#dfe5e7"></rect><text x="545" y="175" text-anchor="middle">Customer D</text>
+              <rect x="470" y="198" width="150" height="30" rx="8" fill="#f4f6f6" stroke="#dfe5e7"></rect><text x="545" y="218" text-anchor="middle">Customer E</text>
+            </g>
+          </svg>
+        </figure>
+        <figure class="view" data-view="after" hidden="">
+          <h3>With Ecoveritas</h3>
+          <p class="cap">You share your data once. We produce your declaration and answer your customers.</p>
+          <svg viewBox="0 0 640 230" role="img" aria-label="Your business sends data once to Ecoveritas, which serves all customers">
+            <path d="M150 115 H 250" stroke="#0f6378" stroke-width="4" marker-end="url(#pd-ah)"></path>
+            <defs><marker id="pd-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10z" fill="#0f6378"></path></marker></defs>
+            <g stroke="#0f6378" stroke-width="2.5" fill="none">
+              <path d="M390 115 C 430 115, 430 32, 470 32"></path><path d="M390 115 C 430 115, 430 78, 470 78"></path><path d="M390 115 H 470"></path><path d="M390 115 C 430 115, 430 170, 470 170"></path><path d="M390 115 C 430 115, 430 213, 470 213"></path>
+            </g>
+            <rect x="20" y="80" width="130" height="70" rx="12" fill="#2f444e"></rect><text x="85" y="121" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="inherit">You</text>
+            <text x="200" y="104" text-anchor="middle" fill="#0f6378" font-size="12" font-weight="700" font-family="inherit">once</text>
+            <rect x="256" y="72" width="134" height="86" rx="14" fill="#ffcd03"></rect><text x="323" y="110" text-anchor="middle" fill="#212121" font-size="15" font-weight="700" font-family="inherit">Ecoveritas</text><text x="323" y="130" text-anchor="middle" fill="#212121" font-size="12" font-family="inherit">DoC + evidence</text>
+            <g font-family="inherit" font-size="13" font-weight="700" fill="#212121">
+              <rect x="470" y="14" width="150" height="36" rx="8" fill="#e3f0f3"></rect><text x="545" y="37" text-anchor="middle">Customer A</text>
+              <rect x="470" y="60" width="150" height="36" rx="8" fill="#e3f0f3"></rect><text x="545" y="83" text-anchor="middle">Customer B</text>
+              <rect x="470" y="106" width="150" height="36" rx="8" fill="#e3f0f3"></rect><text x="545" y="129" text-anchor="middle">Customer C</text>
+              <rect x="470" y="152" width="150" height="36" rx="8" fill="#e3f0f3"></rect><text x="545" y="175" text-anchor="middle">Customer D</text>
+              <rect x="470" y="198" width="150" height="30" rx="8" fill="#e3f0f3"></rect><text x="545" y="218" text-anchor="middle">Customer E</text>
+            </g>
+          </svg>
+        </figure>
+      </div>
+    </div>
+
+    <ol class="steps" id="pd-steps">
+      <li class="step on"><span class="n" aria-hidden="true">1</span><h3>Share your data</h3><p>Tell us about the packaging you supply into the EU: materials, components, substances and recycled content. We give you one structured template, so you only have to do this once.</p></li>
+      <li class="step"><span class="n" aria-hidden="true">2</span><h3>We produce your Declaration of Conformity</h3><p>Our compliance team reviews your information, prepares your Declaration of Conformity and keeps the supporting documentation on file, ready when it's needed.</p></li>
+      <li class="step"><span class="n" aria-hidden="true">3</span><h3>Tell us who you supply</h3><p>Let us know which of your customers sell into the EU. When they ask for your documentation, we deal with them directly, so you don't have to.</p></li>
+      <li class="step"><span class="n" aria-hidden="true">4</span><h3>Point your customers to us</h3><p>Next time a customer asks for your DoC, the answer is simple:</p><blockquote>"Talk to Ecoveritas. They hold our information."</blockquote><p>Your customers get what they need, and you get back to running your business.</p></li>
+    </ol>
+    <div class="player" data-js-only="">
+      <button type="button" id="pd-play" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#pd-i-play"></use></svg><span>Play the steps</span></button>
+      <button type="button" id="pd-next">Next step <svg class="icon" aria-hidden="true"><use href="#pd-i-next"></use></svg></button>
+      <span class="track" aria-hidden="true"><i id="pd-track" style="width: 25%;"></i></span>
+      <span class="sr" id="pd-live" aria-live="polite">Step 1 of 4: Share your data</span>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="pd-why-h">
+    <header class="wrap">
+      <p class="eyebrow">Why it matters now</p>
+      <h2 id="pd-why-h">Why PPWR is different</h2>
+    </header>
+    <div class="vs">
+      <div class="uk">
+        <span class="tag">UK EPR reporting</span>
+        <span class="big">Gaps in supplier data can be filled with robust estimates.</span>
+        <div class="range" aria-hidden="true"><i></i><i></i><i class="est"></i><i></i><i></i><i></i><i class="est"></i><i></i></div>
+        <span class="key">Striped = estimated. The report still goes in.</span>
+      </div>
+      <div class="eu">
+        <span class="tag">PPWR</span>
+        <span class="big">A Declaration of Conformity has to be backed by real evidence for every packaging item.</span>
+        <div class="range" id="pd-range" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="miss"></i><i></i><i></i><i></i></div>
+        <span class="key">One missing supplier response can hold up a customer's entire EU range.</span>
+      </div>
+    </div>
+    <p class="wrap lead">Responding quickly, consistently and through one trusted route makes you the easy supplier to work with, at exactly the moment your customers are deciding who they can rely on.</p>
+  </section>
+
+  <section class="sec" id="pd-levels" aria-labelledby="pd-lv-h">
+    <header class="wrap">
+      <p class="eyebrow">Choose your level</p>
+      <h2 id="pd-lv-h">Two levels of assurance</h2>
+      <p class="lead">Every supplier who shares their data receives a badge to show customers they're PPWR-ready. Choose the level that fits your business.</p>
+    </header>
+    <div class="levels">
+      <article class="level">
+        <div class="head"><svg class="badge" role="img" aria-label="PPWR Declared badge"><use href="#pd-badge-declared"></use></svg>
+          <div><h3>PPWR Declared</h3><span class="price">Free</span></div></div>
+        <p class="desc">We produce your Declaration of Conformity from the information you provide and confirm. One clear, consistent declaration for every customer, based on your own data.</p>
+        <p class="ul-h">With PPWR Declared, you get</p>
+        <ul>
+          <li>A Declaration of Conformity produced by EPR and PPWR specialists</li>
+          <li>Supporting documentation held securely on file</li>
+          <li>Customer DoC requests handled directly by Ecoveritas</li>
+          <li>A badge to show customers you're PPWR-ready</li>
+          <li>No cost to you</li>
+        </ul>
+        <a class="btn" href="#evx-contact" data-enquiry="Hi, I'm a packaging supplier and I'd like to share our packaging data for a free PPWR Declared Declaration of Conformity.">Share your data <svg class="icon" aria-hidden="true"><use href="#pd-arrow"></use></svg></a>
+      </article>
+      <article class="level lab">
+        <div class="head"><svg class="badge" role="img" aria-label="PPWR Lab Verified badge"><use href="#pd-badge-lab"></use></svg>
+          <div><h3>PPWR Lab Verified</h3><span class="price">Paid</span></div></div>
+        <p class="desc">We send samples of your packaging to an independent laboratory. When the results confirm your data, you receive our Lab Verified badge: independent evidence that holds up if a customer or authority challenges it.</p>
+        <p class="ul-h">Add lab validation if you</p>
+        <ul>
+          <li>Aren't sure whether every pack meets PPWR requirements</li>
+          <li>Rely on data from your own upstream suppliers</li>
+          <li>Supply large retailers or brands that expect independent evidence</li>
+          <li>Want a stronger position if your declaration is ever challenged</li>
+        </ul>
+        <a class="btn ghost" href="#evx-contact" data-enquiry="Hi, I'm a packaging supplier and I'd like to ask about PPWR Lab Verified (lab validation) for our packaging.">Ask about lab validation</a>
+      </article>
+    </div>
+
+    <div class="checker" data-js-only="" id="pd-checker">
+      <h3><svg class="icon" aria-hidden="true"><use href="#pd-check"></use></svg>Which level fits you? Tick any that apply.</h3>
+      <div class="checks">
+        <label><input type="checkbox">I'm not sure whether every pack meets PPWR requirements</label>
+        <label><input type="checkbox">I rely on data from my own upstream suppliers</label>
+        <label><input type="checkbox">I supply large retailers or brands that expect independent evidence</label>
+        <label><input type="checkbox">I want a stronger position if my declaration is ever challenged</label>
+      </div>
+      <div class="verdict" aria-live="polite">
+        <svg id="pd-v-badge" aria-hidden="true"><use href="#pd-badge-declared"></use></svg>
+        <p id="pd-v-text"><b>PPWR Declared looks like a good fit</b>A free Declaration of Conformity based on the data you provide and confirm.</p>
+        <a class="btn" id="pd-v-btn" href="#evx-contact" data-enquiry="Hi, I'm a packaging supplier and I'd like to share our packaging data for a free PPWR Declared Declaration of Conformity.">Share your data</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="pd-faq-h">
+    <header class="wrap">
+      <p class="eyebrow">FAQs</p>
+      <h2 id="pd-faq-h">Questions suppliers ask</h2>
+    </header>
+    <div class="faq">
+      <details><summary>Is the PPWR Declared service really free?</summary><div><p>Yes. We produce your Declaration of Conformity at no cost. In return, we ask you to tell us which of your customers sell into the EU, so we can handle their documentation requests directly.</p></div></details>
+      <details><summary>Who is responsible for the accuracy of a self-declared DoC?</summary><div><p>You are. A PPWR Declared badge reflects information you have provided and confirmed. If you'd like independent evidence that your packaging meets the requirements, PPWR Lab Verified gives you that.</p></div></details>
+      <details><summary>What does lab validation involve?</summary><div><p>We agree which packaging formats to sample, send them to an independent laboratory, and compare the results with the data you've given us. If the results confirm your data, you receive the PPWR Lab Verified badge. If they don't, we tell you what needs attention.</p></div></details>
+      <details><summary>How much does lab validation cost?</summary><div><p>It depends on how many packaging formats need testing. Tell us what you supply and we'll give you a clear quote.</p></div></details>
+      <details><summary>My customers have already asked me for data. Can I still use this?</summary><div><p>Yes. Send us what you've already gathered and we'll build on it. From then on, you can direct every new request to us.</p></div></details>
+      <details><summary>Will you share my data with my customers?</summary><div><p>We share the documentation your customers need to meet their PPWR obligations, and nothing more. <span class="review">[Confirm data-sharing terms before publishing.]</span></p></div></details>
+    </div>
+  </section>
+
+</div>
+
+
+
+            
+</div></main>
+<section class="rv-contact" aria-labelledby="evx-contact"><div class="rv-in">
+  <div><h2 id="evx-contact">Stop answering the same questionnaire twice</h2><p>Share your packaging data with Ecoveritas and we'll produce your Declaration of Conformity, free. Want independent proof your packaging complies? Ask us about lab validation.</p></div>
+  <form class="rv-form" aria-label="Enquiry form (switched off in the review copy)">
+    <div class="rv-row"><input id="rv-email" placeholder="Email Address *" aria-label="Email address"><input id="rv-company" placeholder="Company" aria-label="Company"></div>
+    <div class="rv-row"><input id="rv-first" placeholder="First name" aria-label="First name"><input id="rv-last" placeholder="Last name" aria-label="Last name"></div>
+    <textarea id="rv-enquiry" placeholder="Give us a description of what we can help with!" aria-label="Enquiry"></textarea>
+    <select id="rv-heard" aria-label="How did you first hear about us?"><option>How did you first hear about us?</option></select>
+    <button type="submit" disabled>Submit your enquiry</button>
+    <small>Review copy: this form doesn't send anything.</small>
+  </form>
+</div></section>
+<footer class="rv-foot"><div class="rv-in">Review copy of the PPWR Supplier Declaration of Conformity page, built from the CMS version. Leave comments on anything that needs changing.</div></footer>

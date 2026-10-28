@@ -1,0 +1,20 @@
+{
+  "name": "Plastic Packaging Tax",
+  "live": "https://www.ecoveritas.com/compliance/plastic-packaging-tax",
+  "eyebrow": "",
+  "heroTitle": "Plastic Packaging Tax",
+  "heroIntro": "<p>Plastic Packaging Tax applies to plastic packaging made in, or imported into, the UK that contains less than 30% recycled plastic. Find out in two questions whether you're liable, and let us handle the data behind your quarterly returns.</p>",
+  "buttons": [
+    [
+      "#c-ppt-check",
+      "Check if you're liable"
+    ],
+    [
+      "#evx-contact",
+      "Talk to our team"
+    ]
+  ],
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/3265/PPT-Hero-Image.webp",
+  "ctaTitle": "Find out exactly what you owe.",
+  "ctaText": "Tell us what plastic packaging you make or import. We'll work out whether you're liable, what you'll pay each quarter, and the records you need to keep."
+}

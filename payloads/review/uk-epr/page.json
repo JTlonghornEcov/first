@@ -1,0 +1,20 @@
+{
+  "name": "UK EPR",
+  "live": "https://www.ecoveritas.com/compliance/uk-extended-producer-responsibility-epr",
+  "eyebrow": "",
+  "heroTitle": "UK Extended Producer Responsibility (EPR)",
+  "heroIntro": "<p>Find out whether UK packaging EPR applies to you, whether you're a small or large producer, and what to do next. Already paying? We'll make sure you're not paying more than you owe.</p>",
+  "buttons": [
+    [
+      "#c-uk-check",
+      "Am I affected?"
+    ],
+    [
+      "https://www.ecoveritas.com/epr-fee-audit",
+      "Already paying? Cut your fees"
+    ]
+  ],
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/8811/Our-Expertise-EPR-1.webp",
+  "ctaTitle": "Ready to collaborate?",
+  "ctaText": "Let Ecoveritas take the strain. Tell us where you sit, small or large, new to EPR or already paying, and we'll come back with the right next step."
+}

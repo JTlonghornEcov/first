@@ -1,0 +1,344 @@
+<title>Veolia x Ecoveritas page review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Review copy of an Ecoveritas page. Single light theme: it reproduces the live site, which has no dark mode. */
+:root { --rv-slate:#2f444e; --rv-ink:#212121; --rv-yellow:#ffcd03; --rv-white:#ffffff; --rv-mist:#c9dbe2; --rv-line:#dfe5e7; color-scheme:light; }
+body { margin:0; background:var(--rv-white); color:var(--rv-ink); font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; font-size:16px; line-height:1.6; }
+body::before { content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--rv-ink); }
+.rv-bar { position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:var(--rv-ink); color:var(--rv-white); font-size:13.5px; }
+.rv-bar .rv-in { display:flex; flex-wrap:wrap; gap:6px 18px; align-items:center; justify-content:space-between; padding-block:10px; }
+.rv-bar b { color:var(--rv-yellow); letter-spacing:.06em; text-transform:uppercase; font-size:12.5px; }
+.rv-bar span { color:#d7dee1; }
+.rv-in { max-width:1280px; margin:0 auto; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px)); box-sizing:border-box; }
+@media (min-width:1024px) { .rv-in { padding-left:max(80px,env(safe-area-inset-left,0px)); padding-right:max(80px,env(safe-area-inset-right,0px)); } }
+.rv-hero { background:var(--rv-slate); color:var(--rv-white); }
+.rv-hero .rv-in { display:grid; gap:32px; padding-block:48px 56px; }
+@media (min-width:1024px) { .rv-hero .rv-in { grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:clamp(32px,6vw,96px); align-items:center; padding-block:72px; } }
+.rv-eyebrow { display:block; color:var(--rv-yellow); font-weight:700; font-size:15px; margin:0 0 10px; }
+.rv-hero h1 { margin:0 0 14px; font-size:clamp(32px,4.2vw,48px); line-height:1.1; font-weight:700; text-wrap:balance; }
+.rv-intro { color:#e8eff2; font-size:15.5px; } .rv-intro p { margin:0 0 10px; } .rv-intro h2 { font-size:26px; line-height:1.2; margin:0 0 10px; color:var(--rv-white); }
+.rv-btns { display:flex; flex-wrap:wrap; gap:16px 28px; align-items:center; margin-top:28px; }
+.rv-btn { display:inline-flex; align-items:center; gap:12px; padding:13px 18px; background:var(--rv-yellow); color:var(--rv-ink); font-weight:700; font-size:15px; text-decoration:none; }
+.rv-btn svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2.2; }
+.rv-btn.rv-ghost { background:none; color:var(--rv-white); padding:13px 0; }
+.rv-img { position:relative; aspect-ratio:632/520; max-width:100%; background:#3d5662; }
+.rv-img img { width:100%; height:100%; object-fit:cover; display:block; }
+.rv-ph { position:absolute; inset:0; display:grid; place-content:center; gap:8px; padding:24px; text-align:center; border:2px dashed var(--rv-mist); background:rgba(47,68,78,.86); color:var(--rv-white); }
+.rv-ph b { font-size:17px; } .rv-ph span { font-size:14px; color:#d7dee1; max-width:40ch; margin:0 auto; }
+.rv-main .rv-in { padding-block:clamp(48px,7vw,96px); }
+.rv-contact { background:var(--rv-slate); color:var(--rv-white); }
+.rv-contact .rv-in { display:grid; gap:32px; padding-block:64px; }
+@media (min-width:1024px) { .rv-contact .rv-in { grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:clamp(32px,6vw,96px); align-items:start; padding-block:96px; } }
+.rv-contact h2 { margin:0 0 14px; font-size:clamp(30px,3.6vw,44px); line-height:1.12; color:var(--rv-white); text-wrap:balance; scroll-margin-top:72px; }
+.rv-contact p { margin:0; color:#e8eff2; }
+.rv-form { display:grid; gap:12px; padding:26px; background:#f6f7f7; color:var(--rv-ink); }
+.rv-form .rv-row { display:grid; gap:12px; } @media (min-width:640px) { .rv-form .rv-row { grid-template-columns:1fr 1fr; } }
+.rv-form input, .rv-form textarea, .rv-form select { font:inherit; width:100%; box-sizing:border-box; padding:14px 16px; border:2px solid #cfd6d9; background:var(--rv-white); color:var(--rv-ink); }
+.rv-form textarea { min-height:140px; resize:vertical; }
+.rv-form button { font:inherit; font-weight:700; padding:14px; border:0; background:var(--rv-yellow); color:var(--rv-ink); opacity:.6; cursor:not-allowed; }
+.rv-form small { color:#55656d; }
+.rv-foot { background:var(--rv-white); border-top:1px solid var(--rv-line); color:#55656d; font-size:14px; }
+.rv-foot .rv-in { padding-block:28px; }
+a:focus-visible, button:focus-visible { outline:3px solid var(--rv-yellow); outline-offset:3px; }
+</style>
+<div class="rv-bar" role="note"><div class="rv-in"><b>Review copy</b><span>Veolia x Ecoveritas · built 28 October 2026 · not the live site; the form is switched off</span><span>Live page: https://www.ecoveritas.com/veolia-ecoveritas</span></div></div>
+<header class="rv-hero"><div class="rv-in">
+  <div><span class="rv-eyebrow"></span><h1>Veolia x Ecoveritas</h1><div class="rv-intro"><h2>Independent expertise. Delivered as one.</h2><p>Packaging compliance has always required two things done well: the depth of insight to understand your data position, and the expertise to act on it. This alliance brings both together.</p></div><div class="rv-btns"><a class="rv-btn" href="#c-ve-offer">Get your free PRN audit<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="rv-btn rv-ghost" href="#c-ve-how">How it works<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+  <div class="rv-img"><img src="data:image/webp;base64,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" alt=""></div>
+</div></header>
+<main class="rv-main"><div class="rv-in">
+
+                <style>
+/* Shared design language for the strategic-review concept pages. Scoped to .evc (the root of each page body).
+   Inlined into every page by tools/strategy/save.mjs. */
+html, body { overflow-x:clip; }
+.evc { --ink:#212121; --body:#333c45; --muted:#55656d; --slate:#2f444e; --slate-2:#3d5662; --slate-3:#4d6875; --teal:#006374; --teal-2:#e3f0f3;
+  --yellow:#ffcd03; --yellow-2:#fff6cc; --grey:#f6f7f7; --line:#dfe5e7; --mist:#c9dbe2; --r:16px;
+  color:var(--ink); display:grid; gap:clamp(64px,9vw,112px); font-size:16px; line-height:1.6; }
+.evc *, .evc *::before, .evc *::after { box-sizing:border-box; }
+.evc > * { min-width:0; }
+.evc :is(h2,h3,h4,p,ul,ol,li,dl,dt,dd,figure) { margin:0; padding:0; border:0; font-family:inherit; }
+.evc :is(ul,ol) { list-style:none; }
+.evc.evc li { margin:0; }   /* beats the site's list-item margins (doubled class for specificity) */
+.evc h2 { font-size:clamp(28px,3.6vw,42px); line-height:1.12; font-weight:700; letter-spacing:-.01em; color:var(--ink); }
+.evc h3 { font-size:19px; line-height:1.25; font-weight:700; color:var(--ink); }
+.evc p { color:var(--body); }
+.evc a { text-decoration:none; }
+.evc .sec { display:grid; gap:clamp(24px,3.4vw,40px); scroll-margin-top:110px; }
+.evc .eyebrow { display:inline-flex; align-items:center; gap:10px; margin:0 0 12px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.evc .eyebrow::before { content:""; width:28px; height:4px; border-radius:2px; background:var(--yellow); }
+.evc .head { display:grid; gap:14px; max-width:820px; }
+.evc .head.split { max-width:none; }
+@media (min-width:1024px) { .evc .head.split { grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:48px; align-items:end; } }
+.evc .lead { font-size:clamp(17px,1.7vw,20px); line-height:1.55; }
+.evc .muted { color:var(--muted); }
+.evc .icon { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+.evc :is(a,summary,button):focus-visible { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+.evc .x { color:var(--teal); font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+
+/* Buttons */
+.evc .btns { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+.evc .btn { display:inline-flex; align-items:center; gap:10px; padding:14px 22px; border-radius:2px; background:var(--yellow); color:var(--ink); font-weight:700; line-height:1.2; }
+.evc .btn:hover { background:#ffd83a; }
+.evc .btn.ghost { background:transparent; box-shadow:inset 0 0 0 2px currentColor; }
+.evc .btn.ghost:hover { background:rgba(0,0,0,.04); }
+.evc .on-dark .btn.ghost { color:#fff; }
+.evc .arrow { display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--teal); }
+.evc .arrow::after { content:"\2192"; transition:transform .15s ease; }
+.evc a:hover .arrow::after, .evc a.arrow:hover::after { transform:translateX(3px); }
+@media (max-width:560px) { .evc .btns .btn { width:100%; justify-content:center; } }
+
+/* Grids and cards */
+.evc .grid { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(min(var(--min,260px),100%),1fr)); }
+.evc .card { display:flex; flex-direction:column; gap:10px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+.evc .card.grey { background:var(--grey); border-color:var(--grey); }
+.evc .card p { font-size:15.5px; }
+.evc .card .ic { display:grid; place-items:center; width:46px; height:46px; border-radius:12px; background:var(--teal-2); color:var(--teal); }
+.evc a.card { color:inherit; transition:border-color .15s ease, transform .15s ease; }
+.evc a.card:hover { border-color:var(--slate); transform:translateY(-2px); }
+.evc a.card .arrow { margin-top:auto; padding-top:6px; }
+.evc .num { font-size:30px; font-weight:700; line-height:1; color:var(--teal); font-variant-numeric:tabular-nums; }
+.evc .panel { padding:clamp(24px,4vw,48px); border-radius:var(--r); background:var(--grey); }
+.evc .two { display:grid; gap:clamp(24px,3vw,48px); }
+@media (min-width:1024px) { .evc .two { grid-template-columns:minmax(0,7fr) minmax(0,5fr); align-items:center; } .evc .two.even { grid-template-columns:1fr 1fr; } .evc .two.top { align-items:start; } }
+.evc .stack { display:grid; gap:16px; align-content:start; }
+
+/* Slate statement / dark cards */
+.evc .dark { display:flex; flex-direction:column; gap:18px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--slate); color:#fff; }
+.evc .dark.teal { background:var(--teal); }
+.evc .dark :is(h2,h3,b,strong) { color:#fff; }
+.evc .dark p { color:#e8eff2; }
+.evc .dark .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .dark em { font-style:normal; color:var(--yellow); }
+.evc .dark .big { font-size:clamp(22px,2.4vw,30px); line-height:1.3; font-weight:700; color:#fff; letter-spacing:-.01em; }
+
+/* Proof strip */
+.evc .proof { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); }
+.evc .proof li { display:grid; gap:6px; align-content:start; padding:22px 24px; border-radius:var(--r); background:var(--slate); }
+.evc .proof li.hl { background:var(--teal); }
+.evc .proof b { font-size:clamp(30px,3.4vw,42px); line-height:1; font-weight:700; color:var(--yellow); letter-spacing:-.01em; }
+.evc .proof span { font-size:15px; line-height:1.45; color:#e8eff2; }
+
+/* Chips */
+.evc .chips { display:flex; flex-wrap:wrap; gap:8px; }
+.evc .chips li, .evc .chip { display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:99px; background:#fff; border:1px solid var(--line); font-size:14px; font-weight:700; color:var(--ink); }
+.evc .chips li::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--teal); }
+
+/* Numbered steps */
+.evc .steps { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr)); counter-reset:st; }
+.evc .steps > li { position:relative; display:flex; flex-direction:column; gap:10px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); counter-increment:st; }
+.evc .steps > li::before { content:counter(st,decimal-leading-zero); font-size:30px; font-weight:700; line-height:1; color:var(--teal); font-variant-numeric:tabular-nums; }
+.evc .steps p { font-size:15.5px; }
+
+/* Ticks list */
+.evc .ticks { display:grid; gap:10px; }
+.evc .ticks li { display:flex; gap:12px; align-items:flex-start; }
+.evc .ticks li::before { content:""; flex:none; width:20px; height:20px; margin-top:3px; border-radius:50%; background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 12 4 4 8-8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat; }
+.evc .dark .ticks li::before { background-color:var(--yellow); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 12 4 4 8-8' fill='none' stroke='%23212121' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+
+/* Router: "which describes you?" link rows */
+.evc .router { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); }
+.evc .router a { display:grid; grid-template-columns:auto minmax(0,1fr); gap:6px 16px; align-items:start; padding:22px; border-radius:var(--r); background:#fff; border:1px solid var(--line); color:var(--ink); transition:border-color .15s ease, box-shadow .15s ease; }
+.evc .router a:hover { border-color:var(--slate); box-shadow:0 8px 24px rgba(47,68,78,.12); }
+.evc .router .ic { grid-row:span 3; display:grid; place-items:center; width:46px; height:46px; border-radius:50%; background:var(--slate); color:var(--yellow); }
+.evc .router b { font-size:17.5px; line-height:1.3; }
+.evc .router span.d { font-size:15px; color:var(--muted); line-height:1.5; }
+.evc .router .arrow { font-size:15px; }
+
+/* Lead tool placeholder (concept only: the tool itself is still to be built) */
+.evc .tool { position:relative; display:grid; gap:18px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:repeating-linear-gradient(135deg,#fff 0 14px,#fbfcfc 14px 28px); border:2px dashed var(--slate-3); }
+.evc .tool .badge { justify-self:start; display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:99px; background:var(--slate); color:var(--yellow); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.evc .tool h3 { font-size:clamp(22px,2.4vw,28px); }
+.evc .tool .flow { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.evc .tool .flow span { padding:10px 14px; border-radius:10px; background:#fff; border:1px solid var(--line); font-size:14.5px; font-weight:700; color:var(--ink); }
+.evc .tool .flow i { font-style:normal; color:var(--teal); font-weight:700; }
+.evc .tool .flow span.end { background:var(--yellow); border-color:var(--yellow); }
+.evc .tool .note { font-size:14px; color:var(--muted); }
+@media (max-width:560px) { .evc .tool .flow { flex-direction:column; align-items:flex-start; } .evc .tool .flow i { transform:rotate(90deg); margin-left:14px; } }
+
+/* Callout (e.g. "not listed?") */
+.evc .callout { display:grid; gap:16px; padding:clamp(24px,3vw,36px); border-radius:var(--r); background:var(--yellow-2); border-left:6px solid var(--yellow); }
+@media (min-width:1024px) { .evc .callout { grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:32px; } }
+.evc .callout p.big { font-size:clamp(20px,2.2vw,26px); line-height:1.3; font-weight:700; color:var(--ink); }
+
+/* Tabs-free market list */
+.evc .markets { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); }
+.evc .market { display:flex; flex-direction:column; gap:10px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+.evc .market .top { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 12px; }
+.evc .market .tag { padding:4px 10px; border-radius:99px; background:var(--teal-2); color:var(--teal); font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
+.evc .market .tag.soon { background:var(--grey); color:var(--muted); }
+.evc .market p { font-size:15.5px; }
+.evc .market a { margin-top:auto; }
+.evc .market dl { display:grid; gap:10px; }
+.evc .market dt { font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); }
+.evc .market dd { font-size:15px; color:var(--body); }
+.evc .market h3 { font-size:22px; }
+.evc .market .sub { font-size:15px; color:var(--muted); margin-top:-4px; }
+
+/* FAQ */
+.evc .faq { display:grid; gap:10px; max-width:920px; }
+.evc details { border-radius:12px; background:var(--grey); }
+.evc summary { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:18px 20px; cursor:pointer; font-weight:700; font-size:17px; list-style:none; color:var(--ink); }
+.evc summary::-webkit-details-marker { display:none; }
+.evc summary::after { content:"+"; flex:none; display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:#fff; font-size:20px; line-height:1; transition:transform .2s ease; }
+.evc details[open] summary::after { transform:rotate(45deg); }
+.evc details > div { padding:0 20px 20px; display:grid; gap:10px; }
+
+/* Next step band */
+.evc .next { display:grid; gap:18px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--slate); }
+@media (min-width:1024px) { .evc .next { grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:40px; } }
+.evc .next h2, .evc .next h3 { color:#fff; }
+.evc .next p { color:#e8eff2; }
+.evc .next .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+
+/* Other regions strip and further reading */
+.evc .regions { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+.evc .regions a { padding:9px 16px; border-radius:99px; border:1px solid var(--line); color:var(--ink); font-weight:700; font-size:14.5px; }
+.evc .regions a:hover { border-color:var(--slate); }
+.evc .reading { display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; }
+
+/* Form intro just above the contact block */
+.evc .formintro { display:grid; gap:12px; max-width:820px; }
+
+@media (prefers-reduced-motion:reduce) { .evc *, .evc *::before, .evc *::after { transition:none !important; } .evc a.card:hover { transform:none; } }
+#evx-contact { scroll-margin-top:96px; }
+
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="c-pound" viewBox="0 0 24 24"><path d="M16 6.5A4 4 0 0 0 9 9v9M7 13h6M6 18h11"></path></symbol>
+  <symbol id="c-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></symbol>
+  <symbol id="c-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"></path><path d="M5 19l8-8"></path></symbol>
+  <symbol id="c-data" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></symbol>
+  <symbol id="c-scale" viewBox="0 0 24 24"><path d="M12 4v16M6 20h12M5 8h14"></path><path d="M5 8l-3 6a3 3 0 0 0 6 0zM19 8l-3 6a3 3 0 0 0 6 0z"></path></symbol>
+</svg>
+<style>
+.evc .offer { display:grid; gap:clamp(20px,3vw,40px); padding:clamp(24px,4vw,48px); border-radius:var(--r); background:var(--slate); scroll-margin-top:110px; }
+@media (min-width:1024px) { .evc .offer { grid-template-columns:minmax(0,6fr) minmax(0,5fr); align-items:center; } }
+.evc .offer .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .offer h2 { color:#fff; }
+.evc .offer p { color:#e8eff2; }
+.evc .offer .why { display:inline-flex; align-items:center; gap:10px; padding:8px 14px; border-radius:99px; background:var(--slate-2); color:#fff; font-size:14px; font-weight:700; }
+.evc .offer .why b { color:var(--yellow); }
+.evc .offer ol { display:grid; gap:10px; counter-reset:o; }
+.evc .offer ol li { display:grid; grid-template-columns:auto minmax(0,1fr); gap:2px 14px; padding:16px 18px; border-radius:12px; background:var(--slate-2); counter-increment:o; }
+.evc .offer ol li::before { content:counter(o,decimal-leading-zero); grid-row:span 2; font-size:22px; font-weight:700; color:var(--yellow); line-height:1.1; }
+.evc .offer ol b { color:#fff; font-size:16.5px; }
+.evc .offer ol span { color:#e8eff2; font-size:15px; }
+.evc .pd { display:grid; gap:12px; }
+@media (min-width:768px) { .evc .pd { grid-template-columns:1fr 1fr; } }
+.evc .pd > div { display:grid; gap:8px; align-content:start; padding:24px; border-radius:var(--r); }
+.evc .pd .k { font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.evc .pd .prob { background:var(--grey); } .evc .pd .prob .k { color:var(--muted); }
+.evc .pd .res { background:var(--yellow-2); } .evc .pd .res .k { color:var(--ink); }
+.evc .duo2 { display:grid; gap:12px; align-items:stretch; }
+@media (min-width:1024px) { .evc .duo2 { grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); } }
+.evc .duo2 .side { display:flex; flex-direction:column; gap:12px; padding:28px; border-radius:var(--r); }
+.evc .duo2 .side.e { background:var(--teal); } .evc .duo2 .side.v { background:var(--slate); }
+.evc .duo2 .side :is(h3,p,li) { color:#fff; } .evc .duo2 .side p { color:#e8eff2; }
+.evc .duo2 .side .k { font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .duo2 .side .ic { display:grid; place-items:center; width:52px; height:52px; border-radius:50%; background:rgba(255,255,255,.12); color:#fff; }
+.evc .duo2 .plus { display:grid; place-items:center; justify-self:center; align-self:center; width:56px; height:56px; border-radius:50%; background:var(--yellow); color:var(--ink); font-size:30px; font-weight:700; line-height:1; }
+.evc .duo2 .side ul { display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; }
+.evc .duo2 .side ul li { padding:5px 11px; border-radius:99px; background:rgba(255,255,255,.12); font-size:13.5px; font-weight:700; }
+.evc .indep { display:flex; gap:14px; align-items:center; padding:18px 22px; border-radius:12px; background:var(--grey); }
+.evc .indep .icon { color:var(--teal); }
+</style>
+<div class="evc" id="c-veolia">
+
+<section class="offer" id="c-ve-offer" aria-labelledby="c-ve-offer-h">
+  <div class="stack">
+    <span class="k">For producers working with Veolia</span>
+    <h2 id="c-ve-offer-h">Check your PRN data. Free.</h2>
+    <p>Get a full, independent review of your packaging data, so you only buy the PRNs you actually owe and only pay the EPR fees you should.</p>
+    <p><span class="why">Why now: <b>PRN prices have risen 3–4x</b></span></p>
+    <div class="btns"><a class="btn" href="#evx-contact" data-enquiry="PRN audit. Our annual turnover is about: . We handle about  SKUs.">Apply for a free audit <span aria-hidden="true">→</span></a></div>
+  </div>
+  <ol aria-label="How the free audit works">
+    <li><b>Apply</b><span>Submit a short application using the form below.</span></li>
+    <li><b>We review your data</b><span>Packaging categorisation, weights and material classifications. We confirm how many PRNs you need, and that your EPR fee is accurate.</span></li>
+    <li><b>No upfront cost</b><span>Selected producers get their audit at no cost, with nothing to pay upfront.</span></li>
+  </ol>
+</section>
+
+<section class="sec" aria-labelledby="c-ve-proof-h">
+  <div class="head split">
+    <h2 id="c-ve-proof-h">What a proper look at the data finds</h2>
+    <p class="lead">Two producers, two corrections to the data behind their EPR return.</p>
+  </div>
+  <ul class="proof">
+    <li class="hl"><b>£1.4m → £250k</b><span>A construction equipment manufacturer cut its EPR obligation by over 80%, by classifying packaging correctly as household or non-household.</span></li>
+    <li><b>£1m</b><span>Saved by a supermarket chain through product reclassification.</span></li>
+  </ul>
+  <p class="muted">Already paying EPR fees and want the full picture? The <a class="x" href="https://www.ecoveritas.com/epr-fee-audit">EPR Fee Audit</a> corrects your declaration and shows which pack changes lower your fees from here on.</p>
+</section>
+
+<section class="sec" aria-labelledby="c-ve-problem-h">
+  <div class="head"><h2 id="c-ve-problem-h">Most producers are leaving value on the table, and don't know it.</h2></div>
+  <div class="pd">
+    <div class="prob"><span class="k">The data problem</span><p>Packaging data is complex. Supply chains span multiple suppliers, weights are difficult to validate and the data feeding into compliance submissions is rarely as complete or as strategically reviewed as it could be.</p></div>
+    <div class="res"><span class="k">The result</span><p>A compliance position that is filed but not optimised. Costs accepted rather than challenged. Sustainability opportunities missed. And a data position that nobody has truly interrogated on your behalf.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="c-ve-how" aria-labelledby="c-ve-how-h">
+  <div class="head split">
+    <h2 id="c-ve-how-h">Two specialists working together. More insight. More confidence.</h2>
+    <p class="lead">Getting more from your compliance starts with having the right people working on your data, with the right expertise and the right focus.</p>
+  </div>
+  <div class="duo2">
+    <div class="side e">
+      <span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-data"></use></svg></span>
+      <span class="k">Ecoveritas</span>
+      <h3>Data you can trust</h3>
+      <p>Ecoveritas handles the full upstream data journey: collection, supplier engagement, weight validation and impartial reporting. Structurally independent, with no compliance agenda.</p>
+      <ul aria-label="What Ecoveritas does"><li>Collection</li><li>Supplier engagement</li><li>Weight validation</li><li>Impartial reporting</li></ul>
+    </div>
+    <span class="plus" aria-hidden="true">+</span>
+    <div class="side v">
+      <span class="ic" aria-hidden="true"><svg class="icon"><use href="#c-scale"></use></svg></span>
+      <span class="k">Veolia</span>
+      <h3>Compliance expertise applied</h3>
+      <p>Veolia applies their specialist regulatory and compliance expertise on top. When two specialists bring their combined skills to your data, the quality of analysis improves. More is found. More is challenged.</p>
+      <ul aria-label="What Veolia does"><li>Regulatory expertise</li><li>Compliance analysis</li><li>Challenge</li></ul>
+    </div>
+  </div>
+  <p class="indep"><svg class="icon" aria-hidden="true"><use href="#c-eye"></use></svg><span>Because both organisations work independently, producers can be confident the analysis is entirely on their side, with no other agenda in the room.</span></p>
+</section>
+
+<section class="sec" aria-labelledby="c-ve-gain-h">
+  <div class="head split">
+    <h2 id="c-ve-gain-h">What you gain</h2>
+    <p class="lead">Producers working with the alliance get something the market has not offered before in this way.</p>
+  </div>
+  <div class="grid" style="--min:250px">
+    <div class="card grey"><span class="ic" aria-hidden="true" style="background:#fff"><svg class="icon"><use href="#c-pound"></use></svg></span><h3>Real cost reduction</h3><p>More complete, rigorously challenged data means you pay exactly what you should.</p></div>
+    <div class="card grey"><span class="ic" aria-hidden="true" style="background:#fff"><svg class="icon"><use href="#c-eye"></use></svg></span><h3>Actionable insight</h3><p>Across your full packaging position, not just what's been filed.</p></div>
+    <div class="card grey"><span class="ic" aria-hidden="true" style="background:#fff"><svg class="icon"><use href="#c-leaf"></use></svg></span><h3>Measurable sustainability</h3><p>Improvements you can demonstrate, report and build strategy around.</p></div>
+  </div>
+  <div class="tool" aria-label="Planned tool: EPR fee overpayment estimator teaser">
+    <span class="badge">Lead tool · to be built</span>
+    <h3>How much could you be overpaying?</h3>
+    <div class="flow" aria-hidden="true"><span>Annual packaging tonnage</span><i>→</i><span>Main materials</span><i>→</i><span>Supplier default weights?</span><i>→</i><span class="end">Indicative overpayment range</span></div>
+    <p class="note">Concept placeholder: a short teaser of the overpayment estimator, which lives in full on the EPR Fee Audit page. The review ranks it as the most valuable tool on the site.</p>
+  </div>
+</section>
+
+</div>
+
+
+            
+</div></main>
+<section class="rv-contact" aria-labelledby="evx-contact"><div class="rv-in">
+  <div><h2 id="evx-contact">Pay exactly what you should. Know exactly where you stand.</h2><p>Apply for your free PRN audit. So we can assess your application, please include your annual turnover (a rough bracket is fine) and the number of SKUs you handle.</p></div>
+  <form class="rv-form" aria-label="Enquiry form (switched off in the review copy)">
+    <div class="rv-row"><input id="rv-email" placeholder="Email Address *" aria-label="Email address"><input id="rv-company" placeholder="Company" aria-label="Company"></div>
+    <div class="rv-row"><input id="rv-first" placeholder="First name" aria-label="First name"><input id="rv-last" placeholder="Last name" aria-label="Last name"></div>
+    <textarea id="rv-enquiry" placeholder="Give us a description of what we can help with!" aria-label="Enquiry"></textarea>
+    <select id="rv-heard" aria-label="How did you first hear about us?"><option>How did you first hear about us?</option></select>
+    <button type="submit" disabled>Submit your enquiry</button>
+    <small>Review copy: this form doesn't send anything.</small>
+  </form>
+</div></section>
+<footer class="rv-foot"><div class="rv-in">Review copy of the Veolia x Ecoveritas page, built from the CMS version. Leave comments on anything that needs changing.</div></footer>

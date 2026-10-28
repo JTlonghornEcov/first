@@ -1,0 +1,21 @@
+{
+  "name": "Data Collection, Calculation & Reporting",
+  "live": "https://www.ecoveritas.com/services/data-collection-calculation-reporting",
+  "eyebrow": "",
+  "heroTitle": "Data Collection, Calculation & Reporting",
+  "heroIntro": "<p>Reliable compliance starts with reliable data. We take you from raw packaging information to submitted, audit-ready reports, so every number you report stands up to scrutiny.</p>",
+  "buttons": [
+    [
+      "#evx-contact",
+      "Talk to our team"
+    ],
+    [
+      "https://www.ecoveritas.com/case-studies/new-look",
+      "See how New Look did it"
+    ]
+  ],
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/5377/Obligation-Assessment-Hero-Image.webp",
+  "ctaTitle": "Get data you can stand behind.",
+  "ctaText": "Tell us what you sell and where you report. We'll show you how we'd collect, calculate and submit it, and what it would take off your team's plate.",
+  "heroPlaceholder": "A new hero: packaging being weighed, or someone checking packaging data on screen. (Behind: the Obligation Assessment graphic it borrows for now.)"
+}

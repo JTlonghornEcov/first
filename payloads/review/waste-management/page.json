@@ -1,0 +1,21 @@
+{
+  "name": "Waste Management",
+  "live": "https://www.ecoveritas.com/services/waste-management",
+  "eyebrow": "",
+  "heroTitle": "Waste Management",
+  "heroIntro": "<p>Staying compliant is only half the picture. With our partner Veolia, we take care of collection, sorting and recycling, so your waste and the data reported on it are handled as one joined-up process.</p>",
+  "buttons": [
+    [
+      "#evx-contact",
+      "Get in touch"
+    ],
+    [
+      "https://www.ecoveritas.com/veolia-ecoveritas",
+      "About Veolia x Ecoveritas"
+    ]
+  ],
+  "heroImageUrl": "",
+  "ctaTitle": "Want your waste handled properly, not just moved along?",
+  "ctaText": "Tell us the types of waste you produce and how many sites you have. We'll show you exactly how it can be taken care of.",
+  "heroPlaceholder": "A hero for Waste Management: collection, sorting or recycling of packaging waste."
+}

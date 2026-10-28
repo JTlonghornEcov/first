@@ -1,0 +1,21 @@
+{
+  "name": "Technology",
+  "live": "https://www.ecoveritas.com/powerful-epr-software",
+  "eyebrow": "",
+  "heroTitle": "Technology at Ecoveritas",
+  "heroIntro": "<p>We use technology in all sorts of ways to make our service faster, more accurate and easier to work with. With Ecohub our team does the data work for you, from your suppliers to your submission. Ecoview shows what it means for your costs, compliance and sustainability. And my.ecoveritas lets smaller businesses report for themselves.</p>",
+  "buttons": [
+    [
+      "#t-journey-h",
+      "How it fits together"
+    ],
+    [
+      "https://my.ecoveritas.com",
+      "Log in to my.ecoveritas"
+    ]
+  ],
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/6156/Data-Analytics-Ecoview.webp",
+  "ctaTitle": "Get in touch",
+  "ctaText": "",
+  "heroPlaceholder": "A general technology hero: people using software, data on screen. (Behind: the Data Analytics graphic it borrows for now.)"
+}

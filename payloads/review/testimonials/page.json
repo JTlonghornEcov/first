@@ -1,0 +1,20 @@
+{
+  "name": "Testimonials",
+  "live": "https://www.ecoveritas.com/testimonials",
+  "eyebrow": "",
+  "heroTitle": "Testimonials",
+  "heroIntro": "<p>A collection of quotes from clients across retail, pharmaceuticals, horticulture and hospitality on working with Ecoveritas.</p>",
+  "buttons": [
+    [
+      "#case-studies",
+      "Case studies"
+    ],
+    [
+      "#testimonials",
+      "Testimonials"
+    ]
+  ],
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/8956/ECOV_Testimonials_Horizontal_1980pxx1020px_v.4.webp",
+  "ctaTitle": "Ready to collaborate?",
+  "ctaText": "Let Ecoveritas take the strain. Contact us to discuss your needs."
+}

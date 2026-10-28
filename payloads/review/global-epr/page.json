@@ -1,0 +1,20 @@
+{
+  "name": "Global EPR",
+  "live": "https://www.ecoveritas.com/compliance/global-extended-producer-responsibility-epr",
+  "eyebrow": "",
+  "heroTitle": "Global Extended Producer Responsibility (EPR)",
+  "heroIntro": "<p>Selling into more than one market means a different set of EPR rules in every country. Ecoveritas assesses your obligations country by country, then runs registration, reporting and scheme fees across 80+ countries, all from one team.</p>",
+  "buttons": [
+    [
+      "#c-gl-matrix",
+      "Get your EPR matrix"
+    ],
+    [
+      "#evx-contact",
+      "Talk to our global team"
+    ]
+  ],
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/3269/Global-EPR-Hero.webp",
+  "ctaTitle": "Let Ecoveritas take the strain",
+  "ctaText": "Tell us the countries you sell into. We'll show you what applies in each, and how one team can run it all."
+}

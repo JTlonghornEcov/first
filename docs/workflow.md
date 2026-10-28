@@ -42,6 +42,11 @@
 Since the team added the sign-off step, the generic "Review and approve the layout" / "Review the copy" tasks are not
 added: sign-off covers them. Only the specific follow-ups (tools, imagery, policy checks, fixes) go in.
 
+Imagery tasks carry a `previewUrl`: the page's review copy, where photo placeholders show what each image is for. The
+planner shows it as a "See the page" button. CMS preview links are not used for this: they expire after about a day.
+For any entry or draft, `node tools/review/from-preview.mjs '[["<slug>", <entryId>, <draftId|null>]]'` captures the
+page from the CMS (preview tokens are stripped), then `node tools/review/build.mjs <slug>` builds the review copy.
+
 Grouping across pages (e.g. one person sourcing images for several pages) is done by the team in the planner.
 
 ## Getting tasks into the planner

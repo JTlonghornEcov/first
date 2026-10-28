@@ -1,0 +1,20 @@
+{
+  "name": "EPR Fee Audit",
+  "live": "https://www.ecoveritas.com/epr-fee-audit",
+  "eyebrow": "",
+  "heroTitle": "EPR Fee Audit",
+  "heroIntro": "<p>Most producers pay EPR fees on more packaging than they actually owe. The cause is usually the data, not the regulation. The EPR Fee Audit finds those errors, corrects them, and shows which pack changes would move you into a lower fee band.</p>",
+  "buttons": [
+    [
+      "#c-fa-est",
+      "Check your overpayment risk"
+    ],
+    [
+      "#evx-contact",
+      "Book an EPR Fee Audit"
+    ]
+  ],
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/11746/epr-fee-audit-hero-reports-calculator.webp",
+  "ctaTitle": "Get the real number.",
+  "ctaText": "Tell us roughly how much packaging you declare and who supplies it. We'll scope the audit and give you a fixed price before any work starts."
+}

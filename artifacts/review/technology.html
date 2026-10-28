@@ -1,0 +1,412 @@
+<title>Technology page review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Review copy of an Ecoveritas page. Single light theme: it reproduces the live site, which has no dark mode. */
+:root { --rv-slate:#2f444e; --rv-ink:#212121; --rv-yellow:#ffcd03; --rv-white:#ffffff; --rv-mist:#c9dbe2; --rv-line:#dfe5e7; color-scheme:light; }
+body { margin:0; background:var(--rv-white); color:var(--rv-ink); font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; font-size:16px; line-height:1.6; }
+body::before { content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--rv-ink); }
+.rv-bar { position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:var(--rv-ink); color:var(--rv-white); font-size:13.5px; }
+.rv-bar .rv-in { display:flex; flex-wrap:wrap; gap:6px 18px; align-items:center; justify-content:space-between; padding-block:10px; }
+.rv-bar b { color:var(--rv-yellow); letter-spacing:.06em; text-transform:uppercase; font-size:12.5px; }
+.rv-bar span { color:#d7dee1; }
+.rv-in { max-width:1280px; margin:0 auto; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px)); box-sizing:border-box; }
+@media (min-width:1024px) { .rv-in { padding-left:max(80px,env(safe-area-inset-left,0px)); padding-right:max(80px,env(safe-area-inset-right,0px)); } }
+.rv-hero { background:var(--rv-slate); color:var(--rv-white); }
+.rv-hero .rv-in { display:grid; gap:32px; padding-block:48px 56px; }
+@media (min-width:1024px) { .rv-hero .rv-in { grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:clamp(32px,6vw,96px); align-items:center; padding-block:72px; } }
+.rv-eyebrow { display:block; color:var(--rv-yellow); font-weight:700; font-size:15px; margin:0 0 10px; }
+.rv-hero h1 { margin:0 0 14px; font-size:clamp(32px,4.2vw,48px); line-height:1.1; font-weight:700; text-wrap:balance; }
+.rv-intro { color:#e8eff2; font-size:15.5px; } .rv-intro p { margin:0 0 10px; } .rv-intro h2 { font-size:26px; line-height:1.2; margin:0 0 10px; color:var(--rv-white); }
+.rv-btns { display:flex; flex-wrap:wrap; gap:16px 28px; align-items:center; margin-top:28px; }
+.rv-btn { display:inline-flex; align-items:center; gap:12px; padding:13px 18px; background:var(--rv-yellow); color:var(--rv-ink); font-weight:700; font-size:15px; text-decoration:none; }
+.rv-btn svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2.2; }
+.rv-btn.rv-ghost { background:none; color:var(--rv-white); padding:13px 0; }
+.rv-img { position:relative; aspect-ratio:632/520; max-width:100%; background:#3d5662; }
+.rv-img img { width:100%; height:100%; object-fit:cover; display:block; }
+.rv-ph { position:absolute; inset:0; display:grid; place-content:center; gap:8px; padding:24px; text-align:center; border:2px dashed var(--rv-mist); background:rgba(47,68,78,.86); color:var(--rv-white); }
+.rv-ph b { font-size:17px; } .rv-ph span { font-size:14px; color:#d7dee1; max-width:40ch; margin:0 auto; }
+.rv-main .rv-in { padding-block:clamp(48px,7vw,96px); }
+.rv-contact { background:var(--rv-slate); color:var(--rv-white); }
+.rv-contact .rv-in { display:grid; gap:32px; padding-block:64px; }
+@media (min-width:1024px) { .rv-contact .rv-in { grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:clamp(32px,6vw,96px); align-items:start; padding-block:96px; } }
+.rv-contact h2 { margin:0 0 14px; font-size:clamp(30px,3.6vw,44px); line-height:1.12; color:var(--rv-white); text-wrap:balance; scroll-margin-top:72px; }
+.rv-contact p { margin:0; color:#e8eff2; }
+.rv-form { display:grid; gap:12px; padding:26px; background:#f6f7f7; color:var(--rv-ink); }
+.rv-form .rv-row { display:grid; gap:12px; } @media (min-width:640px) { .rv-form .rv-row { grid-template-columns:1fr 1fr; } }
+.rv-form input, .rv-form textarea, .rv-form select { font:inherit; width:100%; box-sizing:border-box; padding:14px 16px; border:2px solid #cfd6d9; background:var(--rv-white); color:var(--rv-ink); }
+.rv-form textarea { min-height:140px; resize:vertical; }
+.rv-form button { font:inherit; font-weight:700; padding:14px; border:0; background:var(--rv-yellow); color:var(--rv-ink); opacity:.6; cursor:not-allowed; }
+.rv-form small { color:#55656d; }
+.rv-foot { background:var(--rv-white); border-top:1px solid var(--rv-line); color:#55656d; font-size:14px; }
+.rv-foot .rv-in { padding-block:28px; }
+a:focus-visible, button:focus-visible { outline:3px solid var(--rv-yellow); outline-offset:3px; }
+</style>
+<div class="rv-bar" role="note"><div class="rv-in"><b>Review copy</b><span>Technology · built 28 October 2026 · not the live site; the form is switched off</span><span>Live page: https://www.ecoveritas.com/powerful-epr-software</span></div></div>
+<header class="rv-hero"><div class="rv-in">
+  <div><span class="rv-eyebrow"></span><h1>Technology at Ecoveritas</h1><div class="rv-intro"><p>We use technology in all sorts of ways to make our service faster, more accurate and easier to work with. With Ecohub our team does the data work for you, from your suppliers to your submission. Ecoview shows what it means for your costs, compliance and sustainability. And my.ecoveritas lets smaller businesses report for themselves.</p></div><div class="rv-btns"><a class="rv-btn" href="#t-journey-h">How it fits together<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="rv-btn rv-ghost" href="https://my.ecoveritas.com">Log in to my.ecoveritas<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+  <div class="rv-img"><img src="data:image/webp;base64,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" alt=""><div class="rv-ph"><b>Hero image to be sourced</b><span>A general technology hero: people using software, data on screen. (Behind: the Data Analytics graphic it borrows for now.)</span></div></div>
+</div></header>
+<main class="rv-main"><div class="rv-in">
+
+                <style>
+/* Shared design language for the strategic-review concept pages. Scoped to .evc (the root of each page body).
+   Inlined into every page by tools/strategy/save.mjs. */
+html, body { overflow-x:clip; }
+.evc { --ink:#212121; --body:#333c45; --muted:#55656d; --slate:#2f444e; --slate-2:#3d5662; --slate-3:#4d6875; --teal:#006374; --teal-2:#e3f0f3;
+  --yellow:#ffcd03; --yellow-2:#fff6cc; --grey:#f6f7f7; --line:#dfe5e7; --mist:#c9dbe2; --r:16px;
+  color:var(--ink); display:grid; gap:clamp(64px,9vw,112px); font-size:16px; line-height:1.6; }
+.evc *, .evc *::before, .evc *::after { box-sizing:border-box; }
+.evc > * { min-width:0; }
+.evc :is(h2,h3,h4,p,ul,ol,li,dl,dt,dd,figure) { margin:0; padding:0; border:0; font-family:inherit; }
+.evc :is(ul,ol) { list-style:none; }
+.evc.evc li { margin:0; }   /* beats the site's list-item margins (doubled class for specificity) */
+.evc h2 { font-size:clamp(28px,3.6vw,42px); line-height:1.12; font-weight:700; letter-spacing:-.01em; color:var(--ink); }
+.evc h3 { font-size:19px; line-height:1.25; font-weight:700; color:var(--ink); }
+.evc p { color:var(--body); }
+.evc a { text-decoration:none; }
+.evc .sec { display:grid; gap:clamp(24px,3.4vw,40px); scroll-margin-top:110px; }
+.evc .eyebrow { display:inline-flex; align-items:center; gap:10px; margin:0 0 12px; font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.evc .eyebrow::before { content:""; width:28px; height:4px; border-radius:2px; background:var(--yellow); }
+.evc .head { display:grid; gap:14px; max-width:820px; }
+.evc .head.split { max-width:none; }
+@media (min-width:1024px) { .evc .head.split { grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:48px; align-items:end; } }
+.evc .lead { font-size:clamp(17px,1.7vw,20px); line-height:1.55; }
+.evc .muted { color:var(--muted); }
+.evc .icon { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+.evc :is(a,summary,button):focus-visible { outline:3px solid var(--yellow); outline-offset:3px; box-shadow:0 0 0 6px var(--ink); }
+.evc .x { color:var(--teal); font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+
+/* Buttons */
+.evc .btns { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+.evc .btn { display:inline-flex; align-items:center; gap:10px; padding:14px 22px; border-radius:2px; background:var(--yellow); color:var(--ink); font-weight:700; line-height:1.2; }
+.evc .btn:hover { background:#ffd83a; }
+.evc .btn.ghost { background:transparent; box-shadow:inset 0 0 0 2px currentColor; }
+.evc .btn.ghost:hover { background:rgba(0,0,0,.04); }
+.evc .on-dark .btn.ghost { color:#fff; }
+.evc .arrow { display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--teal); }
+.evc .arrow::after { content:"\2192"; transition:transform .15s ease; }
+.evc a:hover .arrow::after, .evc a.arrow:hover::after { transform:translateX(3px); }
+@media (max-width:560px) { .evc .btns .btn { width:100%; justify-content:center; } }
+
+/* Grids and cards */
+.evc .grid { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(min(var(--min,260px),100%),1fr)); }
+.evc .card { display:flex; flex-direction:column; gap:10px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+.evc .card.grey { background:var(--grey); border-color:var(--grey); }
+.evc .card p { font-size:15.5px; }
+.evc .card .ic { display:grid; place-items:center; width:46px; height:46px; border-radius:12px; background:var(--teal-2); color:var(--teal); }
+.evc a.card { color:inherit; transition:border-color .15s ease, transform .15s ease; }
+.evc a.card:hover { border-color:var(--slate); transform:translateY(-2px); }
+.evc a.card .arrow { margin-top:auto; padding-top:6px; }
+.evc .num { font-size:30px; font-weight:700; line-height:1; color:var(--teal); font-variant-numeric:tabular-nums; }
+.evc .panel { padding:clamp(24px,4vw,48px); border-radius:var(--r); background:var(--grey); }
+.evc .two { display:grid; gap:clamp(24px,3vw,48px); }
+@media (min-width:1024px) { .evc .two { grid-template-columns:minmax(0,7fr) minmax(0,5fr); align-items:center; } .evc .two.even { grid-template-columns:1fr 1fr; } .evc .two.top { align-items:start; } }
+.evc .stack { display:grid; gap:16px; align-content:start; }
+
+/* Slate statement / dark cards */
+.evc .dark { display:flex; flex-direction:column; gap:18px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--slate); color:#fff; }
+.evc .dark.teal { background:var(--teal); }
+.evc .dark :is(h2,h3,b,strong) { color:#fff; }
+.evc .dark p { color:#e8eff2; }
+.evc .dark .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+.evc .dark em { font-style:normal; color:var(--yellow); }
+.evc .dark .big { font-size:clamp(22px,2.4vw,30px); line-height:1.3; font-weight:700; color:#fff; letter-spacing:-.01em; }
+
+/* Proof strip */
+.evc .proof { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); }
+.evc .proof li { display:grid; gap:6px; align-content:start; padding:22px 24px; border-radius:var(--r); background:var(--slate); }
+.evc .proof li.hl { background:var(--teal); }
+.evc .proof b { font-size:clamp(30px,3.4vw,42px); line-height:1; font-weight:700; color:var(--yellow); letter-spacing:-.01em; }
+.evc .proof span { font-size:15px; line-height:1.45; color:#e8eff2; }
+
+/* Chips */
+.evc .chips { display:flex; flex-wrap:wrap; gap:8px; }
+.evc .chips li, .evc .chip { display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:99px; background:#fff; border:1px solid var(--line); font-size:14px; font-weight:700; color:var(--ink); }
+.evc .chips li::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--teal); }
+
+/* Numbered steps */
+.evc .steps { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr)); counter-reset:st; }
+.evc .steps > li { position:relative; display:flex; flex-direction:column; gap:10px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); counter-increment:st; }
+.evc .steps > li::before { content:counter(st,decimal-leading-zero); font-size:30px; font-weight:700; line-height:1; color:var(--teal); font-variant-numeric:tabular-nums; }
+.evc .steps p { font-size:15.5px; }
+
+/* Ticks list */
+.evc .ticks { display:grid; gap:10px; }
+.evc .ticks li { display:flex; gap:12px; align-items:flex-start; }
+.evc .ticks li::before { content:""; flex:none; width:20px; height:20px; margin-top:3px; border-radius:50%; background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 12 4 4 8-8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat; }
+.evc .dark .ticks li::before { background-color:var(--yellow); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 12 4 4 8-8' fill='none' stroke='%23212121' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+
+/* Router: "which describes you?" link rows */
+.evc .router { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); }
+.evc .router a { display:grid; grid-template-columns:auto minmax(0,1fr); gap:6px 16px; align-items:start; padding:22px; border-radius:var(--r); background:#fff; border:1px solid var(--line); color:var(--ink); transition:border-color .15s ease, box-shadow .15s ease; }
+.evc .router a:hover { border-color:var(--slate); box-shadow:0 8px 24px rgba(47,68,78,.12); }
+.evc .router .ic { grid-row:span 3; display:grid; place-items:center; width:46px; height:46px; border-radius:50%; background:var(--slate); color:var(--yellow); }
+.evc .router b { font-size:17.5px; line-height:1.3; }
+.evc .router span.d { font-size:15px; color:var(--muted); line-height:1.5; }
+.evc .router .arrow { font-size:15px; }
+
+/* Lead tool placeholder (concept only: the tool itself is still to be built) */
+.evc .tool { position:relative; display:grid; gap:18px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:repeating-linear-gradient(135deg,#fff 0 14px,#fbfcfc 14px 28px); border:2px dashed var(--slate-3); }
+.evc .tool .badge { justify-self:start; display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:99px; background:var(--slate); color:var(--yellow); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.evc .tool h3 { font-size:clamp(22px,2.4vw,28px); }
+.evc .tool .flow { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.evc .tool .flow span { padding:10px 14px; border-radius:10px; background:#fff; border:1px solid var(--line); font-size:14.5px; font-weight:700; color:var(--ink); }
+.evc .tool .flow i { font-style:normal; color:var(--teal); font-weight:700; }
+.evc .tool .flow span.end { background:var(--yellow); border-color:var(--yellow); }
+.evc .tool .note { font-size:14px; color:var(--muted); }
+@media (max-width:560px) { .evc .tool .flow { flex-direction:column; align-items:flex-start; } .evc .tool .flow i { transform:rotate(90deg); margin-left:14px; } }
+
+/* Callout (e.g. "not listed?") */
+.evc .callout { display:grid; gap:16px; padding:clamp(24px,3vw,36px); border-radius:var(--r); background:var(--yellow-2); border-left:6px solid var(--yellow); }
+@media (min-width:1024px) { .evc .callout { grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:32px; } }
+.evc .callout p.big { font-size:clamp(20px,2.2vw,26px); line-height:1.3; font-weight:700; color:var(--ink); }
+
+/* Tabs-free market list */
+.evc .markets { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); }
+.evc .market { display:flex; flex-direction:column; gap:10px; padding:24px; border-radius:var(--r); background:#fff; border:1px solid var(--line); }
+.evc .market .top { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 12px; }
+.evc .market .tag { padding:4px 10px; border-radius:99px; background:var(--teal-2); color:var(--teal); font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
+.evc .market .tag.soon { background:var(--grey); color:var(--muted); }
+.evc .market p { font-size:15.5px; }
+.evc .market a { margin-top:auto; }
+.evc .market dl { display:grid; gap:10px; }
+.evc .market dt { font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); }
+.evc .market dd { font-size:15px; color:var(--body); }
+.evc .market h3 { font-size:22px; }
+.evc .market .sub { font-size:15px; color:var(--muted); margin-top:-4px; }
+
+/* FAQ */
+.evc .faq { display:grid; gap:10px; max-width:920px; }
+.evc details { border-radius:12px; background:var(--grey); }
+.evc summary { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:18px 20px; cursor:pointer; font-weight:700; font-size:17px; list-style:none; color:var(--ink); }
+.evc summary::-webkit-details-marker { display:none; }
+.evc summary::after { content:"+"; flex:none; display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:#fff; font-size:20px; line-height:1; transition:transform .2s ease; }
+.evc details[open] summary::after { transform:rotate(45deg); }
+.evc details > div { padding:0 20px 20px; display:grid; gap:10px; }
+
+/* Next step band */
+.evc .next { display:grid; gap:18px; padding:clamp(24px,3.4vw,40px); border-radius:var(--r); background:var(--slate); }
+@media (min-width:1024px) { .evc .next { grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:40px; } }
+.evc .next h2, .evc .next h3 { color:#fff; }
+.evc .next p { color:#e8eff2; }
+.evc .next .k { font-size:13px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--yellow); }
+
+/* Other regions strip and further reading */
+.evc .regions { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+.evc .regions a { padding:9px 16px; border-radius:99px; border:1px solid var(--line); color:var(--ink); font-weight:700; font-size:14.5px; }
+.evc .regions a:hover { border-color:var(--slate); }
+.evc .reading { display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; }
+
+/* Form intro just above the contact block */
+.evc .formintro { display:grid; gap:12px; max-width:820px; }
+
+@media (prefers-reduced-motion:reduce) { .evc *, .evc *::before, .evc *::after { transition:none !important; } .evc a.card:hover { transform:none; } }
+#evx-contact { scroll-margin-top:96px; }
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="t-in" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"></path><path d="M4 17v3h16v-3"></path></symbol>
+  <symbol id="t-hub" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path></symbol>
+  <symbol id="t-view" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></symbol>
+  <symbol id="t-self" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M8 8h8M8 12h8M8 16h5"></path></symbol>
+  <symbol id="t-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></symbol>
+  <symbol id="t-scale" viewBox="0 0 24 24"><path d="M12 4v16M6 20h12M5 8h14"></path><path d="M5 8l-3 6a3 3 0 0 0 6 0zM19 8l-3 6a3 3 0 0 0 6 0z"></path></symbol>
+  <symbol id="t-db" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 4v16"></path></symbol>
+  <symbol id="t-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"></path></symbol>
+</svg>
+<style>
+/* Data journey */
+.evc .journey { display:grid; gap:10px; align-items:stretch; }
+@media (min-width:1024px) { .evc .journey { grid-template-columns:minmax(0,.8fr) auto minmax(0,1fr) auto minmax(0,1fr); } }
+.evc .journey .node { display:flex; flex-direction:column; gap:8px; padding:24px; border-radius:var(--r); }
+.evc .journey .node .ic { display:grid; place-items:center; width:48px; height:48px; border-radius:50%; }
+.evc .journey .node .k { font-size:12.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.evc .journey .node b { font-size:22px; line-height:1.15; }
+.evc .journey .node p { font-size:15px; }
+.evc .journey .src { background:var(--grey); } .evc .journey .src .ic { background:#fff; color:var(--teal); } .evc .journey .src .k { color:var(--muted); }
+.evc .journey .hub { background:var(--slate); } .evc .journey .hub :is(b) { color:#fff; } .evc .journey .hub p { color:#e8eff2; } .evc .journey .hub .ic { background:var(--yellow); color:var(--ink); } .evc .journey .hub .k { color:var(--yellow); }
+.evc .journey .view { background:var(--teal); } .evc .journey .view :is(b) { color:#fff; } .evc .journey .view p { color:#e8eff2; } .evc .journey .view .ic { background:#fff; color:var(--teal); } .evc .journey .view .k { color:#fff; }
+.evc .journey .to { display:grid; place-items:center; color:var(--teal); font-size:26px; font-weight:700; }
+@media (max-width:1023px) { .evc .journey .to { transform:rotate(90deg); justify-self:center; } }
+.evc .side-lane { display:grid; gap:14px; padding:22px 24px; border-radius:var(--r); border:2px dashed var(--line); }
+@media (min-width:768px) { .evc .side-lane { grid-template-columns:auto minmax(0,1fr) auto; align-items:center; } }
+.evc .side-lane .ic { display:grid; place-items:center; width:48px; height:48px; border-radius:50%; background:var(--yellow); color:var(--ink); }
+/* Product sections */
+.evc .prod { display:grid; gap:clamp(24px,3vw,48px); }
+@media (min-width:1024px) { .evc .prod { grid-template-columns:minmax(0,6fr) minmax(0,6fr); align-items:center; } .evc .prod.flip > :first-child { order:2; } }
+.evc .badge2 { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:99px; font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+.evc .b-hub { background:var(--slate); color:var(--yellow); } .evc .b-view { background:var(--teal); color:#fff; } .evc .b-self { background:var(--yellow); color:var(--ink); }
+/* Illustrative Ecohub pipeline */
+.evc .pipe2 { display:grid; gap:8px; padding:22px; border-radius:var(--r); background:var(--slate); }
+.evc .pipe2 li { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:12px; align-items:center; padding:14px 16px; border-radius:10px; background:var(--slate-2); color:#fff; font-size:15px; }
+.evc .pipe2 li b { color:#fff; }
+.evc .pipe2 li span.n { display:grid; place-items:center; width:28px; height:28px; border-radius:50%; background:var(--yellow); color:var(--ink); font-size:13px; font-weight:700; }
+.evc .pipe2 li i { font-style:normal; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--mist); }
+/* Illustrative Ecoview dashboard */
+.evc .dash { display:grid; gap:12px; padding:18px; border-radius:var(--r); background:#fff; border:1px solid var(--line); box-shadow:0 18px 40px rgba(47,68,78,.12); }
+.evc .dash .bar-top { display:flex; justify-content:space-between; align-items:center; gap:10px; font-size:13px; font-weight:700; color:var(--muted); }
+.evc .dash .filters { display:flex; flex-wrap:wrap; gap:6px; }
+.evc .dash .filters span { padding:4px 10px; border-radius:99px; background:var(--grey); font-size:12px; font-weight:700; color:var(--ink); }
+.evc .dash .filters span.on { background:var(--teal); color:#fff; }
+.evc .dash .kpis { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+.evc .dash .kpis div { padding:12px; border-radius:10px; background:var(--grey); }
+.evc .dash .kpis b { display:block; font-size:20px; color:var(--ink); }
+.evc .dash .kpis small { font-size:11.5px; color:var(--muted); }
+.evc .dash .chart { display:grid; gap:7px; }
+.evc .dash .row { display:grid; grid-template-columns:80px minmax(0,1fr); gap:10px; align-items:center; font-size:12.5px; color:var(--ink); }
+.evc .dash .row i { display:flex; height:12px; border-radius:6px; overflow:hidden; background:var(--grey); }
+.evc .dash .row i span { display:block; height:100%; }
+.evc .dash .g { background:#2e7d32; } .evc .dash .a { background:#f2a900; } .evc .dash .r { background:#c8102e; }
+.evc .dash .legend2 { display:flex; gap:12px; font-size:11.5px; color:var(--muted); }
+.evc .dash .legend2 span::before { content:""; display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:0; }
+.evc .dash .legend2 .lg::before { background:#2e7d32; } .evc .dash .legend2 .la::before { background:#f2a900; } .evc .dash .legend2 .lr::before { background:#c8102e; }
+.evc .illus { font-size:12.5px; color:var(--muted); }
+/* my.ecoveritas steps */
+.evc .six { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr)); gap:8px; counter-reset:six; }
+.evc .six li { display:flex; align-items:center; gap:10px; padding:12px 14px; border-radius:10px; background:#fff; border:1px solid var(--line); font-weight:700; font-size:14.5px; counter-increment:six; }
+.evc .six li::before { content:counter(six,decimal-leading-zero); color:var(--teal); font-variant-numeric:tabular-nums; }
+.evc .feat { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr)); gap:8px; }
+.evc .feat li { padding:12px 14px; border-radius:10px; background:var(--grey); font-size:14.5px; color:var(--body); }
+.evc .feat li b { display:block; color:var(--ink); font-size:15.5px; }
+</style>
+<div class="evc" id="c-tech">
+
+<section class="sec" aria-labelledby="t-journey-h">
+  <div class="head split">
+    <div class="stack" style="gap:0"><p class="eyebrow">How it fits together</p><h2 id="t-journey-h">One data journey. Three platforms.</h2></div>
+    <p class="lead">Technology runs through everything we do: collecting, checking and calculating your packaging data, showing you what it means, and letting smaller businesses report for themselves.</p>
+  </div>
+  <div class="journey">
+    <div class="node src"><span class="ic" aria-hidden="true"><svg class="icon"><use href="#t-in"></use></svg></span><span class="k">From you</span><b>Your sales or purchase data</b><p>That's all we need. Your suppliers, the measuring and the gaps are ours to handle.</p></div>
+    <span class="to" aria-hidden="true">→</span>
+    <div class="node hub"><span class="ic" aria-hidden="true"><svg class="icon"><use href="#t-hub"></use></svg></span><span class="k">Ecohub · we do the work</span><b>Suppliers, weights, gaps, returns</b><p>Our team chases your suppliers, measures your packaging and fills every gap, so you don't have to.</p></div>
+    <span class="to" aria-hidden="true">→</span>
+    <div class="node view"><span class="ic" aria-hidden="true"><svg class="icon"><use href="#t-view"></use></svg></span><span class="k">Ecoview · you see it</span><b>A lower bill, better decisions</b><p>Where your fees come from, which packs and suppliers drive them, and what to change.</p></div>
+  </div>
+  <div class="side-lane">
+    <span class="ic" aria-hidden="true"><svg class="icon"><use href="#t-self"></use></svg></span>
+    <p><b>Smaller business? Report it yourself.</b> my.ecoveritas is our self-serve reporting platform for small and medium-sized businesses.</p>
+    <a class="arrow" href="#t-my">Meet my.ecoveritas</a>
+  </div>
+</section>
+
+<section class="sec" id="t-ecohub" aria-labelledby="t-ecohub-h">
+  <div class="prod">
+    <div class="stack">
+      <span class="badge2 b-hub" style="justify-self:start">Ecohub</span>
+      <h2 id="t-ecohub-h">Hand it over. We do the rest.</h2>
+      <p class="lead">Most EPR tools still expect your team to upload the data and chase your suppliers for it. Ours doesn't. You send us your sales or purchase data, and our team does everything else in Ecohub, our secure EPR data platform: from your suppliers to an audit-ready return.</p>
+      <ul class="ticks">
+        <li><span><b>Your suppliers deal with us, not you.</b> We contact them directly and collect their packaging data.</span></li>
+        <li><span><b>Real weights, wherever you are.</b> We measure packaging at our own facility or on site at yours, in the UK or abroad.</span></li>
+        <li><span><b>Gaps filled without your help.</b> Missing data comes from verified sample weights in our database of 4m+ SKUs, so coverage stays at 100%.</span></li>
+        <li><span><b>Checked before it's filed.</b> Every dataset is cross-checked against previous periods, and anomalies are investigated.</span></li>
+      </ul>
+      <a class="arrow" href="https://www.ecoveritas.com/services/data-collection-calculation-reporting">Data Collection, Calculation &amp; Reporting</a>
+    </div>
+    <div class="stack" style="gap:10px">
+    <ol class="pipe2" aria-label="How data moves through Ecohub">
+      <li><span class="n">1</span><b>You send your sales or purchase data</b><i>Your only step</i></li>
+      <li><span class="n">2</span><b>We engage your suppliers</b><i>Direct</i></li>
+      <li><span class="n">3</span><b>We measure your packaging</b><i>Our site or yours</i></li>
+      <li><span class="n">4</span><b>We validate and fill the gaps</b><i>4m+ SKUs</i></li>
+      <li><span class="n">5</span><b>We calculate and report</b><i>Audit-ready</i></li>
+    </ol>
+    <p class="muted" style="font-size:14.5px">Your team's part: step 1. Everything after that is ours.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec panel" id="t-ecoview" aria-labelledby="t-ecoview-h">
+  <div class="prod flip">
+    <div class="stack">
+      <span class="badge2 b-view" style="justify-self:start">Ecoview</span>
+      <h2 id="t-ecoview-h">See what your packaging is costing you, and what to change.</h2>
+      <p class="lead">Ecoview turns your packaging data into answers for three things: your EPR bill, your compliance and your sustainability. It's an interactive analytics platform built in Power BI, designed for everyday users, not BI experts.</p>
+      <ul class="ticks">
+        <li><span><b>Reduce your bill.</b> See which packs and materials drive your EPR fees, and where a redesign or a better rating would bring them down.</span></li>
+        <li><span><b>Stay compliant.</b> Spot complex, poorly rated or incomplete packaging at SKU and component level before it reaches a return.</span></li>
+        <li><span><b>Choose better suppliers.</b> Compare suppliers on materials, recyclability and data quality, so you know who is helping and who is costing you.</span></li>
+        <li><span><b>Become more sustainable.</b> Track recycled content and red, amber and green ratings over time, and estimate your Plastic Packaging Tax exposure by supplier.</span></li>
+      </ul>
+      <div class="btns"><a class="btn" href="https://www.ecoveritas.com/ecoview">Explore Ecoview <span aria-hidden="true">→</span></a><a class="arrow" href="https://www.ecoveritas.com/services/data-analytics">Data Analytics service</a></div>
+    </div>
+    <div class="stack" style="gap:8px">
+      <div class="dash" aria-hidden="true">
+        <div class="bar-top"><span>Packaging overview</span><span>FY 2026</span></div>
+        <div class="filters"><span class="on">All materials</span><span>Plastics</span><span>By supplier</span><span>RAM rating</span></div>
+        <div class="kpis"><div><b>1,240t</b><small>Total tonnage</small></div><div><b>38%</b><small>Recycled content</small></div><div><b>71%</b><small>Rated green</small></div></div>
+        <div class="chart">
+          <div class="row"><span>Paper/card</span><i><span class="g" style="width:82%"></span><span class="a" style="width:12%"></span><span class="r" style="width:6%"></span></i></div>
+          <div class="row"><span>Plastic</span><i><span class="g" style="width:44%"></span><span class="a" style="width:30%"></span><span class="r" style="width:26%"></span></i></div>
+          <div class="row"><span>Glass</span><i><span class="g" style="width:95%"></span><span class="a" style="width:5%"></span></i></div>
+          <div class="row"><span>Metal</span><i><span class="g" style="width:88%"></span><span class="a" style="width:9%"></span><span class="r" style="width:3%"></span></i></div>
+        </div>
+        <div class="legend2"><span class="lg">Green</span><span class="la">Amber</span><span class="lr">Red</span></div>
+      </div>
+      <p class="illus">Illustration with sample figures, not client data.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="t-my" aria-labelledby="t-my-h">
+  <div class="prod">
+    <div class="stack">
+      <span class="badge2 b-self" style="justify-self:start">my.ecoveritas</span>
+      <h2 id="t-my-h">EPR in days, not months.</h2>
+      <p class="lead">my.ecoveritas is a data reporting platform for small and medium-sized businesses tired of the complex, data-intensive work of EPR. It makes data collection and reporting simpler and more cost-effective, without needing in-depth knowledge of the latest rules.</p>
+      <p>Sign up for free to get unlimited access to the obligation checker, subscription offers, pricing plans, selected resources and reporting tips. No credit card required.</p>
+      <div class="btns"><a class="btn" href="https://my.ecoveritas.com">Create your free account <span aria-hidden="true">→</span></a><a class="arrow" href="https://my.ecoveritas.com">Log in</a></div>
+    </div>
+    <div class="stack">
+      <ol class="six" aria-label="Six steps to a report">
+        <li>Create an account</li><li>Build your company profile</li><li>Upload data</li><li>Match weights</li><li>Validate</li><li>Generate your report</li>
+      </ol>
+      <ul class="feat">
+        <li><b>Designed by experts</b>A tried and tested methodology</li>
+        <li><b>Secure</b>Data storage with a full audit trail</li>
+        <li><b>Weights matched</b>To your products</li>
+        <li><b>Always current</b>Updated as EPR legislation evolves</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="t-behind-h">
+  <div class="head split">
+    <h2 id="t-behind-h">What sits behind the platforms</h2>
+    <p class="lead">Software is only as good as the data and people behind it.</p>
+  </div>
+  <div class="grid" style="--min:230px">
+    <div class="card grey"><span class="ic" aria-hidden="true" style="background:#fff"><svg class="icon"><use href="#t-db"></use></svg></span><h3>4m+ SKUs</h3><p>A database of packaging metrics we use to check and complete your data.</p></div>
+    <div class="card grey"><span class="ic" aria-hidden="true" style="background:#fff"><svg class="icon"><use href="#t-scale"></use></svg></span><h3>Real weights</h3><p>Packaging measured at our own facility or on site at yours, wherever you are.</p></div>
+    <div class="card grey"><span class="ic" aria-hidden="true" style="background:#fff"><svg class="icon"><use href="#t-lock"></use></svg></span><h3>Secure by design</h3><p>Secure data storage with a full audit trail.</p></div>
+    <div class="card grey"><span class="ic" aria-hidden="true" style="background:#fff"><svg class="icon"><use href="#t-code"></use></svg></span><h3>Built by our own team</h3><p>Led by a CTO with 25+ years designing enterprise platforms for banks, regulators and manufacturers.</p></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="t-which-h">
+  <div class="head"><h2 id="t-which-h">Which one is for you?</h2></div>
+  <div class="router">
+    <a href="https://www.ecoveritas.com/services/data-collection-calculation-reporting"><span class="ic" aria-hidden="true"><svg class="icon"><use href="#t-hub"></use></svg></span><b>"Handle it for us."</b><span class="d">Our team does the lot in Ecohub: suppliers, measuring, gaps and submissions.</span><span class="arrow">Our managed service</span></a>
+    <a href="https://www.ecoveritas.com/ecoview"><span class="ic" aria-hidden="true"><svg class="icon"><use href="#t-view"></use></svg></span><b>"Show us what our data means."</b><span class="d">Ecoview puts your packaging footprint in front of you.</span><span class="arrow">Explore Ecoview</span></a>
+    <a href="https://my.ecoveritas.com"><span class="ic" aria-hidden="true"><svg class="icon"><use href="#t-self"></use></svg></span><b>"We'll report it ourselves."</b><span class="d">my.ecoveritas, built for small and medium-sized businesses.</span><span class="arrow">Go to my.ecoveritas</span></a>
+  </div>
+</section>
+
+</div>
+            
+</div></main>
+<section class="rv-contact" aria-labelledby="evx-contact"><div class="rv-in">
+  <div><h2 id="evx-contact">Get in touch</h2><p></p></div>
+  <form class="rv-form" aria-label="Enquiry form (switched off in the review copy)">
+    <div class="rv-row"><input id="rv-email" placeholder="Email Address *" aria-label="Email address"><input id="rv-company" placeholder="Company" aria-label="Company"></div>
+    <div class="rv-row"><input id="rv-first" placeholder="First name" aria-label="First name"><input id="rv-last" placeholder="Last name" aria-label="Last name"></div>
+    <textarea id="rv-enquiry" placeholder="Give us a description of what we can help with!" aria-label="Enquiry"></textarea>
+    <select id="rv-heard" aria-label="How did you first hear about us?"><option>How did you first hear about us?</option></select>
+    <button type="submit" disabled>Submit your enquiry</button>
+    <small>Review copy: this form doesn't send anything.</small>
+  </form>
+</div></section>
+<footer class="rv-foot"><div class="rv-in">Review copy of the Technology page, built from the CMS version. Leave comments on anything that needs changing.</div></footer>

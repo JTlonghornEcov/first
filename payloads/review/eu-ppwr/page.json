@@ -1,0 +1,20 @@
+{
+  "name": "EU PPWR",
+  "live": "https://www.ecoveritas.com/compliance/eu-packaging-packaging-waste-regulation",
+  "eyebrow": "",
+  "heroTitle": "EU Packaging & Packaging Waste Regulation (PPWR)",
+  "heroIntro": "<p>PPWR introduces new requirements covering packaging design, recyclability, labelling and documentation for packaging placed on the EU market.</p><p>It has applied since <strong>12 August 2026</strong>, with further requirements rolling out through 2030 and beyond.</p>",
+  "buttons": [
+    [
+      "#evx-contact",
+      "Book a PPWR assessment"
+    ],
+    [
+      "#c-pp-who",
+      "Does it apply to you?"
+    ]
+  ],
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/7401/EU-PPWR-Hero.webp",
+  "ctaTitle": "Book a PPWR assessment",
+  "ctaText": "Our PPWR assessment shows your exposure to the regulation, the obligations that apply to your business and the steps needed to prepare. Complete the form to arrange it with our team."
+}

@@ -201,6 +201,11 @@ button,input,textarea,select{font:inherit;color:inherit}
 .combine-bar .primary:disabled{opacity:.5;cursor:default}
 .task.picked{border-color:var(--atlantic);box-shadow:0 0 0 2px var(--atlantic) inset}
 .confirming{background:var(--late)!important;border-color:var(--late)!important;color:#fff!important;text-decoration:none!important;padding:2px 8px!important;border-radius:6px}
+.duepick{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--text)}
+.duepick input{border:1px solid var(--line-strong);background:var(--surface);border-radius:7px;padding:3px 7px;font-size:13px;font-weight:600;cursor:pointer}
+.duepick input:hover{border-color:var(--atlantic)}
+.duepick.late{color:var(--late)}
+.duepick.late input{border-color:var(--late);color:var(--late)}
 .part.signoff{border-style:solid}
 .part.signoff.locked{opacity:.55;cursor:not-allowed;border-style:dashed}
 .part.signoff[aria-pressed="true"]{background:var(--yellow);border-color:var(--yellow);color:var(--deep)}
@@ -239,6 +244,8 @@ button,input,textarea,select{font:inherit;color:inherit}
 
   /* ---------- helpers ---------- */
   function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+  // Task notes: ecoveritas.com and claude.ai addresses become links (text is escaped first).
+  function linkify(s){return esc(s).replace(/https:\/\/(?:www\.ecoveritas\.com|claude\.ai)\/[^\s<]*[^\s<.,;:)]/g,function(u){return '<a class="pageurl" href="'+u+'" target="_blank" rel="noopener">'+u+'</a>';});}
   function pageById(id){for(var i=0;i<state.pages.length;i++) if(state.pages[i].id===id) return state.pages[i]; return null;}
   function taskById(id){for(var i=0;i<state.tasks.length;i++) if(state.tasks[i].id===id) return state.tasks[i]; return null;}
   function isSignoff(t){return t.kind==="signoff";}
@@ -270,6 +277,7 @@ button,input,textarea,select{font:inherit;color:inherit}
       if(!p || !p.goLive) return;
       if(!best || p.goLive<best){ best=p.goLive; from=[p.name]; } else if(p.goLive===best) from.push(p.name);
     });
+    if(t.dueLocked && t.due) return {date:t.due, from:from, derived:false, override:true, goLive:best};
     return best ? {date:best, from:from, derived:true} : {date:t.due||"", from:[], derived:false};
   }
   function sections(){
@@ -516,10 +524,14 @@ button,input,textarea,select{font:inherit;color:inherit}
     r += pageNames || '<span>No pages linked</span>';
     if(t.source==="claude") r += '<span class="tag auto-tag" title="Created by Claude from the page build">From the build</span>';
     r += '</div>';
-    if(t.note) r += '<div class="tnote">'+esc(t.note)+'</div>';
+    if(t.note) r += '<div class="tnote">'+linkify(t.note)+'</div>';
+    // Imagery tasks link to a review copy of the page, so whoever sources the image can see the slot it fills.
+    if(t.previewUrl && /^https:\/\/claude\.ai\//.test(t.previewUrl)) r += '<div class="tmeta"><a class="review-on" href="'+esc(t.previewUrl)+'" target="_blank" rel="noopener">See the page</a><span>Placeholders show where each image goes</span></div>';
     r += '<div class="tmeta">';
-    if(du.date) r += '<span class="'+(late?'late':'')+'">'+(late?'Overdue, was due ':'Due ')+fmtLong(du.date)+(du.derived?', '+esc(du.from.join(' and '))+' go'+(du.from.length>1?'':'es')+' live':'')+'</span>';
-    else r += '<span>No deadline yet: set a go-live date on its pages</span>';
+    r += '<label class="duepick'+(late?' late':'')+'">'+(late?'Overdue':'Due')+' <input type="date" data-act="due" value="'+esc(du.date||"")+'" aria-label="Deadline for '+esc(t.title)+'" '+(r0?'disabled':'')+'></label>';
+    if(du.override) r += '<span>Set by hand'+(du.goLive?', page goes live '+fmtDate(du.goLive):'')+'</span>'+(du.goLive && !r0 ? '<button class="link" data-act="due-reset">Use go-live date</button>' : '');
+    else if(du.derived) r += '<span>From '+esc(du.from.join(' and '))+' go-live</span>';
+    else if(!du.date) r += '<span>No deadline yet</span>';
     r += '</div></div><div class="tside">';
     r += '<select data-act="assign" aria-label="Assignee" '+(r0?'disabled':'')+'><option value="">Unassigned</option>'+PEOPLE.map(function(n){return '<option'+(t.assignee===n?' selected':'')+'>'+n+'</option>';}).join('')+'</select>';
     if(!so) r += '<div class="tedit"><button class="link" data-act="task-edit">Edit</button>'+confirmBtn("task:"+t.id,"link","Delete","task-delete")+'</div>';
@@ -704,6 +716,7 @@ button,input,textarea,select{font:inherit;color:inherit}
       }
       ui.draft = blankDraft(); rerender(); return;
     }
+    if(act==="due-reset" && !ro()){ var tr=findTask(t); if(tr){ tr.due=""; tr.dueLocked=false; updateDoc("tasks/"+tr.id, {due:"", dueLocked:false}); rerender(); } return; }
     if(act==="task-done" && !ro()){ var tk=findTask(t); if(tk && isSignoff(tk)){ var tp2=pageById((tk.pages||[])[0]); if(!tp2 || !pillarsDone(tp2)) return; } if(tk){ tk.done=!tk.done; updateDoc("tasks/"+tk.id, {done:tk.done, doneAt:tk.done?Date.now():null}); rerender(); } return; }
     if(act==="task-edit"){ var te=findTask(t); if(te){ ui.draft=draftFromTask(te); openComposer(); } return; }
     if(act==="task-delete" && !ro()){ var td=findTask(t); if(td && confirmed("task:"+td.id)){ state.tasks=state.tasks.filter(function(x){return x!==td;}); deleteDoc("tasks/"+td.id); rerender(); } return; }
@@ -742,6 +755,7 @@ button,input,textarea,select{font:inherit;color:inherit}
   document.addEventListener('change', function(e){
     var el = e.target;
     if(el.dataset && el.dataset.draft){ ui.draft[el.dataset.draft]=el.value; keepUi(); return; }
+    if(el.dataset && el.dataset.act==="due" && !ro()){ var tdu=findTask(el); if(tdu){ tdu.due=el.value; tdu.dueLocked=!!el.value; updateDoc("tasks/"+tdu.id, {due:tdu.due, dueLocked:tdu.dueLocked}); rerender(); } return; }
     if(el.dataset && el.dataset.act==="assign" && !ro()){ var t=findTask(el); if(t){ t.assignee=el.value; updateDoc("tasks/"+t.id, {assignee:t.assignee}); rerender(); } return; }
     if(el.dataset && (el.dataset.field==="section" || el.dataset.field==="goLive")) rerender();
   });

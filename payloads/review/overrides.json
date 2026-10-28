@@ -1,0 +1,86 @@
+{
+  "plastic-packaging-tax": {
+    "name": "Plastic Packaging Tax",
+    "live": "https://www.ecoveritas.com/compliance/plastic-packaging-tax"
+  },
+  "obligation-assessment": {
+    "name": "Obligation Assessment",
+    "live": "https://www.ecoveritas.com/services/obligation-assessment"
+  },
+  "data-collection": {
+    "name": "Data Collection, Calculation & Reporting",
+    "heroPlaceholder": "A new hero: packaging being weighed, or someone checking packaging data on screen. (Behind: the Obligation Assessment graphic it borrows for now.)",
+    "live": "https://www.ecoveritas.com/services/data-collection-calculation-reporting"
+  },
+  "waste-management": {
+    "name": "Waste Management",
+    "heroPlaceholder": "A hero for Waste Management: collection, sorting or recycling of packaging waste.",
+    "live": "https://www.ecoveritas.com/services/waste-management"
+  },
+  "packaging-optimisation": {
+    "name": "Packaging Optimisation",
+    "heroPlaceholder": "A hero for Packaging Optimisation: well-designed, right-sized packaging.",
+    "live": "https://www.ecoveritas.com/services/packaging-optimisation"
+  },
+  "data-analytics": {
+    "name": "Data Analytics",
+    "live": "https://www.ecoveritas.com/services/data-analytics"
+  },
+  "epr-fee-audit": {
+    "name": "EPR Fee Audit",
+    "live": "https://www.ecoveritas.com/epr-fee-audit"
+  },
+  "ppwr-compliance-service": {
+    "name": "PPWR Compliance Service",
+    "live": "https://www.ecoveritas.com/services/ppwr-compliance-service"
+  },
+  "americas": {
+    "name": "Americas",
+    "live": "https://www.ecoveritas.com/compliance/americas"
+  },
+  "asia-australia": {
+    "name": "Asia & Australia",
+    "live": "https://www.ecoveritas.com/compliance/asia-australia"
+  },
+  "africa-middle-east": {
+    "name": "Africa & Middle East",
+    "live": "https://www.ecoveritas.com/compliance/africa-middle-east"
+  },
+  "global-epr": {
+    "name": "Global EPR",
+    "live": "https://www.ecoveritas.com/compliance/global-extended-producer-responsibility-epr"
+  },
+  "veolia": {
+    "name": "Veolia x Ecoveritas",
+    "live": "https://www.ecoveritas.com/veolia-ecoveritas"
+  },
+  "uk-epr": {
+    "name": "UK EPR",
+    "live": "https://www.ecoveritas.com/compliance/uk-extended-producer-responsibility-epr"
+  },
+  "uk-epr-v2": {
+    "name": "UK EPR explainer v2",
+    "live": "https://www.ecoveritas.com/compliance/uk-extended-producer-responsibility-epr"
+  },
+  "ram": {
+    "name": "RAM",
+    "live": "https://www.ecoveritas.com/compliance/recyclability-assessment-methodology"
+  },
+  "eu-ppwr": {
+    "name": "EU PPWR",
+    "live": "https://www.ecoveritas.com/compliance/eu-packaging-packaging-waste-regulation"
+  },
+  "technology": {
+    "name": "Technology",
+    "heroPlaceholder": "A general technology hero: people using software, data on screen. (Behind: the Data Analytics graphic it borrows for now.)"
+  },
+  "testimonials": {
+    "name": "Testimonials",
+    "live": "https://www.ecoveritas.com/testimonials"
+  },
+  "ppwr-supplier-doc": {
+    "name": "PPWR Supplier Declaration of Conformity",
+    "heroPlaceholder": "A supplier and a buyer reviewing a signed document or a packaging specification.",
+    "live": "not live yet (new page)"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Americas",
+  "live": "https://www.ecoveritas.com/compliance/americas",
+  "eyebrow": "",
+  "heroTitle": "Packaging compliance in the USA & Americas",
+  "heroIntro": "<p>From coast to coast and border to border, EPR across the Americas is a patchwork, not a single rulebook. If your business places packaging, electricals or batteries on the market anywhere from the US to Canada, Ecoveritas already has it covered, so you get one team and one plan instead of a dozen separate headaches.</p>",
+  "buttons": [
+    [
+      "#evx-contact",
+      "Tell us where you trade"
+    ],
+    [
+      "#c-am-markets",
+      "Markets we support"
+    ]
+  ],
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/9401/new-york-city-2026-09-24-11-24-36-utc.webp",
+  "ctaTitle": "Trading across the Americas?",
+  "ctaText": "Talk to a team that already knows the territory. Tell us where you trade and we'll show you exactly how we can support you."
+}

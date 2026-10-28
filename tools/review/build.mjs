@@ -2,13 +2,16 @@
 // a "review copy" bar, a recreation of the CMS hero, the page body exactly as built (payloads/strategy/<slug>/live.html,
 // else page.html), and the contact block with its form shown but switched off. Images from ecoveritas.com are
 // embedded as data URIs because artifacts can't load files from other sites.
+// Pages captured from the CMS preview (tools/review/from-preview.mjs) are read from payloads/review/<slug>/ instead.
+// Scripts are stripped: review copies carry no JavaScript. A heroPlaceholder in page.json shows the hero slot as
+// "to be sourced" (with the borrowed image faded behind it, if there is one).
 // Usage: node tools/review/build.mjs <slug>   → artifacts/review/<slug>.html
 import fs from 'node:fs';
 const slug = process.argv[2];
-const dir = `payloads/strategy/${slug}`;
+const dir = fs.existsSync(`payloads/review/${slug}/page.json`) ? `payloads/review/${slug}` : `payloads/strategy/${slug}`;
 const P = JSON.parse(fs.readFileSync(`${dir}/page.json`, 'utf8'));
 const bodyFile = fs.existsSync(`${dir}/live.html`) ? `${dir}/live.html` : `${dir}/page.html`;
-let body = fs.readFileSync(bodyFile, 'utf8');
+let body = fs.readFileSync(bodyFile, 'utf8').replace(/<script\b[\s\S]*?<\/script>/gi, '');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 async function dataUri(url) {
@@ -50,6 +53,8 @@ body::before { content:""; position:fixed; inset:0 0 auto; height:env(safe-area-
 .rv-btn.rv-ghost { background:none; color:var(--rv-white); padding:13px 0; }
 .rv-img { position:relative; aspect-ratio:632/520; max-width:100%; background:#3d5662; }
 .rv-img img { width:100%; height:100%; object-fit:cover; display:block; }
+.rv-ph { position:absolute; inset:0; display:grid; place-content:center; gap:8px; padding:24px; text-align:center; border:2px dashed var(--rv-mist); background:rgba(47,68,78,.86); color:var(--rv-white); }
+.rv-ph b { font-size:17px; } .rv-ph span { font-size:14px; color:#d7dee1; max-width:40ch; margin:0 auto; }
 .rv-main .rv-in { padding-block:clamp(48px,7vw,96px); }
 .rv-contact { background:var(--rv-slate); color:var(--rv-white); }
 .rv-contact .rv-in { display:grid; gap:32px; padding-block:64px; }
@@ -69,7 +74,7 @@ a:focus-visible, button:focus-visible { outline:3px solid var(--rv-yellow); outl
 <div class="rv-bar" role="note"><div class="rv-in"><b>Review copy</b><span>${esc(P.name)} · built ${built} · not the live site; the form is switched off</span><span>Live page: ${esc(P.live || '')}</span></div></div>
 <header class="rv-hero"><div class="rv-in">
   <div><span class="rv-eyebrow">${esc(P.eyebrow || '')}</span><h1>${esc(P.heroTitle)}</h1><div class="rv-intro">${P.heroIntro || ''}</div>${P.heroButtons === false || !buttons ? '' : `<div class="rv-btns">${buttons}</div>`}</div>
-  <div class="rv-img">${hero ? `<img src="${hero}" alt="">` : ''}</div>
+  <div class="rv-img">${hero ? `<img src="${hero}" alt="">` : ''}${P.heroPlaceholder ? `<div class="rv-ph"><b>Hero image to be sourced</b><span>${esc(P.heroPlaceholder)}</span></div>` : ''}</div>
 </div></header>
 <main class="rv-main"><div class="rv-in">
 ${body}
@@ -87,6 +92,7 @@ ${body}
 </div></section>
 <footer class="rv-foot"><div class="rv-in">Review copy of the ${esc(P.name)} page, built from the CMS version. Leave comments on anything that needs changing.</div></footer>
 `;
+if (/x-craft-preview|[?&;]token=/.test(html)) throw new Error('a CMS preview token is in the review copy: refusing to write it');
 fs.mkdirSync('artifacts/review', { recursive: true });
 fs.writeFileSync(`artifacts/review/${slug}.html`, html);
 console.log(`artifacts/review/${slug}.html`, Math.round(html.length / 1024) + ' KB');

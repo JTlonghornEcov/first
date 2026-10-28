@@ -1,0 +1,20 @@
+{
+  "name": "UK EPR explainer v2",
+  "live": "https://www.ecoveritas.com/compliance/uk-extended-producer-responsibility-epr",
+  "eyebrow": "",
+  "heroTitle": "Extended Producer Responsibility",
+  "heroIntro": "<p>Whether you're new to EPR, a seasoned pro, or somewhere in between, Ecoveritas is here to help. From understanding the basics of what EPR means for your business, to ensuring full compliance with timely submissions—and even supporting the most advanced needs like developing methodologies and collecting complex packaging data—we guide you every step of the way.</p>",
+  "buttons": [
+    [
+      "#informed",
+      "Am I affected?"
+    ],
+    [
+      "#evx-contact",
+      "Contact us"
+    ]
+  ],
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/11747/uk-epr-hero-produce-packaging.webp",
+  "ctaTitle": "Ready to collaborate?",
+  "ctaText": "Let Ecoveritas take the strain. Contact us to discuss your needs."
+}

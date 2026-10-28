@@ -45,132 +45,151 @@
     "name": "Americas",
     "section": "Regions",
     "url": "https://www.ecoveritas.com/compliance/americas",
-    "notes": "Concept: entry 11419 (disabled)."
+    "notes": "Concept: entry 11419 (disabled).",
+    "reviewUrl": "https://claude.ai/artifact/66joj3bDrpgQLRy2ys7QRz"
   },
   {
     "id": "asia-australia",
     "name": "Asia & Australia",
     "section": "Regions",
     "url": "https://www.ecoveritas.com/compliance/asia-australia",
-    "notes": "Concept: entry 11438 (disabled)."
+    "notes": "Concept: entry 11438 (disabled).",
+    "reviewUrl": "https://claude.ai/artifact/AnZbDoLHF2VVBwCGSJcfcT"
   },
   {
     "id": "africa-middle-east",
     "name": "Africa & Middle East",
     "section": "Regions",
     "url": "https://www.ecoveritas.com/compliance/africa-middle-east",
-    "notes": "Concept: entry 11457 (disabled)."
+    "notes": "Concept: entry 11457 (disabled).",
+    "reviewUrl": "https://claude.ai/artifact/5UW8BEM4eqsSuKuY6pHWtP"
   },
   {
     "id": "global-epr",
     "name": "Global EPR",
     "section": "Regions",
     "url": "https://www.ecoveritas.com/compliance/global-extended-producer-responsibility-epr",
-    "notes": "Concept: entry 11494 (disabled)."
+    "notes": "Concept: entry 11494 (disabled).",
+    "reviewUrl": "https://claude.ai/artifact/AzVgsJzW4TNdmndrCE1pgA"
   },
   {
     "id": "uk-epr",
     "name": "UK EPR",
     "section": "Compliance",
     "url": "https://www.ecoveritas.com/compliance/uk-extended-producer-responsibility-epr",
-    "notes": "Concept: entry 11586 (disabled). An older explainer concept (v2, entry 11248) also exists; its hero and 2 in-page photos were placed 23 Oct, 3 photos to come."
+    "notes": "Concept: entry 11586 (disabled). An older explainer concept (v2, entry 11248) also exists; its hero and 2 in-page photos were placed 23 Oct, 3 photos to come.",
+    "reviewUrl": "https://claude.ai/artifact/BYGtF4vXDFaUFphgdpVMQS"
   },
   {
     "id": "ram",
     "name": "RAM",
     "section": "Compliance",
     "url": "https://www.ecoveritas.com/compliance/recyclability-assessment-methodology",
-    "notes": "Concept: entry 11596 (disabled)."
+    "notes": "Concept: entry 11596 (disabled).",
+    "reviewUrl": "https://claude.ai/artifact/Gtcz7t2x3iCYcTdrNjhbnS"
   },
   {
     "id": "eu-ppwr",
     "name": "EU PPWR",
     "section": "Compliance",
     "url": "https://www.ecoveritas.com/compliance/eu-packaging-packaging-waste-regulation",
-    "notes": "Concept: entry 11606 (disabled)."
+    "notes": "Concept: entry 11606 (disabled).",
+    "reviewUrl": "https://claude.ai/artifact/2trxt89RtKFRbmGyhRpR3Z"
   },
   {
     "id": "plastic-packaging-tax",
     "name": "Plastic Packaging Tax",
     "section": "Compliance",
     "url": "https://www.ecoveritas.com/compliance/plastic-packaging-tax",
-    "notes": "Concept: entry 11761 (disabled). Short page with a two-question liability check (HTML and CSS only, no JavaScript)."
+    "notes": "Concept: entry 11761 (disabled). Short page with a two-question liability check (HTML and CSS only, no JavaScript).",
+    "reviewUrl": "https://claude.ai/artifact/YGWkTvcCXvL4WThRMCcJdY"
   },
   {
     "id": "veolia",
     "name": "Veolia x Ecoveritas",
     "section": "Compliance",
     "url": "https://www.ecoveritas.com/veolia-ecoveritas",
-    "notes": "Concept: entry 11522 (disabled)."
+    "notes": "Concept: entry 11522 (disabled).",
+    "reviewUrl": "https://claude.ai/artifact/GckZpW7JMDfh88zqQuu66J"
   },
   {
     "id": "obligation-assessment",
     "name": "Obligation Assessment",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/obligation-assessment",
-    "notes": "Concept: entry 11771 (disabled)."
+    "notes": "Concept: entry 11771 (disabled).",
+    "reviewUrl": "https://claude.ai/artifact/K8Y4HBDuVoSa8VGdPSYPht"
   },
   {
     "id": "data-collection",
     "name": "Data Collection, Calculation & Reporting",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/data-collection-calculation-reporting",
-    "notes": "Concept: entry 11781 (disabled). SKU figure aligned to 4m+ and Oxford-only weighing removed."
+    "notes": "Concept: entry 11781 (disabled). SKU figure aligned to 4m+ and Oxford-only weighing removed.",
+    "reviewUrl": "https://claude.ai/artifact/9yctbzwKNzXYW2i9HFXmSW"
   },
   {
     "id": "data-analytics",
     "name": "Data Analytics",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/data-analytics",
-    "notes": "Concept: entry 11829 (disabled). Clickable Ecoview demo with sample data, no JavaScript."
+    "notes": "Concept: entry 11829 (disabled). Clickable Ecoview demo with sample data, no JavaScript.",
+    "reviewUrl": "https://claude.ai/artifact/Gt22Lf6oRhVc2knXagEpKC"
   },
   {
     "id": "waste-management",
     "name": "Waste Management",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/waste-management",
-    "notes": "Concept: entry 11791 (disabled). Names Veolia as the partner."
+    "notes": "Concept: entry 11791 (disabled). Names Veolia as the partner.",
+    "reviewUrl": "https://claude.ai/artifact/415gH14ijg4V6n7Evu1apE"
   },
   {
     "id": "packaging-optimisation",
     "name": "Packaging Optimisation",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/packaging-optimisation",
-    "notes": "Concept: entry 11801 (disabled). Links to the Fee Audit; case result still to supply."
+    "notes": "Concept: entry 11801 (disabled). Links to the Fee Audit; case result still to supply.",
+    "reviewUrl": "https://claude.ai/artifact/F9pszWBcK774vfwbGvGRuZ"
   },
   {
     "id": "ppwr-service",
     "name": "PPWR Compliance Service",
     "section": "Services",
     "url": "https://www.ecoveritas.com/services/ppwr-compliance-service",
-    "notes": "Restyle is live. Hero image in draft 4017, waiting to be applied. Trimmed concept: entry 11849 (disabled)."
+    "notes": "Restyle is live. Hero image in draft 4017, waiting to be applied. Trimmed concept: entry 11849 (disabled).",
+    "reviewUrl": "https://claude.ai/artifact/65LrbExCjMDVgvLaWutKFP"
   },
   {
     "id": "epr-fee-audit",
     "name": "EPR Fee Audit",
     "section": "Services",
     "url": "https://www.ecoveritas.com/epr-fee-audit",
-    "notes": "Restyle is live (draft 3934). Hero image in draft 4018, waiting to be applied. New concept with an overpayment risk check: entry 11839 (disabled)."
+    "notes": "Restyle is live (draft 3934). Hero image in draft 4018, waiting to be applied. New concept with an overpayment risk check: entry 11839 (disabled).",
+    "reviewUrl": "https://claude.ai/artifact/9Vg8YZ85nv2MS7TgD1rGmY"
   },
   {
     "id": "technology",
     "name": "Technology",
     "section": "Services",
     "url": "https://www.ecoveritas.com/powerful-epr-software",
-    "notes": "Replaces the my.ecoveritas page. Draft 3955 is ready: apply it in the CMS."
+    "notes": "Replaces the my.ecoveritas page. Draft 3955 is ready: apply it in the CMS.",
+    "reviewUrl": "https://claude.ai/artifact/FXsX6BnvdAJkgtexaKwDFH"
   },
   {
     "id": "testimonials",
     "name": "Testimonials",
     "section": "Core",
     "url": "https://www.ecoveritas.com/testimonials",
-    "notes": "Concept: entry 11306 (disabled)."
+    "notes": "Concept: entry 11306 (disabled).",
+    "reviewUrl": "https://claude.ai/artifact/4e7SWVEcyDTeZjhVVg7efA"
   },
   {
     "id": "ppwr-supplier-doc",
     "name": "PPWR Supplier Declaration of Conformity",
     "section": "Compliance",
-    "notes": "New page. Built as entry 11200 (disabled), copy under review."
+    "notes": "New page. Built as entry 11200 (disabled), copy under review.",
+    "reviewUrl": "https://claude.ai/artifact/96e77yVuioav8pZxXRRVTt"
   },
   {
     "id": "live-hero-fixes",
