@@ -1,0 +1,11 @@
+{
+ "title": "Veolia announces strategic alliance with Ecoveritas to provide industry-leading packaging compliance support in the UK",
+ "slug": "veolia-announces-strategic-alliance-with-ecoveritas",
+ "heroIntroduction": "<p>Veolia has announced a new alliance with Manchester-based packaging data specialist Ecoveritas, bringing market-leading data solutions into an all-in-one compliance scheme designed to stay ahead of policy and regulatory change.</p>",
+ "excerpt": "Veolia has announced a new alliance with Manchester-based packaging data specialist Ecoveritas, bringing market-leading data solutions into its Packaging Compliance Scheme, used by over 450 UK businesses.",
+ "seoTitle": "Veolia announces strategic alliance with Ecoveritas | Press release",
+ "seoDescription": "Veolia and Ecoveritas form an alliance bringing audit-ready packaging data and reporting to Veolia's Packaging Compliance Scheme, used by over 450 UK businesses.",
+ "blocks": [
+  { "type": "general_content", "file": "payloads/press-veolia-alliance/page.html", "spacing": "medium" }
+ ]
+}
