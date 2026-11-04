@@ -640,10 +640,11 @@ button,input,textarea,select{font:inherit;color:inherit}
       });
       h += '</div>';
     });
-    var fresh = state.pages.filter(function(p){ return (!p.url || !live[normUrl(p.url)]) && p.reviewUrl && keep({p:p}); });
+    // Pages in the plan that aren't on the live site yet (built or only planned), with their planned address if set.
+    var fresh = state.pages.filter(function(p){ return (!p.url || !live[normUrl(p.url)]) && p.section!=="Fixes" && (ui.smFilter!=="review" || p.reviewUrl); });
     if(fresh.length){
       h += '<h2 class="group-title">New pages, not on the site yet ('+fresh.length+')</h2><div class="list">';
-      fresh.forEach(function(p){ h += '<div class="smrow"><div class="smname"><b>'+esc(p.name)+'</b><span>'+esc(p.section||"")+'</span></div><div class="smlinks">'+smLinks(p, "")+'</div></div>'; });
+      fresh.forEach(function(p){ var where = p.plannedUrl ? String(p.plannedUrl).replace(/^https?:\/\/[^\/]+/,"")+' (planned)' : (p.section||""); h += '<div class="smrow"><div class="smname"><b>'+esc(p.name)+'</b><span>'+esc(where)+'</span></div><div class="smlinks">'+smLinks(p, "")+'</div></div>'; });
       h += '</div>';
     }
     return h + '<div style="height:48px"></div>';

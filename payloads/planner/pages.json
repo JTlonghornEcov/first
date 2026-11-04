@@ -10,13 +10,15 @@
   {
     "id": "p2",
     "name": "About us",
-    "section": "Core"
+    "section": "Core",
+    "url": "https://www.ecoveritas.com/about-us"
   },
   {
     "id": "p3",
     "name": "Contact",
     "section": "Core",
-    "notes": ""
+    "notes": "",
+    "url": "https://www.ecoveritas.com/contact-us"
   },
   {
     "id": "p4",
@@ -205,5 +207,26 @@
     "name": "Live pages with a blank hero image",
     "section": "Fixes",
     "notes": "From the imagery audit on 23 Oct (node tools/audit/imagery.mjs). Live pages showing an empty hero image panel; see docs/imagery-to-source.md."
+  },
+  {
+    "id": "compare-valpak",
+    "name": "Alternatives to Valpak",
+    "section": "Compare",
+    "plannedUrl": "https://www.ecoveritas.com/compare/alternatives-to-valpak",
+    "notes": "New page, not built yet. Names a competitor, so every claim needs checking before it goes live."
+  },
+  {
+    "id": "compare-lorax-alternatives",
+    "name": "Alternatives to Lorax",
+    "section": "Compare",
+    "plannedUrl": "https://www.ecoveritas.com/compare/alternatives-to-lorax",
+    "notes": "New page, not built yet. Names a competitor, so every claim needs checking before it goes live."
+  },
+  {
+    "id": "compare-lorax-vs",
+    "name": "Ecoveritas vs Lorax",
+    "section": "Compare",
+    "plannedUrl": "https://www.ecoveritas.com/compare/ecoveritas-vs-lorax",
+    "notes": "New page, not built yet. Names a competitor, so every claim needs checking before it goes live."
   }
 ]
