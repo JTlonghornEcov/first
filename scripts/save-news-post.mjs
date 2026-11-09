@@ -3,7 +3,7 @@
 // Usage: node scripts/save-news-post.mjs payloads/us-epr-ecomodulation/post.json
 import { launch } from './lib.mjs';
 import fs from 'node:fs';
-const ALLOW_LIVE = false;   // new posts are created disabled; publishing is done by a person in the CMS
+const ALLOW_LIVE = process.env.KEEP_LIVE === '1';   // new posts are created disabled; KEEP_LIVE=1 (only when the person asked for it) re-saves an already published post and keeps it live
 const P = JSON.parse(fs.readFileSync(process.argv[2]));
 const NEWS = { sectionId: P.sectionId || 18, typeId: P.typeId || 1 };   // default: "All news"; P can target another section (e.g. 14/31 = All compliance, Product)   // "All news" (newsList), entry type "Template - General"
 const link = (value, label) => ({ type: 'url', url: { value }, label, target: '' });
@@ -20,7 +20,7 @@ const block = b => {
   throw new Error('unknown block ' + b.type);
 };
 const pb = list('', P.blocks, b => ({ type: b.type, ...block(b) }));
-const payload = { ...NEWS, title: P.title, slug: P.slug, enabled: false, enabledForSite: false,
+const payload = { ...NEWS, title: P.title, slug: P.slug, enabled: ALLOW_LIVE, enabledForSite: ALLOW_LIVE,
   fields: { ...(P.heroTitle ? { heroTitle: P.heroTitle } : {}), ...(P.productMotif ? { productMotif: P.productMotif } : {}), heroIntroduction: P.heroIntroduction, ...(P.heroImage ? { heroImage: [P.heroImage] } : {}), ...(P.featuredImage ? { featuredImage: [P.featuredImage] } : {}), excerpt: P.excerpt,
     pageBuilder: pb, ctaPicker: [], seo: { titleRaw: { 1: P.seoTitle }, description: P.seoDescription, ...(P.robots ? { advanced: { robots: P.robots } } : {}) } } };   // HTML-method bodies stay noindex until approved
 if (process.env.ENTRY_ID) payload.entryId = process.env.ENTRY_ID;
