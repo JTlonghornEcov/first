@@ -251,6 +251,9 @@ button,input,textarea,select{font:inherit;color:inherit}
   function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
   // Task notes: ecoveritas.com and claude.ai addresses become links (text is escaped first).
   function linkify(s){return esc(s).replace(/https:\/\/(?:www\.ecoveritas\.com|claude\.ai)\/[^\s<]*[^\s<.,;:)]/g,function(u){return '<a class="pageurl" href="'+u+'" target="_blank" rel="noopener">'+u+'</a>';});}
+  // Review copies live inside this artifact (reviews/<page>.html), so anyone who can open the plan can open them;
+  // older separate review artifacts on claude.ai still work. Anything else is ignored.
+  function reviewHref(u){ u = String(u||""); return /^reviews\/[a-z0-9-]+\.html$/.test(u) || /^https:\/\/claude\.ai\//.test(u) ? u : ""; }
   function pageById(id){for(var i=0;i<state.pages.length;i++) if(state.pages[i].id===id) return state.pages[i]; return null;}
   function taskById(id){for(var i=0;i<state.tasks.length;i++) if(state.tasks[i].id===id) return state.tasks[i]; return null;}
   function isSignoff(t){return t.kind==="signoff";}
@@ -436,10 +439,10 @@ button,input,textarea,select{font:inherit;color:inherit}
       if(st==="ready") r += '<span class="ready-tag">Ready for sign-off</span>';
       if(p.url && /^https:\/\//.test(p.url)) r += '<a class="pageurl" href="'+esc(p.url)+'" target="_blank" rel="noopener">Live page</a>';
       // The review copy (a Claude artifact) opens only once the page has tasks for all three pillars: layout, imagery and copy.
-      if(p.reviewUrl && /^https:\/\/claude\.ai\//.test(p.reviewUrl)){
+      if(reviewHref(p.reviewUrl)){
         var noTasks = PARTS.filter(function(k){return !tasksFor(p.id,k[0]).length;}).map(function(k){return PART_SHORT[k[0]].toLowerCase();});
         r += noTasks.length ? '<span class="review-off" title="Add a task for '+esc(noTasks.join(', '))+' first">Review copy: needs '+esc(noTasks.join(', '))+' tasks</span>'
-          : '<a class="review-on" href="'+esc(p.reviewUrl)+'" target="_blank" rel="noopener">Review copy</a>';
+          : '<a class="review-on" href="'+esc(reviewHref(p.reviewUrl))+'" target="_blank" rel="noopener">Review copy</a>';
       }
       r += '<button class="link" data-act="toggle-open" aria-expanded="'+!!ui.open[p.id]+'">'+(linked.length?linked.length+(linked.length===1?' task':' tasks'):'No tasks')+(p.notes?', notes':'')+'</button></div></div>';
       r += '<div class="parts">';
@@ -531,7 +534,7 @@ button,input,textarea,select{font:inherit;color:inherit}
     r += '</div>';
     if(t.note) r += '<div class="tnote">'+linkify(t.note)+'</div>';
     // Imagery tasks link to a review copy of the page, so whoever sources the image can see the slot it fills.
-    if(t.previewUrl && /^https:\/\/claude\.ai\//.test(t.previewUrl)) r += '<div class="tmeta"><a class="review-on" href="'+esc(t.previewUrl)+'" target="_blank" rel="noopener">See the page</a><span>Placeholders show where each image goes</span></div>';
+    if(reviewHref(t.previewUrl)) r += '<div class="tmeta"><a class="review-on" href="'+esc(reviewHref(t.previewUrl))+'" target="_blank" rel="noopener">See the page</a><span>Placeholders show where each image goes</span></div>';
     r += '<div class="tmeta">';
     r += '<label class="duepick'+(late?' late':'')+'">'+(late?'Overdue':'Due')+' <input type="date" data-act="due" value="'+esc(du.date||"")+'" aria-label="Deadline for '+esc(t.title)+'" '+(r0?'disabled':'')+'></label>';
     if(du.override) r += '<span>Set by hand'+(du.goLive?', page goes live '+fmtDate(du.goLive):'')+'</span>'+(du.goLive && !r0 ? '<button class="link" data-act="due-reset">Use go-live date</button>' : '');
@@ -615,7 +618,7 @@ button,input,textarea,select{font:inherit;color:inherit}
   function smLinks(p, url){
     var r = '';
     if(p) r += '<button class="tag pg" data-goto="'+esc(p.id)+'" title="Open this page in the plan">In the plan · '+pct(p)+'%</button>';
-    if(p && p.reviewUrl && /^https:\/\/claude\.ai\//.test(p.reviewUrl)) r += '<a class="review-on" href="'+esc(p.reviewUrl)+'" target="_blank" rel="noopener">Review copy</a>';
+    if(p && reviewHref(p.reviewUrl)) r += '<a class="review-on" href="'+esc(reviewHref(p.reviewUrl))+'" target="_blank" rel="noopener">Review copy</a>';
     if(url && /^https:\/\//.test(url)) r += '<a class="pageurl" href="'+esc(url)+'" target="_blank" rel="noopener">Live page</a>';
     return r;
   }

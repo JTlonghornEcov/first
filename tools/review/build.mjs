@@ -5,6 +5,8 @@
 // Pages captured from the CMS preview (tools/review/from-preview.mjs) are read from payloads/review/<slug>/ instead.
 // Scripts are stripped: review copies carry no JavaScript. A heroPlaceholder in page.json shows the hero slot as
 // "to be sourced" (with the borrowed image faded behind it, if there is one).
+// Each copy is a complete page (doctype, head, body), so it can be published on its own or served as reviews/<slug>.html
+// inside the Website project plan artifact, which shares it with everyone who can open the plan.
 // Usage: node tools/review/build.mjs <slug>   → artifacts/review/<slug>.html
 import fs from 'node:fs';
 const slug = process.argv[2];
@@ -26,7 +28,9 @@ const built = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'l
 const buttons = (P.buttons || []).map(([href, label], i) => `<a class="rv-btn${i ? ' rv-ghost' : ''}" href="${esc(href)}">${esc(label)}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>`).join('');
 // Pages whose CMS entry type has no hero-button field (heroButtons: false) already carry the actions at the top of live.html.
 
-const html = `<title>${esc(P.name)} page review</title>
+const html = `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>${esc(P.name)} page review</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -70,7 +74,7 @@ body::before { content:""; position:fixed; inset:0 0 auto; height:env(safe-area-
 .rv-foot { background:var(--rv-white); border-top:1px solid var(--rv-line); color:#55656d; font-size:14px; }
 .rv-foot .rv-in { padding-block:28px; }
 a:focus-visible, button:focus-visible { outline:3px solid var(--rv-yellow); outline-offset:3px; }
-</style>
+</style></head><body>
 <div class="rv-bar" role="note"><div class="rv-in"><b>Review copy</b><span>${esc(P.name)} · built ${built} · not the live site; the form is switched off</span><span>Live page: ${esc(P.live || '')}</span></div></div>
 <header class="rv-hero"><div class="rv-in">
   <div><span class="rv-eyebrow">${esc(P.eyebrow || '')}</span><h1>${esc(P.heroTitle)}</h1><div class="rv-intro">${P.heroIntro || ''}</div>${P.heroButtons === false || !buttons ? '' : `<div class="rv-btns">${buttons}</div>`}</div>
@@ -91,6 +95,7 @@ ${body}
   </form>
 </div></section>
 <footer class="rv-foot"><div class="rv-in">Review copy of the ${esc(P.name)} page, built from the CMS version. Leave comments on anything that needs changing.</div></footer>
+</body></html>
 `;
 if (/x-craft-preview|[?&;]token=/.test(html)) throw new Error('a CMS preview token is in the review copy: refusing to write it');
 fs.mkdirSync('artifacts/review', { recursive: true });

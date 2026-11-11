@@ -16,12 +16,12 @@
    - Disabled concept page first; live pages change only through a draft that a person applies.
 3. **Tasks.** The build produces the tasks the page still needs (see below). Claude adds them to the planner,
    each linked to its page and to the part it completes.
-4. **Review copy.** Once James accepts a build, Claude publishes a review copy as a Claude artifact
-   (`node tools/review/build.mjs <slug>`, then publish `artifacts/review/<slug>.html`; republish the same file on later
-   rebuilds so the link stays the same) and sets `reviewUrl` on that page in the planner. The planner shows the
-   Review copy button once the page has at least one layout, one imagery and one copy task (the two standard tasks
-   cover all three). Peers comment on the
-   review copy; Claude turns comments into fixes or tasks.
+4. **Review copy.** Once James accepts a build, Claude builds a review copy (`node tools/review/from-preview.mjs` or
+   `tools/review/build.mjs <slug>`, giving `artifacts/review/<slug>.html`) and publishes it **inside the Website project plan
+   artifact** as `reviews/<slug>.html` (republish the plan with that file in `files`). It then sets `reviewUrl` on the page,
+   and `previewUrl` on its images task, to `reviews/<slug>.html`. Because the copies live inside the plan, anyone who can
+   open the plan can open them: nobody has to share each review copy separately. The planner shows the Review copy
+   button once the page has at least one layout, one imagery and one copy task.
 5. **Team.** The team reviews, assigns, groups and dates the tasks, and ticks them off. A page part (layout,
    imagery, copy) counts as done when every task linked to it is done.
 
