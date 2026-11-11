@@ -5,7 +5,7 @@
   "eyebrow": "Services",
   "heroTitle": "Packaging Optimisation",
   "heroIntro": "<p>Your packaging drives material costs, shipping costs, recyclability scores and, increasingly, what you owe under EPR. We look at all of it together, so the changes you make actually move the needle.</p>",
-  "heroImage": null,
+  "heroImage": 12051,
   "buttons": [
     [
       "#evx-contact",
@@ -19,5 +19,6 @@
   "ctaTitle": "Think your packaging could be doing more for you?",
   "ctaText": "Tell us what you're using now. We'll show you exactly where the opportunity is.",
   "imagery": [],
-  "entryId": 11801
+  "entryId": 11801,
+  "heroImageUrl": "https://www.ecoveritas.com/assets/general/packaging-optimisation-hero.jpg"
 }

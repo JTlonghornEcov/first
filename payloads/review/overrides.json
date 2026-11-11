@@ -9,7 +9,6 @@
   },
   "data-collection": {
     "name": "Data Collection, Calculation & Reporting",
-    "heroPlaceholder": "A new hero: packaging being weighed, or someone checking packaging data on screen. (Behind: the Obligation Assessment graphic it borrows for now.)",
     "live": "https://www.ecoveritas.com/services/data-collection-calculation-reporting"
   },
   "waste-management": {
@@ -19,7 +18,6 @@
   },
   "packaging-optimisation": {
     "name": "Packaging Optimisation",
-    "heroPlaceholder": "A hero for Packaging Optimisation: well-designed, right-sized packaging.",
     "live": "https://www.ecoveritas.com/services/packaging-optimisation"
   },
   "data-analytics": {
