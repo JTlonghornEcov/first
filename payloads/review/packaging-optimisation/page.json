@@ -14,7 +14,8 @@
       "Learn about the RAM"
     ]
   ],
-  "heroImageUrl": "https://www.ecoveritas.com/assets/general/_632x520_crop_center-center_80_none/12051/packaging-optimisation-hero.webp",
+  "heroImageUrl": "",
   "ctaTitle": "Think your packaging could be doing more for you?",
-  "ctaText": "Tell us what you're using now. We'll show you exactly where the opportunity is."
+  "ctaText": "Tell us what you're using now. We'll show you exactly where the opportunity is.",
+  "heroPlaceholder": "A hero for Packaging Optimisation: well-designed, right-sized packaging."
 }

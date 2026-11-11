@@ -51,3 +51,9 @@ After a build:
    Task ids are stable ("c-" + page + title), so only new tasks are added: before writing, read the existing
    task ids and skip any that already exist, so the team's assignments, deadlines, ticks and combinations are never
    overwritten. Tasks created this way show "From the build" in the planner.
+
+## Placing supplied images
+
+- A supplied photo goes into a "Photo to be sourced" placeholder (`.ph`). It never replaces an existing hero image unless James says so.
+- A filled slot is `<div class="ph[ wide|tall] photo"><img src="…" alt="…" style="object-position:X% Y%" loading="lazy"></div>`. The image always covers the frame; set `object-position` so the subject (people's faces, the product, the hands at work) stays in view at desktop and phone widths, and check both with a screenshot.
+- Name the asset after the page and slot, e.g. `data-collection-three-stages-banner.jpg`.

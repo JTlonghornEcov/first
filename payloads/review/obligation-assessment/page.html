@@ -162,8 +162,8 @@ html, body { overflow-x:clip; }
 .evc .ph.wide { aspect-ratio:21/8; }
 .evc .ph.tall { min-height:360px; height:100%; }
 @media (max-width:640px) { .evc .ph.wide { aspect-ratio:auto; } }
-.evc .ph.photo { padding:0; border:0; overflow:hidden; background:var(--slate); }
-.evc .ph.photo img { display:block; width:100%; height:100%; object-fit:cover; }
+.evc .ph.photo { display:block; position:relative; padding:0; border:0; overflow:hidden; background:var(--slate); }
+.evc .ph.photo img { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:cover; }
 
 /* Question-and-answer checker: radio buttons, result panels switched with :has(). No JavaScript.
    Each page adds its own rules for which result shows. */
@@ -229,7 +229,7 @@ html, body { overflow-x:clip; }
     <p class="lead">Clear outputs you can act on straight away, and the option to keep them up to date.</p>
   </div>
   <div class="grid" style="--min:300px">
-    <div class="ph photo"><img src="https://www.ecoveritas.com/assets/general/obligation-assessment-what-youll-receive.jpg" alt="A team reviewing findings and charts together around a table" loading="lazy"></div>
+    <div class="ph photo"><img src="https://www.ecoveritas.com/assets/general/obligation-assessment-what-youll-receive.jpg" alt="A team reviewing findings and charts together around a table" style="object-position:42% 40%" loading="lazy"></div>
     <div class="card">
       <h3>Your assessment</h3>
       <ul class="ticks">
