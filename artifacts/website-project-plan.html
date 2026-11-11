@@ -223,6 +223,13 @@ button,input,textarea,select{font:inherit;color:inherit}
 .smname span{font-size:12.5px;color:var(--muted);overflow-wrap:anywhere}
 .smlinks{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;font-size:12.5px}
 .review-off{display:inline-flex;align-items:center;padding:2px 10px;border-radius:999px;border:1px dashed var(--line-strong);color:var(--muted);font-weight:600}
+.rv{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;background:var(--bg,#fff)}
+.rv-bar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));padding-top:calc(10px + env(safe-area-inset-top,0px));background:var(--deep);color:#fff}
+.rv-bar b{font-size:14px;min-width:0;overflow-wrap:anywhere}
+.rv-bar button{border:0;border-radius:999px;padding:6px 14px;background:var(--yellow);color:var(--deep);font:inherit;font-weight:700;cursor:pointer}
+.rv-bar button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.rv iframe{flex:1 1 auto;width:100%;border:0;background:#fff}
+.rv-msg{padding:24px 16px;color:var(--text)}
 </style>
 
 <div id="app"></div>
@@ -253,6 +260,7 @@ button,input,textarea,select{font:inherit;color:inherit}
   function linkify(s){return esc(s).replace(/https:\/\/(?:www\.ecoveritas\.com|claude\.ai)\/[^\s<]*[^\s<.,;:)]/g,function(u){return '<a class="pageurl" href="'+u+'" target="_blank" rel="noopener">'+u+'</a>';});}
   // Review copies live inside this artifact (reviews/<page>.html), so anyone who can open the plan can open them;
   // older separate review artifacts on claude.ai still work. Anything else is ignored.
+  function reviewLink(u,label){ var h=reviewHref(u); if(!h) return ""; return /^reviews\//.test(h) ? '<a class="review-on" href="'+esc(h)+'" data-review="'+esc(h)+'">'+label+'</a>' : '<a class="review-on" href="'+esc(h)+'" target="_blank" rel="noopener">'+label+'</a>'; }
   function reviewHref(u){ u = String(u||""); return /^reviews\/[a-z0-9-]+\.html$/.test(u) || /^https:\/\/claude\.ai\//.test(u) ? u : ""; }
   function pageById(id){for(var i=0;i<state.pages.length;i++) if(state.pages[i].id===id) return state.pages[i]; return null;}
   function taskById(id){for(var i=0;i<state.tasks.length;i++) if(state.tasks[i].id===id) return state.tasks[i]; return null;}
@@ -442,7 +450,7 @@ button,input,textarea,select{font:inherit;color:inherit}
       if(reviewHref(p.reviewUrl)){
         var noTasks = PARTS.filter(function(k){return !tasksFor(p.id,k[0]).length;}).map(function(k){return PART_SHORT[k[0]].toLowerCase();});
         r += noTasks.length ? '<span class="review-off" title="Add a task for '+esc(noTasks.join(', '))+' first">Review copy: needs '+esc(noTasks.join(', '))+' tasks</span>'
-          : '<a class="review-on" href="'+esc(reviewHref(p.reviewUrl))+'" target="_blank" rel="noopener">Review copy</a>';
+          : reviewLink(p.reviewUrl,"Review copy");
       }
       r += '<button class="link" data-act="toggle-open" aria-expanded="'+!!ui.open[p.id]+'">'+(linked.length?linked.length+(linked.length===1?' task':' tasks'):'No tasks')+(p.notes?', notes':'')+'</button></div></div>';
       r += '<div class="parts">';
@@ -534,7 +542,7 @@ button,input,textarea,select{font:inherit;color:inherit}
     r += '</div>';
     if(t.note) r += '<div class="tnote">'+linkify(t.note)+'</div>';
     // Imagery tasks link to a review copy of the page, so whoever sources the image can see the slot it fills.
-    if(reviewHref(t.previewUrl)) r += '<div class="tmeta"><a class="review-on" href="'+esc(reviewHref(t.previewUrl))+'" target="_blank" rel="noopener">See the page</a><span>Placeholders show where each image goes</span></div>';
+    if(reviewHref(t.previewUrl)) r += '<div class="tmeta">'+reviewLink(t.previewUrl,"See the page")+'<span>Placeholders show where each image goes</span></div>';
     r += '<div class="tmeta">';
     r += '<label class="duepick'+(late?' late':'')+'">'+(late?'Overdue':'Due')+' <input type="date" data-act="due" value="'+esc(du.date||"")+'" aria-label="Deadline for '+esc(t.title)+'" '+(r0?'disabled':'')+'></label>';
     if(du.override) r += '<span>Set by hand'+(du.goLive?', page goes live '+fmtDate(du.goLive):'')+'</span>'+(du.goLive && !r0 ? '<button class="link" data-act="due-reset">Use go-live date</button>' : '');
@@ -618,7 +626,7 @@ button,input,textarea,select{font:inherit;color:inherit}
   function smLinks(p, url){
     var r = '';
     if(p) r += '<button class="tag pg" data-goto="'+esc(p.id)+'" title="Open this page in the plan">In the plan · '+pct(p)+'%</button>';
-    if(p && reviewHref(p.reviewUrl)) r += '<a class="review-on" href="'+esc(reviewHref(p.reviewUrl))+'" target="_blank" rel="noopener">Review copy</a>';
+    if(p && reviewHref(p.reviewUrl)) r += reviewLink(p.reviewUrl,"Review copy");
     if(url && /^https:\/\//.test(url)) r += '<a class="pageurl" href="'+esc(url)+'" target="_blank" rel="noopener">Live page</a>';
     return r;
   }
@@ -851,6 +859,37 @@ button,input,textarea,select{font:inherit;color:inherit}
       liveRender();
     });
   }
+
+  /* ---------- review copy viewer: opens reviews/<page>.html inside the plan ---------- */
+  var rvEl=null, rvLast=null;
+  function closeReview(){ if(rvEl){ rvEl.remove(); rvEl=null; document.documentElement.style.overflow=""; if(/^#review-/.test(location.hash)) { try{ history.replaceState(null,"",location.pathname+location.search); }catch(e){ location.hash=""; } } if(rvLast && rvLast.focus) rvLast.focus(); } }
+  function openReview(href){
+    if(!/^reviews\/[a-z0-9-]+\.html$/.test(href)) return;
+    closeReview(); rvLast=document.activeElement;
+    var slug=href.slice(8,-5);
+    rvEl=document.createElement("div"); rvEl.className="rv"; rvEl.setAttribute("role","dialog"); rvEl.setAttribute("aria-modal","true"); rvEl.setAttribute("aria-label","Review copy");
+    rvEl.innerHTML='<div class="rv-bar"><b>Review copy: '+esc(slug.replace(/-/g," "))+'</b><button type="button" data-rvclose="1">Back to the plan</button></div><div class="rv-msg">Loading the page…</div>';
+    document.body.appendChild(rvEl); document.documentElement.style.overflow="hidden";
+    rvEl.querySelector("button").focus();
+    if(location.hash!=="#review-"+slug){ try{ history.replaceState(null,"","#review-"+slug); }catch(e){} }
+    var mine=rvEl;
+    fetch(href).then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); }).then(function(html){
+      if(rvEl!==mine) return;
+      html=html.replace(/<script[\s\S]*?<\/script>/gi,"").replace(/<head([^>]*)>/i,'<head$1><base target="_blank">');
+      var f=document.createElement("iframe"); f.title="Review copy of "+slug.replace(/-/g," ");
+      f.setAttribute("sandbox","allow-popups allow-popups-to-escape-sandbox"); f.srcdoc=html;
+      var m=rvEl.querySelector(".rv-msg"); m.replaceWith(f);
+    }).catch(function(){ if(rvEl!==mine) return; rvEl.querySelector(".rv-msg").textContent="This review copy couldn't be loaded. Reload the plan and try again."; });
+  }
+  document.addEventListener("click", function(e){
+    var a=e.target.closest("a[data-review]");
+    if(a){ e.preventDefault(); openReview(a.getAttribute("data-review")); return; }
+    if(e.target.closest("[data-rvclose]")){ e.preventDefault(); closeReview(); }
+  }, true);
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape" && rvEl) closeReview(); });
+  function reviewFromHash(){ var m=/^#review-([a-z0-9-]+)$/.exec(location.hash); if(m) openReview("reviews/"+m[1]+".html"); else if(rvEl) closeReview(); }
+  window.addEventListener("hashchange", reviewFromHash);
+  reviewFromHash();
   var claudeApi = window.claude;
   if(claudeApi && typeof claudeApi.use==="function"){
     claudeApi.use("db").then(function(d){
