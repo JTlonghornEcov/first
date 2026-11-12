@@ -49,8 +49,8 @@ button,input,textarea,select{font:inherit;color:inherit}
 .counts{display:flex;flex-wrap:wrap;gap:8px 28px;padding-bottom:22px;font-size:14px}
 .counts b{font-size:20px;font-weight:700;margin-right:6px;font-variant-numeric:tabular-nums}
 .counts span{color:var(--band-muted)}
-.tabs{display:flex;gap:4px}
-.tabs button{border:0;background:none;color:var(--band-muted);padding:12px 18px 14px;font-weight:700;font-size:15px;cursor:pointer;border-radius:10px 10px 0 0}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabs button{white-space:nowrap;flex:none;border:0;background:none;color:var(--band-muted);padding:12px 18px 14px;font-weight:700;font-size:15px;cursor:pointer;border-radius:10px 10px 0 0}
 .tabs button[aria-selected="true"]{background:var(--bg);color:var(--text)}
 
 .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:22px 0 14px}
@@ -230,6 +230,80 @@ button,input,textarea,select{font:inherit;color:inherit}
 .rv-bar button:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .rv iframe{flex:1 1 auto;width:100%;border:0;background:#fff}
 .rv-msg{padding:24px 16px;color:var(--text)}
+/* This week: the Wednesday-to-Wednesday cycle */
+.row-main{grid-template-columns:minmax(0,1fr) auto}
+.pstate{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;justify-content:flex-end;max-width:420px}
+.lanechips{display:flex;flex-wrap:wrap;gap:4px}
+.lc{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:2px 8px 2px 3px;border-radius:999px;border:1px solid var(--line);background:var(--chip-off);color:var(--muted)}
+.lc.l-ok{color:var(--atlantic);border-color:var(--atlantic)}
+.lc.l-work{color:var(--late);border-color:var(--late)}
+.chip.on{background:var(--chip-on);border-color:var(--chip-on);color:var(--chip-on-text)}
+.seg-lbl{font-size:13px;font-weight:700;color:var(--muted);padding:0 6px 0 8px;align-self:center}
+.stage{display:inline-flex;align-items:center;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid var(--line-strong);color:var(--muted);background:var(--surface);white-space:nowrap}
+.stage.s-review{color:var(--text);border-color:var(--mist)}
+.stage.s-work{color:var(--late);border-color:var(--late)}
+.stage.s-ready{background:var(--yellow);border-color:var(--yellow);color:var(--deep)}
+.stage.s-signed{background:var(--chip-on);border-color:var(--chip-on);color:var(--chip-on-text)}
+.stage.s-live{background:var(--deep);border-color:var(--deep);color:#fff}
+.weekhead{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:end;justify-content:space-between;margin:4px 0 16px}
+.weekhead h2{margin:0;font-size:20px;font-weight:800}
+.weekhead .hint{margin:4px 0 0;font-size:13.5px}
+.strip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;list-style:none;margin:0;padding:0;min-width:min(100%,420px)}
+.strip li{display:flex;flex-direction:column;align-items:center;padding:6px 4px;border-radius:8px;background:var(--surface);border:1px solid var(--line);font-size:11.5px;line-height:1.3}
+.strip li b{font-size:12px;white-space:nowrap}
+.strip li span{color:var(--muted)}
+.strip li.past{opacity:.55}
+.strip li.meet{background:var(--yellow);border-color:var(--yellow);color:var(--deep)}
+.strip li.meet span{color:var(--deep)}
+.strip li.now{outline:2px solid var(--atlantic);outline-offset:1px}
+.you{display:flex;gap:10px;align-items:center;padding:12px 14px;margin:0 0 14px;border-radius:12px;background:var(--surface);border:1px solid var(--atlantic)}
+.you p{margin:0;font-size:14px}
+.you .av{width:24px;height:24px;font-size:12px}
+.wklist{display:flex;flex-direction:column;gap:14px}
+.wk{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--line-strong);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.wk.s-review{border-left-color:var(--mist)}
+.wk.s-work{border-left-color:var(--late)}
+.wk.s-ready{border-left-color:var(--yellow)}
+.wk.s-signed,.wk.s-live{border-left-color:var(--chip-on)}
+.wk-head{display:flex;gap:12px;align-items:flex-start;justify-content:space-between}
+.wk-title{min-width:0}
+.wk-title h3{margin:0;font-size:17px;line-height:1.3}
+.wk-links{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:13px}
+.wk-links .review-on{padding:6px 14px;font-size:14px}
+.wk-note{margin:0;font-size:14px;color:var(--muted)}
+.lanes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:10px}
+.lane{border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--bg);display:flex;flex-direction:column;gap:8px;min-width:0}
+.lane.mine{border-color:var(--atlantic);box-shadow:0 0 0 1px var(--atlantic) inset}
+.lane-h{display:flex;align-items:center;gap:8px;font-size:14px}
+.lane-h span{color:var(--muted);font-size:13px}
+.ask{margin:0;font-size:13px;color:var(--muted)}
+.brief{margin:0;font-size:13px;padding:8px 10px;border-radius:8px;background:var(--surface);border:1px dashed var(--line-strong);overflow-wrap:anywhere}
+.states{display:flex;flex-wrap:wrap;gap:4px}
+.states button{flex:1 1 auto;border:1px solid var(--line-strong);background:var(--surface);border-radius:8px;padding:7px 10px;font-weight:700;font-size:13px;cursor:pointer;color:var(--muted)}
+.states button[aria-pressed="true"].st-todo{background:var(--line);color:var(--text);border-color:var(--line-strong)}
+.states button[aria-pressed="true"].st-work{background:var(--late);border-color:var(--late);color:#fff}
+.states button[aria-pressed="true"].st-ok{background:var(--chip-on);border-color:var(--chip-on);color:var(--chip-on-text)}
+.states button:disabled{cursor:default}
+.lane textarea{width:100%;min-height:58px;resize:vertical;border:1px solid var(--line-strong);border-radius:8px;padding:8px 10px;background:var(--surface);font-size:14px}
+.by{margin:0;font-size:12px;color:var(--muted)}
+.wk-foot{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:14px}
+.wk-foot p{margin:0;flex:1 1 260px}
+.wk-foot .primary{padding:8px 16px}
+.carry{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:13px}
+.agenda-box{margin:22px 0 0;padding:16px 18px;border-radius:12px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.agenda-box h2{margin:0 0 4px;font-size:16px}
+.agenda-box div{display:flex;flex-direction:column;font-size:14px}
+.agenda-box div span{color:var(--muted)}
+.agenda-box .hint{margin:4px 0 0}
+select.field{flex:1 1 280px}
+.ev.meet{background:var(--yellow);border-color:var(--yellow);border-left-color:var(--deep);color:var(--deep)}
+span.ev.meet{cursor:default}
+@media (max-width:760px){
+  .row-main{grid-template-columns:minmax(0,1fr)}
+  .pstate{justify-content:flex-start;max-width:none}
+  .strip{min-width:0;width:100%}
+  .wk-head{flex-direction:column}
+}
 </style>
 
 <div id="app"></div>
@@ -246,13 +320,17 @@ button,input,textarea,select{font:inherit;color:inherit}
   var state = {pages:[], tasks:[], sitemap:null};
   var loaded = {pages:false, tasks:false};
   function blankDraft(){return {editing:null,combine:[],title:"",assignee:"",due:"",on:{pages:[],parts:[]},off:{pages:[],parts:[]}};}
-  var ui = {tab:"pages", smFilter:"all", filter:"all", open:{}, who:"all", show:"open", pillar:"all", draft:blankDraft(), month:"", picking:false, picked:{}, confirm:""};
+  var ui = {tab:"week", wk:0, me:"", smFilter:"all", filter:"all", open:{}, who:"all", show:"open", pillar:"all", draft:blankDraft(), month:"", picking:false, picked:{}, confirm:""};
   var mode = "pending", db = null, inflight = 0, lastErr = "", deferred = false, confirmTimer = null;
 
   try{
     var v = JSON.parse(sessionStorage.getItem('wpp-ui')||"null");
-    if(v){ ["tab","smFilter","filter","open","who","show","pillar","month"].forEach(function(k){ if(v[k]!==undefined) ui[k]=v[k]; }); if(v.draft && v.draft.on){ ui.draft=v.draft; if(!ui.draft.combine) ui.draft.combine=[]; } }
+    if(v){ ["tab","wk","smFilter","filter","open","who","show","pillar","month"].forEach(function(k){ if(v[k]!==undefined) ui[k]=v[k]; }); if(v.draft && v.draft.on){ ui.draft=v.draft; if(!ui.draft.combine) ui.draft.combine=[]; } }
   }catch(e){}
+  if(["week","pages","calendar","sitemap"].indexOf(ui.tab)<0) ui.tab="week";
+  if(ui.wk!==1) ui.wk=0;
+  if(ui.filter && ["all","notbuilt","review","work","ready","signed","live"].indexOf(ui.filter)<0) ui.filter="all";
+  try{ ui.me = localStorage.getItem('wpp-me')||""; }catch(e){}
 
   /* ---------- helpers ---------- */
   function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
@@ -284,7 +362,7 @@ button,input,textarea,select{font:inherit;color:inherit}
   function today(){return iso(new Date());}
   function fmtDate(s){if(!s) return ""; var d=new Date(s+"T00:00:00"); return d.toLocaleDateString("en-GB",{day:"numeric",month:"short"});}
   function fmtLong(s){var d=new Date(s+"T00:00:00"); return d.toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"long"});}
-  function pageLate(p){return p.goLive && p.goLive<today() && status(p)!=="done";}
+  function pageLate(p){var st=stage(p); return p.goLive && p.goLive<today() && st!=="signed" && st!=="live";}
   function uniq(a){return a.filter(function(x,i){return a.indexOf(x)===i;});}
   // A task's deadline is the earliest go-live date among its pages; a manual date is used only when none of them has one.
   function taskDue(t){
@@ -374,32 +452,29 @@ button,input,textarea,select{font:inherit;color:inherit}
     state.tasks.push(nt); setDoc("tasks/"+id, clean(nt));
   }
   function ensureSignoffs(){ if(mode!=="live") return; state.pages.forEach(function(p){ if(pillarsDone(p)) ensureSignoff(p); }); }
-  function liveRender(){ ensureSignoffs(); if(editingText()){ deferred = true; return; } rerender(); }
+  function liveRender(){ if(editingText()){ deferred = true; return; } rerender(); }
   document.addEventListener('focusout', function(){ setTimeout(function(){ if(deferred && !editingText()){ deferred=false; rerender(); } }, 0); });
 
   function render(){
-    var pages = state.pages;
-    var ticks = pages.reduce(function(a,p){return a+stages(p);},0);
-    var overall = pages.length ? Math.round(ticks/(pages.length*4)*100) : 0;
-    var c = {done:0,progress:0,ready:0,todo:0};
-    pages.forEach(function(p){c[status(p)]++;});
-    var openTasks = state.tasks.filter(function(t){return !t.done && live(t);}).length;
-    var next = pages.filter(function(p){return p.goLive && p.goLive>=today() && status(p)!=="done";}).sort(function(a,b){return a.goLive<b.goLive?-1:1;})[0];
+    var pages = state.pages, m = curMeeting(), wl = weekPages(m);
+    var good = wl.filter(function(p){var s=stage(p); return s==="ready"||s==="signed"||s==="live";}).length;
+    var work = wl.filter(function(p){return stage(p)==="work";}).length;
+    var check = wl.filter(function(p){return stage(p)==="review";}).length;
+    var pctW = wl.length ? Math.round(good/wl.length*100) : 0;
+    var signedN = pages.filter(function(p){return stage(p)==="signed";}).length, liveN = pages.filter(function(p){return stage(p)==="live";}).length;
     document.body.classList.toggle('ro', ro());
 
     var h = '<header class="band"><div class="wrap">';
-    h += '<div class="hero"><div><h1>Website project plan</h1><p>Every page on the site and when it goes live. Each page needs its layout, imagery and copy done, then a final sign-off. Tasks take their deadline from their pages’ go-live dates and tick those stages off when they’re complete.</p></div>';
-    h += '<div class="overall"><div class="num">'+overall+'%</div><div class="lbl">'+ticks+' of '+(pages.length*4)+' page stages done</div></div></div>';
-    h += '<div class="meter" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+overall+'"><span style="width:'+overall+'%"></span></div>';
-    h += '<div class="counts"><div><b>'+c.done+'</b><span>pages complete</span></div><div><b>'+c.progress+'</b><span>in progress</span></div><div><b>'+c.ready+'</b><span>ready for sign-off</span></div><div><b>'+c.todo+'</b><span>not started</span></div><div><b>'+openTasks+'</b><span>open tasks</span></div>';
-    if(next) h += '<div><span>Next go-live: </span><b style="font-size:15px">'+esc(next.name)+', '+fmtDate(next.goLive)+'</b></div>';
-    h += '</div>';
+    h += '<div class="hero"><div><h1>Website project plan</h1><p>Each Wednesday we pick the pages to work on. From Thursday to Tuesday, Viviana checks the images and how each page looks and Matias checks the copy. On Wednesday we sign off what’s ready and pick the next week’s pages.</p></div>';
+    h += '<div class="overall"><div class="num">'+wl.length+'</div><div class="lbl">page'+(wl.length===1?'':'s')+' this week<br>meeting '+(m===today()?'today':fmtLong(m))+'</div></div></div>';
+    h += '<div class="meter" role="progressbar" aria-label="This week’s pages good to go" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pctW+'"><span style="width:'+pctW+'%"></span></div>';
+    h += '<div class="counts"><div><b>'+good+'</b><span>good to go</span></div><div><b>'+work+'</b><span>need work</span></div><div><b>'+check+'</b><span>being checked</span></div><div><b>'+signedN+'</b><span>signed off overall</span></div><div><b>'+liveN+'</b><span>live</span></div></div>';
     h += '<div class="tabs" role="tablist">';
-    [["pages","Pages ("+pages.length+")"],["tasks","Tasks ("+openTasks+" open)"],["calendar","Calendar"],["sitemap","Site map"]].forEach(function(t){ h += '<button role="tab" data-tab="'+t[0]+'" aria-selected="'+(ui.tab===t[0])+'">'+t[1]+'</button>'; });
+    [["week","This week ("+wl.length+")"],["pages","All pages ("+pages.length+")"],["calendar","Calendar"],["sitemap","Site map"]].forEach(function(t){ h += '<button role="tab" data-tab="'+t[0]+'" aria-selected="'+(ui.tab===t[0])+'">'+t[1]+'</button>'; });
     h += '</div></div></header><main class="wrap">';
-    if(mode==="offline") h += '<p class="notice">This plan’s pages and tasks are stored with the artifact. Open it in Claude, signed in, to see and edit them.</p>';
+    if(mode==="offline") h += '<p class="notice">This plan’s pages are stored with the artifact. Open it in Claude, signed in, to see and edit them.</p>';
     else if(mode==="pending" && !(loaded.pages && loaded.tasks)) h += '<p class="notice">Loading the plan…</p>';
-    h += ui.tab==="pages" ? renderPages(c) : ui.tab==="tasks" ? renderTasks() : ui.tab==="sitemap" ? renderSitemap() : renderCalendar();
+    h += ui.tab==="week" ? renderWeek() : ui.tab==="pages" ? renderPages() : ui.tab==="sitemap" ? renderSitemap() : renderCalendar();
     h += '</main>';
     document.getElementById('app').innerHTML = h;
     setSave();
@@ -412,18 +487,15 @@ button,input,textarea,select{font:inherit;color:inherit}
 
   /* ---------- pages ---------- */
   function byDate(a,b){ if((a.goLive||"")===(b.goLive||"")) return (a.order||0)-(b.order||0); if(!a.goLive) return 1; if(!b.goLive) return -1; return a.goLive<b.goLive?-1:1; }
-  function renderPages(c){
-    var pages = state.pages, h = '';
+  var PAGE_STAGE_FILTERS = [["all","All"],["review","Being checked"],["work","Needs work"],["ready","Ready to sign off"],["notbuilt","Not built yet"],["signed","Signed off"],["live","Live"]];
+  function renderPages(){
+    var pages = state.pages, h = '', cnt = {};
+    pages.forEach(function(p){ var s=stage(p); cnt[s]=(cnt[s]||0)+1; });
     var f = '<div class="seg" role="group" aria-label="Show pages">';
-    PAGE_FILTERS.forEach(function(x){ var n = x[0]==="all"?pages.length:c[x[0]]; f += '<button data-filter="'+x[0]+'" aria-pressed="'+(ui.filter===x[0])+'">'+x[1]+' ('+n+')</button>'; });
+    PAGE_STAGE_FILTERS.forEach(function(x){ var n = x[0]==="all"?pages.length:(cnt[x[0]]||0); f += '<button data-filter="'+x[0]+'" aria-pressed="'+(ui.filter===x[0])+'">'+x[1]+' ('+n+')</button>'; });
     h += toolbar(f+'</div>');
-    var shown = pages.filter(function(p){return ui.filter==="all"||status(p)===ui.filter;}).slice().sort(byDate);
-    if(ui.filter==="all"){
-      var todo = shown.filter(function(p){return status(p)!=="done";}).sort(function(a,b){ var ra=status(a)==="ready"?0:1, rb=status(b)==="ready"?0:1; return ra-rb || byDate(a,b); });
-      var fin = shown.filter(function(p){return status(p)==="done";});
-      h += '<h2 class="group-title">Still to do, soonest go-live first</h2>' + pageList(todo, pages.length?'Nothing left to do. Every page is complete.':'No pages yet. Add your first one below.');
-      h += '<h2 class="group-title">Complete</h2>' + pageList(fin, 'No pages complete yet.');
-    } else h += '<div style="height:8px"></div>' + pageList(shown, 'No pages here right now.');
+    var shown = pages.filter(function(p){return ui.filter==="all"||stage(p)===ui.filter;}).slice().sort(function(a,b){ return STAGE_ORDER.indexOf(stage(a))-STAGE_ORDER.indexOf(stage(b)) || byDate(a,b); });
+    h += '<div style="height:8px"></div>' + pageList(shown, pages.length?'No pages here right now.':'No pages yet. Add your first one below.');
     h += '<form class="add" id="addPage" autocomplete="off">';
     h += '<input class="field" id="newName" placeholder="Add a page, e.g. Packaging EPR service" aria-label="New page name">';
     h += '<input class="field sec" id="newSec" placeholder="Section" aria-label="Section" list="secs">';
@@ -434,49 +506,29 @@ button,input,textarea,select{font:inherit;color:inherit}
   }
   function pageList(items, emptyMsg){
     if(!items.length) return '<div class="empty">'+esc(emptyMsg)+'</div>';
-    var r0 = ro();
+    var r0 = ro(), cm = curMeeting();
     return '<div class="list">'+items.map(function(p){
-      var st = status(p), cls = st==="done"?" done":(st==="progress"||st==="ready")?" prog":"";
-      var linked = tasksFor(p.id).filter(function(t){return !isSignoff(t);});
+      var st = stage(p), cls = (st==="signed"||st==="live")?" done":(st==="notbuilt")?"":" prog";
       var r = '<article class="row'+cls+(ui.open[p.id]?' open':'')+'" data-id="'+esc(p.id)+'" id="page-'+esc(p.id)+'">';
       r += '<div class="row-main"><div class="name">';
       r += '<input data-field="name" value="'+esc(p.name)+'" aria-label="Page name" '+(r0?'readonly':'')+'>';
       r += '<div class="meta"><input data-field="section" value="'+esc(p.section||"")+'" placeholder="Section" aria-label="Section" list="secs" '+(r0?'readonly':'')+'>';
       r += '<label class="golive">Go-live <input type="date" data-field="goLive" value="'+esc(p.goLive||"")+'" aria-label="Go-live date for '+esc(p.name)+'" '+(r0?'readonly':'')+'></label>';
       if(pageLate(p)) r += '<span class="late-tag">Go-live date passed</span>';
-      if(st==="ready") r += '<span class="ready-tag">Ready for sign-off</span>';
+      if(reviewHref(p.reviewUrl)) r += reviewLink(p.reviewUrl,"Review copy");
       if(p.url && /^https:\/\//.test(p.url)) r += '<a class="pageurl" href="'+esc(p.url)+'" target="_blank" rel="noopener">Live page</a>';
-      // The review copy (a Claude artifact) opens only once the page has tasks for all three pillars: layout, imagery and copy.
-      if(reviewHref(p.reviewUrl)){
-        var noTasks = PARTS.filter(function(k){return !tasksFor(p.id,k[0]).length;}).map(function(k){return PART_SHORT[k[0]].toLowerCase();});
-        r += noTasks.length ? '<span class="review-off" title="Add a task for '+esc(noTasks.join(', '))+' first">Review copy: needs '+esc(noTasks.join(', '))+' tasks</span>'
-          : reviewLink(p.reviewUrl,"Review copy");
+      r += '<button class="link" data-act="toggle-open" aria-expanded="'+!!ui.open[p.id]+'">'+(p.notes?'Notes':'Add notes')+'</button></div></div>';
+      r += '<div class="pstate">'+stageChip(p);
+      if(st!=="notbuilt" && st!=="signed" && st!=="live") r += '<div class="lanechips">'+LANES.map(function(L){ var ls=laneState(p,L.k); return '<span class="lc l-'+ls+'" title="'+esc(L.title+' ('+L.who+')')+'">'+av(L.who)+esc(L.k==="look"?"Look":"Copy")+': '+esc(LSTATES.filter(function(x){return x[0]===ls;})[0][1])+'</span>'; }).join('')+'</div>';
+      if(st!=="signed" && st!=="live"){
+        var inWk = p.week===cm;
+        r += r0 ? (inWk?'<span class="hint">In this week</span>':'') : '<button class="chip'+(inWk?' on':'')+'" data-act="week-toggle" aria-pressed="'+inWk+'">'+(inWk?'In this week':'Add to this week')+'</button>';
+        if(p.week && p.week!==cm) r += '<span class="hint">Week to '+fmtDate(p.week)+'</span>';
       }
-      r += '<button class="link" data-act="toggle-open" aria-expanded="'+!!ui.open[p.id]+'">'+(linked.length?linked.length+(linked.length===1?' task':' tasks'):'No tasks')+(p.notes?', notes':'')+'</button></div></div>';
-      r += '<div class="parts">';
-      PARTS.forEach(function(k){
-        var ts = tasksFor(p.id,k[0]), on = partDone(p,k[0]), auto = ts.length>0, openPeople = [];
-        ts.forEach(function(t){ if(!t.done && openPeople.indexOf(t.assignee||"")<0) openPeople.push(t.assignee||""); });
-        var tip = auto ? (on?'Done: all '+ts.length+' linked task'+(ts.length>1?'s':'')+' complete':ts.filter(function(t){return !t.done;}).length+' of '+ts.length+' linked tasks still open') : 'No tasks linked, tick by hand';
-        r += '<div class="pcol"><button class="part'+(auto?' auto':'')+'" data-part="'+k[0]+'" aria-pressed="'+on+'" title="'+esc(tip)+'" '+((r0||auto)?'aria-disabled="true"':'')+'><span class="box" aria-hidden="true"></span>'+k[1]+'</button>';
-        r += '<div class="who">'+openPeople.map(av).join('')+'</div></div>';
-      });
-      var so = signoffTask(p), ready = pillarsDone(p), son = signedOff(p);
-      var stip = ready ? (son?'Signed off'+(so&&so.assignee?' by '+so.assignee:''):'Ready: tick when the page is signed off') : 'Opens once '+missingPillars(p).join(', ')+' '+(missingPillars(p).length>1?'are':'is')+' done';
-      r += '<div class="pcol"><button class="part signoff'+(ready?'':' locked')+'" data-act="signoff" aria-pressed="'+son+'" title="'+esc(stip)+'" '+((r0||!ready)?'aria-disabled="true"':'')+'><span class="box" aria-hidden="true"></span>Sign-off</button>';
-      r += '<div class="who">'+(ready && !son && so ? av(so.assignee) : '')+'</div></div>';
-      r += '</div><div class="pct" aria-label="'+pct(p)+' percent complete">'+pct(p)+'%</div></div>';
+      r += '</div></div>';
       r += '<div class="extra">';
-      if(linked.length){
-        r += '<h3>Tasks on this page</h3><div class="mini">';
-        linked.forEach(function(t){
-          var du = taskDue(t);
-          r += '<div class="mini-task" data-tid="'+esc(t.id)+'"><button class="tick" data-act="task-done" role="checkbox" aria-checked="'+!!t.done+'" aria-label="Mark done" '+(r0?'disabled':'')+'><span class="box"></span></button>'+av(t.assignee)+'<span>'+esc(t.title)+(du.date?' <span class="hint">(due '+fmtDate(du.date)+')</span>':'')+'</span></div>';
-        });
-        r += '</div>';
-      }
       r += '<textarea data-field="notes" placeholder="Notes, links, who’s waiting on what…" aria-label="Notes for '+esc(p.name)+'" '+(r0?'readonly':'')+'>'+esc(p.notes||"")+'</textarea>';
-      r += '<div class="actions"><button class="ghost" data-act="task-for-page">New task for this page</button>'+confirmBtn("page:"+p.id,"danger","Remove page","delete")+'</div></div>';
+      r += '<div class="actions">'+(r0?'':confirmBtn("page:"+p.id,"danger","Remove page","delete"))+'</div></div>';
       return r + '</article>';
     }).join('')+'</div>';
   }
@@ -625,7 +677,7 @@ button,input,textarea,select{font:inherit;color:inherit}
   function normUrl(u){return String(u||"").replace(/[?#].*$/,"").replace(/\/+$/,"").toLowerCase();}
   function smLinks(p, url){
     var r = '';
-    if(p) r += '<button class="tag pg" data-goto="'+esc(p.id)+'" title="Open this page in the plan">In the plan · '+pct(p)+'%</button>';
+    if(p) r += '<button class="tag pg" data-goto="'+esc(p.id)+'" title="Open this page in the plan">In the plan · '+STAGES[stage(p)]+'</button>';
     if(p && reviewHref(p.reviewUrl)) r += reviewLink(p.reviewUrl,"Review copy");
     if(url && /^https:\/\//.test(url)) r += '<a class="pageurl" href="'+esc(url)+'" target="_blank" rel="noopener">Live page</a>';
     return r;
@@ -661,6 +713,128 @@ button,input,textarea,select{font:inherit;color:inherit}
     return h + '<div style="height:48px"></div>';
   }
 
+  /* ---------- weekly rhythm: Wednesday meeting, Thursday to Tuesday work ---------- */
+  // A page joins a week by its "week" field: the date of the Wednesday meeting that week ends with.
+  // Viviana checks images and look (lookState/lookNote), Matias checks the copy (wordsState/wordsNote).
+  var LANES = [
+    {k:"look", title:"Images and look", who:"Viviana", ask:"Are the photos right and in frame, and does the page look good on desktop and phone?", ph:"What needs changing? Say which section or photo, e.g. ‘Hero photo is cropped through the faces’."},
+    {k:"words", title:"Copy", who:"Matias", ask:"Is the copy accurate, clear and on brand? Any claims we can’t back up?", ph:"What needs changing? Quote the line and say what it should say."}
+  ];
+  var LSTATES = [["todo","Not checked"],["work","Needs work"],["ok","Good to go"]];
+  var STAGES = {notbuilt:"Not built yet", review:"Being checked", work:"Needs work", ready:"Ready to sign off", signed:"Signed off", live:"Live"};
+  var STAGE_ORDER = ["work","review","ready","notbuilt","signed","live"];
+  function addDays(s,n){ var d=new Date(s+"T00:00:00"); d.setDate(d.getDate()+n); return iso(d); }
+  function meetingOf(s){ var d=new Date(s+"T00:00:00"); d.setDate(d.getDate()+((3-d.getDay()+7)%7)); return iso(d); }
+  function curMeeting(){ return meetingOf(today()); }
+  function viewMeeting(){ return addDays(curMeeting(), 7*(ui.wk||0)); }
+  function laneState(p,k){ var s=p[k+"State"]; return s==="work"||s==="ok" ? s : "todo"; }
+  function legacySigned(p){ var t=signoffTask(p); return !!(t && t.done); }
+  function isSigned(p){ return p.signedOff===undefined ? legacySigned(p) : !!p.signedOff; }
+  function stage(p){
+    if(p.isLive) return "live";
+    if(isSigned(p)) return "signed";
+    if(!reviewHref(p.reviewUrl)) return "notbuilt";
+    var a=laneState(p,"look"), b=laneState(p,"words");
+    if(a==="work"||b==="work") return "work";
+    if(a==="ok"&&b==="ok") return "ready";
+    return "review";
+  }
+  function stageChip(p){ var s=stage(p); return '<span class="stage s-'+s+'">'+STAGES[s]+'</span>'; }
+  function weekPages(m){ return state.pages.filter(function(p){return p.week===m;}).sort(function(a,b){ return STAGE_ORDER.indexOf(stage(a))-STAGE_ORDER.indexOf(stage(b)) || (a.order||0)-(b.order||0); }); }
+  function photoBrief(p){ var t=taskById("std-"+p.id+"-images"); return t && t.note ? String(t.note).replace(/\s*The See the page button[^.]*\.\s*Send (it|them|the images) to Claude to place\.?/i,"").trim() : ""; }
+  function workDaysLeft(m){ var n=0, d=today(); var end=addDays(m,-1); while(d<=end){ var w=new Date(d+"T00:00:00").getDay(); if(w>0&&w<6) n++; d=addDays(d,1); } return n; }
+  function fmtStamp(ms){ if(!ms) return ""; var d=new Date(ms); return d.toLocaleDateString("en-GB",{day:"numeric",month:"short"}); }
+
+  function weekStrip(m){
+    var h='<ol class="strip" aria-label="This week’s rhythm">', t=today();
+    for(var i=-6;i<=0;i++){
+      var d=addDays(m,i), dt=new Date(d+"T00:00:00"), meet=i===0;
+      var lbl = meet ? "Meeting" : (dt.getDay()===0||dt.getDay()===6) ? "Weekend" : "Work";
+      h+='<li class="'+(meet?'meet':'')+(d===t?' now':'')+(d<t?' past':'')+'"><b>'+dt.toLocaleDateString("en-GB",{weekday:"short"})+' '+dt.getDate()+'</b><span>'+lbl+'</span></li>';
+    }
+    return h+'</ol>';
+  }
+
+  function laneBox(p,L){
+    var st=laneState(p,L.k), mine=ui.me===L.who, r0=ro();
+    var h='<section class="lane l-'+st+(mine?' mine':'')+'" aria-label="'+esc(L.title+' check for '+p.name)+'">';
+    h+='<div class="lane-h">'+av(L.who)+'<b>'+esc(L.title)+'</b><span>'+esc(L.who)+(mine?' (you)':'')+'</span></div>';
+    h+='<p class="ask">'+esc(L.ask)+'</p>';
+    if(L.k==="look"){ var br=photoBrief(p); if(br) h+='<p class="brief"><b>Photos:</b> '+esc(br)+'</p>'; }
+    h+='<div class="states" role="group" aria-label="'+esc(L.title)+' result">';
+    LSTATES.forEach(function(s){ h+='<button class="st-'+s[0]+'" data-lane="'+L.k+'" data-ls="'+s[0]+'" aria-pressed="'+(st===s[0])+'" '+(r0?'disabled':'')+'>'+s[1]+'</button>'; });
+    h+='</div>';
+    var nf=L.k+"Note";
+    h+='<textarea data-field="'+nf+'" rows="2" placeholder="'+esc(L.ph)+'" aria-label="'+esc(L.title+' notes for '+p.name)+'" '+(r0?'readonly':'')+'>'+esc(p[nf]||"")+'</textarea>';
+    if(p[L.k+"By"]) h+='<p class="by">'+esc(LSTATES.filter(function(s){return s[0]===st;})[0][1])+', marked by '+esc(p[L.k+"By"])+(p[L.k+"At"]?' on '+fmtStamp(p[L.k+"At"]):'')+'</p>';
+    return h+'</section>';
+  }
+
+  function weekCard(p){
+    var s=stage(p), r0=ro();
+    var h='<article class="wk s-'+s+'" data-id="'+esc(p.id)+'" id="wk-'+esc(p.id)+'">';
+    h+='<div class="wk-head"><div class="wk-title"><h3>'+esc(p.name)+'</h3><span class="hint">'+esc(p.section||"")+(p.goLive?' · go-live '+fmtDate(p.goLive):'')+'</span></div>'+stageChip(p)+'</div>';
+    h+='<div class="wk-links">';
+    if(reviewHref(p.reviewUrl)) h+=reviewLink(p.reviewUrl,"Open the page to check");
+    else h+='<span class="review-off">No built page to check yet</span>';
+    if(p.url && /^https:\/\//.test(p.url)) h+='<a class="pageurl" href="'+esc(p.url)+'" target="_blank" rel="noopener">Current live page</a>';
+    h+='</div>';
+    if(s==="notbuilt") h+='<p class="wk-note">This page hasn’t been built yet. Ask Claude to build the first draft, then it can be checked here.</p>';
+    else if(s!=="live" && s!=="signed") h+='<div class="lanes">'+LANES.map(function(L){return laneBox(p,L);}).join('')+'</div>';
+    h+='<div class="wk-foot">';
+    if(s==="ready") h+='<p><b>Both checks are good to go.</b> James signs it off at the meeting.</p>'+(r0?'':'<button class="primary" data-act="sign">Sign off</button>');
+    else if(s==="signed") h+='<p><b>Signed off.</b> Next: James applies the draft so it goes live.</p>'+(r0?'':'<button class="ghost" data-act="mark-live">Mark as live</button><button class="link" data-act="unsign">Undo sign-off</button>');
+    else if(s==="live") h+='<p><b>Live on the website.</b></p>'+(r0?'':'<button class="link" data-act="unlive">Undo</button>');
+    else if(s==="work") h+='<p>Changes are needed. Whoever owns the change makes it, or asks Claude, then sets the check back to <i>Not checked</i> for another look.</p>';
+    else if(s==="review") h+='<p>Waiting for both checks.</p>';
+    else h+='<p></p>';
+    if(!r0) h+='<button class="link" data-act="week-remove">Take out of this week</button>';
+    return h+'</div></article>';
+  }
+
+  function renderWeek(){
+    var m=viewMeeting(), cur=curMeeting(), r0=ro(), h='';
+    var seg='<div class="seg" role="group" aria-label="Which week"><button data-wk="0" aria-pressed="'+(!ui.wk)+'">This week</button><button data-wk="1" aria-pressed="'+(ui.wk===1)+'">Next week</button></div>';
+    var me='<div class="seg" role="group" aria-label="Who you are"><span class="seg-lbl">I’m</span>'+PEOPLE.map(function(n){return '<button data-me="'+n+'" aria-pressed="'+(ui.me===n)+'">'+av(n)+n+'</button>';}).join('')+'</div>';
+    h+=toolbar('<div style="display:flex;gap:10px;flex-wrap:wrap">'+seg+me+'</div>');
+    var list=weekPages(m), start=addDays(m,-6);
+    h+='<div class="weekhead"><div><h2>'+(ui.wk?'Next week':'This week')+': '+fmtDate(start)+' to '+fmtDate(addDays(m,-1))+'</h2>';
+    if(!ui.wk){ var left=workDaysLeft(m); h+='<p class="hint">'+(m===today()?'Meeting today. Go through the pages below, sign off what’s ready, then pick next week’s pages.':left+' working day'+(left===1?'':'s')+' left before the meeting on '+fmtLong(m)+'.')+'</p>'; }
+    else h+='<p class="hint">Pages for the week after the meeting on '+fmtLong(cur)+'. Add them here so everyone can see what’s coming.</p>';
+    h+='</div>'+weekStrip(m)+'</div>';
+    if(ui.me==="Viviana"||ui.me==="Matias"){
+      var L=LANES.filter(function(x){return x.who===ui.me;})[0];
+      var todo=list.filter(function(p){var s=stage(p); return s!=="notbuilt"&&s!=="signed"&&s!=="live"&&laneState(p,L.k)==="todo";}).length;
+      h+='<div class="you">'+av(ui.me)+'<p><b>Your job this week:</b> check the '+(L.k==="look"?'images and look':'copy')+' on each page below. '+(todo?todo+' still to check.':'Nothing left to check.')+'</p></div>';
+    }
+    if(!list.length) h+='<div class="empty">No pages picked for '+(ui.wk?'next':'this')+' week yet. '+(r0?'':'Add them below.')+'</div>';
+    else h+='<div class="wklist">'+list.map(weekCard).join('')+'</div>';
+    if(!r0){
+      var avail=state.pages.filter(function(p){ var s=stage(p); return p.week!==m && s!=="live" && s!=="signed" && p.section!=="Fixes"; }).sort(function(a,b){ return (reviewHref(a.reviewUrl)?0:1)-(reviewHref(b.reviewUrl)?0:1) || String(a.name).localeCompare(String(b.name)); });
+      h+='<form class="add" id="addWeek" autocomplete="off"><select class="field" id="addWeekSel" aria-label="Page to add"><option value="">Choose a page to add to '+(ui.wk?'next':'this')+' week…</option>';
+      avail.forEach(function(p){ var w=p.week&&p.week!==m?' (in the week to '+fmtDate(p.week)+')':''; h+='<option value="'+esc(p.id)+'">'+esc(p.name)+' · '+STAGES[stage(p)]+w+'</option>'; });
+      h+='</select><button class="primary" type="submit">Add to '+(ui.wk?'next':'this')+' week</button></form>';
+    }
+    if(!ui.wk){
+      var carry=state.pages.filter(function(p){ var s=stage(p); return p.week && p.week<cur && s!=="signed" && s!=="live"; });
+      if(carry.length){
+        h+='<h2 class="group-title">Not finished in an earlier week ('+carry.length+')</h2><div class="chips">';
+        carry.forEach(function(p){ h+='<span class="carry" data-id="'+esc(p.id)+'"><b>'+esc(p.name)+'</b> '+stageChip(p)+(r0?'':' <button class="link" data-act="week-add">Move to this week</button>')+'</span>'; });
+        h+='</div>';
+      }
+      if(list.length){
+        var g={ready:[],work:[],review:[],other:[]};
+        list.forEach(function(p){ var s=stage(p); (g[s]||g.other).push(p); });
+        h+='<section class="agenda-box" aria-label="Meeting agenda"><h2>For the meeting on '+fmtLong(m)+'</h2>';
+        [["ready","Ready to sign off"],["work","Needs work: talk through what’s left"],["review","Not fully checked yet"]].forEach(function(x){
+          h+='<div><b>'+x[1]+' ('+g[x[0]].length+')</b><span>'+(g[x[0]].length?g[x[0]].map(function(p){return esc(p.name);}).join(', '):'None')+'</span></div>';
+        });
+        h+='<p class="hint">After the meeting, switch to <i>Next week</i> and add the pages for the coming week.</p></section>';
+      }
+    }
+    return h+'<div style="height:48px"></div>';
+  }
+
   /* ---------- calendar ---------- */
   function renderCalendar(){
     var t = new Date(), m = ui.month || (t.getFullYear()+"-"+pad(t.getMonth()+1));
@@ -670,16 +844,18 @@ button,input,textarea,select{font:inherit;color:inherit}
     function add(date, html){ (byDay[date]=byDay[date]||[]).push(html); }
     state.pages.forEach(function(p){
       if(!p.goLive) return;
-      var st=status(p), open=tasksFor(p.id).filter(function(x){return !x.done && !isSignoff(x);}).length;
-      var cls = pageLate(p)?' late':st==="done"?' done':(st==="progress"||st==="ready")?' prog':'';
-      add(p.goLive, '<button class="ev'+cls+'" data-goto="'+esc(p.id)+'" title="'+esc(p.name+' goes live, '+pct(p)+'% done'+(open?', '+open+' open tasks':''))+'">'+esc(p.name)+' <small>'+pct(p)+'%</small></button>');
+      var st=stage(p), cls = pageLate(p)?' late':(st==="signed"||st==="live")?' done':(st==="notbuilt")?'':' prog';
+      add(p.goLive, '<button class="ev'+cls+'" data-goto="'+esc(p.id)+'" title="'+esc(p.name+' goes live: '+STAGES[st])+'">'+esc(p.name)+' <small>go-live</small></button>');
     });
-    state.tasks.forEach(function(x){
-      var du = taskDue(x); if(du.derived || !du.date || x.done) return;
-      add(du.date, '<button class="ev task" data-gotask="'+esc(x.id)+'" title="Task deadline">'+av(x.assignee)+' '+esc(x.title)+'</button>');
-    });
+    // Every Wednesday is the team meeting; show how many pages that week has.
+    var cm = curMeeting(), first0 = new Date(y,mo,1), d0 = iso(first0), lastD = iso(new Date(y,mo+1,0));
+    for(var w = meetingOf(addDays(d0,-7)); w <= addDays(lastD,7); w = addDays(w,7)){
+      var n = state.pages.filter(function(p){return p.week===w;}).length, off = Math.round((new Date(w+"T00:00:00")-new Date(cm+"T00:00:00"))/604800000);
+      var lbl = 'Team meeting'+(n?' · '+n+' page'+(n>1?'s':''):'');
+      add(w, (off===0||off===1) ? '<button class="ev meet" data-gowk="'+off+'">'+lbl+'</button>' : '<span class="ev meet">'+lbl+'</span>');
+    }
     var first = new Date(y,mo,1), start = new Date(y,mo,1-((first.getDay()+6)%7));
-    h += '<div class="cal" role="grid" aria-label="Go-live calendar">';
+    h += '<div class="cal" role="grid" aria-label="Meetings and go-live calendar">';
     ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].forEach(function(dn){ h += '<div class="dow">'+dn+'</div>'; });
     for(var i=0;i<42;i++){
       var d = new Date(start.getFullYear(),start.getMonth(),start.getDate()+i), k = iso(d);
@@ -688,16 +864,16 @@ button,input,textarea,select{font:inherit;color:inherit}
     }
     h += '</div>';
     var keys = Object.keys(byDay).filter(function(k){return k.slice(0,7)===m;}).sort();
-    h += '<div class="agenda">'+(keys.length?keys.map(function(k){return '<div><div class="ad">'+fmtLong(k)+'</div>'+byDay[k].join('')+'</div>';}).join(''):'<div class="empty">Nothing goes live this month.</div>')+'</div>';
-    var und = state.pages.filter(function(p){return !p.goLive && status(p)!=="done";});
+    h += '<div class="agenda">'+(keys.length?keys.map(function(k){return '<div><div class="ad">'+fmtLong(k)+'</div>'+byDay[k].join('')+'</div>';}).join(''):'<div class="empty">No meetings or go-live dates this month.</div>')+'</div>';
+    var und = state.pages.filter(function(p){var st=stage(p); return !p.goLive && st!=="signed" && st!=="live";});
     if(und.length) h += '<div class="undated"><h2 class="group-title">No go-live date yet ('+und.length+')</h2><div class="chips">'+und.map(function(p){return '<button class="chip" data-goto="'+esc(p.id)+'">'+esc(p.name)+'</button>';}).join('')+'</div></div>';
     return h + '<div style="height:48px"></div>';
   }
 
   /* ---------- events ---------- */
-  function findPage(el){var row=el.closest('.row');return row?pageById(row.dataset.id):null;}
+  function findPage(el){var row=el.closest('.row,.wk,.carry');return row?pageById(row.dataset.id):null;}
   function findTask(el){var n=el.closest('[data-tid]'); return n?taskById(n.dataset.tid):null;}
-  function keepUi(){try{sessionStorage.setItem('wpp-ui',JSON.stringify({tab:ui.tab,smFilter:ui.smFilter,filter:ui.filter,open:ui.open,who:ui.who,show:ui.show,pillar:ui.pillar,draft:ui.draft,month:ui.month,y:window.scrollY}));}catch(e){}}
+  function keepUi(){try{sessionStorage.setItem('wpp-ui',JSON.stringify({tab:ui.tab,wk:ui.wk,smFilter:ui.smFilter,filter:ui.filter,open:ui.open,who:ui.who,show:ui.show,pillar:ui.pillar,draft:ui.draft,month:ui.month,y:window.scrollY}));}catch(e){}}
   function rerender(){var y=window.scrollY; render(); window.scrollTo(0,y); keepUi(); syncComposer();}
   function openComposer(){ render(); syncComposer(); keepUi(); var c=document.getElementById('composer'); if(c) c.scrollIntoView({block:"start"}); }
   // Destructive buttons ask for a second click instead of a dialog (the viewer blocks confirm()).
@@ -716,6 +892,9 @@ button,input,textarea,select{font:inherit;color:inherit}
     var t = e.target.closest('button'); if(!t) return;
     var d = ui.draft;
     if(t.dataset.tab){ ui.tab=t.dataset.tab; keepUi(); render(); syncComposer(); return; }
+    if(t.dataset.wk!==undefined){ ui.wk=+t.dataset.wk; rerender(); return; }
+    if(t.dataset.gowk!==undefined){ ui.tab="week"; ui.wk=+t.dataset.gowk; keepUi(); render(); window.scrollTo(0,0); return; }
+    if(t.dataset.me){ ui.me = ui.me===t.dataset.me ? "" : t.dataset.me; try{ localStorage.setItem('wpp-me', ui.me); }catch(e){} rerender(); return; }
     if(t.dataset.filter){ ui.filter=t.dataset.filter; rerender(); return; }
     if(t.dataset.smf){ ui.smFilter=t.dataset.smf; rerender(); return; }
     if(t.dataset.who!==undefined){ ui.who=t.dataset.who; rerender(); return; }
@@ -782,6 +961,17 @@ button,input,textarea,select{font:inherit;color:inherit}
     if(act==="task-delete" && !ro()){ var td=findTask(t); if(td && confirmed("task:"+td.id)){ state.tasks=state.tasks.filter(function(x){return x!==td;}); deleteDoc("tasks/"+td.id); rerender(); } return; }
 
     var p = findPage(t); if(!p) return;
+    if(t.dataset.ls && t.dataset.lane && !ro()){
+      var lk=t.dataset.lane, o2={}; o2[lk+"State"]=t.dataset.ls; o2[lk+"By"]=ui.me||""; o2[lk+"At"]=Date.now();
+      Object.keys(o2).forEach(function(k){p[k]=o2[k];}); updateDoc("pages/"+p.id, o2); rerender(); return;
+    }
+    if(act==="sign" && !ro()){ p.signedOff=true; p.signedAt=Date.now(); updateDoc("pages/"+p.id,{signedOff:true, signedAt:p.signedAt}); rerender(); return; }
+    if(act==="unsign" && !ro()){ p.signedOff=false; updateDoc("pages/"+p.id,{signedOff:false}); rerender(); return; }
+    if(act==="mark-live" && !ro()){ p.isLive=true; updateDoc("pages/"+p.id,{isLive:true}); rerender(); return; }
+    if(act==="unlive" && !ro()){ p.isLive=false; updateDoc("pages/"+p.id,{isLive:false}); rerender(); return; }
+    if(act==="week-remove" && !ro()){ p.week=""; updateDoc("pages/"+p.id,{week:""}); rerender(); return; }
+    if(act==="week-add" && !ro()){ p.week=curMeeting(); updateDoc("pages/"+p.id,{week:p.week}); rerender(); return; }
+    if(act==="week-toggle" && !ro()){ p.week = p.week===curMeeting() ? "" : curMeeting(); updateDoc("pages/"+p.id,{week:p.week}); rerender(); return; }
     if(act==="signoff"){
       if(ro() || !pillarsDone(p)) return;
       var sot = signoffTask(p);
@@ -820,11 +1010,18 @@ button,input,textarea,select{font:inherit;color:inherit}
     if(el.dataset && (el.dataset.field==="section" || el.dataset.field==="goLive")) rerender();
   });
   document.addEventListener('submit', function(e){
+    if(e.target.id==="addWeek"){
+      e.preventDefault(); if(ro()) return;
+      var sv=document.getElementById('addWeekSel'), ap=pageById(sv.value); if(!ap){ sv.focus(); return; }
+      ap.week=viewMeeting(); updateDoc("pages/"+ap.id,{week:ap.week}); rerender();
+      var nsel=document.getElementById('addWeekSel'); if(nsel) nsel.focus();
+      return;
+    }
     if(e.target.id!=="addPage") return; e.preventDefault();
     if(ro()) return;
     var n = document.getElementById('newName').value.trim(); if(!n){ document.getElementById('newName').focus(); return; }
     var s = document.getElementById('newSec').value.trim() || "Other";
-    var np = {id:"p"+Date.now().toString(36),name:n,section:s,goLive:document.getElementById('newDate').value||"",notes:"",layout:false,imagery:false,copy:false,order:Date.now()};
+    var np = {id:"p"+Date.now().toString(36),name:n,section:s,goLive:document.getElementById('newDate').value||"",notes:"",order:Date.now()};
     state.pages.push(np); setDoc("pages/"+np.id, clean(np));
     rerender();
     var ni=document.getElementById('newName'); if(ni) ni.focus();

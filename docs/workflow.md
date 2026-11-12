@@ -57,3 +57,12 @@ After a build:
 - A supplied photo goes into a "Photo to be sourced" placeholder (`.ph`). It never replaces an existing hero image unless James says so.
 - A filled slot is `<div class="ph[ wide|tall] photo"><img src="…" alt="…" style="object-position:X% Y%" loading="lazy"></div>`. The image always covers the frame; set `object-position` so the subject (people's faces, the product, the hands at work) stays in view at desktop and phone widths, and check both with a screenshot.
 - Name the asset after the page and slot, e.g. `data-collection-three-stages-banner.jpg`.
+
+## Weekly rhythm (from 12 Nov 2026)
+
+The plan opens on **This week**. Wednesday is the team meeting; Thursday to Tuesday is work time.
+
+- **Wednesday:** go through the meeting agenda at the bottom of This week, sign off pages where both checks are *Good to go*, then switch to *Next week* and add the coming week's pages.
+- **Thursday to Tuesday:** Viviana checks **Images and look** and Matias checks **Copy** on each page in the week. Each check is *Not checked*, *Needs work* (with a note saying exactly what to change) or *Good to go*. After a fix, set the check back to *Not checked* for another look.
+- A page's stage comes from those checks: Not built yet → Being checked → Needs work → Ready to sign off → Signed off → Live.
+- Data: page documents carry `week` (the meeting date, `YYYY-MM-DD`), `lookState/lookNote/lookBy/lookAt`, `wordsState/wordsNote/wordsBy/wordsAt`, `signedOff`, `isLive`. The old task list stays in the `tasks` collection but is no longer shown; the photo brief on each Images check is read from the old image task's note.
